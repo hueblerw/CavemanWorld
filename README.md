@@ -1,2 +1,2 @@
 # CavemanWorld
-Create a Unity version of the World Generator
+Create a Unity version of the Dynamic World Generator
