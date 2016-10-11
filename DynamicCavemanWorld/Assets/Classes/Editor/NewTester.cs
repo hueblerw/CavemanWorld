@@ -29,4 +29,18 @@ public class NewTester {
         Assert.AreEqual(50, DailyLayer.WORLDX);
         Assert.AreEqual(50, DailyLayer.WORLDZ);
     }
+
+    [Test]
+    public void VariantLayerTest()
+    {
+        // Test all the SingleLayer Values can be initialized
+        VariantLayer humidity = new VariantLayer("Humidity", "Semi-static", 6, 1);
+
+        Assert.AreEqual("Humidity", humidity.layerName);
+        Assert.AreEqual("Semi-static", humidity.getType());
+        Assert.AreEqual(1, humidity.getRounding());
+        Assert.AreEqual(6, humidity.worldArray.Length);
+        Assert.AreEqual(50, VariantLayer.WORLDX);
+        Assert.AreEqual(50, VariantLayer.WORLDZ);
+    }
 }
