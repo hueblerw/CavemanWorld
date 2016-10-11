@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.IO;
 
 public class SingleValueLayer
 {
@@ -21,11 +22,26 @@ public class SingleValueLayer
     }
 
     // Layer initialization Method
+    public void readCSVFile()
+    {
 
+        string filePath = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\ElevationNiceMapA.csv";
+        StreamReader sr = new StreamReader(filePath);
+        // decimal[][] data;
+        // int Row = 0;
+        while (!sr.EndOfStream)
+        {
+            string[] Line = sr.ReadLine().Split(',');
+            Debug.Log(Line[0]);
+        }
 
+        // Debug.Log(data);
 
-    // Getter methods
-    public string getType()
+    }
+    
+
+// Getter methods
+public string getType()
     {
         return layerType;
     }
