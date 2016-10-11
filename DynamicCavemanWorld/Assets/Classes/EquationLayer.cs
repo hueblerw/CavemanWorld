@@ -19,7 +19,10 @@ public class EquationLayer {
 
     // World Array Initializer
 
+    public void createEquations()
+    {
 
+    }
 
     // Getters
     public string getType()
