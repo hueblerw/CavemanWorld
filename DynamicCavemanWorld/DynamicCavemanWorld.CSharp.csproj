@@ -67,6 +67,7 @@
     <Compile Include="Assets\Classes\SingleValueLayer.cs" />
     <Compile Include="Assets\Classes\TempEquation.cs" />
     <Compile Include="Assets\Classes\VariantLayer.cs" />
+    <Compile Include="Assets\Classes\World.cs" />
     <Compile Include="Assets\MainController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
