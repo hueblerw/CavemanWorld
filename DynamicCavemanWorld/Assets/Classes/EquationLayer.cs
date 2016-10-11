@@ -19,7 +19,7 @@ public class EquationLayer {
 
     // World Array Initializer
 
-    public void createEquations()
+    public void createEquations(SingleValueLayer highTemp, SingleValueLayer lowTemp, SingleValueLayer tempMidpt, SingleValueLayer variance)
     {
 
     }

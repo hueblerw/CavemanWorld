@@ -43,8 +43,8 @@ public class SingleValueLayer
     }
     
 
-// Getter methods
-public string getType()
+    // Getter methods
+    public string getType()
     {
         return layerType;
     }
