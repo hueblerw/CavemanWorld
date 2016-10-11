@@ -26,6 +26,7 @@ public class NewTester {
         Assert.AreEqual("Elevation", rainfall.layerName);
         Assert.AreEqual("Daily", rainfall.getType());
         Assert.AreEqual(1, rainfall.getRounding());
+        Assert.AreEqual(120, rainfall.worldArray.Length);
         Assert.AreEqual(50, DailyLayer.WORLDX);
         Assert.AreEqual(50, DailyLayer.WORLDZ);
     }
