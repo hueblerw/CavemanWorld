@@ -1,15 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class worldLayers : MonoBehaviour {
+public class worldLayers {
 
-	// Use this for initialization
-	void Start () {
-	    // Unclear if needed
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	    // Unclear if needed
-	}
+    public string layerName;
+    private string layerType;
+    public const int WORLDX = 50;
+    public const int WORLDZ = 50;
+
+    // Constructor
+    public worldLayers(string name, string type)
+    {
+        this.layerName = name;
+        this.layerType = type;
+    }
+
+    public string getType()
+    {
+        return layerType;
+    }
+
 }
