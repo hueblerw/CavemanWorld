@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using System;
 
 public class SingleValueLayer
 {
@@ -27,15 +28,19 @@ public class SingleValueLayer
 
         string filePath = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\ElevationNiceMapA.csv";
         StreamReader sr = new StreamReader(filePath);
-        // decimal[][] data;
-        // int Row = 0;
+        decimal[,] data = new decimal[WORLDX, WORLDZ];
+        int Row = 0;
         while (!sr.EndOfStream)
         {
             string[] Line = sr.ReadLine().Split(',');
-            Debug.Log(Line[0]);
+            for(int i = 0; i < Line.Length; i++)
+            {
+                data[Row, i] = Convert.ToDecimal(Line[i]);
+            }
+            Row++;
         }
 
-        // Debug.Log(data);
+        this.worldArray = data;
 
     }
     
