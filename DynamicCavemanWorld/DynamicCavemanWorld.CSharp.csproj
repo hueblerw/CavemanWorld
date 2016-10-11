@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\Classes\DailyLayer.cs" />
     <Compile Include="Assets\Classes\SingleValueLayer.cs" />
+    <Compile Include="Assets\Classes\TempEquation.cs" />
     <Compile Include="Assets\Classes\VariantLayer.cs" />
     <Compile Include="Assets\MainController.cs" />
   </ItemGroup>
