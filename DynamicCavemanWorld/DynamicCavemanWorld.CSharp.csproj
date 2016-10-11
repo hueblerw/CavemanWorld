@@ -63,6 +63,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CSV2Table\Demo\C2TDemo.cs" />
+    <Compile Include="Assets\CSV2Table\Demo\SampleTable.cs" />
+    <Compile Include="Assets\CSV2Table\Scripts\CsvParser.cs" />
+    <Compile Include="Assets\CSV2Table\Scripts\CsvParser2.cs" />
+    <Compile Include="Assets\CSV2Table\Scripts\TableCodeGen.cs" />
     <Compile Include="Assets\Classes\DailyLayer.cs" />
     <Compile Include="Assets\Classes\SingleValueLayer.cs" />
     <Compile Include="Assets\Classes\VariantLayer.cs" />
