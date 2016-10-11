@@ -9,7 +9,6 @@ public class World : MonoBehaviour {
     SingleValueLayer lowTemp = new SingleValueLayer("LowTemp", "Semi-static", 0);
     SingleValueLayer tempMidpt = new SingleValueLayer("TempMidpoint", "Semi-static", 1);
     SingleValueLayer variance = new SingleValueLayer("Variance", "Semi-static", 1);
-    EquationLayer temperatureEquations = new EquationLayer("TemperatureEquations", "Semi-static", 6, 1);
 
     // Constructor
     public World()
@@ -22,7 +21,6 @@ public class World : MonoBehaviour {
         lowTemp.readCSVFile(filePathPrefix + "LowTempNiceMapA.csv");
         tempMidpt.readCSVFile(filePathPrefix + "TempMidptNiceMapA.csv");
         variance.readCSVFile(filePathPrefix + "VarianceNiceMapA.csv");
-        temperatureEquations.equations = new TempEquation();
         // Rainfall info
 
     }

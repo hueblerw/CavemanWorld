@@ -19,9 +19,5 @@ public class TempEquation {
     }
 
     // Return an array of random temperatures for the year
-    public decimal[] newYearsTemps()
-    {
-        // Lotsa fun math here!
-    }
 
 }
