@@ -12,10 +12,10 @@ public class DailyLayer {
     public decimal[,,] worldArray = new decimal[120, WORLDX, WORLDZ];
 
     // Constructor
-    public DailyLayer(string name, string type, int roundTo)
+    public DailyLayer(string name, int roundTo)
     {
         this.layerName = name;
-        this.layerType = type;
+        this.layerType = "Daily";
         this.rounded = roundTo;
     }
 

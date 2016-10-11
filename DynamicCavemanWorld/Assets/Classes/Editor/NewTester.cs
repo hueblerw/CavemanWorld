@@ -21,7 +21,7 @@ public class NewTester {
     public void DailyLayerTest()
     {
         // Test all the SingleLayer Values can be initialized
-        DailyLayer rainfall = new DailyLayer("Rainfall", "Daily", 1);
+        DailyLayer rainfall = new DailyLayer("Rainfall", 1);
 
         Assert.AreEqual("Elevation", rainfall.layerName);
         Assert.AreEqual("Daily", rainfall.getType());
