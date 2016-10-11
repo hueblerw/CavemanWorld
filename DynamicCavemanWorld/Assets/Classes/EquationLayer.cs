@@ -19,7 +19,7 @@ public class EquationLayer {
 
     // World Array Initializer
 
-    public void createEquations(SingleValueLayer highTemp, SingleValueLayer lowTemp, SingleValueLayer tempMidpt)
+    public void createEquations(SingleValueLayer highTemp, SingleValueLayer lowTemp, SingleValueLayer tempMidpt, SingleValueLayer variance)
     {
         // Basically, loop through the creation of each individual equation
         TempEquation temporary;

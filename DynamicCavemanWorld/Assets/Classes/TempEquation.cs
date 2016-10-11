@@ -9,8 +9,10 @@ public class TempEquation {
     private double C;
     private double D;
     private double E;
-    private double F;
-    private double G;
+    private double F = 1.0;
+    private int avgHigh;
+    private int avgLow;
+    private double variance;
 
     // Constructor: takes in the input from the variable semi-static temperature references
     public TempEquation()

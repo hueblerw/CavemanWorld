@@ -22,7 +22,7 @@ public class World {
         lowTemp.readCSVFile(filePathPrefix + "LowTempNiceMapA.csv");
         tempMidpt.readCSVFile(filePathPrefix + "MidptNiceMapA.csv");
         variance.readCSVFile(filePathPrefix + "VarianceNiceMapA.csv");
-        tempEquations.createEquations(highTemp, lowTemp, tempMidpt);
+        tempEquations.createEquations(highTemp, lowTemp, tempMidpt, variance);
         // Rainfall info
 
     }
