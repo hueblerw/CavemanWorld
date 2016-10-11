@@ -23,10 +23,9 @@ public class SingleValueLayer
     }
 
     // Layer initialization Method
-    public void readCSVFile()
+    public void readCSVFile(string filePath)
     {
 
-        string filePath = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\ElevationNiceMapA.csv";
         StreamReader sr = new StreamReader(filePath);
         decimal[,] data = new decimal[WORLDX, WORLDZ];
         int Row = 0;
@@ -39,8 +38,6 @@ public class SingleValueLayer
             }
             Row++;
         }
-
-        Debug.Log("Exited Loop");
         this.worldArray = data;
 
     }

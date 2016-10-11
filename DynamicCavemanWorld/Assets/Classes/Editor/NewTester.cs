@@ -9,7 +9,8 @@ public class NewTester {
 	{
         // Test all the SingleLayer Values can be initialized
         SingleValueLayer elevation = new SingleValueLayer("Elevation", "Semi-static", 1);
-        elevation.readCSVFile();
+        string filePath = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\ElevationNiceMapA.csv";
+        elevation.readCSVFile(filePath);
 
         Assert.AreEqual("Elevation", elevation.layerName);
         Assert.AreEqual("Semi-static", elevation.getType());
