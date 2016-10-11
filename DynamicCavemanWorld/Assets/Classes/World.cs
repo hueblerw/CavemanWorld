@@ -4,12 +4,12 @@ using System.Collections;
 public class World : MonoBehaviour {
 
     // Layers
-    SingleValueLayer elevation = new SingleValueLayer("Elevation", "Semi-static", 1);
-    SingleValueLayer highTemp = new SingleValueLayer("HighTemp", "Semi-static", 0);
-    SingleValueLayer lowTemp = new SingleValueLayer("LowTemp", "Semi-static", 0);
-    SingleValueLayer tempMidpt = new SingleValueLayer("TempMidpoint", "Semi-static", 1);
-    SingleValueLayer variance = new SingleValueLayer("Variance", "Semi-static", 1);
-    EquationLayer tempEquations = new EquationLayer("TemperatureEquations", "Semi-static");
+    public SingleValueLayer elevation = new SingleValueLayer("Elevation", "Semi-static", 1);
+    private SingleValueLayer highTemp = new SingleValueLayer("HighTemp", "Semi-static", 0);
+    private SingleValueLayer lowTemp = new SingleValueLayer("LowTemp", "Semi-static", 0);
+    private SingleValueLayer tempMidpt = new SingleValueLayer("TempMidpoint", "Semi-static", 1);
+    private SingleValueLayer variance = new SingleValueLayer("Variance", "Semi-static", 1);
+    public EquationLayer tempEquations = new EquationLayer("TemperatureEquations", "Semi-static");
 
     // Constructor
     public World()
