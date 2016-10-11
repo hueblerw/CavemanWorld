@@ -17,7 +17,11 @@ public class TempEquation {
     // Constructor: takes in the input from the variable semi-static temperature references
     public TempEquation(int highTemp, int lowTemp, float Midpt, float variance)
     {
+
         // First store the variables that are used only when temperatures are read out.
+        this.avgHigh = highTemp;
+        this.avgLow = lowTemp;
+        this.variance = variance;
 
         // Then create a matrix using the midpt input
 
