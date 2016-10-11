@@ -27,7 +27,7 @@ public class EquationLayer {
         {
             for (int z = 0; z < WORLDZ; z++)
             {
-                temporary = new TempEquation();
+                temporary = new TempEquation((int)highTemp.worldArray[x, z], (int)lowTemp.worldArray[x, z], tempMidpt.worldArray[x, z], variance.worldArray[x, z]);
                 this.worldArray[x, z] = temporary;
             }
         }

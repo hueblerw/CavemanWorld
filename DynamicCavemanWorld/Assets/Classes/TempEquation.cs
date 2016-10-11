@@ -15,11 +15,24 @@ public class TempEquation {
     private double variance;
 
     // Constructor: takes in the input from the variable semi-static temperature references
-    public TempEquation()
+    public TempEquation(int highTemp, int lowTemp, float Midpt, float variance)
     {
-        // Lotsa fun math here to make the equation
+        // First store the variables that are used only when temperatures are read out.
+
+        // Then create a matrix using the midpt input
+
+        // Then solve matrix A's inverse
+
+        // Then multiply matrix A-1 x B
+
+        // Extract the answers for A-E
+
     }
 
     // Return an array of random temperatures for the year
+
+    // Private methods
+
+
 
 }
