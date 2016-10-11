@@ -1,15 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SingleValueLayer : MonoBehaviour {
+public class SingleValueLayer
+{
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public string layerName;
+    private string layerType;
+    public static int WORLDX = 50;
+    public static int WORLDZ = 50;
+    public float[][] worldArray;
+
+
+    public SingleValueLayer(string name, string type)
+    {
+        this.layerName = name;
+        this.layerType = type;
+    }
+
+
+    public string getType()
+    {
+        return layerType;
+    }
+
 }
