@@ -9,7 +9,7 @@ public class DailyLayer {
     private int rounded;
     public static int WORLDX = 50;
     public static int WORLDZ = 50;
-    public decimal[,,] worldArray = new decimal[120, WORLDX, WORLDZ];
+    public float[,,] worldArray = new float[120, WORLDX, WORLDZ];
 
     // Constructor
     public DailyLayer(string name, int roundTo)

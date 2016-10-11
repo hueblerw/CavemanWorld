@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class World : MonoBehaviour {
+public class World {
 
     // Layers
     public SingleValueLayer elevation = new SingleValueLayer("Elevation", "Semi-static", 1);
@@ -20,7 +20,7 @@ public class World : MonoBehaviour {
         // Temperature info
         highTemp.readCSVFile(filePathPrefix + "HighTempNiceMapA.csv");
         lowTemp.readCSVFile(filePathPrefix + "LowTempNiceMapA.csv");
-        tempMidpt.readCSVFile(filePathPrefix + "TempMidptNiceMapA.csv");
+        tempMidpt.readCSVFile(filePathPrefix + "MidptNiceMapA.csv");
         variance.readCSVFile(filePathPrefix + "VarianceNiceMapA.csv");
         tempEquations.createEquations();
         // Rainfall info

@@ -10,7 +10,7 @@ public class VariantLayer
     private int rounded;
     public static int WORLDX = 50;
     public static int WORLDZ = 50;
-    public decimal[,,] worldArray;
+    public float[,,] worldArray;
 
     // Constructor
     public VariantLayer(string name, string type, int c, int roundTo)
@@ -18,7 +18,7 @@ public class VariantLayer
         this.layerName = name;
         this.layerType = type;
         this.rounded = roundTo;
-        this.worldArray = new decimal[c, WORLDX, WORLDZ];
+        this.worldArray = new float[c, WORLDX, WORLDZ];
 }
 
     // World Array Initializer
