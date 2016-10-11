@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DailyLayer {
+public class VariantLayer
+{
 
     // Variables
     public string layerName;
@@ -9,15 +10,16 @@ public class DailyLayer {
     private int rounded;
     public static int WORLDX = 50;
     public static int WORLDZ = 50;
-    public decimal[,,] worldArray = new decimal[120, WORLDX, WORLDZ];
+    public decimal[,,] worldArray;
 
     // Constructor
-    public DailyLayer(string name, int roundTo)
+    public VariantLayer(string name, string type, int c, int roundTo)
     {
         this.layerName = name;
-        this.layerType = "Daily";
+        this.layerType = type;
         this.rounded = roundTo;
-    }
+        this.worldArray = new decimal[c, WORLDX, WORLDZ];
+}
 
     // World Array Initializer
 
