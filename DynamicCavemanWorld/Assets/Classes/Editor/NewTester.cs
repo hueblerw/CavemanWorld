@@ -23,10 +23,10 @@ public class NewTester {
         // Test all the SingleLayer Values can be initialized
         DailyLayer rainfall = new DailyLayer("Rainfall", 1);
 
-        Assert.AreEqual("Elevation", rainfall.layerName);
+        Assert.AreEqual("Rainfall", rainfall.layerName);
         Assert.AreEqual("Daily", rainfall.getType());
         Assert.AreEqual(1, rainfall.getRounding());
-        Assert.AreEqual(120, rainfall.worldArray.Length);
+        Assert.AreEqual(120 * 50 * 50, rainfall.worldArray.Length);
         Assert.AreEqual(50, DailyLayer.WORLDX);
         Assert.AreEqual(50, DailyLayer.WORLDZ);
     }
@@ -40,7 +40,7 @@ public class NewTester {
         Assert.AreEqual("Humidity", humidity.layerName);
         Assert.AreEqual("Semi-static", humidity.getType());
         Assert.AreEqual(1, humidity.getRounding());
-        Assert.AreEqual(6, humidity.worldArray.Length);
+        Assert.AreEqual(6 * 50 * 50, humidity.worldArray.Length);
         Assert.AreEqual(50, VariantLayer.WORLDX);
         Assert.AreEqual(50, VariantLayer.WORLDZ);
     }
