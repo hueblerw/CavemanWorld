@@ -9,12 +9,16 @@ public class NewTester {
 	{
         // Test all the SingleLayer Values can be initialized
         SingleValueLayer elevation = new SingleValueLayer("Elevation", "Semi-static", 1);
+        elevation.readCSVFile();
 
         Assert.AreEqual("Elevation", elevation.layerName);
         Assert.AreEqual("Semi-static", elevation.getType());
         Assert.AreEqual(1, elevation.getRounding());
         Assert.AreEqual(50, SingleValueLayer.WORLDX);
         Assert.AreEqual(50, SingleValueLayer.WORLDZ);
+        Assert.AreEqual(-2.7, elevation.worldArray[1, 0]);
+        Assert.AreEqual(-0.6, elevation.worldArray[0, 1]);
+
     }
 
     [Test]

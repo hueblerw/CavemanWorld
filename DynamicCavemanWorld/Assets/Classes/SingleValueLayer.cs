@@ -35,11 +35,12 @@ public class SingleValueLayer
             string[] Line = sr.ReadLine().Split(',');
             for(int i = 0; i < Line.Length; i++)
             {
-                data[Row, i] = Convert.ToDecimal(Line[i]);
+                data[i, Row] = Math.Round(Convert.ToDecimal(Line[i]), this.rounded);
             }
             Row++;
         }
 
+        Debug.Log("Exited Loop");
         this.worldArray = data;
 
     }
