@@ -15,7 +15,7 @@ public class TempEquation {
     // Constructor: takes in the input from the variable semi-static temperature references
     public TempEquation()
     {
-        // Lotsa fun math here
+        // Lotsa fun math here to make the equation
     }
 
     // Return an array of random temperatures for the year
