@@ -21,16 +21,20 @@ public class EquationLayer {
 
     public void createEquations(SingleValueLayer highTemp, SingleValueLayer lowTemp, SingleValueLayer tempMidpt, SingleValueLayer variance)
     {
+
         // Basically, loop through the creation of each individual equation
         TempEquation temporary;
+        TempEquation[,] tempArray = new TempEquation[EquationLayer.WORLDX, EquationLayer.WORLDZ];
         for (int x = 0; x < WORLDX; x++)
         {
             for (int z = 0; z < WORLDZ; z++)
             {
                 temporary = new TempEquation((int)highTemp.worldArray[x, z], (int)lowTemp.worldArray[x, z], tempMidpt.worldArray[x, z], variance.worldArray[x, z]);
-                this.worldArray[x, z] = temporary;
+                tempArray[x, z] = temporary;
             }
         }
+        this.worldArray = tempArray;
+
     }
 
     // Getters
