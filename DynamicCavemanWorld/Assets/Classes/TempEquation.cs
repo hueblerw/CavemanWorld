@@ -52,6 +52,15 @@ public class TempEquation {
     }
 
     // Return an array of random temperatures for the year
+    public int[] generateYearsTemps()
+    {
+        int[] temps = new int[120];
+        for (int day = 1; day <= 120; day++)
+        {
+            temps[day - 1] = generateTodaysTemp(day);
+        }
+        return temps;
+    }
 
     // Private methods
     private int generateTodaysTemp(int day)
