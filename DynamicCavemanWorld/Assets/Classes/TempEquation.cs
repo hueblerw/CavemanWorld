@@ -4,7 +4,7 @@ using MathNet.Numerics.LinearAlgebra;
 using System;
 
 public class TempEquation {
-
+    
     // Variables
     private double A;
     private double B;
@@ -54,7 +54,16 @@ public class TempEquation {
     // Return an array of random temperatures for the year
 
     // Private methods
-
-
+    private int generateTodaysTemp(int day)
+    {
+        double dM = day / 120;
+        double fakeDay = 120 * (this.A * (Math.Pow(dM, 6) / 6) + this.B * (Math.Pow(dM, 5) / 5) + this.C * (Math.Pow(dM, 4) / 4) + this.D * (Math.Pow(dM, 3) / 3) + this.E * (Math.Pow(dM, 2) / 2) + this.F * dM);
+        fakeDay = -Math.Cos((fakeDay / 120) * (2 * Math.PI));
+        double temp = ((this.avgHigh - this.avgLow)/ 2) * fakeDay;
+        temp = temp + ((this.avgHigh - this.avgLow) / 2) + this.avgLow;
+        System.Random rnd = new System.Random();
+        double randy = rnd.Next((int) -this.variance * 10, (int) this.variance * 10 + 1) / 10;
+        return (int) Math.Round(temp + randy, 0);
+    }
 
 }
