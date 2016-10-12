@@ -47,6 +47,8 @@ public class TempEquation {
         Matrix<double> solutions = inverse * B;
         // Extract the answers for A-E
         Debug.Log(solutions);
+        // solutions.ToColumnArrays();
+
     }
 
     // Return an array of random temperatures for the year
