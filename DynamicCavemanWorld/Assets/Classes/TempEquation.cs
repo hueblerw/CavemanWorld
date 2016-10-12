@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using MathNet.Numerics.LinearAlgebra;
 using System;
 
 public class TempEquation {
@@ -39,12 +38,11 @@ public class TempEquation {
                         { Math.Pow(.5, 6) / 6, Math.Pow(.5, 5) / 5, Math.Pow(.5, 4) / 4, Math.Pow(.5, 3) / 3, Math.Pow(.5, 2) / 2 },
                         { Math.Pow(midptRatio, 6) / 6, Math.Pow(midptRatio, 5) / 5, Math.Pow(midptRatio, 4) / 4, Math.Pow(midptRatio, 3) / 3, Math.Pow(midptRatio, 2) / 2 },
                         { Math.Pow(fallMidptRatio, 6) / 6, Math.Pow(fallMidptRatio, 5) / 5, Math.Pow(fallMidptRatio, 4) / 4, Math.Pow(fallMidptRatio, 3) / 3, Math.Pow(fallMidptRatio, 2) / 2 }};
-        Matrix<double> A = Matrix<double>.Build.DenseOfArray(systemArray);
-        Matrix<double> B = Matrix<double>.Build.DenseOfArray(solutionArray);
-        // Then solve matrix A's inverse
-        Matrix<double> inverse = A.Inverse();
-        // Then multiply matrix A-1 x B
-        Matrix<double> solutions = inverse * B;
+        LightweightMatrixCSharp.Matrix A = new LightweightMatrixCSharp.Matrix(5, 5);
+        LightweightMatrixCSharp.Matrix B = new LightweightMatrixCSharp.Matrix(5, 1);
+        // How to enter the data into the matrix.
+
+        LightweightMatrixCSharp.Matrix solutions = A.SolveWith(B);
         // Extract the answers for A-E
         Debug.Log(solutions);
         // solutions.ToColumnArrays();
