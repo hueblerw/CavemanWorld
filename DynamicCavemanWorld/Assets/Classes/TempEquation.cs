@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Text.RegularExpressions;
 
 public class TempEquation {
     
@@ -24,28 +25,31 @@ public class TempEquation {
         this.avgLow = lowTemp;
         this.variance = variance;
 
-        // Then create a matrix using the midpt input
+        // convert to more useful numbers
         float fallMidpt = 120 - Midpt;
         double midptRatio = Midpt / 120;
         double fallMidptRatio = fallMidpt / 120;
-        double[,] solutionArray = { { 0.0 },
-                                    { 0.0 },
-                                    { 0.0 },
-                                    { 0.25 - midptRatio },
-                                    { 0.75 - fallMidptRatio } };
-        double[,] systemArray = {{ 1.0, 1.0, 1.0, 1.0, 1.0 },
-                        { 0.5, 1/3, 0.25, 0.2, 1/6 },
-                        { Math.Pow(.5, 6) / 6, Math.Pow(.5, 5) / 5, Math.Pow(.5, 4) / 4, Math.Pow(.5, 3) / 3, Math.Pow(.5, 2) / 2 },
-                        { Math.Pow(midptRatio, 6) / 6, Math.Pow(midptRatio, 5) / 5, Math.Pow(midptRatio, 4) / 4, Math.Pow(midptRatio, 3) / 3, Math.Pow(midptRatio, 2) / 2 },
-                        { Math.Pow(fallMidptRatio, 6) / 6, Math.Pow(fallMidptRatio, 5) / 5, Math.Pow(fallMidptRatio, 4) / 4, Math.Pow(fallMidptRatio, 3) / 3, Math.Pow(fallMidptRatio, 2) / 2 }};
-        LightweightMatrixCSharp.Matrix A = new LightweightMatrixCSharp.Matrix(5, 5);
-        LightweightMatrixCSharp.Matrix B = new LightweightMatrixCSharp.Matrix(5, 1);
-        // How to enter the data into the matrix.
-
-        LightweightMatrixCSharp.Matrix solutions = A.SolveWith(B);
+        // Create the matirces
+        string solutionMatrix = "0.0\r\n0.0\r\n0.0\r\n" + (0.25 - midptRatio) + "\r\n" + (0.75 - fallMidptRatio);
+        string systemMatrix = "1.0 1.0 1.0 1.0 1.0\r\n";
+        systemMatrix += "0.5 " + (1/3) + " 0.25 0.2 " + (1/6) + "\r\n";
+        systemMatrix += Math.Pow(.5, 6) / 6 + " " + Math.Pow(.5, 5) / 5 + " " + Math.Pow(.5, 4) / 4 + " " + Math.Pow(.5, 3) / 3 + " " + Math.Pow(.5, 2) / 2 + "\r\n";
+        systemMatrix += Math.Pow(midptRatio, 6) / 6 + " " + Math.Pow(midptRatio, 5) / 5 + " " + Math.Pow(midptRatio, 4) / 4 + " " + Math.Pow(midptRatio, 3) / 3 + " " + Math.Pow(midptRatio, 2) / 2 + "\r\n";
+        systemMatrix += Math.Pow(fallMidptRatio, 6) / 6 + " " + Math.Pow(fallMidptRatio, 5) / 5 + " " + Math.Pow(fallMidptRatio, 4) / 4 + " " + Math.Pow(fallMidptRatio, 3) / 3 + " " + Math.Pow(fallMidptRatio, 2) / 2;
+        // Debug.Log("5x5:" + systemMatrix);
+        // Debug.Log("5x1:" + solutionMatrix);
+        LightweightMatrixCSharp.Matrix MA = LightweightMatrixCSharp.Matrix.Parse(systemMatrix);
+        LightweightMatrixCSharp.Matrix MB = LightweightMatrixCSharp.Matrix.Parse(solutionMatrix);
+        // Solve the system
+        LightweightMatrixCSharp.Matrix solutions = MA.SolveWith(MB);
         // Extract the answers for A-E
-        Debug.Log(solutions);
-        // solutions.ToColumnArrays();
+        string[] solutionArray = Regex.Split(solutions.ToString(), "\r\n");
+        // Debug.Log(solutions.ToString());
+        this.A = Convert.ToDouble(solutionArray[0]);
+        this.B = Convert.ToDouble(solutionArray[1]);
+        this.C = Convert.ToDouble(solutionArray[2]);
+        this.D = Convert.ToDouble(solutionArray[3]);
+        this.E = Convert.ToDouble(solutionArray[4]);
 
     }
 
