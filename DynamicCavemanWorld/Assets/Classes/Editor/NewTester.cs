@@ -67,20 +67,29 @@ public class NewTester {
     {
         // Test initialize what is needed for the test
         EquationLayer testEquation = new EquationLayer("TemperatureEquations", "Semi-static");
-        SingleValueLayer highTemp = new SingleValueLayer("HighTemp", "Semi-static", 0);
-        SingleValueLayer lowTemp = new SingleValueLayer("LowTemp", "Semi-static", 0);
-        SingleValueLayer tempMidpt = new SingleValueLayer("TempMidpoint", "Semi-static", 1);
-        SingleValueLayer variance = new SingleValueLayer("Variance", "Semi-static", 1);
+        SingleValueLayer testhighTemp = new SingleValueLayer("HighTemp", "Semi-static", 0);
+        SingleValueLayer testlowTemp = new SingleValueLayer("LowTemp", "Semi-static", 0);
+        SingleValueLayer testtempMidpt = new SingleValueLayer("TempMidpoint", "Semi-static", 1);
+        SingleValueLayer testvariance = new SingleValueLayer("Variance", "Semi-static", 1);
         string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
-        highTemp.readCSVFile(filePathPrefix + "HighTempNiceMapA.csv");
-        lowTemp.readCSVFile(filePathPrefix + "LowTempNiceMapA.csv");
-        tempMidpt.readCSVFile(filePathPrefix + "MidptNiceMapA.csv");
-        variance.readCSVFile(filePathPrefix + "VarianceNiceMapA.csv");
-        testEquation.createEquations(highTemp, lowTemp, tempMidpt, variance);
+        testhighTemp.readCSVFile(filePathPrefix + "HighTempNiceMapA.csv");
+        testlowTemp.readCSVFile(filePathPrefix + "LowTempNiceMapA.csv");
+        testtempMidpt.readCSVFile(filePathPrefix + "MidptNiceMapA.csv");
+        testvariance.readCSVFile(filePathPrefix + "VarianceNiceMapA.csv");
+        testEquation.createEquations(testhighTemp, testlowTemp, testtempMidpt, testvariance);
 
         // Test conditions
+        // Basic correct info
         Assert.AreEqual(50 * 50, testEquation.worldArray.Length);
-
+        Assert.AreEqual(100, testhighTemp.worldArray[0, 0]);
+        Assert.AreEqual(1, testlowTemp.worldArray[0, 0]);
+        Assert.AreEqual(20.4, testtempMidpt.worldArray[0, 0]);
+        Assert.AreEqual(8.0, testvariance.worldArray[0, 0]);
+        // Check for correct X-Z axes
+        Assert.AreEqual(98, testhighTemp.worldArray[2, 1]);
+        Assert.AreEqual(-5, testlowTemp.worldArray[2, 1]);
+        Assert.AreEqual(26.6, testtempMidpt.worldArray[2, 1]);
+        Assert.AreEqual(9.8, testvariance.worldArray[2, 1]);
     }
 
 }
