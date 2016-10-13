@@ -63,8 +63,24 @@ public class NewTester {
     }
 
     [Test]
+    public void TempEquationTest()
+    {
+        // Test the TempEquation
+        TempEquation testEquation = new TempEquation(80, 20, (float)25.0, (float)6.0);
+
+        // Test the TempEquation Constructor
+        Assert.AreEqual(201.294951, testEquation.returnConstants()[0]);
+        Assert.AreEqual(-480.570010, testEquation.returnConstants()[1]);
+        Assert.AreEqual(390.804325, testEquation.returnConstants()[2]);
+        Assert.AreEqual(-123.770372, testEquation.returnConstants()[3]);
+        Assert.AreEqual(12.241106, testEquation.returnConstants()[4]);
+        Assert.AreEqual(1.0, testEquation.returnConstants()[5]);
+    }
+
+    [Test]
     public void EquationCreationTest()
     {
+
         // Test initialize what is needed for the test
         EquationLayer testEquation = new EquationLayer("TemperatureEquations", "Semi-static");
         SingleValueLayer testhighTemp = new SingleValueLayer("HighTemp", "Semi-static", 0);
@@ -90,6 +106,7 @@ public class NewTester {
         Assert.AreEqual(-5, testlowTemp.worldArray[2, 1]);
         Assert.AreEqual((float)26.6, testtempMidpt.worldArray[2, 1]);
         Assert.AreEqual((float)9.8, testvariance.worldArray[2, 1]);
+
     }
 
 }
