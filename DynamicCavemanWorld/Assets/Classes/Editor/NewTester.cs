@@ -115,4 +115,14 @@ public class NewTester {
 
     }
 
+    [Test]
+    public void EarlyHumidityTest()
+    {
+        // Test the single value Humidity Layer so I can get a sense for how the rainfall logic will work
+        SingleValueLayer testHumidityLayer = new SingleValueLayer("TestHumidityLayer", "Semi-static", 1);
+        string filePath = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\HumidityNiceMapA.csv";
+        testHumidityLayer.readCSVFile(filePath + "HighTempNiceMapA.csv");
+    }
+    
+
 }
