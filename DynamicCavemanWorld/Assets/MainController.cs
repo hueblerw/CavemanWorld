@@ -7,6 +7,7 @@ public class MainController : MonoBehaviour {
 	void Start () {
         Debug.Log("Literally, Hello World!");
         World TheWorld = new World();
+        Debug.Log("World Made!");
     }
 	
 	// Update is called once per frame
