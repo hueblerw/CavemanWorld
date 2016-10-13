@@ -33,19 +33,19 @@ public class TempEquation {
         // Create the matirces
         string solutionMatrix = "0.0\r\n0.0\r\n0.0\r\n" + (0.25 - midptRatio) + "\r\n" + (0.75 - fallMidptRatio);
         string systemMatrix = create5x5Matrix(midptRatio, fallMidptRatio);
-        if (highTemp == 100)
-        {
-            Debug.Log("Midpt: " + Midpt + " // MidptRatio: " +midptRatio);
-            Debug.Log("5x5:" + systemMatrix);
-            Debug.Log("5x1:" + solutionMatrix);
-        }
+        
             
         LightweightMatrixCSharp.Matrix MA = LightweightMatrixCSharp.Matrix.Parse(systemMatrix);
         LightweightMatrixCSharp.Matrix MB = LightweightMatrixCSharp.Matrix.Parse(solutionMatrix);
-
+        
         // Solve the system
         LightweightMatrixCSharp.Matrix solutions = MA.SolveWith(MB);
-
+        if (highTemp == 100)
+        {
+            Debug.Log(solutionMatrix);
+            Debug.Log(systemMatrix);
+            Debug.Log(solutions.ToString());
+        }
         // Extract the answers for A-E
         string[] solutionArray = Regex.Split(solutions.ToString(), "\r\n");
             // Debug.Log(solutions.ToString());
@@ -94,7 +94,7 @@ public class TempEquation {
     private string create5x5Matrix(double midptRatio, double fallMidptRatio)
     {
         string systemMatrix = "1.0 1.0 1.0 1.0 1.0\r\n";
-        systemMatrix += "0.5 " + (1.0/3.0) + " 0.25 0.2 " + (1.0/6.0) + "\r\n";
+        systemMatrix += (1.0/6.0) + " 0.2 0.25 " + (1.0/3.0) + " 0.5\r\n";
         systemMatrix += Math.Pow(.5, 6.0) / 6.0 + " " + Math.Pow(.5, 5.0) / 5.0 + " " + Math.Pow(.5, 4.0) / 4.0 + " " + Math.Pow(.5, 3.0) / 3.0 + " " + Math.Pow(.5, 2.0) / 2.0 + "\r\n";
         systemMatrix += Math.Pow(midptRatio, 6.0) / 6.0 + " " + Math.Pow(midptRatio, 5.0) / 5.0 + " " + Math.Pow(midptRatio, 4.0) / 4.0 + " " + Math.Pow(midptRatio, 3.0) / 3.0 + " " + Math.Pow(midptRatio, 2.0) / 2.0 + "\r\n";
         systemMatrix += Math.Pow(fallMidptRatio, 6.0) / 6.0 + " " + Math.Pow(fallMidptRatio, 5.0) / 5.0 + " " + Math.Pow(fallMidptRatio, 4.0) / 4.0 + " " + Math.Pow(fallMidptRatio, 3.0) / 3.0 + " " + Math.Pow(fallMidptRatio, 2.0) / 2.0;
