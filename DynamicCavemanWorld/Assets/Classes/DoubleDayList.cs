@@ -5,9 +5,9 @@ public class DoubleDayList
 
     public double[] days = new double[120];
 
-    public DoubleDayList()
+    public DoubleDayList(double[] array)
     {
-        // Constructor does nothing
+        this.days = array;
     }
 
 }

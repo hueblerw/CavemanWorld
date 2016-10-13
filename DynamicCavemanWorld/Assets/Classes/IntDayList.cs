@@ -4,9 +4,9 @@ public class IntDayList {
 
     public int[] days = new int[120];
 
-    public IntDayList()
+    public IntDayList(int[] array)
     {
-        // Constructor does nothing
+        this.days = array;
     }
 
 }
