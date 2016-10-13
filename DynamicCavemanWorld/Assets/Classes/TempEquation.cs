@@ -61,6 +61,19 @@ public class TempEquation {
         return dayList;
     }
 
+    // For Test purposes: return the coefficents as an array
+    public double[] returnConstants()
+    {
+        double[] array = new double[6];
+        array[0] = this.A;
+        array[1] = this.B;
+        array[2] = this.C;
+        array[3] = this.D;
+        array[4] = this.E;
+        array[5] = this.F;
+        return array;
+    }
+
     // Private methods
     private int generateTodaysTemp(int day, System.Random rnd)
     {

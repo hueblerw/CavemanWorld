@@ -10,7 +10,7 @@ public class World {
     private SingleValueLayer tempMidpt = new SingleValueLayer("TempMidpoint", "Semi-static", 1);
     private SingleValueLayer variance = new SingleValueLayer("Variance", "Semi-static", 1);
     public EquationLayer tempEquations = new EquationLayer("TemperatureEquations", "Semi-static");
-
+    
     // Constructor
     public World()
     {
@@ -23,6 +23,10 @@ public class World {
         tempMidpt.readCSVFile(filePathPrefix + "MidptNiceMapA.csv");
         variance.readCSVFile(filePathPrefix + "VarianceNiceMapA.csv");
         tempEquations.createEquations(highTemp, lowTemp, tempMidpt, variance);
+        Debug.Log(tempEquations.worldArray[0, 0].generateYearsTemps().days[0]);
+        Debug.Log(tempEquations.worldArray[0, 0].generateYearsTemps().days[29]);
+        Debug.Log(tempEquations.worldArray[0, 0].generateYearsTemps().days[59]);
+        Debug.Log(tempEquations.worldArray[0, 0].generateYearsTemps().days[89]);
         // Rainfall info
 
     }
