@@ -83,13 +83,13 @@ public class NewTester {
         Assert.AreEqual(50 * 50, testEquation.worldArray.Length);
         Assert.AreEqual(100, testhighTemp.worldArray[0, 0]);
         Assert.AreEqual(1, testlowTemp.worldArray[0, 0]);
-        Assert.AreEqual(20.4, testtempMidpt.worldArray[0, 0]);
-        Assert.AreEqual(8.0, testvariance.worldArray[0, 0]);
+        Assert.AreEqual((float)20.4, testtempMidpt.worldArray[0, 0]);
+        Assert.AreEqual((float)8.0, testvariance.worldArray[0, 0]);
         // Check for correct X-Z axes
         Assert.AreEqual(98, testhighTemp.worldArray[2, 1]);
         Assert.AreEqual(-5, testlowTemp.worldArray[2, 1]);
-        Assert.AreEqual(26.6, testtempMidpt.worldArray[2, 1]);
-        Assert.AreEqual(9.8, testvariance.worldArray[2, 1]);
+        Assert.AreEqual((float)26.6, testtempMidpt.worldArray[2, 1]);
+        Assert.AreEqual((float)9.8, testvariance.worldArray[2, 1]);
     }
 
 }
