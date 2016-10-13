@@ -75,6 +75,12 @@ public class NewTester {
         Assert.AreEqual(-31.51, testEquation.returnConstants()[3], 0.1);
         Assert.AreEqual(5.25, testEquation.returnConstants()[4], 0.1);
         Assert.AreEqual(1.0, testEquation.returnConstants()[5], 0.1);
+
+        // Test the yearly temperature generation
+        Assert.AreEqual(20.0, testEquation.generateYearsTemps().days[0], 6.0);
+        Assert.AreEqual(58.6, testEquation.generateYearsTemps().days[29], 6.0);
+        Assert.AreEqual(80.0, testEquation.generateYearsTemps().days[59], 6.0);
+        Assert.AreEqual(58.6, testEquation.generateYearsTemps().days[89], 6.0);
     }
 
     [Test]

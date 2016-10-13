@@ -40,12 +40,12 @@ public class TempEquation {
         
         // Solve the system
         LightweightMatrixCSharp.Matrix solutions = MA.SolveWith(MB);
-        //if (highTemp == 100)
-        //{
-        //    Debug.Log(solutionMatrix);
-        //    Debug.Log(systemMatrix);
-        //    Debug.Log(solutions.ToString());
-        //}
+            //if (highTemp == 100)
+            //{
+            //    Debug.Log(solutionMatrix);
+            //    Debug.Log(systemMatrix);
+            //    Debug.Log(solutions.ToString());
+            //}
         // Extract the answers for A-E
         string[] solutionArray = Regex.Split(solutions.ToString(), "\r\n");
             // Debug.Log(solutions.ToString());
@@ -82,12 +82,12 @@ public class TempEquation {
     // Private methods
     private int generateTodaysTemp(int day, System.Random rnd)
     {
-        double dM = day / 120;
-        double fakeDay = 120 * (this.A * (Math.Pow(dM, 6) / 6) + this.B * (Math.Pow(dM, 5) / 5) + this.C * (Math.Pow(dM, 4) / 4) + this.D * (Math.Pow(dM, 3) / 3) + this.E * (Math.Pow(dM, 2) / 2) + this.F * dM);
-        fakeDay = -Math.Cos((fakeDay / 120) * (2 * Math.PI));
-        double temp = ((this.avgHigh - this.avgLow)/ 2) * fakeDay;
-        temp = temp + ((this.avgHigh - this.avgLow) / 2) + this.avgLow;
-        double randy = rnd.Next((int) -this.variance * 10, (int) this.variance * 10 + 1) / 10;
+        double dM = day / 120.0;
+        double fakeDay = 120.0 * (this.A * (Math.Pow(dM, 6.0) / 6.0) + this.B * (Math.Pow(dM, 5.0) / 5.0) + this.C * (Math.Pow(dM, 4.0) / 4.0) + this.D * (Math.Pow(dM, 3.0) / 3.0) + this.E * (Math.Pow(dM, 2.0) / 2.0) + this.F * dM);
+        fakeDay = -Math.Cos((fakeDay / 120.0) * (2.0 * Math.PI));
+        double temp = ((this.avgHigh - this.avgLow)/ 2.0) * fakeDay;
+        temp = temp + ((this.avgHigh - this.avgLow) / 2.0) + this.avgLow;
+        double randy = rnd.Next((int) - this.variance * 10, (int) this.variance * 10 + 1) / 10;
         return (int) Math.Round(temp + randy, 0);
     }
 
