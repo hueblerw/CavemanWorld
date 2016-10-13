@@ -40,12 +40,12 @@ public class TempEquation {
         
         // Solve the system
         LightweightMatrixCSharp.Matrix solutions = MA.SolveWith(MB);
-        if (highTemp == 100)
-        {
-            Debug.Log(solutionMatrix);
-            Debug.Log(systemMatrix);
-            Debug.Log(solutions.ToString());
-        }
+        //if (highTemp == 100)
+        //{
+        //    Debug.Log(solutionMatrix);
+        //    Debug.Log(systemMatrix);
+        //    Debug.Log(solutions.ToString());
+        //}
         // Extract the answers for A-E
         string[] solutionArray = Regex.Split(solutions.ToString(), "\r\n");
             // Debug.Log(solutions.ToString());

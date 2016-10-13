@@ -69,12 +69,12 @@ public class NewTester {
         TempEquation testEquation = new TempEquation(80, 20, (float)25.0, (float)6.0);
 
         // Test the TempEquation Constructor
-        Assert.AreEqual(0.0, testEquation.returnConstants()[0]);
-        Assert.AreEqual(-26.5, testEquation.returnConstants()[1]);
-        Assert.AreEqual(52.5, testEquation.returnConstants()[2]);
-        Assert.AreEqual(-31.5, testEquation.returnConstants()[3]);
-        Assert.AreEqual(5.25, testEquation.returnConstants()[4]);
-        Assert.AreEqual(1.0, testEquation.returnConstants()[5]);
+        Assert.AreEqual(0.0, testEquation.returnConstants()[0], 0.01);
+        Assert.AreEqual(-26.25, testEquation.returnConstants()[1], 0.1);
+        Assert.AreEqual(52.51, testEquation.returnConstants()[2], 0.1);
+        Assert.AreEqual(-31.51, testEquation.returnConstants()[3], 0.1);
+        Assert.AreEqual(5.25, testEquation.returnConstants()[4], 0.1);
+        Assert.AreEqual(1.0, testEquation.returnConstants()[5], 0.1);
     }
 
     [Test]
