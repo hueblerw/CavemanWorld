@@ -60,6 +60,27 @@ public class NewTester {
         Assert.AreEqual("Semi-static", testEquation.getType());
         Assert.AreEqual(50, VariantLayer.WORLDX);
         Assert.AreEqual(50, VariantLayer.WORLDZ);
+    }
+
+    [Test]
+    public void EquationCreationTest()
+    {
+        // Test initialize what is needed for the test
+        EquationLayer testEquation = new EquationLayer("TemperatureEquations", "Semi-static");
+        SingleValueLayer highTemp = new SingleValueLayer("HighTemp", "Semi-static", 0);
+        SingleValueLayer lowTemp = new SingleValueLayer("LowTemp", "Semi-static", 0);
+        SingleValueLayer tempMidpt = new SingleValueLayer("TempMidpoint", "Semi-static", 1);
+        SingleValueLayer variance = new SingleValueLayer("Variance", "Semi-static", 1);
+        string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
+        highTemp.readCSVFile(filePathPrefix + "HighTempNiceMapA.csv");
+        lowTemp.readCSVFile(filePathPrefix + "LowTempNiceMapA.csv");
+        tempMidpt.readCSVFile(filePathPrefix + "MidptNiceMapA.csv");
+        variance.readCSVFile(filePathPrefix + "VarianceNiceMapA.csv");
+        testEquation.createEquations(highTemp, lowTemp, tempMidpt, variance);
+
+        // Test conditions
+        Assert.AreEqual(50 * 50, testEquation.worldArray.Length);
 
     }
+
 }
