@@ -17,8 +17,8 @@ public class NewTester {
         Assert.AreEqual(1, elevation.getRounding());
         Assert.AreEqual(50, SingleValueLayer.WORLDX);
         Assert.AreEqual(50, SingleValueLayer.WORLDZ);
-        Assert.AreEqual(-2.7, elevation.worldArray[1, 0]);
-        Assert.AreEqual(-0.6, elevation.worldArray[0, 1]);
+        Assert.AreEqual((float)-2.7, elevation.worldArray[1, 0]);
+        Assert.AreEqual((float)-0.6, elevation.worldArray[0, 1]);
 
     }
 
@@ -48,5 +48,18 @@ public class NewTester {
         Assert.AreEqual(6 * 50 * 50, humidity.worldArray.Length);
         Assert.AreEqual(50, VariantLayer.WORLDX);
         Assert.AreEqual(50, VariantLayer.WORLDZ);
+    }
+
+    [Test]
+    public void EquationLayerTest()
+    {
+        // Test the TempEquation Constructor
+        EquationLayer testEquation = new EquationLayer("TemperatureEquations", "Semi-static");
+
+        Assert.AreEqual("TemperatureEquations", testEquation.layerName);
+        Assert.AreEqual("Semi-static", testEquation.getType());
+        Assert.AreEqual(50, VariantLayer.WORLDX);
+        Assert.AreEqual(50, VariantLayer.WORLDZ);
+
     }
 }
