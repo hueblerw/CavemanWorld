@@ -42,7 +42,13 @@ public class World {
 
     private float VertexAverage(float[] cellsAround)
     {
-
+        float average = 0.0f;
+        for (int i = 0; i < cellsAround.Length; i++)
+        {
+            average += cellsAround[i];
+        }
+        average = average / cellsAround.Length;
+        return average;
     }
 
 }
