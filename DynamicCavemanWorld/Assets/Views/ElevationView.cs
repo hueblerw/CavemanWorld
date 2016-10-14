@@ -18,6 +18,7 @@ public class ElevationView : MonoBehaviour {
         triangles[0] = 0;
         triangles[1] = 3;
         triangles[2] = 2;
+
         triangles[3] = 0;
         triangles[4] = 1;
         triangles[5] = 3;
@@ -29,8 +30,8 @@ public class ElevationView : MonoBehaviour {
 
         // Create a new mesh and populate it with the data from the elevation layer
         Mesh world = new Mesh();
-        world.triangles = triangles;
         world.vertices = vertices;
+        world.triangles = triangles;
         world.normals = normals;
 
         // Return our mesh to the controller
