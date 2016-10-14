@@ -46,7 +46,6 @@ public class SingleValueLayer
 
     }
     
-
     // Getter methods
     public string getType()
     {

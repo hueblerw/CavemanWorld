@@ -25,6 +25,7 @@ public class World {
         string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
         // Elevation info
         elevation.readCSVFile(filePathPrefix + "ElevationNiceMapA.csv");
+        ConvertElevationToVertices();
         // Temperature info
         highTemp.readCSVFile(filePathPrefix + "HighTempNiceMapA.csv");
         lowTemp.readCSVFile(filePathPrefix + "LowTempNiceMapA.csv");
