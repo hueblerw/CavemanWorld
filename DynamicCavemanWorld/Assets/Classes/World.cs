@@ -5,6 +5,8 @@ using Boo.Lang;
 public class World {
 
     // Layers
+    public int WorldX;
+    public int WorldZ;
     public SingleValueLayer elevation = new SingleValueLayer("Elevation", "Semi-static", 1);
     public SingleValueLayer elevationVertices = new SingleValueLayer("ElevationVertices", "Semi-static", 1);
     private SingleValueLayer highTemp = new SingleValueLayer("HighTemp", "Semi-static", 0);
@@ -14,8 +16,12 @@ public class World {
     public EquationLayer tempEquations = new EquationLayer("TemperatureEquations", "Semi-static");
     
     // Constructor
-    public World()
+    public World(int x, int z)
     {
+        WorldX = x;
+        WorldZ = z;
+        SingleValueLayer.WORLDX = WorldX;
+        SingleValueLayer.WORLDZ = WorldZ;
         string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
         // Elevation info
         elevation.readCSVFile(filePathPrefix + "ElevationNiceMapA.csv");
@@ -29,12 +35,12 @@ public class World {
 
     }
     
-    // Other methods!
+    // Converts the model's elevation number to a map of vertices which can be used by the view
     public void ConvertElevationToVertices()
     {
-        for (int x = 0; x < SingleValueLayer.WORLDX + 1; x++)
+        for (int x = 0; x < WorldX + 1; x++)
         {
-            for (int z = 0; z < SingleValueLayer.WORLDX + 1; z++)
+            for (int z = 0; z < WorldZ + 1; z++)
             {
                 elevationVertices.worldArray[x, z] = VertexAverage(CellsAroundVertex(x, z));
             }
@@ -47,7 +53,7 @@ public class World {
         float[] cells;
         List<float> cellList = new List<float>();
         // Add the four possible values if legal
-        if (x < SingleValueLayer.WORLDX && z < SingleValueLayer.WORLDZ)
+        if (x < WorldX && z < WorldZ)
         {
             cellList.Add(this.elevation.worldArray[x, z]);
         }   
@@ -55,11 +61,11 @@ public class World {
         {
            cellList.Add(this.elevation.worldArray[x - 1, z - 1]);
         }
-        if (x > 0 && z < SingleValueLayer.WORLDZ)
+        if (x > 0 && z < WorldZ)
         {
             cellList.Add(this.elevation.worldArray[x - 1, z]);
         }
-        if (x < SingleValueLayer.WORLDX && z > 0)
+        if (x < WorldX && z > 0)
         {
             cellList.Add(this.elevation.worldArray[x, z - 1]);
         }

@@ -12,7 +12,7 @@ public class MainController : MonoBehaviour {
 
         // Construct the model from text files
         Debug.Log("Literally, Hello World!");
-        World TheWorld = new World();
+        World TheWorld = new World(50, 50);
         Debug.Log("World Model Made!");
 
         // Construct the elevation view

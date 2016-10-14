@@ -10,8 +10,8 @@ public class SingleValueLayer
     public string layerName;
     private string layerType;
     private int rounded;
-    public static int WORLDX = 50;
-    public static int WORLDZ = 50;
+    public static int WORLDX;
+    public static int WORLDZ;
     public float[,] worldArray = new float[WORLDX, WORLDZ];
 
     // Constructor
