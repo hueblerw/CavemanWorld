@@ -8,10 +8,18 @@ public class MainController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        // Generate the model files eventually
+
+        // Construct the model from text files
         Debug.Log("Literally, Hello World!");
         World TheWorld = new World();
         Debug.Log("World Model Made!");
-        ElevationView.BuildMesh(TheWorld.elevation);
+
+        // Construct the elevation view
+        MeshFilter meshFilter = GetComponent<MeshFilter>();
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        MeshCollider meshCollider = GetComponent<MeshCollider>();
+        ElevationView.BuildMesh(TheWorld.elevation, meshFilter, meshCollider, meshRenderer);
         Debug.Log("Elevation View Made!");
     }
 	
