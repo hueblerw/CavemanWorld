@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Boo.Lang;
 
 public class World {
 
@@ -37,7 +38,28 @@ public class World {
     // Private methods!
     private float[] CellsAroundVertex(int x, int z)
     {
-
+        float[] cells;
+        List<float> cellList = new List<float>();
+        // Add the four possible values if legal
+        if (x < SingleValueLayer.WORLDX && z < SingleValueLayer.WORLDZ)
+        {
+            cellList.Add(this.elevation.worldArray[x, z]);
+        }   
+        if (x > 0 && z > 0)
+        {
+           cellList.Add(this.elevation.worldArray[x - 1, z - 1]);
+        }
+        if (x > 0 && z < SingleValueLayer.WORLDZ)
+        {
+            cellList.Add(this.elevation.worldArray[x - 1, z]);
+        }
+        if (x < SingleValueLayer.WORLDX && z > 0)
+        {
+            cellList.Add(this.elevation.worldArray[x, z - 1]);
+        }
+        // Convert to an array and return
+        cells = cellList.ToArray();
+        return cells;
     }
 
     private float VertexAverage(float[] cellsAround)
