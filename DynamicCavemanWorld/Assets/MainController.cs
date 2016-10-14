@@ -7,7 +7,9 @@ public class MainController : MonoBehaviour {
 	void Start () {
         Debug.Log("Literally, Hello World!");
         World TheWorld = new World();
-        Debug.Log("World Made!");
+        Debug.Log("World Model Made!");
+        ElevationView.BuildMesh(TheWorld.elevation);
+        Debug.Log("Elevation View Made!");
     }
 	
 	// Update is called once per frame
