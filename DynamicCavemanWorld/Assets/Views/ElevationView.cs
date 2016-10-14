@@ -26,7 +26,7 @@ public class ElevationView : MonoBehaviour {
         {
             for (x = 0; x < numOfTilesX + 1; x++)
             {
-                vertices[z * (numOfTilesX + 1) + x] = new Vector3(x * tileSize, 0, z * tileSize);
+                vertices[z * (numOfTilesX + 1) + x] = new Vector3(x * tileSize, elevations[x, z] * heightScale, z * tileSize);
                 normals[z * (numOfTilesX + 1) + x] = Vector3.up;
                 // uv[z * (numOfTilesX + 1) + x] = new Vector2((float) x / (numOfTilesX + 1), (float) z / (numOfTilesZ + 1));
             }
