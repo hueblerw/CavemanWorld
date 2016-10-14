@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ElevationView : MonoBehaviour {
 
-    public static Mesh BuildMesh(SingleValueLayer elevationLayer, MeshFilter meshFilter, MeshCollider meshCollider, MeshRenderer meshRenderer)
+    public static Mesh BuildMesh(SingleValueLayer elevationLayer)
     {
         // Set some constants
         float[,] elevations = elevationLayer.worldArray;
