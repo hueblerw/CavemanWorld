@@ -29,4 +29,20 @@ public class World {
     }
     
     // Other methods!
+    public void ConvertElevationToVertices()
+    {
+
+    }
+
+    // Private methods!
+    private float[] CellsAroundVertex(int x, int z)
+    {
+
+    }
+
+    private float VertexAverage(float[] cellsAround)
+    {
+
+    }
+
 }
