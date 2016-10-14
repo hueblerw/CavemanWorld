@@ -3,13 +3,9 @@ using System.Collections;
 
 public class ElevationView : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public static void BuildMesh(SingleValueLayer elevationLayer)
+    {
+
+    }
+
 }
