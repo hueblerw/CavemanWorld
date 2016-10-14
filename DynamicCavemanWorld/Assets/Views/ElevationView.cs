@@ -3,10 +3,10 @@ using System.Collections;
 
 public class ElevationView : MonoBehaviour {
 
-    public static Mesh BuildMesh(SingleValueLayer elevationLayer)
+    public static Mesh BuildMesh(SingleValueLayer elevationVerticesLayer)
     {
         // Set some constants
-        float[,] elevations = elevationLayer.worldArray;
+        float[,] elevations = elevationVerticesLayer.worldArray;
         int numOfTilesX = SingleValueLayer.WORLDX;
         int numOfTilesZ = SingleValueLayer.WORLDZ;
         int numOfTiles = numOfTilesX * numOfTilesZ;

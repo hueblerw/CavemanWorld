@@ -19,7 +19,7 @@ public class MainController : MonoBehaviour {
         MeshFilter meshFilter = GetComponent<MeshFilter>();
         MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
         MeshCollider meshCollider = GetComponent<MeshCollider>();
-        Mesh mesh = ElevationView.BuildMesh(TheWorld.elevation);
+        Mesh mesh = ElevationView.BuildMesh(TheWorld.elevationVertices);
         meshFilter.mesh = mesh;
         Debug.Log("Elevation View Made!");
     }
