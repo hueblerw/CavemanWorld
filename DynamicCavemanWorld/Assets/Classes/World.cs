@@ -7,22 +7,31 @@ public class World {
     // Layers
     public int WorldX;
     public int WorldZ;
-    public SingleValueLayer elevation = new SingleValueLayer("Elevation", "Semi-static", 1);
-    public SingleValueLayer elevationVertices = new SingleValueLayer("ElevationVertices", "Semi-static", 1);
-    private SingleValueLayer highTemp = new SingleValueLayer("HighTemp", "Semi-static", 0);
-    private SingleValueLayer lowTemp = new SingleValueLayer("LowTemp", "Semi-static", 0);
-    private SingleValueLayer tempMidpt = new SingleValueLayer("TempMidpoint", "Semi-static", 1);
-    private SingleValueLayer variance = new SingleValueLayer("Variance", "Semi-static", 1);
-    public EquationLayer tempEquations = new EquationLayer("TemperatureEquations", "Semi-static");
+    public SingleValueLayer elevation;
+    public SingleValueLayer elevationVertices;
+    private SingleValueLayer highTemp;
+    private SingleValueLayer lowTemp;
+    private SingleValueLayer tempMidpt;
+    private SingleValueLayer variance;
+    public EquationLayer tempEquations;
     
     // Constructor
     public World(int x, int z)
     {
+        // Initialize the variables
         WorldX = x;
         WorldZ = z;
         SingleValueLayer.WORLDX = WorldX;
         SingleValueLayer.WORLDZ = WorldZ;
+        this.elevation = new SingleValueLayer("Elevation", "Semi-static", 1);
+        this.elevationVertices = new SingleValueLayer("ElevationVertices", "Semi-static", 1);
+        this.highTemp = new SingleValueLayer("HighTemp", "Semi-static", 0);
+        this.lowTemp = new SingleValueLayer("LowTemp", "Semi-static", 0);
+        this.tempMidpt = new SingleValueLayer("TempMidpoint", "Semi-static", 1);
+        this.variance = new SingleValueLayer("Variance", "Semi-static", 1);
+        this.tempEquations = new EquationLayer("TemperatureEquations", "Semi-static");
         string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
+        
         // Elevation info
         elevation.readCSVFile(filePathPrefix + "ElevationNiceMapA.csv");
         ConvertElevationToVertices();
@@ -60,7 +69,7 @@ public class World {
         }   
         if (x > 0 && z > 0)
         {
-           cellList.Add(this.elevation.worldArray[x - 1, z - 1]);
+            cellList.Add(this.elevation.worldArray[x - 1, z - 1]);
         }
         if (x > 0 && z < WorldZ)
         {
@@ -77,12 +86,13 @@ public class World {
 
     private float VertexAverage(float[] cellsAround)
     {
+        int arrayLength = cellsAround.Length;
         float average = 0.0f;
-        for (int i = 0; i < cellsAround.Length; i++)
+        for (int i = 0; i < arrayLength; i++)
         {
             average += cellsAround[i];
         }
-        average = average / cellsAround.Length;
+        average = average / arrayLength;
         return average;
     }
 

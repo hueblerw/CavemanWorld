@@ -19,7 +19,7 @@ public class SingleValueLayer
     {
         if (name == "ElevationVertices")
         {
-            worldArray = new float[WORLDX + 1, WORLDZ + 1];
+            this.worldArray = new float[WORLDX + 1, WORLDZ + 1];
         }
         this.layerName = name;
         this.layerType = type;
