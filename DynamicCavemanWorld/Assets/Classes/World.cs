@@ -5,6 +5,7 @@ public class World {
 
     // Layers
     public SingleValueLayer elevation = new SingleValueLayer("Elevation", "Semi-static", 1);
+    public SingleValueLayer elevationVertices = new SingleValueLayer("ElevationVertices", "Semi-static", 1);
     private SingleValueLayer highTemp = new SingleValueLayer("HighTemp", "Semi-static", 0);
     private SingleValueLayer lowTemp = new SingleValueLayer("LowTemp", "Semi-static", 0);
     private SingleValueLayer tempMidpt = new SingleValueLayer("TempMidpoint", "Semi-static", 1);

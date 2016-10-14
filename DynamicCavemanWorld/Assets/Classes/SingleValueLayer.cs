@@ -17,6 +17,10 @@ public class SingleValueLayer
     // Constructor
     public SingleValueLayer(string name, string type, int roundTo)
     {
+        if (name == "ElevationVertices")
+        {
+            worldArray = new float[WORLDX + 1, WORLDZ + 1];
+        }
         this.layerName = name;
         this.layerType = type;
         this.rounded = roundTo;
