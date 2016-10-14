@@ -6,11 +6,13 @@ public class ElevationView : MonoBehaviour {
     public static Mesh BuildMesh(SingleValueLayer elevationLayer, MeshFilter meshFilter, MeshCollider meshCollider, MeshRenderer meshRenderer)
     {
         // Set some constants
+        float[,] elevations = elevationLayer.worldArray;
         int numOfTilesX = SingleValueLayer.WORLDX;
         int numOfTilesZ = SingleValueLayer.WORLDZ;
         int numOfTiles = numOfTilesX * numOfTilesZ;
         int numVertices = (numOfTilesX + 1) * (numOfTilesZ + 1);
         float tileSize = 5.0f;
+        float heightScale = 1.0f;
         
         // Convert to mesh data
         Vector3[] vertices = new Vector3[numVertices];
