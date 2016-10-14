@@ -32,7 +32,13 @@ public class World {
     // Other methods!
     public void ConvertElevationToVertices()
     {
-
+        for (int x = 0; x < SingleValueLayer.WORLDX + 1; x++)
+        {
+            for (int z = 0; z < SingleValueLayer.WORLDX + 1; z++)
+            {
+                elevationVertices.worldArray[x, z] = VertexAverage(CellsAroundVertex(x, z));
+            }
+        }
     }
 
     // Private methods!
