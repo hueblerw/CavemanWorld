@@ -6,7 +6,7 @@ using System;
 public class HumidityLayer
 {
     // Constants
-    private const double SPAWN_MULT = .01;
+    private const double SPAWN_MULT = .1 * 100.0;
     private const double SPREAD_MULT = 1.0;
 
     // Variables
@@ -54,7 +54,7 @@ public class HumidityLayer
     {
         DailyLayer yearsRainfall = new DailyLayer("Rainfall", 1);
         // Run 120 times
-        string[,] stormArray = new string[WORLDX, WORLDZ];
+        float[,] stormArray = new float[WORLDX, WORLDZ];
         stormArray = GenerateStormCenters();
         // Begin to recurse
         // Finish recursing
@@ -62,19 +62,32 @@ public class HumidityLayer
     }
 
     // Generate Storm Centers
-    private string[,] GenerateStormCenters()
+    private float[,] GenerateStormCenters()
     {
+        float[,] stormOrigins = new float[WORLDX, WORLDZ];
+        System.Random randy = new System.Random();
+        for (int x = 0; x < WORLDX; x++)
+        {
+            for (int z = 0; z < WORLDZ; z++)
+            {
+                if(randy.Next(0, 10000) <= (worldArray[x, z] * SPAWN_MULT))
+                {
+                    stormOrigins[x, z] = -1f;
+                }   
+            }
+        }
 
+        return stormOrigins;
     }
     
     // Spread the Storms from those centers
-    private string[,] SpreadStorms(string[,] stormArray)
+    private float[,] SpreadStorms(float[,] stormArray)
     {
         // Recurse the Storm spread
     }
         
     // Return the rainfall for that day globally
-    private float[,] getRainFromStorms(string[,] stormArray)
+    private float[,] getRainFromStorms(float[,] stormArray)
     {
 
     }
