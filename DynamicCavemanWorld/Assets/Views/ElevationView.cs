@@ -77,10 +77,12 @@ public class ElevationView : MonoBehaviour {
         {
             for (int z = 0; z < worldz * pixelsPerTile; z++)
             {
+                float greenTint;
+                float redTint;
                 // If underwater make it a shade of blue
                 if (elevations[x, z] < 0.0f)
                 {
-                    float greenTint = (100f + elevations[x, z] * 10f) / 253f;
+                    greenTint = (100f + elevations[x, z] * 10f) / 253f;
                     if (greenTint < 0)
                     {
                         greenTint = 0;
@@ -88,9 +90,28 @@ public class ElevationView : MonoBehaviour {
                     color = new Color(0, greenTint, 1);
                 }
                 // else make it a shade of green/brown
-                else
+                else 
                 {
-                    color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+                    if(elevations[x, z] < 20.0f)
+                    {
+                        if (elevations[x, z] < 10f)
+                        {
+                            greenTint = (53f + (10f - elevations[x, z]) * 20f) / 253f;
+                            color = new Color(0f, greenTint, 0f);
+                        }
+                        else
+                        {
+                            greenTint = (103f - elevations[x, z] * 5f) / 253f;
+                            redTint = ((20f - elevations[x, z]) * 5f) / 253f;
+                            color = new Color(redTint, greenTint, 0f);
+                        }
+                    }
+                    else
+                    {
+                        color = new Color(1f, 1f, 1f);
+                    }
+                       
+                    
                 }
                 
                 texture.SetPixel(x, z, color);
