@@ -71,8 +71,10 @@
     <Compile Include="Assets\Classes\TempEquation.cs" />
     <Compile Include="Assets\Classes\VariantLayer.cs" />
     <Compile Include="Assets\Classes\World.cs" />
-    <Compile Include="Assets\MainController.cs" />
+    <Compile Include="Assets\Controllers\MainController.cs" />
+    <Compile Include="Assets\Controllers\TileMouseOver.cs" />
     <Compile Include="Assets\Resources\SupportingClasses\LightweightMatrixCSharp.cs" />
+    <Compile Include="Assets\Views\ElevationView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
