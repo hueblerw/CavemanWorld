@@ -4,8 +4,6 @@ using NUnit.Framework;
 
 public class NewTester {
 
-    
-
 	[Test]
 	public void SVLayerTest()
 	{

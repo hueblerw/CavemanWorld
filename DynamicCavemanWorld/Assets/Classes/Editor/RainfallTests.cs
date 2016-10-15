@@ -4,19 +4,14 @@ using NUnit.Framework;
 
 public class RainfallTests {
 
-	[Test]
-	public void EditorTest()
-	{
-		//Arrange
-		var gameObject = new GameObject();
+    [Test]
+    public void YearOfRainTest()
+    {
+        // Test the Storm Generation method
+        HumidityLayer testEquation = new HumidityLayer("HumidityTests", 1);
 
-		//Act
-		//Try to rename the GameObject
-		var newGameObjectName = "My game object";
-		gameObject.name = newGameObjectName;
+        testEquation.GenerateWorldsYearOfRain();
 
-		//Assert
-		//The object has a new name
-		Assert.AreEqual(newGameObjectName, gameObject.name);
-	}
+        // Assert.AreEqual("TemperatureEquations", testEquation.layerName);
+    }
 }
