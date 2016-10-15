@@ -79,15 +79,17 @@ public class ElevationView : MonoBehaviour {
             {
                 float greenTint;
                 float redTint;
+                float blueTint;
                 // If underwater make it a shade of blue
                 if (elevations[x, z] < 0.0f)
                 {
+                    blueTint = 1f;
+                    redTint = 0f;
                     greenTint = (100f + elevations[x, z] * 10f) / 253f;
                     if (greenTint < 0)
                     {
                         greenTint = 0;
                     }
-                    color = new Color(0, greenTint, 1);
                 }
                 // else make it a shade of green/brown
                 else 
@@ -96,23 +98,26 @@ public class ElevationView : MonoBehaviour {
                     {
                         if (elevations[x, z] < 10f)
                         {
+                            blueTint = 0f;
+                            redTint = 0f;
                             greenTint = (53f + (10f - elevations[x, z]) * 20f) / 253f;
-                            color = new Color(0f, greenTint, 0f);
                         }
                         else
                         {
+                            blueTint = 0f;
                             greenTint = (103f - elevations[x, z] * 5f) / 253f;
                             redTint = ((20f - elevations[x, z]) * 5f) / 253f;
-                            color = new Color(redTint, greenTint, 0f);
                         }
                     }
                     else
                     {
                         // Beyond 20 will be coded as white
-                        color = new Color(1f, 1f, 1f);
-                    }             
+                        redTint = 1f;
+                        blueTint = 1f;
+                        greenTint = 1f;
+                    }
                 }
-                
+                color = new Color(redTint, greenTint, blueTint);
                 texture.SetPixel(x, z, color);
             }
         }
