@@ -18,6 +18,7 @@ public class ElevationView : MonoBehaviour {
         Vector3[] vertices = new Vector3[numVertices];
         int[] triangles = new int[2 * numOfTiles * 3];
         Vector3[] normals = new Vector3[numVertices];
+        Vector2[] uv = new Vector2[numVertices];
 
         // Create the vertices and the normals generically
         int x, z;
@@ -28,7 +29,7 @@ public class ElevationView : MonoBehaviour {
             {
                 vertices[z * (numOfTilesX + 1) + x] = new Vector3(x * tileSize, elevations[x, z] * heightScale, z * tileSize);
                 normals[z * (numOfTilesX + 1) + x] = Vector3.up;
-                // uv[z * (numOfTilesX + 1) + x] = new Vector2((float) x / (numOfTilesX + 1), (float) z / (numOfTilesZ + 1));
+                uv[z * (numOfTilesX + 1) + x] = new Vector2((float) x / (numOfTilesX + 1), (float) z / (numOfTilesZ + 1));
             }
         }
         // Create the triangle generically
@@ -49,11 +50,12 @@ public class ElevationView : MonoBehaviour {
             }
         }
 
-                // Create a new mesh and populate it with the data from the elevation layer
-                Mesh world = new Mesh();
+        // Create a new mesh and populate it with the data from the elevation layer
+        Mesh world = new Mesh();
         world.vertices = vertices;
         world.triangles = triangles;
         world.normals = normals;
+        world.uv = uv;
 
         // Return our mesh to the controller
         return world;
