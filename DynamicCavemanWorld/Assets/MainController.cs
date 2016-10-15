@@ -16,12 +16,16 @@ public class MainController : MonoBehaviour {
         Debug.Log("World Model Made!");
 
         // Construct the elevation view
+        // Get the Mesh components
         MeshFilter meshFilter = GetComponent<MeshFilter>();
         MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
         MeshCollider meshCollider = GetComponent<MeshCollider>();
+        // Create and attach the mesh
         Mesh mesh = ElevationView.BuildMesh(TheWorld.elevationVertices);
         meshFilter.mesh = mesh;
         meshCollider.sharedMesh = mesh;
+        // Create and attach the texture
+        meshRenderer.sharedMaterial.mainTexture = ElevationView.BuildTexture();
         Debug.Log("Elevation View Made!");
     }
 	
