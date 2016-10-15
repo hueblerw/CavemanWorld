@@ -60,10 +60,8 @@ public class ElevationView : MonoBehaviour {
     }
 
     // Build the texture for the world
-    public static Texture BuildTexture()
+    public static Texture BuildTexture(int worldx, int worldz)
     {
-        int worldx = 50;
-        int worldz = 50;
         int pixelsPerTile = 1;
         Texture2D texture = new Texture2D(worldx * pixelsPerTile, worldz * pixelsPerTile);
         for (int x = 0; x < worldx * pixelsPerTile; x++)
