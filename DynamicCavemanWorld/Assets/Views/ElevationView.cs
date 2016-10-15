@@ -80,12 +80,12 @@ public class ElevationView : MonoBehaviour {
                 // If underwater make it a shade of blue
                 if (elevations[x, z] < 0.0f)
                 {
-                    int greenTint = 100 + (int) (elevations[x, z] * 10);
+                    float greenTint = (100f + elevations[x, z] * 10f) / 253f;
                     if (greenTint < 0)
                     {
                         greenTint = 0;
                     }
-                    color = new Color(0, greenTint, 253);
+                    color = new Color(0, greenTint, 1);
                 }
                 // else make it a shade of green/brown
                 else
