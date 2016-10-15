@@ -52,7 +52,13 @@ public class HumidityLayer
     // World Rainfall Generation Methods
     public void GenerateWorldsYearOfRain()
     {
+        DailyLayer yearsRainfall = new DailyLayer("Rainfall", 1);
         // Run 120 times
+        string[,] stormArray = new string[WORLDX, WORLDZ];
+        stormArray = GenerateStormCenters();
+        // Begin to recurse
+        // Finish recursing
+        yearsRainfall.addWorldDay(getRainFromStorms(stormArray));
     }
 
     // Generate Storm Centers

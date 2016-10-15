@@ -20,8 +20,10 @@ public class DailyLayer {
     }
 
     // World Array Initializer
-
-
+    public void addWorldDay(int day, float[,] rainfallArray)
+    {
+        // Yay, fun loops or reorganized logic???
+    }
 
     // Getters
     public string getType()
