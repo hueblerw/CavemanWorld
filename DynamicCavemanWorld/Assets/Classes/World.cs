@@ -4,16 +4,20 @@ using System.Collections.Generic;
 
 public class World {
 
-    // Layers
+    // Global Layers
     public int WorldX;
     public int WorldZ;
+    // Elevation Layers
     public SingleValueLayer elevation;
     public SingleValueLayer elevationVertices;
+    // Temperature Layers
     private SingleValueLayer highTemp;
     private SingleValueLayer lowTemp;
     private SingleValueLayer tempMidpt;
     private SingleValueLayer variance;
     public EquationLayer tempEquations;
+    // Rainfall Layers - (temporarily a very simple version with a single humidity number per tile)
+    private SingleValueLayer humidity;
     
     // Constructor
     public World(int x, int z)
@@ -30,6 +34,7 @@ public class World {
         this.tempMidpt = new SingleValueLayer("TempMidpoint", "Semi-static", 1);
         this.variance = new SingleValueLayer("Variance", "Semi-static", 1);
         this.tempEquations = new EquationLayer("TemperatureEquations", "Semi-static");
+        this.humidity = new SingleValueLayer("HumidityLayer", "Semi-static", 1);
         string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
         
         // Elevation info
@@ -42,7 +47,7 @@ public class World {
         variance.readCSVFile(filePathPrefix + "VarianceNiceMapA.csv");
         tempEquations.createEquations(highTemp, lowTemp, tempMidpt, variance);
         // Rainfall info
-
+        humidity.readCSVFile(filePathPrefix + "HumidityNiceMapA.csv");
     }
     
     // Converts the model's elevation number to a map of vertices which can be used by the view
