@@ -4,10 +4,14 @@ using NUnit.Framework;
 
 public class NewTester {
 
+    
+
 	[Test]
 	public void SVLayerTest()
 	{
         // Test all the SingleLayer Values can be initialized
+        SingleValueLayer.WORLDX = 50;
+        SingleValueLayer.WORLDZ = 50;
         SingleValueLayer elevation = new SingleValueLayer("Elevation", "Semi-static", 1);
         string filePath = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\ElevationNiceMapA.csv";
         elevation.readCSVFile(filePath);
@@ -86,7 +90,8 @@ public class NewTester {
     [Test]
     public void EquationCreationTest()
     {
-
+        SingleValueLayer.WORLDX = 50;
+        SingleValueLayer.WORLDZ = 50;
         // Test initialize what is needed for the test
         EquationLayer testEquation = new EquationLayer("TemperatureEquations", "Semi-static");
         SingleValueLayer testhighTemp = new SingleValueLayer("HighTemp", "Semi-static", 0);
@@ -118,6 +123,8 @@ public class NewTester {
     [Test]
     public void EarlyHumidityTest()
     {
+        HumidityLayer.WORLDX = 50;
+        HumidityLayer.WORLDZ = 50;
         // Test the single value Humidity Layer so I can get a sense for how the rainfall logic will work
         HumidityLayer testHumidityLayer = new HumidityLayer("Humidity", 1);
         string filePath = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\HumidityNiceMapA.csv";
@@ -131,5 +138,4 @@ public class NewTester {
         Assert.AreEqual(50, HumidityLayer.WORLDZ);
     }
     
-
 }

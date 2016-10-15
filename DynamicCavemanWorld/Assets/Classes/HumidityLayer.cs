@@ -10,8 +10,8 @@ public class HumidityLayer
     public string layerName;
     private string type = "Semi-static";
     private int rounded;
-    public static int WORLDX;
-    public static int WORLDZ;
+    public static int WORLDX = SingleValueLayer.WORLDX;
+    public static int WORLDZ = SingleValueLayer.WORLDZ;
     public int[] timeIntervals;
     public float[,] worldArray = new float[WORLDX, WORLDZ];
     // public float[,,] worldArray = new float[timeIntervals.Length, WORLDX, WORLDZ];
