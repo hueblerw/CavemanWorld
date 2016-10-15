@@ -62,15 +62,37 @@ public class ElevationView : MonoBehaviour {
     }
 
     // Build the texture for the world
-    public static Texture BuildTexture(int worldx, int worldz)
+    public static Texture BuildTexture(World world)
     {
+        // Initialize some variables
+        int worldx = world.WorldX;
+        int worldz = world.WorldZ;
         int pixelsPerTile = 1;
+        float[,] elevations = world.elevation.worldArray;
+        Color color;
+
+        // Create a texture object
         Texture2D texture = new Texture2D(worldx * pixelsPerTile, worldz * pixelsPerTile);
         for (int x = 0; x < worldx * pixelsPerTile; x++)
         {
             for (int z = 0; z < worldz * pixelsPerTile; z++)
             {
-                Color color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+                // If underwater make it a shade of blue
+                if (elevations[x, z] < 0.0f)
+                {
+                    int greenTint = 100 + (int) (elevations[x, z] * 10);
+                    if (greenTint < 0)
+                    {
+                        greenTint = 0;
+                    }
+                    color = new Color(0, greenTint, 253);
+                }
+                // else make it a shade of green/brown
+                else
+                {
+                    color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+                }
+                
                 texture.SetPixel(x, z, color);
             }
         }

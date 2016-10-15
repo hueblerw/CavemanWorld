@@ -25,7 +25,7 @@ public class MainController : MonoBehaviour {
         meshFilter.mesh = mesh;
         meshCollider.sharedMesh = mesh;
         // Create and attach the texture
-        meshRenderer.sharedMaterial.mainTexture = ElevationView.BuildTexture(TheWorld.WorldX, TheWorld.WorldZ);
+        meshRenderer.sharedMaterial.mainTexture = ElevationView.BuildTexture(TheWorld);
         Debug.Log("Elevation View Made!");
     }
 	
