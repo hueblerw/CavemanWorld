@@ -17,7 +17,7 @@ public class World {
     private SingleValueLayer variance;
     public EquationLayer tempEquations;
     // Rainfall Layers - (temporarily a very simple version with a single humidity number per tile)
-    private SingleValueLayer humidity;
+    private HumidityLayer humidity;
     
     // Constructor
     public World(int x, int z)
@@ -34,7 +34,7 @@ public class World {
         this.tempMidpt = new SingleValueLayer("TempMidpoint", "Semi-static", 1);
         this.variance = new SingleValueLayer("Variance", "Semi-static", 1);
         this.tempEquations = new EquationLayer("TemperatureEquations", "Semi-static");
-        this.humidity = new SingleValueLayer("HumidityLayer", "Semi-static", 1);
+        this.humidity = new HumidityLayer("HumidityLayer", 1);
         string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
         
         // Elevation info

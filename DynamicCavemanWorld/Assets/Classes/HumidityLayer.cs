@@ -8,6 +8,7 @@ public class HumidityLayer
 
     // Variables
     public string layerName;
+    private string type = "Semi-static";
     private int rounded;
     public static int WORLDX;
     public static int WORLDZ;
@@ -45,6 +46,11 @@ public class HumidityLayer
     }
 
     // Getter methods
+    public string getType()
+    {
+        return type;
+    }
+
     public int getRounding()
     {
         return rounded;
