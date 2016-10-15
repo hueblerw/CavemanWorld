@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// Based on code by Quill18 in his video series linked to here: https://www.youtube.com/watch?v=bpB4BApnKhM
 public class ElevationView : MonoBehaviour {
 
     public static Mesh BuildMesh(SingleValueLayer elevationVerticesLayer)
