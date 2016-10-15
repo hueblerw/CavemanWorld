@@ -108,18 +108,18 @@ public class ElevationView : MonoBehaviour {
                     }
                     else
                     {
+                        // Beyond 20 will be coded as white
                         color = new Color(1f, 1f, 1f);
-                    }
-                       
-                    
+                    }             
                 }
                 
                 texture.SetPixel(x, z, color);
             }
         }
+
+        // Apply the texture  and return it
         texture.filterMode = FilterMode.Point;
         texture.Apply();
-
         return texture;
     } 
 
