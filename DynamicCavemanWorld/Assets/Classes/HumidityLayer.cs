@@ -5,6 +5,9 @@ using System;
 
 public class HumidityLayer
 {
+    // Constants
+    private const double SPAWN_MULT = .01;
+    private const double SPREAD_MULT = 1.0;
 
     // Variables
     public string layerName;
@@ -44,6 +47,32 @@ public class HumidityLayer
         this.worldArray = data;
 
     }
+
+
+    // World Rainfall Generation Methods
+    public void GenerateWorldsYearOfRain()
+    {
+        // Run 120 times
+    }
+
+    // Generate Storm Centers
+    private string[,] GenerateStormCenters()
+    {
+
+    }
+    
+    // Spread the Storms from those centers
+    private string[,] SpreadStorms(string[,] stormArray)
+    {
+        // Recurse the Storm spread
+    }
+        
+    // Return the rainfall for that day globally
+    private float[,] getRainFromStorms(string[,] stormArray)
+    {
+
+    }
+        
 
     // Getter methods
     public string getType()
