@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class World {
 
@@ -57,38 +56,12 @@ public class World {
         {
             for (int z = 0; z < WorldZ + 1; z++)
             {
-                elevationVertices.worldArray[x, z] = VertexAverage(CellsAroundVertex(x, z));
+                elevationVertices.worldArray[x, z] = VertexAverage(Support.CellsAroundVertex(x, z, WorldX, WorldZ, this.elevation.worldArray));
             }
         }
     }
 
     // Private methods!
-    private float[] CellsAroundVertex(int x, int z)
-    {
-        float[] cells;
-        List<float> cellList = new List<float>();
-        // Add the four possible values if legal
-        if (x < WorldX && z < WorldZ)
-        {
-            cellList.Add(this.elevation.worldArray[x, z]);
-        }   
-        if (x > 0 && z > 0)
-        {
-            cellList.Add(this.elevation.worldArray[x - 1, z - 1]);
-        }
-        if (x > 0 && z < WorldZ)
-        {
-            cellList.Add(this.elevation.worldArray[x - 1, z]);
-        }
-        if (x < WorldX && z > 0)
-        {
-            cellList.Add(this.elevation.worldArray[x, z - 1]);
-        }
-        // Convert to an array and return
-        cells = cellList.ToArray();
-        return cells;
-    }
-
     private float VertexAverage(float[] cellsAround)
     {
         int arrayLength = cellsAround.Length;

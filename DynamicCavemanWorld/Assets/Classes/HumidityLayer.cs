@@ -53,12 +53,13 @@ public class HumidityLayer
     public void GenerateWorldsYearOfRain()
     {
         DailyLayer yearsRainfall = new DailyLayer("Rainfall", 1);
+        int day = 0;
         // Run 120 times
         float[,] stormArray = new float[WORLDX, WORLDZ];
         stormArray = GenerateStormCenters();
         // Begin to recurse
         // Finish recursing
-        yearsRainfall.addWorldDay(getRainFromStorms(stormArray));
+        yearsRainfall.addWorldDay(day, getRainFromStorms(stormArray));
     }
 
     // Generate Storm Centers
@@ -91,7 +92,7 @@ public class HumidityLayer
     {
 
     }
-        
+    
 
     // Getter methods
     public string getType()
