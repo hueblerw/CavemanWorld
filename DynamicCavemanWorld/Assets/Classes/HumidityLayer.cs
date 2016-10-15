@@ -82,15 +82,81 @@ public class HumidityLayer
     }
     
     // Spread the Storms from those centers
-    private float[,] SpreadStorms(float[,] stormArray)
+    private float[,] SpreadStorms(int decay, float[,] stormArray)
     {
-        // Recurse the Storm spread
+        System.Random randy = new System.Random();
+        float[,] nextWave = stormArray;
+        // Spread to Neighbors
+        for (int x = 0; x < WORLDX; x++)
+        {
+            for (int z = 0; z < WORLDZ; z++)
+            {
+                if(stormArray[x, z] == -1f)
+                {
+                    nextWave = SpreadToCellsAround(x, z, stormArray, randy, decay);
+                }
+                // Replace me with my storm strength
+                if (decay == 0)
+                {
+                    nextWave[x, z] = (float)(Math.Pow(randy.NextDouble(), 3) * worldArray[x, z] + .1);
+                }
+                else
+                {
+                    // get neighbor value and multiply times stuff
+                }
+                
+            }
+        }
+
+        return nextWave;
     }
         
     // Return the rainfall for that day globally
     private float[,] getRainFromStorms(float[,] stormArray)
     {
 
+    }
+
+    // Spread to Cells Around Calculation
+    private float[,] SpreadToCellsAround(int x, int z, float[,] stormArray, System.Random randy, int decay)
+    {
+        float[,] nextWave = stormArray;
+        float spreadChance;
+        // Add the four possible values if legal
+        if (x != 0)
+        {
+            spreadChance = stormArray[x - 1, z] * 9f + 5f;
+            if (randy.Next(0, 100) < spreadChance)
+            {
+                nextWave[x - 1, z] = -1f;
+            }
+        }
+        if (z != 0)
+        {
+            spreadChance = stormArray[x, z - 1] * 9f + 5f;
+            if (randy.Next(0, 100) < spreadChance)
+            {
+                nextWave[x, z - 1] = -1f;
+            }
+        }
+        if (x != WORLDX - 1)
+        {
+            spreadChance = stormArray[x + 1, z] * 9f + 5f;
+            if (randy.Next(0, 100) < spreadChance)
+            {
+                nextWave[x + 1, z] = -1f;
+            }
+        }
+        if (z != WORLDZ + 1)
+        {
+            spreadChance = stormArray[x, z - 1] * 9f + 5f - decay;
+            if (randy.Next(0, 100) < spreadChance)
+            {
+                nextWave[x, z + 1] = -1f;
+            }
+        }
+
+        return nextWave;
     }
     
 
