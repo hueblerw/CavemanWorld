@@ -21,6 +21,7 @@ public class MainController : MonoBehaviour {
         MeshCollider meshCollider = GetComponent<MeshCollider>();
         Mesh mesh = ElevationView.BuildMesh(TheWorld.elevationVertices);
         meshFilter.mesh = mesh;
+        meshCollider.sharedMesh = mesh;
         Debug.Log("Elevation View Made!");
     }
 	
