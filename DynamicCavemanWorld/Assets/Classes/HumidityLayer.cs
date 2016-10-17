@@ -62,11 +62,12 @@ public class HumidityLayer
         {
             stormArray = GenerateStormCenters();
             // Begin to loop until a storm didn't sucessfully spread
+            spread = true;
             while (spread)
             {
                 spread = false;
                 stormArray = SpreadStorms(stormArray, decay);
-                Debug.Log("spread: " + spread);
+                // Debug.Log("spread: " + spread);
                 decay += 15f;
             }
             // Add it to the rainfall daily layer

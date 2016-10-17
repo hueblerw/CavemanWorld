@@ -39,18 +39,24 @@ public class RainfallTests {
         Assert.AreNotSame(120 * 50 * 50, zerocount);
 
         // Print the first day of rain.
-        string row;
-        string output = "";
-        for (int i = 0; i < 50; i++)
+        
+        for (int day = 0; day < 5; day++)
         {
-            row = "";
-            for (int j = 0; j < 50; j++)
+            string row;
+            string output = "";
+            for (int i = 0; i < 50; i++)
             {
-                row += rainfall.worldArray[0][i, j] + " ";
+                row = "";
+                for (int j = 0; j < 50; j++)
+                {
+                    row += rainfall.worldArray[0][i, j] + " ";
+                }
+                output += row + "\n";
             }
-            output += row + "\n";
+            Debug.Log("Day " + day);
+            Debug.Log(output);
         }
-        Debug.Log(output);
+        
     }
 
 }
