@@ -50,17 +50,22 @@ public class HumidityLayer
 
 
     // World Rainfall Generation Methods
-    public void GenerateWorldsYearOfRain()
+    public DailyLayer GenerateWorldsYearOfRain()
     {
         DailyLayer yearsRainfall = new DailyLayer("Rainfall", 1);
-        int day = 0;
-        // Run 120 times
         float[,] stormArray = new float[WORLDX, WORLDZ];
-        stormArray = GenerateStormCenters();
-        // Begin to recurse
-        stormArray = SpreadStorms(stormArray);
-        // Finish recursing
-        yearsRainfall.addWorldDay(day, getRainFromStorms(stormArray));
+
+        // Run 120 times        
+        for (int day = 0; day < 120; day++)
+        {
+            stormArray = GenerateStormCenters();
+            // Begin to recurse - not recursing yet, no exit mechanism exists
+            stormArray = SpreadStorms(stormArray);
+            // Add it to the rainfall daily layer
+            yearsRainfall.addWorldDay(day, stormArray);
+        }
+
+        return yearsRainfall;
     }
 
     // Generate Storm Centers
@@ -112,12 +117,6 @@ public class HumidityLayer
         }
 
         return nextWave;
-    }
-        
-    // Return the rainfall for that day globally
-    private float[,] getRainFromStorms(float[,] stormArray)
-    {
-
     }
 
     // Spread to Cells Around Calculation

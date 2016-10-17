@@ -17,6 +17,7 @@ public class World {
     public EquationLayer tempEquations;
     // Rainfall Layers - (temporarily a very simple version with a single humidity number per tile)
     private HumidityLayer humidity;
+    public DailyLayer rainfall;
     
     // Constructor
     public World(int x, int z)
@@ -47,6 +48,7 @@ public class World {
         tempEquations.createEquations(highTemp, lowTemp, tempMidpt, variance);
         // Rainfall info
         humidity.readCSVFile(filePathPrefix + "HumidityNiceMapA.csv");
+        rainfall = humidity.GenerateWorldsYearOfRain();
     }
     
     // Converts the model's elevation number to a map of vertices which can be used by the view
