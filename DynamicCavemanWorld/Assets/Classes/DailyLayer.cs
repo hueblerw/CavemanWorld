@@ -26,14 +26,14 @@ public class DailyLayer {
     // World Array Initializer
     public void addWorldDay(int day, float[,] rainfallArray)
     {
-        // Yay, fun loops or reorganized logic???
         worldArray[day] = rainfallArray;
     }
 
+    // Sums up all the values in all given squares of the daily layer for all days of the year
     public float[,] findYearTotalArray()
     {
         float[,] totals = new float[WORLDX, WORLDZ];
-        // Sums up all the values in all given squares of the daily layer for all days of the year
+
         for (int x = 0; x < WORLDX; x++)
         {
             for (int z = 0; z < WORLDZ; z++)
@@ -45,6 +45,7 @@ public class DailyLayer {
         return totals;
     }
 
+    // Finds the sum of all values of an individual square over the course of a year
     public float findYearTotal(int x, int z)
     {
         float sum = 0f;

@@ -50,6 +50,8 @@ public class World {
         // Rainfall info
         humidity.readCSVFile(filePathPrefix + "HumidityNiceMapA.csv");
         rainfall = humidity.GenerateWorldsYearOfRain();
+        rainfallTotal = new SingleValueLayer("Yearly Rain Total", "Yearly", 1);
+        rainfallTotal.worldArray = rainfall.findYearTotalArray();
     }
     
     // Converts the model's elevation number to a map of vertices which can be used by the view
