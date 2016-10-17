@@ -14,25 +14,31 @@ public class RainfallTests {
         DailyLayer rainfall = testEquation.GenerateWorldsYearOfRain();
         int zerocount = 0;
         int positivecount = 0;
-        int x = 0;
-        int z = 0;
+        int x = 20;
+        int z = 20;
 
         // Make sure all numbers are legal
-        for (int i = 0; i < 120; i++)
+        for (int a = 0; a < 50; a++)
         {
-            if(rainfall.worldArray[i][x, z] == 0.0f)
+            for (int b = 0; b < 50; b++)
             {
-                zerocount++;
-            }
-            else if(rainfall.worldArray[i][x, z] > 0.0f)
-            {
-                positivecount++;
+                for (int i = 0; i < 120; i++)
+                {
+                    if(rainfall.worldArray[i][a, b] == 0.0f)
+                    {
+                        zerocount++;
+                    }
+                    else if(rainfall.worldArray[i][a, b] > 0.0f)
+                    {
+                        positivecount++;
+                    }
+                }
             }
         }
-
+        
         Debug.Log("0: " + zerocount + " / +: " + positivecount);
-        Assert.AreEqual(120, zerocount + positivecount);
-        // Assert.AreNotSame(120, zerocount);
+        Assert.AreEqual(120 * 50 * 50, zerocount + positivecount);
+        Assert.AreNotSame(120 * 50 * 50, zerocount);
 
         // Print the first day of rain.
         string row;
