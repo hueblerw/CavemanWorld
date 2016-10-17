@@ -149,7 +149,7 @@ public class HumidityLayer
                 nextWave[x + 1, z] = -GenerateSpreadStrength(neighbor, stormArray[x - 1, z], randy);
             }
         }
-        if (z != WORLDZ + 1 && stormArray[x, z + 1] <= 0)
+        if (z != WORLDZ - 1 && stormArray[x, z + 1] <= 0)
         {
             spreadChance = stormArray[x, z - 1] * 9f + 5f;
             if (randy.Next(0, 100) < spreadChance)

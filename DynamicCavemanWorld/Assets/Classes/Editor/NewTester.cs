@@ -33,7 +33,7 @@ public class NewTester {
         Assert.AreEqual("Rainfall", rainfall.layerName);
         Assert.AreEqual("Daily", rainfall.getType());
         Assert.AreEqual(1, rainfall.getRounding());
-        Assert.AreEqual(120 * 50 * 50, rainfall.worldArray.Length);
+        Assert.AreEqual(120, rainfall.worldArray.Length);
         Assert.AreEqual(50, DailyLayer.WORLDX);
         Assert.AreEqual(50, DailyLayer.WORLDZ);
     }
