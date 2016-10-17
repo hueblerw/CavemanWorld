@@ -58,6 +58,7 @@ public class HumidityLayer
         float[,] stormArray = new float[WORLDX, WORLDZ];
         stormArray = GenerateStormCenters();
         // Begin to recurse
+        stormArray = SpreadStorms(stormArray);
         // Finish recursing
         yearsRainfall.addWorldDay(day, getRainFromStorms(stormArray));
     }
@@ -73,7 +74,7 @@ public class HumidityLayer
             {
                 if(randy.Next(0, 10000) <= (worldArray[x, z] * SPAWN_MULT))
                 {
-                    stormOrigins[x, z] = -1f;
+                    stormOrigins[x, z] = -25f;
                 }   
             }
         }
@@ -82,29 +83,31 @@ public class HumidityLayer
     }
     
     // Spread the Storms from those centers
-    private float[,] SpreadStorms(int decay, float[,] stormArray)
+    private float[,] SpreadStorms(float[,] stormArray)
     {
         System.Random randy = new System.Random();
-        float[,] nextWave = stormArray;
-        // Spread to Neighbors
+        float[,] nextWave = new float[WORLDX, WORLDZ];
+        float strength;
         for (int x = 0; x < WORLDX; x++)
         {
             for (int z = 0; z < WORLDZ; z++)
             {
-                if(stormArray[x, z] == -1f)
+                if(stormArray[x, z] < 0)
                 {
-                    nextWave = SpreadToCellsAround(x, z, stormArray, randy, decay);
+                    // Generate the present strength
+                    if(stormArray[x, z] == -25f)
+                    {
+                        strength = GenerateSpawnStrength(worldArray[x, z], randy);
+                    }
+                    else
+                    {
+                        strength = -stormArray[x, z];
+                    }
+                    // Spread to neighbors
+                    nextWave = SpreadToCellsAround(x, z, stormArray, strength, randy);
+                    // Record your own strength
+                    nextWave[x, z] = strength;
                 }
-                // Replace me with my storm strength
-                if (decay == 0)
-                {
-                    nextWave[x, z] = (float)(Math.Pow(randy.NextDouble(), 3) * worldArray[x, z] + .1);
-                }
-                else
-                {
-                    // get neighbor value and multiply times stuff
-                }
-                
             }
         }
 
@@ -118,47 +121,64 @@ public class HumidityLayer
     }
 
     // Spread to Cells Around Calculation
-    private float[,] SpreadToCellsAround(int x, int z, float[,] stormArray, System.Random randy, int decay)
+    private float[,] SpreadToCellsAround(int x, int z, float[,] stormArray, float neighbor, System.Random randy)
     {
         float[,] nextWave = stormArray;
         float spreadChance;
         // Add the four possible values if legal
-        if (x != 0)
+        if (x != 0 && stormArray[x - 1, z] <= 0)
         {
             spreadChance = stormArray[x - 1, z] * 9f + 5f;
             if (randy.Next(0, 100) < spreadChance)
             {
-                nextWave[x - 1, z] = -1f;
+                nextWave[x - 1, z] = -GenerateSpreadStrength(neighbor, stormArray[x - 1, z], randy);
             }
         }
-        if (z != 0)
+        if (z != 0 && stormArray[x, z - 1] <= 0)
         {
             spreadChance = stormArray[x, z - 1] * 9f + 5f;
             if (randy.Next(0, 100) < spreadChance)
             {
-                nextWave[x, z - 1] = -1f;
+                nextWave[x, z - 1] = -GenerateSpreadStrength(neighbor, stormArray[x - 1, z], randy);
             }
         }
-        if (x != WORLDX - 1)
+        if (x != WORLDX - 1 && stormArray[x + 1, z] <= 0)
         {
             spreadChance = stormArray[x + 1, z] * 9f + 5f;
             if (randy.Next(0, 100) < spreadChance)
             {
-                nextWave[x + 1, z] = -1f;
+                nextWave[x + 1, z] = -GenerateSpreadStrength(neighbor, stormArray[x - 1, z], randy);
             }
         }
-        if (z != WORLDZ + 1)
+        if (z != WORLDZ + 1 && stormArray[x, z + 1] <= 0)
         {
-            spreadChance = stormArray[x, z - 1] * 9f + 5f - decay;
+            spreadChance = stormArray[x, z - 1] * 9f + 5f;
             if (randy.Next(0, 100) < spreadChance)
             {
-                nextWave[x, z + 1] = -1f;
+                nextWave[x, z + 1] = -GenerateSpreadStrength(neighbor, stormArray[x - 1, z], randy);
             }
         }
 
         return nextWave;
     }
-    
+
+    // get Spawn Strenth
+    private float GenerateSpawnStrength(float humidity, System.Random randy)
+    {
+        double multiplier = Math.Pow(randy.NextDouble(), 3.0);
+        float output = (humidity + .1f) * (float) multiplier;
+        return (float) Math.Round(output, 1);
+    }
+
+    // get Spread Strength
+    private float GenerateSpreadStrength(float neighborStrength, float humidity, System.Random randy)
+    {
+        double addifier = randy.Next(20, 50);
+        float output = (3f * humidity) + (float)addifier;
+        output = (output / 100f) * neighborStrength;
+        return (float) Math.Round(output, 1);
+    }
+
 
     // Getter methods
     public string getType()
