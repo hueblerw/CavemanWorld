@@ -66,6 +66,7 @@ public class HumidityLayer
             {
                 spread = false;
                 stormArray = SpreadStorms(stormArray, decay);
+                Debug.Log("spread: " + spread);
                 decay += 15f;
             }
             // Add it to the rainfall daily layer
