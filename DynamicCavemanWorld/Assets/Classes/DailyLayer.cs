@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class DailyLayer {
 
@@ -53,7 +54,7 @@ public class DailyLayer {
         {
             sum += worldArray[day][x, z];
         }
-        return sum;
+        return (float) Math.Round(sum, 1);
     }
 
     // Getters
