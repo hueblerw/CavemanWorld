@@ -18,6 +18,7 @@ public class World {
     // Rainfall Layers - (temporarily a very simple version with a single humidity number per tile)
     private HumidityLayer humidity;
     public DailyLayer rainfall;
+    public SingleValueLayer rainfallTotal;
     
     // Constructor
     public World(int x, int z)
