@@ -14,8 +14,6 @@ public class RainfallTests {
         DailyLayer rainfall = testEquation.GenerateWorldsYearOfRain();
         int zerocount = 0;
         int positivecount = 0;
-        int x = 20;
-        int z = 20;
 
         // Make sure all numbers are legal
         for (int a = 0; a < 50; a++)
