@@ -124,10 +124,13 @@ public class HumidityLayer
     {
         float[,] nextWave = stormArray;
         float spreadChance;
+        
         // Add the four possible values if legal
         if (x != 0 && stormArray[x - 1, z] <= 0)
         {
-            spreadChance = stormArray[x - 1, z] * 9f + 5f;
+            spreadChance = worldArray[x - 1, z] * 9f + 5f;
+            //Debug.Log("SA (x, z): " + worldArray[x - 1, z] + " (" + x + ", " + z + ")");
+            //Debug.Log("SP: " + spreadChance);
             if (randy.Next(0, 100) < spreadChance)
             {
                 nextWave[x - 1, z] = -GenerateSpreadStrength(neighbor, stormArray[x - 1, z], randy);
@@ -135,29 +138,29 @@ public class HumidityLayer
         }
         if (z != 0 && stormArray[x, z - 1] <= 0)
         {
-            spreadChance = stormArray[x, z - 1] * 9f + 5f;
+            spreadChance = worldArray[x, z - 1] * 9f + 5f;
             if (randy.Next(0, 100) < spreadChance)
             {
-                nextWave[x, z - 1] = -GenerateSpreadStrength(neighbor, stormArray[x - 1, z], randy);
+                nextWave[x, z - 1] = -GenerateSpreadStrength(neighbor, stormArray[x, z - 1], randy);
             }
         }
         if (x != WORLDX - 1 && stormArray[x + 1, z] <= 0)
         {
-            spreadChance = stormArray[x + 1, z] * 9f + 5f;
+            spreadChance = worldArray[x + 1, z] * 9f + 5f;
             if (randy.Next(0, 100) < spreadChance)
             {
-                nextWave[x + 1, z] = -GenerateSpreadStrength(neighbor, stormArray[x - 1, z], randy);
+                nextWave[x + 1, z] = -GenerateSpreadStrength(neighbor, stormArray[x + 1, z], randy);
             }
         }
         if (z != WORLDZ - 1 && stormArray[x, z + 1] <= 0)
         {
-            spreadChance = stormArray[x, z - 1] * 9f + 5f;
+            spreadChance = worldArray[x, z + 1] * 9f + 5f;
             if (randy.Next(0, 100) < spreadChance)
             {
-                nextWave[x, z + 1] = -GenerateSpreadStrength(neighbor, stormArray[x - 1, z], randy);
+                nextWave[x, z + 1] = -GenerateSpreadStrength(neighbor, stormArray[x, z + 1], randy);
             }
         }
-
+        
         return nextWave;
     }
 

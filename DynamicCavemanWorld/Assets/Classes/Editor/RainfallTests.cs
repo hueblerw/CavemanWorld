@@ -20,11 +20,11 @@ public class RainfallTests {
         // Make sure all numbers are legal
         for (int i = 0; i < 120; i++)
         {
-            if(rainfall.worldArray[i][x, z] == 0f)
+            if(rainfall.worldArray[i][x, z] == 0.0f)
             {
                 zerocount++;
             }
-            else if(rainfall.worldArray[i][x, z] > 0f)
+            else if(rainfall.worldArray[i][x, z] > 0.0f)
             {
                 positivecount++;
             }
