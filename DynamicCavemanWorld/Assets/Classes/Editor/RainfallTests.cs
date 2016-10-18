@@ -59,6 +59,7 @@ public class RainfallTests
         SingleValueLayer rainfallTotal = new SingleValueLayer("Yearly Rain Total", "Yearly", 1);
         rainfallTotal.worldArray = rainfall.findYearTotalArray();
         int positivecount = 0;
+        int excesscount = 0;
 
         for (int a = 0; a < 50; a++)
         {
@@ -68,11 +69,16 @@ public class RainfallTests
                 {
                     positivecount++;
                 }
+                if(rainfallTotal.worldArray[a, b] > 150)
+                {
+                    excesscount++;
+                }
             }
         }
 
         Assert.AreEqual(50 * 50, rainfallTotal.worldArray.Length);
         Assert.AreEqual(50 * 50, positivecount);
+        Assert.AreEqual(0, excesscount);
 
         Debug.Log(printArray(rainfallTotal.worldArray));
 
