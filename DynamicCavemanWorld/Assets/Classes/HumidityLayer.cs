@@ -60,11 +60,12 @@ public class HumidityLayer
         DailyLayer yearsRainfall = new DailyLayer("Rainfall", 1);
         float[,] stormArray = new float[WORLDX, WORLDZ];
         float decay = 0f;
+        System.Random randy = new System.Random();
 
         // Run 120 times        
         for (int day = 0; day < 120; day++)
         {
-            stormArray = GenerateStormCenters(day);
+            stormArray = GenerateStormCenters(day, randy);
             // Begin to loop until a storm didn't sucessfully spread
             decay = 0f;
             spread = true;
@@ -83,10 +84,10 @@ public class HumidityLayer
     }
 
     // Generate Storm Centers
-    private float[,] GenerateStormCenters(int day)
+    private float[,] GenerateStormCenters(int day, System.Random randy)
     {
         float[,] stormOrigins = new float[WORLDX, WORLDZ];
-        System.Random randy = new System.Random();
+        
         for (int x = 0; x < WORLDX; x++)
         {
             for (int z = 0; z < WORLDZ; z++)
