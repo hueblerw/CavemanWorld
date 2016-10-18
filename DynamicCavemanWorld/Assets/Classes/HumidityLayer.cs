@@ -16,11 +16,8 @@ public class HumidityLayer
     public static int WORLDX = SingleValueLayer.WORLDX;
     public static int WORLDZ = SingleValueLayer.WORLDZ;
     public int[] timeIntervals;
-    public float[,] worldArray = new float[WORLDX, WORLDZ];
+    public float[][,] worldArray = new float[6][,];
     public bool spread;
-    // public float[,,] worldArray = new float[timeIntervals.Length, WORLDX, WORLDZ];
-        // THIS IS WHAT THE END GOAL ARRAY LOOKS LIKE
-        // FOR NOW WE ARE JUST USING A SINGLE NUMBER FOR THE WHOLE YEAR FOR TESTING PURPOSES
 
     // Constructor
     public HumidityLayer(string name, int roundTo)
@@ -30,22 +27,25 @@ public class HumidityLayer
     }
 
     // Layer initialization Method
-    public void readCSVFile(string filePath)
+    public void readCSVFiles(string filePathPrefix, int numFiles)
     {
 
-        StreamReader sr = new StreamReader(filePath);
-        float[,] data = new float[WORLDX, WORLDZ];
-        int Row = 0;
-        while (!sr.EndOfStream)
+        for (int n = 1; n < numFiles + 1; n++)
         {
-            string[] Line = sr.ReadLine().Split(',');
-            for (int i = 0; i < Line.Length; i++)
+            StreamReader sr = new StreamReader(filePathPrefix + "HumidityNiceMapA-" + n + ".csv");
+            float[,] data = new float[WORLDX, WORLDZ];
+            int Row = 0;
+            while (!sr.EndOfStream)
             {
-                data[i, Row] = (float)Convert.ToDouble(Line[i]);
+                string[] Line = sr.ReadLine().Split(',');
+                for (int i = 0; i < Line.Length; i++)
+                {
+                    data[i, Row] = (float)Convert.ToDouble(Line[i]);
+                }
+                Row++;
             }
-            Row++;
-        }
-        this.worldArray = data;
+            this.worldArray[n] = data;
+        }   
 
     }
 

@@ -48,7 +48,7 @@ public class World {
         variance.readCSVFile(filePathPrefix + "VarianceNiceMapA.csv");
         tempEquations.createEquations(highTemp, lowTemp, tempMidpt, variance);
         // Rainfall info
-        humidity.readCSVFile(filePathPrefix + "HumidityNiceMapA.csv");
+        humidity.readCSVFiles(filePathPrefix, 6);
         rainfall = humidity.GenerateWorldsYearOfRain();
         rainfallTotal = new SingleValueLayer("Yearly Rain Total", "Yearly", 1);
         rainfallTotal.worldArray = rainfall.findYearTotalArray();
