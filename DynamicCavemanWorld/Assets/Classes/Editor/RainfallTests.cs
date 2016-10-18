@@ -9,9 +9,9 @@ public class RainfallTests
     public void YearOfRainTest()
     {
         // Test the Storm Generation method
-        HumidityLayer testEquation = new HumidityLayer("HumidityTests", 1);
+        HumidityLayer testEquation = new HumidityLayer("HumidityTests", 6, 1);
         string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
-        testEquation.readCSVFile(filePathPrefix + "HumidityNiceMapA.csv");
+        testEquation.readCSVFiles(filePathPrefix + "HumidityNiceMapA.csv");
         DailyLayer rainfall = testEquation.GenerateWorldsYearOfRain();
         int zerocount = 0;
         int positivecount = 0;
@@ -52,9 +52,9 @@ public class RainfallTests
     [Test]
     public void TestYearlyRainfallLayer()
     {
-        HumidityLayer testEquation = new HumidityLayer("HumidityTests", 1);
+        HumidityLayer testEquation = new HumidityLayer("HumidityTests", 6, 1);
         string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
-        testEquation.readCSVFile(filePathPrefix + "HumidityNiceMapA.csv");
+        testEquation.readCSVFiles(filePathPrefix);
         DailyLayer rainfall = testEquation.GenerateWorldsYearOfRain();
         SingleValueLayer rainfallTotal = new SingleValueLayer("Yearly Rain Total", "Yearly", 1);
         rainfallTotal.worldArray = rainfall.findYearTotalArray();

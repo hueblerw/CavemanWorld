@@ -124,9 +124,9 @@ public class NewTester {
         HumidityLayer.WORLDX = 50;
         HumidityLayer.WORLDZ = 50;
         // Test the single value Humidity Layer so I can get a sense for how the rainfall logic will work
-        HumidityLayer testHumidityLayer = new HumidityLayer("Humidity", 1);
-        string filePath = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\HumidityNiceMapA.csv";
-        testHumidityLayer.readCSVFile(filePath);
+        HumidityLayer testHumidityLayer = new HumidityLayer("Humidity", 6, 1);
+        string filePath = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
+        testHumidityLayer.readCSVFiles(filePath);
 
         Assert.AreEqual("Humidity", testHumidityLayer.layerName);
         Assert.AreEqual("Semi-static", testHumidityLayer.getType());

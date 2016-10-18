@@ -35,7 +35,7 @@ public class World {
         this.tempMidpt = new SingleValueLayer("TempMidpoint", "Semi-static", 1);
         this.variance = new SingleValueLayer("Variance", "Semi-static", 1);
         this.tempEquations = new EquationLayer("TemperatureEquations", "Semi-static");
-        this.humidity = new HumidityLayer("HumidityLayer", 1);
+        this.humidity = new HumidityLayer("HumidityLayer", 6, 1);
         string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
         
         // Elevation info
@@ -48,7 +48,7 @@ public class World {
         variance.readCSVFile(filePathPrefix + "VarianceNiceMapA.csv");
         tempEquations.createEquations(highTemp, lowTemp, tempMidpt, variance);
         // Rainfall info
-        humidity.readCSVFiles(filePathPrefix, 6);
+        humidity.readCSVFiles(filePathPrefix);
         rainfall = humidity.GenerateWorldsYearOfRain();
         rainfallTotal = new SingleValueLayer("Yearly Rain Total", "Yearly", 1);
         rainfallTotal.worldArray = rainfall.findYearTotalArray();
