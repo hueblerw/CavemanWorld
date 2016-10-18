@@ -48,7 +48,7 @@ public class HumidityLayer
                 }
                 Row++;
             }
-            this.worldArray[n] = data;
+            this.worldArray[n - 1] = data;
         }   
 
     }

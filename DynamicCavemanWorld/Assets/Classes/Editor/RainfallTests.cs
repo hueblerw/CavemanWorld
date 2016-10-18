@@ -30,7 +30,7 @@ public class RainfallTests
         // Test the Storm Generation method
         HumidityLayer testEquation = new HumidityLayer("HumidityTests", 6, 1);
         string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
-        testEquation.readCSVFiles(filePathPrefix + "HumidityNiceMapA.csv");
+        testEquation.readCSVFiles(filePathPrefix);
         DailyLayer rainfall = testEquation.GenerateWorldsYearOfRain();
         int zerocount = 0;
         int positivecount = 0;
@@ -61,8 +61,8 @@ public class RainfallTests
         // Debug.Log("0: " + zerocount + " / +: " + positivecount);
         Assert.AreEqual(120 * 50 * 50, zerocount + positivecount);
         Assert.AreNotSame(120 * 50 * 50, zerocount);
-        Assert.GreaterOrEqual(0, testEquation.CalculateHumidityFromBase(daye, x, z));
-        Assert.LessOrEqual(10.0, testEquation.CalculateHumidityFromBase(daye, x, z));
+        Assert.GreaterOrEqual(testEquation.CalculateHumidityFromBase(daye, x, z), 0.0f);
+        Assert.LessOrEqual(testEquation.CalculateHumidityFromBase(daye, x, z), 10.0f);
 
         // Print the first day of rain.
 
