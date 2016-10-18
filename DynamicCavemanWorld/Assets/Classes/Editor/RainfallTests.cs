@@ -6,6 +6,25 @@ public class RainfallTests
 {
 
     [Test]
+    public void EarlyHumidityTest()
+    {
+        HumidityLayer.WORLDX = 50;
+        HumidityLayer.WORLDZ = 50;
+        // Test the single value Humidity Layer so I can get a sense for how the rainfall logic will work
+        HumidityLayer testHumidityLayer = new HumidityLayer("Humidity", 6, 1);
+        string filePath = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
+        testHumidityLayer.readCSVFiles(filePath);
+
+        Assert.AreEqual("Humidity", testHumidityLayer.layerName);
+        Assert.AreEqual("Semi-static", testHumidityLayer.getType());
+        Assert.AreEqual(1, testHumidityLayer.getRounding());
+        Assert.AreEqual(6, testHumidityLayer.getNumFiles());
+        Assert.AreEqual(6, testHumidityLayer.worldArray.Length);
+        Assert.AreEqual(50, HumidityLayer.WORLDX);
+        Assert.AreEqual(50, HumidityLayer.WORLDZ);
+    }
+
+    [Test]
     public void YearOfRainTest()
     {
         // Test the Storm Generation method
