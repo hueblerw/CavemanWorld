@@ -66,6 +66,7 @@
     <Compile Include="Assets\Classes\DailyLayer.cs" />
     <Compile Include="Assets\Classes\DoubleDayList.cs" />
     <Compile Include="Assets\Classes\EquationLayer.cs" />
+    <Compile Include="Assets\Classes\HumidityLayer.cs" />
     <Compile Include="Assets\Classes\IntDayList.cs" />
     <Compile Include="Assets\Classes\SingleValueLayer.cs" />
     <Compile Include="Assets\Classes\TempEquation.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Assets\Controllers\MainController.cs" />
     <Compile Include="Assets\Controllers\TileMouseOver.cs" />
     <Compile Include="Assets\Resources\SupportingClasses\LightweightMatrixCSharp.cs" />
+    <Compile Include="Assets\Resources\SupportingClasses\Support.cs" />
     <Compile Include="Assets\Views\ElevationView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

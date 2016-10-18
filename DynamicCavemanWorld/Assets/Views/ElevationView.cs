@@ -124,7 +124,7 @@ public class ElevationView : MonoBehaviour {
         }
 
         // Apply the texture  and return it
-        texture.filterMode = FilterMode.Point;
+        //texture.filterMode = FilterMode.Point;
         texture.Apply();
         return texture;
     } 

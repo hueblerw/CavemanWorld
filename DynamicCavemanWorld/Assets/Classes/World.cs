@@ -1,19 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class World {
 
-    // Layers
+    // Global Layers
     public int WorldX;
     public int WorldZ;
+    // Elevation Layers
     public SingleValueLayer elevation;
     public SingleValueLayer elevationVertices;
+    // Temperature Layers
     private SingleValueLayer highTemp;
     private SingleValueLayer lowTemp;
     private SingleValueLayer tempMidpt;
     private SingleValueLayer variance;
     public EquationLayer tempEquations;
+    // Rainfall Layers - (temporarily a very simple version with a single humidity number per tile)
+    private HumidityLayer humidity;
+    public DailyLayer rainfall;
+    public SingleValueLayer rainfallTotal;
     
     // Constructor
     public World(int x, int z)
@@ -30,6 +35,7 @@ public class World {
         this.tempMidpt = new SingleValueLayer("TempMidpoint", "Semi-static", 1);
         this.variance = new SingleValueLayer("Variance", "Semi-static", 1);
         this.tempEquations = new EquationLayer("TemperatureEquations", "Semi-static");
+        this.humidity = new HumidityLayer("HumidityLayer", 1);
         string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
         
         // Elevation info
@@ -42,7 +48,10 @@ public class World {
         variance.readCSVFile(filePathPrefix + "VarianceNiceMapA.csv");
         tempEquations.createEquations(highTemp, lowTemp, tempMidpt, variance);
         // Rainfall info
-
+        humidity.readCSVFile(filePathPrefix + "HumidityNiceMapA.csv");
+        rainfall = humidity.GenerateWorldsYearOfRain();
+        rainfallTotal = new SingleValueLayer("Yearly Rain Total", "Yearly", 1);
+        rainfallTotal.worldArray = rainfall.findYearTotalArray();
     }
     
     // Converts the model's elevation number to a map of vertices which can be used by the view
@@ -52,38 +61,12 @@ public class World {
         {
             for (int z = 0; z < WorldZ + 1; z++)
             {
-                elevationVertices.worldArray[x, z] = VertexAverage(CellsAroundVertex(x, z));
+                elevationVertices.worldArray[x, z] = VertexAverage(Support.CellsAroundVertex(x, z, WorldX, WorldZ, this.elevation.worldArray));
             }
         }
     }
 
     // Private methods!
-    private float[] CellsAroundVertex(int x, int z)
-    {
-        float[] cells;
-        List<float> cellList = new List<float>();
-        // Add the four possible values if legal
-        if (x < WorldX && z < WorldZ)
-        {
-            cellList.Add(this.elevation.worldArray[x, z]);
-        }   
-        if (x > 0 && z > 0)
-        {
-            cellList.Add(this.elevation.worldArray[x - 1, z - 1]);
-        }
-        if (x > 0 && z < WorldZ)
-        {
-            cellList.Add(this.elevation.worldArray[x - 1, z]);
-        }
-        if (x < WorldX && z > 0)
-        {
-            cellList.Add(this.elevation.worldArray[x, z - 1]);
-        }
-        // Convert to an array and return
-        cells = cellList.ToArray();
-        return cells;
-    }
-
     private float VertexAverage(float[] cellsAround)
     {
         int arrayLength = cellsAround.Length;

@@ -8,6 +8,8 @@ public class NewTester {
 	public void SVLayerTest()
 	{
         // Test all the SingleLayer Values can be initialized
+        SingleValueLayer.WORLDX = 50;
+        SingleValueLayer.WORLDZ = 50;
         SingleValueLayer elevation = new SingleValueLayer("Elevation", "Semi-static", 1);
         string filePath = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\ElevationNiceMapA.csv";
         elevation.readCSVFile(filePath);
@@ -31,7 +33,7 @@ public class NewTester {
         Assert.AreEqual("Rainfall", rainfall.layerName);
         Assert.AreEqual("Daily", rainfall.getType());
         Assert.AreEqual(1, rainfall.getRounding());
-        Assert.AreEqual(120 * 50 * 50, rainfall.worldArray.Length);
+        Assert.AreEqual(120, rainfall.worldArray.Length);
         Assert.AreEqual(50, DailyLayer.WORLDX);
         Assert.AreEqual(50, DailyLayer.WORLDZ);
     }
@@ -86,7 +88,8 @@ public class NewTester {
     [Test]
     public void EquationCreationTest()
     {
-
+        SingleValueLayer.WORLDX = 50;
+        SingleValueLayer.WORLDZ = 50;
         // Test initialize what is needed for the test
         EquationLayer testEquation = new EquationLayer("TemperatureEquations", "Semi-static");
         SingleValueLayer testhighTemp = new SingleValueLayer("HighTemp", "Semi-static", 0);
@@ -118,11 +121,19 @@ public class NewTester {
     [Test]
     public void EarlyHumidityTest()
     {
+        HumidityLayer.WORLDX = 50;
+        HumidityLayer.WORLDZ = 50;
         // Test the single value Humidity Layer so I can get a sense for how the rainfall logic will work
-        SingleValueLayer testHumidityLayer = new SingleValueLayer("TestHumidityLayer", "Semi-static", 1);
+        HumidityLayer testHumidityLayer = new HumidityLayer("Humidity", 1);
         string filePath = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\HumidityNiceMapA.csv";
-        testHumidityLayer.readCSVFile(filePath + "HighTempNiceMapA.csv");
+        testHumidityLayer.readCSVFile(filePath);
+
+        Assert.AreEqual("Humidity", testHumidityLayer.layerName);
+        Assert.AreEqual("Semi-static", testHumidityLayer.getType());
+        Assert.AreEqual(1, testHumidityLayer.getRounding());
+        Assert.AreEqual(50 * 50, testHumidityLayer.worldArray.Length);
+        Assert.AreEqual(50, HumidityLayer.WORLDX);
+        Assert.AreEqual(50, HumidityLayer.WORLDZ);
     }
     
-
 }
