@@ -91,7 +91,7 @@ public class HumidityLayer
         {
             for (int z = 0; z < WORLDZ; z++)
             {
-                if(randy.Next(0, 10000) <= (CalculateHumidityFromBase(day, x, z) * SPAWN_MULT))
+                if(randy.Next(0, 10000) <= (CalculateHumidityFromBase(day, x, z) * SPAWN_MULT + 5f))
                 {
                     stormOrigins[x, z] = -25f;
                 }   
