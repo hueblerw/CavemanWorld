@@ -175,7 +175,7 @@ public class HumidityLayer
     private float[,] SpawnCheck(int a, int b, float neighbor, float[,] stormArray, float [,] nextWave, float decay, System.Random randy)
     {
         float spreadChance = worldArray[a, b] * 9f + 5f - decay;
-        if (randy.Next(0, 100) < spreadChance)
+        if (randy.Next(0, 100) < spreadChance * SPREAD_MULT)
         {
             float strength = -GenerateSpreadStrength(neighbor, stormArray[a, b], randy);
             if (strength < 0)
