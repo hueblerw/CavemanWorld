@@ -188,6 +188,28 @@ public class HumidityLayer
         return nextWave;
     }
 
+    // Need a method to calculate the square's humidity number based upon the day of the year
+    private float CalculateHumidityFromBase(int day, int x, int z)
+    {
+        int arrayNum = day / 20;
+        int remainder = day % 20;
+        int nextNum;
+        float humidity;
+
+        // Get the index of the next array
+        if(arrayNum == 5)
+        {
+            nextNum = 0;
+        }
+        else
+        {
+            nextNum = arrayNum + 1;
+        }
+
+        // Use the linear equation formula to find today's humidity
+        humidity = (worldArray[nextNum][x, z] - worldArray[arrayNum][x, z]) * (remainder / 20) + worldArray[arrayNum][x, z];
+        return humidity;
+    }
 
     // Getter methods
     public string getType()
