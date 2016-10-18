@@ -66,6 +66,7 @@ public class HumidityLayer
         {
             stormArray = GenerateStormCenters(day);
             // Begin to loop until a storm didn't sucessfully spread
+            decay = 0f;
             spread = true;
             while (spread)
             {
