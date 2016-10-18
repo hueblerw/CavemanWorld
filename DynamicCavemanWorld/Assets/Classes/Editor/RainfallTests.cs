@@ -15,6 +15,10 @@ public class RainfallTests
         DailyLayer rainfall = testEquation.GenerateWorldsYearOfRain();
         int zerocount = 0;
         int positivecount = 0;
+        System.Random randy = new System.Random();
+        int x = randy.Next(0, 50);
+        int z = randy.Next(0, 50);
+        int daye = randy.Next(0, 120);
 
         // Make sure all numbers are legal
         for (int a = 0; a < 50; a++)
@@ -38,6 +42,8 @@ public class RainfallTests
         // Debug.Log("0: " + zerocount + " / +: " + positivecount);
         Assert.AreEqual(120 * 50 * 50, zerocount + positivecount);
         Assert.AreNotSame(120 * 50 * 50, zerocount);
+        Assert.GreaterOrEqual(0, testEquation.CalculateHumidityFromBase(daye, x, z));
+        Assert.LessOrEqual(10.0, testEquation.CalculateHumidityFromBase(daye, x, z));
 
         // Print the first day of rain.
 
