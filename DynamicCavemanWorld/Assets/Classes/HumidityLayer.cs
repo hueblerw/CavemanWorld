@@ -13,21 +13,24 @@ public class HumidityLayer
     public string layerName;
     private string type = "Semi-static";
     private int rounded;
+    private int numFiles;
     public static int WORLDX = SingleValueLayer.WORLDX;
     public static int WORLDZ = SingleValueLayer.WORLDZ;
     public int[] timeIntervals;
-    public float[][,] worldArray = new float[6][,];
+    public float[][,] worldArray;
     public bool spread;
 
     // Constructor
-    public HumidityLayer(string name, int roundTo)
+    public HumidityLayer(string name, int numFiles, int roundTo)
     {
         this.layerName = name;
         this.rounded = roundTo;
+        this.numFiles = numFiles;
+        worldArray = new float[numFiles][,];
     }
 
     // Layer initialization Method
-    public void readCSVFiles(string filePathPrefix, int numFiles)
+    public void readCSVFiles(string filePathPrefix)
     {
 
         for (int n = 1; n < numFiles + 1; n++)
@@ -197,7 +200,7 @@ public class HumidityLayer
         float humidity;
 
         // Get the index of the next array
-        if(arrayNum == 5)
+        if(arrayNum == numFiles - 1)
         {
             nextNum = 0;
         }
@@ -220,6 +223,11 @@ public class HumidityLayer
     public int getRounding()
     {
         return rounded;
+    }
+
+    public int getNumFiles()
+    {
+        return numFiles;
     }
 
 }
