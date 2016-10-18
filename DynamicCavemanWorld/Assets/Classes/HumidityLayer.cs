@@ -193,7 +193,7 @@ public class HumidityLayer
     }
 
     // Need a method to calculate the square's humidity number based upon the day of the year
-    private float CalculateHumidityFromBase(int day, int x, int z)
+    public float CalculateHumidityFromBase(int day, int x, int z)
     {
         int arrayNum = day / 20;
         int remainder = day % 20;
