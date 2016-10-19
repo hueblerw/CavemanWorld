@@ -43,11 +43,10 @@ public class NewTester
     public void ObjectLayerTest()
     {
         // Test all the SingleLayer Values can be initialized
-        ObjectLayer downstream = new ObjectLayer("Downstream", "Semi-static", 1);
+        ObjectLayer downstream = new ObjectLayer("Downstream", "Semi-static");
 
         Assert.AreEqual("Downstream", downstream.layerName);
         Assert.AreEqual("Semi-static", downstream.getType());
-        Assert.AreEqual(1, downstream.getRounding());
         Assert.AreEqual(50 * 50, downstream.worldArray.Length);
         Assert.AreEqual(50, ObjectLayer.WORLDX);
         Assert.AreEqual(50, ObjectLayer.WORLDZ);
