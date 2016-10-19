@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class World {
 
@@ -44,7 +45,7 @@ public class World {
         // Elevation info
         elevation.readCSVFile(filePathPrefix + "ElevationNiceMapA.csv");
         ConvertElevationToVertices();
-        CalculateHillPercentage();
+        hillPer = CalculateHillPercentage();
         // Temperature info
         highTemp.readCSVFile(filePathPrefix + "HighTempNiceMapA.csv");
         lowTemp.readCSVFile(filePathPrefix + "LowTempNiceMapA.csv");
@@ -87,7 +88,22 @@ public class World {
     // Create the HillPercentage Layer
     private SingleValueLayer CalculateHillPercentage()
     {
-
+        // Initialize a new layer
+        float diff;
+        SingleValueLayer hillPer = new SingleValueLayer("Hill Percentage", "Semi-static", 4);
+        // Stash the max elevation difference
+        maxNetDiff();
+        Debug.Log(maxElevationDifference);
+        // Calculate the hill %'s for the whole world
+        for (int x = 0; x < WorldX; x++)
+        {
+            for (int z = 0; z < WorldZ; z++)
+            {
+                diff = netDiff(x, z);
+                hillPer.worldArray[x, z] = (float) Math.Round(diff / maxElevationDifference, 4);
+            }
+        }
+        return hillPer;
     }
 
     // Calculate the NetDifference around a cell
@@ -95,16 +111,30 @@ public class World {
     {
         float diff = 0f;
         float[,] array = elevation.worldArray;
-        foreach (Support.CellsAllAround(x, z, WorldX, WorldZ, array))
+        foreach (float element in Support.CellsAllAround(x, z, WorldX, WorldZ, array))
         {
-            // Do shit
+            diff += Mathf.Abs(array[x, z] - element);
         }
+        return diff;
     }
 
     // Calculate the maximum netDifference and store it as a private variable.
     private void maxNetDiff()
     {
-
+        float maxDiff = 0f;
+        float diff;
+        for (int x = 0; x < WorldX; x++)
+        {
+            for(int z = 0; z < WorldZ; z++)
+            {
+                diff = netDiff(x, z);
+                if (diff > maxDiff)
+                {
+                    maxDiff = diff;
+                }
+            }
+        }
+        maxElevationDifference = maxDiff;
     }
 
 }
