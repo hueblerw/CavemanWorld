@@ -6,9 +6,9 @@ using System;
 public class HumidityLayer
 {
     // Constants
-    private const double SPAWN_MULT = .1 * 100.0;
+    private const double SPAWN_MULT = .2 * 100.0;
     private const double SPREAD_MULT = 1.0;
-    private const float DECAY_CONST = 15.0f;
+    private const float DECAY_CONST = 20.0f;
 
     // Variables
     public string layerName;
@@ -171,16 +171,21 @@ public class HumidityLayer
     // get Spread Strength
     private float GenerateSpreadStrength(float neighborStrength, float humidity, System.Random randy)
     {
-        double addifier = randy.Next(20, 50);
-        float output = (3f * humidity) + (float)addifier;
+        double addifier = randy.Next(60, 80);
+        float output = (2f * humidity) + (float)addifier;
         output = (output / 100f) * neighborStrength;
-        return (float) Math.Round(output, 1);
+        // Kill off half the .1's
+        if (Math.Round(output, 1) == .1 && randy.Next(0, 10) < 5)
+        {
+            output = 0f;
+        }
+        return (float) Math.Round(output, rounded);
     }
 
     // Add a new spawned square
     private float[,] SpawnCheck(int day, int a, int b, float neighbor, float[,] stormArray, float [,] nextWave, float decay, System.Random randy)
     {
-        float spreadChance = CalculateHumidityFromBase(day, a, b) * 9f + 5f - decay;
+        float spreadChance = CalculateHumidityFromBase(day, a, b) * 8f + 10f - decay;
         if (randy.Next(0, 100) < spreadChance * SPREAD_MULT)
         {
             float strength = -GenerateSpreadStrength(neighbor, stormArray[a, b], randy);

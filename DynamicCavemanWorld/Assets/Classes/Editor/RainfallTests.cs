@@ -100,22 +100,13 @@ public class RainfallTests
                 {
                     excesscount++;
                 }
-                if(rainfallTotal.worldArray[a, b] > min)
-                {
-                    max = rainfallTotal.worldArray[a, b];
-                }
-                if (rainfallTotal.worldArray[a, b] < min)
-                {
-                    min = rainfallTotal.worldArray[a, b];
-                }
             }
         }
 
         Assert.AreEqual(50 * 50, rainfallTotal.worldArray.Length);
         Assert.AreEqual(50 * 50, positivecount);
-        // Assert.AreEqual(0, excesscount);
+        Assert.AreEqual(0, excesscount);
 
-        Debug.Log("Rain/Day -- Min: " + min + " / Max: " + max);
         Debug.Log(printArray(rainfallTotal.worldArray));
 
     }
@@ -133,7 +124,7 @@ public class RainfallTests
             for (int j = 0; j < 50; j++)
             {
                 row += array[i, j] + " ";
-                if (array[i, j] > min)
+                if (array[i, j] > max)
                 {
                     max = array[i, j];
                 }
