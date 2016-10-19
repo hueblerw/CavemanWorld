@@ -6,9 +6,11 @@ public class World {
     // Global Layers
     public int WorldX;
     public int WorldZ;
+    private float maxElevationDifference;
     // Elevation Layers
     public SingleValueLayer elevation;
     public SingleValueLayer elevationVertices;
+    public SingleValueLayer hillPer;
     // Temperature Layers
     private SingleValueLayer highTemp;
     private SingleValueLayer lowTemp;
@@ -19,6 +21,7 @@ public class World {
     private HumidityLayer humidity;
     public DailyLayer rainfall;
     public SingleValueLayer rainfallTotal;
+    // River Layers
     
     // Constructor
     public World(int x, int z)
@@ -41,6 +44,7 @@ public class World {
         // Elevation info
         elevation.readCSVFile(filePathPrefix + "ElevationNiceMapA.csv");
         ConvertElevationToVertices();
+        CalculateHillPercentage();
         // Temperature info
         highTemp.readCSVFile(filePathPrefix + "HighTempNiceMapA.csv");
         lowTemp.readCSVFile(filePathPrefix + "LowTempNiceMapA.csv");
@@ -67,6 +71,7 @@ public class World {
     }
 
     // Private methods!
+    // Find the value of the vertex at the grid crossings
     private float VertexAverage(float[] cellsAround)
     {
         int arrayLength = cellsAround.Length;
@@ -77,6 +82,24 @@ public class World {
         }
         average = average / arrayLength;
         return average;
+    }
+
+    // Create the HillPercentage Layer
+    private SingleValueLayer CalculateHillPercentage()
+    {
+
+    }
+
+    // Calculate the NetDifference around a cell
+    private float netDiff(int x, int z)
+    {
+
+    }
+
+    // Calculate the maximum netDifference and store it as a private variable.
+    private void maxNetDiff()
+    {
+
     }
 
 }
