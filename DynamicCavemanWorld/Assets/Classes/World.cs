@@ -93,6 +93,8 @@ public class World {
     // Calculate the NetDifference around a cell
     private float netDiff(int x, int z)
     {
+        float diff = 0f;
+        float[,] array = elevation.worldArray;
 
     }
 

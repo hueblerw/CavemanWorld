@@ -7,8 +7,24 @@ public class Support {
     public static float[] CellsAroundVertex(int x, int z, int WorldX, int WorldZ, float[,] array)
     {
         float[] cells;
+        List<float> cellList = Support.getAround(false, x, z, WorldX, WorldZ, array);
+        cells = cellList.ToArray();
+        return cells;
+    }
+
+    public static float[] CellsAllAroundVertex(int x, int z, int WorldX, int WorldZ, float[,] array)
+    {
+        float[] cells;
+        List<float> cellList = Support.getAround(true, x, z, WorldX, WorldZ, array); ;
+        cells = cellList.ToArray();
+        return cells;
+    }
+
+    // Private methods
+    private static List<float> getAround(bool diagonals, int x, int z, int WorldX, int WorldZ, float[,] array)
+    {
         List<float> cellList = new List<float>();
-        // Add the four possible values if legal
+        // Add the four caridnal values if legal
         if (x < WorldX && z < WorldZ)
         {
             cellList.Add(array[x, z]);
@@ -25,9 +41,27 @@ public class Support {
         {
             cellList.Add(array[x, z - 1]);
         }
-        // Convert to an array and return
-        cells = cellList.ToArray();
-        return cells;
-    }
+        // Add the diagonals if required and legal
+        if (diagonals)
+        {
+            if (x < WorldX && z < WorldZ)
+            {
+                cellList.Add(array[x + 1, z + 1]);
+            }
+            if (x > 0 && z > 0)
+            {
+                cellList.Add(array[x - 1, z - 1]);
+            }
+            if (x > 0 && z < WorldZ)
+            {
+                cellList.Add(array[x - 1, z + 1]);
+            }
+            if (x < WorldX && z > 0)
+            {
+                cellList.Add(array[x + 1, z - 1]);
+            }
+        }
 
+        return cellList;
+    }
 }
