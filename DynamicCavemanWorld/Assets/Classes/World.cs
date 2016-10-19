@@ -110,11 +110,12 @@ public class World {
     {
         float diff = 0f;
         float[,] array = elevation.worldArray;
-        foreach (float element in Support.CellsAllAround(x, z, WorldX, WorldZ, array))
+        float[] cellsAround = Support.CellsAllAround(x, z, WorldX, WorldZ, array);
+        foreach (float element in cellsAround)
         {
             diff += Mathf.Abs(array[x, z] - element);
         }
-        return diff;
+        return diff / cellsAround.Length;
     }
 
     // Calculate the maximum netDifference and store it as a private variable.
