@@ -46,17 +46,23 @@ public class World {
         elevation.readCSVFile(filePathPrefix + "ElevationNiceMapA.csv");
         ConvertElevationToVertices();
         hillPer = CalculateHillPercentage();
+        Debug.Log("Elevation Models Complete!");
         // Temperature info
         highTemp.readCSVFile(filePathPrefix + "HighTempNiceMapA.csv");
         lowTemp.readCSVFile(filePathPrefix + "LowTempNiceMapA.csv");
         tempMidpt.readCSVFile(filePathPrefix + "MidptNiceMapA.csv");
         variance.readCSVFile(filePathPrefix + "VarianceNiceMapA.csv");
         tempEquations.createEquations(highTemp, lowTemp, tempMidpt, variance);
+        Debug.Log("Temperature Models Complete!");
         // Rainfall info
         humidity.readCSVFiles(filePathPrefix);
         rainfall = humidity.GenerateWorldsYearOfRain();
         rainfallTotal = new SingleValueLayer("Yearly Rain Total", "Yearly", 1);
         rainfallTotal.worldArray = rainfall.findYearTotalArray();
+        Debug.Log("Rainfall Models Complete!");
+        // Rivers info
+
+        // Debug.Log("River Models Complete!");
     }
     
     // Converts the model's elevation number to a map of vertices which can be used by the view
