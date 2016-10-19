@@ -40,17 +40,17 @@ public class NewTester
     }
 
     [Test]
-    public void VariantLayerTest()
+    public void ObjectLayerTest()
     {
         // Test all the SingleLayer Values can be initialized
-        VariantLayer humidity = new VariantLayer("Humidity", "Semi-static", 6, 1);
+        ObjectLayer downstream = new ObjectLayer("Downstream", "Semi-static", 1);
 
-        Assert.AreEqual("Humidity", humidity.layerName);
-        Assert.AreEqual("Semi-static", humidity.getType());
-        Assert.AreEqual(1, humidity.getRounding());
-        Assert.AreEqual(6 * 50 * 50, humidity.worldArray.Length);
-        Assert.AreEqual(50, VariantLayer.WORLDX);
-        Assert.AreEqual(50, VariantLayer.WORLDZ);
+        Assert.AreEqual("Downstream", downstream.layerName);
+        Assert.AreEqual("Semi-static", downstream.getType());
+        Assert.AreEqual(1, downstream.getRounding());
+        Assert.AreEqual(50 * 50, downstream.worldArray.Length);
+        Assert.AreEqual(50, ObjectLayer.WORLDX);
+        Assert.AreEqual(50, ObjectLayer.WORLDZ);
     }
 
     [Test]
@@ -61,8 +61,8 @@ public class NewTester
 
         Assert.AreEqual("TemperatureEquations", testEquation.layerName);
         Assert.AreEqual("Semi-static", testEquation.getType());
-        Assert.AreEqual(50, VariantLayer.WORLDX);
-        Assert.AreEqual(50, VariantLayer.WORLDZ);
+        Assert.AreEqual(50, EquationLayer.WORLDX);
+        Assert.AreEqual(50, EquationLayer.WORLDZ);
     }
 
     [Test]
