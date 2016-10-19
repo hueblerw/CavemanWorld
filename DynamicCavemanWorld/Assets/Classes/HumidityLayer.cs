@@ -6,9 +6,9 @@ using System;
 public class HumidityLayer
 {
     // Constants
-    private const double SPAWN_MULT = .2 * 100.0;
+    private const double SPAWN_MULT = .25 * 100.0;
     private const double SPREAD_MULT = 1.0;
-    private const float DECAY_CONST = 20.0f;
+    private const float DECAY_CONST = 15.0f;
 
     // Variables
     public string layerName;
@@ -163,7 +163,7 @@ public class HumidityLayer
     // get Spawn Strenth
     private float GenerateSpawnStrength(float humidity, System.Random randy)
     {
-        double multiplier = Math.Pow(randy.NextDouble(), 3.0);
+        double multiplier = Math.Pow(randy.NextDouble(), 2.0);
         float output = (humidity + .1f) * (float) multiplier;
         return (float) Math.Round(output, 1);
     }
@@ -171,8 +171,8 @@ public class HumidityLayer
     // get Spread Strength
     private float GenerateSpreadStrength(float neighborStrength, float humidity, System.Random randy)
     {
-        double addifier = randy.Next(60, 80);
-        float output = (2f * humidity) + (float)addifier;
+        double addifier = randy.Next(70, 90);
+        float output = (2f * humidity) + (float) addifier;
         output = (output / 100f) * neighborStrength;
         // Kill off half the .1's
         if (Math.Round(output, 1) == .1 && randy.Next(0, 10) < 5)

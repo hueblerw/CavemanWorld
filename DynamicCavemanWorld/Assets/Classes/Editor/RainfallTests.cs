@@ -66,7 +66,7 @@ public class RainfallTests
 
         // Print the first day of rain.
 
-        for (int day = 0; day < 5; day++)
+        for (int day = 10; day < 30; day++)
         {
             Debug.Log("Day " + day);
             Debug.Log(printArray(rainfall.worldArray[day]));
