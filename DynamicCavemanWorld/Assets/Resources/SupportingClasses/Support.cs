@@ -53,7 +53,7 @@ public class Support {
         {
             cellList.Add(array[x - 1, z]);
         }
-        if (x < WorldX)
+        if (x < WorldX - 1)
         {
             cellList.Add(array[x + 1, z]);
         }
@@ -61,14 +61,14 @@ public class Support {
         {
             cellList.Add(array[x, z - 1]);
         }
-        if (z < WorldZ)
+        if (z < WorldZ - 1)
         {
             cellList.Add(array[x, z + 1]);
         }
         // Add the diagonals if required and legal
         if (diagonals)
         {
-            if (x < WorldX && z < WorldZ)
+            if (x < WorldX - 1 && z < WorldZ - 1)
             {
                 cellList.Add(array[x + 1, z + 1]);
             }
@@ -76,11 +76,11 @@ public class Support {
             {
                 cellList.Add(array[x - 1, z - 1]);
             }
-            if (x > 0 && z < WorldZ)
+            if (x > 0 && z < WorldZ - 1)
             {
                 cellList.Add(array[x - 1, z + 1]);
             }
-            if (x < WorldX && z > 0)
+            if (x < WorldX - 1 && z > 0)
             {
                 cellList.Add(array[x + 1, z - 1]);
             }

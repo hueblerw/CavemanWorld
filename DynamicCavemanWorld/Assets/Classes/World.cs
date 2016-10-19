@@ -93,7 +93,6 @@ public class World {
         SingleValueLayer hillPer = new SingleValueLayer("Hill Percentage", "Semi-static", 4);
         // Stash the max elevation difference
         maxNetDiff();
-        Debug.Log(maxElevationDifference);
         // Calculate the hill %'s for the whole world
         for (int x = 0; x < WorldX; x++)
         {
