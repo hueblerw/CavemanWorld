@@ -7,7 +7,7 @@ public class World {
     // Global Layers
     public int WorldX;
     public int WorldZ;
-    private float maxElevationDifference;
+    public float maxElevationDifference;
     // Elevation Layers
     public SingleValueLayer elevation;
     public SingleValueLayer elevationVertices;

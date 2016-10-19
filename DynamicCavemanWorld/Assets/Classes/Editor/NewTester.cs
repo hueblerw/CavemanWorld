@@ -2,11 +2,12 @@
 using UnityEditor;
 using NUnit.Framework;
 
-public class NewTester {
+public class NewTester
+{
 
-	[Test]
-	public void SVLayerTest()
-	{
+    [Test]
+    public void SVLayerTest()
+    {
         // Test all the SingleLayer Values can be initialized
         SingleValueLayer.WORLDX = 50;
         SingleValueLayer.WORLDZ = 50;
@@ -117,5 +118,20 @@ public class NewTester {
         Assert.AreEqual((float)9.8, testvariance.worldArray[2, 1]);
 
     }
-    
+
+    [Test]
+    public void HillPerTest()
+    {
+        // Initialize a world
+        World testWorld = new World(50, 50);
+        System.Random randy = new System.Random();
+        int x = randy.Next(0, 50);
+        int z = randy.Next(0, 50);
+
+        Debug.Log("MAXELE - " + testWorld.maxElevationDifference);
+        Assert.Greater(testWorld.maxElevationDifference, 0f);
+        Assert.GreaterOrEqual(testWorld.hillPer.worldArray[x, z], 0f);
+        Assert.LessOrEqual(testWorld.hillPer.worldArray[x, z], 1f);
+    }
+
 }
