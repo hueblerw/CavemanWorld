@@ -12,7 +12,7 @@ public class Support {
         return cells;
     }
 
-    public static float[] CellsAllAroundC(int x, int z, int WorldX, int WorldZ, float[,] array)
+    public static float[] CellsAllAround(int x, int z, int WorldX, int WorldZ, float[,] array)
     {
         float[] cells;
         List<float> cellList = Support.getAroundCenter(true, x, z, WorldX, WorldZ, array); ;

@@ -95,7 +95,10 @@ public class World {
     {
         float diff = 0f;
         float[,] array = elevation.worldArray;
-
+        foreach (Support.CellsAllAround(x, z, WorldX, WorldZ, array))
+        {
+            // Do shit
+        }
     }
 
     // Calculate the maximum netDifference and store it as a private variable.
