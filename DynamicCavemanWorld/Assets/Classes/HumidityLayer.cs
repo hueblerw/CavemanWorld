@@ -214,6 +214,8 @@ public class HumidityLayer
 
         // Use the linear equation formula to find today's humidity
         humidity = (worldArray[nextNum][x, z] - worldArray[arrayNum][x, z]) * (remainder / 20) + worldArray[arrayNum][x, z];
+        // Modify it for balance purposes
+        humidity = (float) Math.Sqrt(10 * humidity);
         return humidity;
     }
 
