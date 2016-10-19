@@ -6,15 +6,38 @@ public class RainfallTests
 {
 
     [Test]
+    public void EarlyHumidityTest()
+    {
+        HumidityLayer.WORLDX = 50;
+        HumidityLayer.WORLDZ = 50;
+        // Test the single value Humidity Layer so I can get a sense for how the rainfall logic will work
+        HumidityLayer testHumidityLayer = new HumidityLayer("Humidity", 6, 1);
+        string filePath = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
+        testHumidityLayer.readCSVFiles(filePath);
+
+        Assert.AreEqual("Humidity", testHumidityLayer.layerName);
+        Assert.AreEqual("Semi-static", testHumidityLayer.getType());
+        Assert.AreEqual(1, testHumidityLayer.getRounding());
+        Assert.AreEqual(6, testHumidityLayer.getNumFiles());
+        Assert.AreEqual(6, testHumidityLayer.worldArray.Length);
+        Assert.AreEqual(50, HumidityLayer.WORLDX);
+        Assert.AreEqual(50, HumidityLayer.WORLDZ);
+    }
+
+    [Test]
     public void YearOfRainTest()
     {
         // Test the Storm Generation method
-        HumidityLayer testEquation = new HumidityLayer("HumidityTests", 1);
+        HumidityLayer testEquation = new HumidityLayer("HumidityTests", 6, 1);
         string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
-        testEquation.readCSVFile(filePathPrefix + "HumidityNiceMapA.csv");
+        testEquation.readCSVFiles(filePathPrefix);
         DailyLayer rainfall = testEquation.GenerateWorldsYearOfRain();
         int zerocount = 0;
         int positivecount = 0;
+        System.Random randy = new System.Random();
+        int x = randy.Next(0, 50);
+        int z = randy.Next(0, 50);
+        int daye = randy.Next(0, 120);
 
         // Make sure all numbers are legal
         for (int a = 0; a < 50; a++)
@@ -38,10 +61,12 @@ public class RainfallTests
         // Debug.Log("0: " + zerocount + " / +: " + positivecount);
         Assert.AreEqual(120 * 50 * 50, zerocount + positivecount);
         Assert.AreNotSame(120 * 50 * 50, zerocount);
+        Assert.GreaterOrEqual(testEquation.CalculateHumidityFromBase(daye, x, z), 0.0f);
+        Assert.LessOrEqual(testEquation.CalculateHumidityFromBase(daye, x, z), 10.0f);
 
         // Print the first day of rain.
 
-        for (int day = 0; day < 5; day++)
+        for (int day = 10; day < 30; day++)
         {
             Debug.Log("Day " + day);
             Debug.Log(printArray(rainfall.worldArray[day]));
@@ -52,13 +77,16 @@ public class RainfallTests
     [Test]
     public void TestYearlyRainfallLayer()
     {
-        HumidityLayer testEquation = new HumidityLayer("HumidityTests", 1);
+        HumidityLayer testEquation = new HumidityLayer("HumidityTests", 6, 1);
         string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
-        testEquation.readCSVFile(filePathPrefix + "HumidityNiceMapA.csv");
+        testEquation.readCSVFiles(filePathPrefix);
         DailyLayer rainfall = testEquation.GenerateWorldsYearOfRain();
         SingleValueLayer rainfallTotal = new SingleValueLayer("Yearly Rain Total", "Yearly", 1);
         rainfallTotal.worldArray = rainfall.findYearTotalArray();
         int positivecount = 0;
+        int excesscount = 0;
+        float min = 0f;
+        float max = rainfallTotal.worldArray[0, 0];
 
         for (int a = 0; a < 50; a++)
         {
@@ -68,11 +96,16 @@ public class RainfallTests
                 {
                     positivecount++;
                 }
+                if(rainfallTotal.worldArray[a, b] > 150)
+                {
+                    excesscount++;
+                }
             }
         }
 
         Assert.AreEqual(50 * 50, rainfallTotal.worldArray.Length);
         Assert.AreEqual(50 * 50, positivecount);
+        Assert.AreEqual(0, excesscount);
 
         Debug.Log(printArray(rainfallTotal.worldArray));
 
@@ -81,6 +114,8 @@ public class RainfallTests
     // method to display a 2 x 2 array of floats
     private string printArray(float[,] array)
     {
+        float min = array[0, 0];
+        float max = 0f;
         string row;
         string output = "";
         for (int i = 0; i < 50; i++)
@@ -89,9 +124,19 @@ public class RainfallTests
             for (int j = 0; j < 50; j++)
             {
                 row += array[i, j] + " ";
+                if (array[i, j] > max)
+                {
+                    max = array[i, j];
+                }
+                if (array[i, j] < min)
+                {
+                    min = array[i, j];
+                }
             }
             output += row + "\n";
         }
+
+        Debug.Log("Yearly Rain -- Min: " + min + " / Max: " + max);
         return output;
     }
 

@@ -6,46 +6,50 @@ using System;
 public class HumidityLayer
 {
     // Constants
-    private const double SPAWN_MULT = .1 * 100.0;
+    private const double SPAWN_MULT = .25 * 100.0;
     private const double SPREAD_MULT = 1.0;
+    private const float DECAY_CONST = 15.0f;
 
     // Variables
     public string layerName;
     private string type = "Semi-static";
     private int rounded;
+    private int numFiles;
     public static int WORLDX = SingleValueLayer.WORLDX;
     public static int WORLDZ = SingleValueLayer.WORLDZ;
     public int[] timeIntervals;
-    public float[,] worldArray = new float[WORLDX, WORLDZ];
+    public float[][,] worldArray;
     public bool spread;
-    // public float[,,] worldArray = new float[timeIntervals.Length, WORLDX, WORLDZ];
-        // THIS IS WHAT THE END GOAL ARRAY LOOKS LIKE
-        // FOR NOW WE ARE JUST USING A SINGLE NUMBER FOR THE WHOLE YEAR FOR TESTING PURPOSES
 
     // Constructor
-    public HumidityLayer(string name, int roundTo)
+    public HumidityLayer(string name, int numFiles, int roundTo)
     {
         this.layerName = name;
         this.rounded = roundTo;
+        this.numFiles = numFiles;
+        worldArray = new float[numFiles][,];
     }
 
     // Layer initialization Method
-    public void readCSVFile(string filePath)
+    public void readCSVFiles(string filePathPrefix)
     {
 
-        StreamReader sr = new StreamReader(filePath);
-        float[,] data = new float[WORLDX, WORLDZ];
-        int Row = 0;
-        while (!sr.EndOfStream)
+        for (int n = 1; n < numFiles + 1; n++)
         {
-            string[] Line = sr.ReadLine().Split(',');
-            for (int i = 0; i < Line.Length; i++)
+            StreamReader sr = new StreamReader(filePathPrefix + "HumidityNiceMapA-" + n + ".csv");
+            float[,] data = new float[WORLDX, WORLDZ];
+            int Row = 0;
+            while (!sr.EndOfStream)
             {
-                data[i, Row] = (float)Convert.ToDouble(Line[i]);
+                string[] Line = sr.ReadLine().Split(',');
+                for (int i = 0; i < Line.Length; i++)
+                {
+                    data[i, Row] = (float)Convert.ToDouble(Line[i]);
+                }
+                Row++;
             }
-            Row++;
-        }
-        this.worldArray = data;
+            this.worldArray[n - 1] = data;
+        }   
 
     }
 
@@ -56,19 +60,21 @@ public class HumidityLayer
         DailyLayer yearsRainfall = new DailyLayer("Rainfall", 1);
         float[,] stormArray = new float[WORLDX, WORLDZ];
         float decay = 0f;
+        System.Random randy = new System.Random();
 
         // Run 120 times        
         for (int day = 0; day < 120; day++)
         {
-            stormArray = GenerateStormCenters();
+            stormArray = GenerateStormCenters(day, randy);
             // Begin to loop until a storm didn't sucessfully spread
+            decay = 0f;
             spread = true;
             while (spread)
             {
                 spread = false;
-                stormArray = SpreadStorms(stormArray, decay);
+                stormArray = SpreadStorms(stormArray, day, decay);
                 // Debug.Log("spread: " + spread);
-                decay += 15f;
+                decay += DECAY_CONST;
             }
             // Add it to the rainfall daily layer
             yearsRainfall.addWorldDay(day, stormArray);
@@ -78,15 +84,15 @@ public class HumidityLayer
     }
 
     // Generate Storm Centers
-    private float[,] GenerateStormCenters()
+    private float[,] GenerateStormCenters(int day, System.Random randy)
     {
         float[,] stormOrigins = new float[WORLDX, WORLDZ];
-        System.Random randy = new System.Random();
+        
         for (int x = 0; x < WORLDX; x++)
         {
             for (int z = 0; z < WORLDZ; z++)
             {
-                if(randy.Next(0, 10000) <= (worldArray[x, z] * SPAWN_MULT))
+                if(randy.Next(0, 10000) <= (CalculateHumidityFromBase(day, x, z) * SPAWN_MULT + 5f))
                 {
                     stormOrigins[x, z] = -25f;
                 }   
@@ -97,7 +103,7 @@ public class HumidityLayer
     }
     
     // Spread the Storms from those centers
-    private float[,] SpreadStorms(float[,] stormArray, float decay)
+    private float[,] SpreadStorms(float[,] stormArray, int day, float decay)
     {
         System.Random randy = new System.Random();
         float[,] nextWave = new float[WORLDX, WORLDZ];
@@ -111,14 +117,14 @@ public class HumidityLayer
                     // Generate the present strength
                     if(stormArray[x, z] == -25f)
                     {
-                        strength = GenerateSpawnStrength(worldArray[x, z], randy);
+                        strength = GenerateSpawnStrength(CalculateHumidityFromBase(day, x, z), randy);
                     }
                     else
                     {
                         strength = -stormArray[x, z];
                     }
                     // Spread to neighbors
-                    nextWave = SpreadToCellsAround(x, z, stormArray, strength, decay, randy);
+                    nextWave = SpreadToCellsAround(day, x, z, stormArray, strength, decay, randy);
                     // Record your own strength
                     nextWave[x, z] = strength;
                 }
@@ -129,26 +135,26 @@ public class HumidityLayer
     }
 
     // Spread to Cells Around Calculation
-    private float[,] SpreadToCellsAround(int x, int z, float[,] stormArray, float neighbor, float decay, System.Random randy)
+    private float[,] SpreadToCellsAround(int day, int x, int z, float[,] stormArray, float neighbor, float decay, System.Random randy)
     {
         float[,] nextWave = stormArray;
         
         // Add the four possible values if legal
         if (x != 0 && stormArray[x - 1, z] <= 0)
         {
-            nextWave = SpawnCheck(x - 1, z, neighbor, stormArray, nextWave, decay, randy);
+            nextWave = SpawnCheck(day, x - 1, z, neighbor, stormArray, nextWave, decay, randy);
         }
         if (z != 0 && stormArray[x, z - 1] <= 0)
         {
-            nextWave = SpawnCheck(x, z - 1, neighbor, stormArray, nextWave, decay, randy);
+            nextWave = SpawnCheck(day, x, z - 1, neighbor, stormArray, nextWave, decay, randy);
         }
         if (x != WORLDX - 1 && stormArray[x + 1, z] <= 0)
         {
-            nextWave = SpawnCheck(x + 1, z, neighbor, stormArray, nextWave, decay, randy);
+            nextWave = SpawnCheck(day, x + 1, z, neighbor, stormArray, nextWave, decay, randy);
         }
         if (z != WORLDZ - 1 && stormArray[x, z + 1] <= 0)
         {
-            nextWave = SpawnCheck(x, z + 1, neighbor, stormArray, nextWave, decay, randy);
+            nextWave = SpawnCheck(day, x, z + 1, neighbor, stormArray, nextWave, decay, randy);
         }
         
         return nextWave;
@@ -157,7 +163,7 @@ public class HumidityLayer
     // get Spawn Strenth
     private float GenerateSpawnStrength(float humidity, System.Random randy)
     {
-        double multiplier = Math.Pow(randy.NextDouble(), 3.0);
+        double multiplier = Math.Pow(randy.NextDouble(), 2.0);
         float output = (humidity + .1f) * (float) multiplier;
         return (float) Math.Round(output, 1);
     }
@@ -165,17 +171,22 @@ public class HumidityLayer
     // get Spread Strength
     private float GenerateSpreadStrength(float neighborStrength, float humidity, System.Random randy)
     {
-        double addifier = randy.Next(20, 50);
-        float output = (3f * humidity) + (float)addifier;
+        double addifier = randy.Next(70, 90);
+        float output = (2f * humidity) + (float) addifier;
         output = (output / 100f) * neighborStrength;
-        return (float) Math.Round(output, 1);
+        // Kill off half the .1's
+        if (Math.Round(output, 1) == .1 && randy.Next(0, 10) < 5)
+        {
+            output = 0f;
+        }
+        return (float) Math.Round(output, rounded);
     }
 
     // Add a new spawned square
-    private float[,] SpawnCheck(int a, int b, float neighbor, float[,] stormArray, float [,] nextWave, float decay, System.Random randy)
+    private float[,] SpawnCheck(int day, int a, int b, float neighbor, float[,] stormArray, float [,] nextWave, float decay, System.Random randy)
     {
-        float spreadChance = worldArray[a, b] * 9f + 5f - decay;
-        if (randy.Next(0, 100) < spreadChance)
+        float spreadChance = CalculateHumidityFromBase(day, a, b) * 8f + 10f - decay;
+        if (randy.Next(0, 100) < spreadChance * SPREAD_MULT)
         {
             float strength = -GenerateSpreadStrength(neighbor, stormArray[a, b], randy);
             if (strength < 0)
@@ -188,6 +199,30 @@ public class HumidityLayer
         return nextWave;
     }
 
+    // Need a method to calculate the square's humidity number based upon the day of the year
+    public float CalculateHumidityFromBase(int day, int x, int z)
+    {
+        int arrayNum = day / 20;
+        int remainder = day % 20;
+        int nextNum;
+        float humidity;
+
+        // Get the index of the next array
+        if(arrayNum == numFiles - 1)
+        {
+            nextNum = 0;
+        }
+        else
+        {
+            nextNum = arrayNum + 1;
+        }
+
+        // Use the linear equation formula to find today's humidity
+        humidity = (worldArray[nextNum][x, z] - worldArray[arrayNum][x, z]) * (remainder / 20) + worldArray[arrayNum][x, z];
+        // Modify it for balance purposes
+        humidity = (float) Math.Round(Math.Sqrt(10f * humidity), rounded);
+        return humidity;
+    }
 
     // Getter methods
     public string getType()
@@ -198,6 +233,11 @@ public class HumidityLayer
     public int getRounding()
     {
         return rounded;
+    }
+
+    public int getNumFiles()
+    {
+        return numFiles;
     }
 
 }
