@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Classes\DailyLayer.cs" />
+    <Compile Include="Assets\Classes\Direction.cs" />
     <Compile Include="Assets\Classes\DoubleDayList.cs" />
     <Compile Include="Assets\Classes\EquationLayer.cs" />
     <Compile Include="Assets\Classes\HumidityLayer.cs" />
