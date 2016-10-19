@@ -85,6 +85,8 @@ public class RainfallTests
         rainfallTotal.worldArray = rainfall.findYearTotalArray();
         int positivecount = 0;
         int excesscount = 0;
+        float min = 0f;
+        float max = rainfallTotal.worldArray[0, 0];
 
         for (int a = 0; a < 50; a++)
         {
@@ -98,6 +100,14 @@ public class RainfallTests
                 {
                     excesscount++;
                 }
+                if(rainfallTotal.worldArray[a, b] > min)
+                {
+                    max = rainfallTotal.worldArray[a, b];
+                }
+                if (rainfallTotal.worldArray[a, b] < min)
+                {
+                    min = rainfallTotal.worldArray[a, b];
+                }
             }
         }
 
@@ -105,6 +115,7 @@ public class RainfallTests
         Assert.AreEqual(50 * 50, positivecount);
         // Assert.AreEqual(0, excesscount);
 
+        Debug.Log("Rain/Day -- Min: " + min + " / Max: " + max);
         Debug.Log(printArray(rainfallTotal.worldArray));
 
     }
@@ -112,6 +123,8 @@ public class RainfallTests
     // method to display a 2 x 2 array of floats
     private string printArray(float[,] array)
     {
+        float min = array[0, 0];
+        float max = 0f;
         string row;
         string output = "";
         for (int i = 0; i < 50; i++)
@@ -120,9 +133,19 @@ public class RainfallTests
             for (int j = 0; j < 50; j++)
             {
                 row += array[i, j] + " ";
+                if (array[i, j] > min)
+                {
+                    max = array[i, j];
+                }
+                if (array[i, j] < min)
+                {
+                    min = array[i, j];
+                }
             }
             output += row + "\n";
         }
+
+        Debug.Log("Yearly Rain -- Min: " + min + " / Max: " + max);
         return output;
     }
 
