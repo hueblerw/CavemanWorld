@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class River {
 
@@ -17,13 +18,29 @@ public class River {
     private float soilAbsorption;
 
     // Constructor 
-    public River(int x, int z)
+    public River(int x, int z, float hillPer, float oceanPer)
     {
         this.x = x;
         this.z = z;
         // Generate the Directions
         // Then Determine the type
         //  Use hillPer to determine the flow and soilAbsorption rates
+        setRates(hillPer, oceanPer);
+    }
+
+    // Private methods
+    private void setRates(float hillPer, float oceanPer)
+    {
+        System.Random randy = new System.Random();
+        flowrate = (float) Math.Round((1f - hillPer) + (float) randy.NextDouble() + .1f, 2);
+        if (oceanPer == 1f)
+        {
+            soilAbsorption = 0f;
+        }
+        else
+        {
+            soilAbsorption = (float)((randy.NextDouble() * 1.5 + .25) * (1.0 - oceanPer));
+        }
     }
 
 }
