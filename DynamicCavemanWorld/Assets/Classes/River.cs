@@ -13,8 +13,8 @@ public class River {
     public int x;
     public int z;
     public string type;
-    public Direction downstream = null;
-    public Direction[] upstream = null;
+    public Direction downstream;
+    public List<Direction> upstream;
     private float flowrate;
     private float soilAbsorption;
 
@@ -50,7 +50,18 @@ public class River {
     // Choose a downstream flow
     private void ChooseDownstream(SingleValueLayer elevation, System.Random randy)
     {
-        
+        float myElevation = elevation.worldArray[x, z];
+        List<string> options = Support.getDirectionAsStringBelow(false, x, z, SingleValueLayer.WORLDX, SingleValueLayer.WORLDZ, myElevation, elevation.worldArray);
+        if(options.Count == 0)
+        {
+            downstream = null;
+        }
+        else
+        {
+            string choice = options[randy.Next(0, options.Count)];
+            downstream = new Direction(choice);
+            // Update upstream
+        }
     }
 
 }

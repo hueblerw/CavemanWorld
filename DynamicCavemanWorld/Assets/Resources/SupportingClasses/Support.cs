@@ -20,23 +20,23 @@ public class Support {
         return cells;
     }
 
-    public static List<string> getDirectionAsString(bool diagonals, int x, int z, int WorldX, int WorldZ)
+    public static List<string> getDirectionAsStringBelow(bool diagonals, int x, int z, int WorldX, int WorldZ, float testValue, float[,] array)
     {
         List<string> cellList = new List<string>();
         // Add strings representing the directions if legal
-        if (x > 0)
+        if (x > 0 && array[x - 1, z] <= testValue)
         {
             cellList.Add("left");
         }
-        if (x < WorldX - 1)
+        if (x < WorldX - 1 && array[x + 1, z] <= testValue)
         {
             cellList.Add("right");
         }
-        if (z > 0)
+        if (z > 0 && array[x, z - 1] <= testValue)
         {
             cellList.Add("up");
         }
-        if (z < WorldZ - 1)
+        if (z < WorldZ - 1 && array[x, z + 1] <= testValue)
         {
             cellList.Add("down");
 
@@ -44,19 +44,19 @@ public class Support {
         // Add the diagonals if required and legal
         if (diagonals)
         {
-            if (x < WorldX - 1 && z < WorldZ - 1)
+            if (x < WorldX - 1 && z < WorldZ - 1 && array[x + 1, z + 1] <= testValue)
             {
                 cellList.Add("lower right");
             }
-            if (x > 0 && z > 0)
+            if (x > 0 && z > 0 && array[x - 1, z - 1] <= testValue)
             {
                 cellList.Add("upper left");
             }
-            if (x > 0 && z < WorldZ - 1)
+            if (x > 0 && z < WorldZ - 1 && array[x - 1, z + 1] <= testValue)
             {
                 cellList.Add("lower left");
             }
-            if (x < WorldX - 1 && z > 0)
+            if (x < WorldX - 1 && z > 0 && array[x + 1, z - 1] <= testValue)
             {
                 cellList.Add("upper right");
             }
