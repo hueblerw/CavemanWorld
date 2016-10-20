@@ -138,7 +138,7 @@ public class NewTester
     [Test]
     public void RiverTest()
     {
-        // Initialize a world
+        // Initialize a river
         River river = new River(4, 7, .25f, 0f);
         River otherRiver = new River(12, 4, .25f, 1f);
 

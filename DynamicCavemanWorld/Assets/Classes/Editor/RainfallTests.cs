@@ -140,4 +140,35 @@ public class RainfallTests
         return output;
     }
 
+    [Test]
+    public void RiverLayerCreationTest()
+    {
+        // Initialize a world
+        World testWorld = new World(50, 50);
+        System.Random randy = new System.Random();
+        int x = randy.Next(0, 50);
+        int z = randy.Next(0, 50);
+        River testRiver = testWorld.riverStats.worldArray[x, z];
+
+        // Downstream shit if applicable
+        if (testWorld.oceanPer.worldArray[x, z] != 1f)
+        {
+            Debug.Log("Downstream: " + testRiver.downstream.direction);
+            Assert.GreaterOrEqual(testRiver.downstream.getCoordinateArray(x, z)[0], x - 1);
+            Assert.LessOrEqual(testRiver.downstream.getCoordinateArray(x, z)[0], x + 1);
+            Assert.GreaterOrEqual(testRiver.downstream.getCoordinateArray(x, z)[1], z - 1);
+            Assert.LessOrEqual(testRiver.downstream.getCoordinateArray(x, z)[1], z + 1);
+
+        }
+        // Upstream shit
+        Debug.Log("Upstream: " + testRiver.printUpstream());
+        foreach (Direction cell in testRiver.upstream)
+        {
+            Assert.GreaterOrEqual(cell.getCoordinateArray(x, z)[0], x - 1);
+            Assert.LessOrEqual(cell.getCoordinateArray(x, z)[0], x + 1);
+            Assert.GreaterOrEqual(cell.getCoordinateArray(x, z)[1], z - 1);
+            Assert.LessOrEqual(cell.getCoordinateArray(x, z)[1], z + 1);
+        }            
+    }
+
 }

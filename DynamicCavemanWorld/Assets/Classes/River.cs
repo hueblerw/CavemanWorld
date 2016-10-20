@@ -71,4 +71,15 @@ public class River {
         }
     }
 
+    // printUpstream array as a string
+    public string printUpstream()
+    {
+        string output = "";
+        foreach (Direction direction in upstream)
+        {
+            output += direction.direction + ", ";
+        }
+        return output;
+    }
+
 }
