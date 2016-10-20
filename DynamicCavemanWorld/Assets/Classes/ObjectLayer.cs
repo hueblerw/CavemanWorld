@@ -9,14 +9,13 @@ public class ObjectLayer
     private string layerType;
     public static int WORLDX = 50;
     public static int WORLDZ = 50;
-    public object[,] worldArray;
+    public River[,] worldArray;
 
     // Constructor
     public ObjectLayer(string name, string type)
     {
         this.layerName = name;
         this.layerType = type;
-        this.worldArray = new object[WORLDX, WORLDZ];
 }
 
     // World Array Initializer

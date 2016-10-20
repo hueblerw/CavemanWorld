@@ -65,6 +65,7 @@ public class World {
         Debug.Log("Rainfall Models Complete!");
         // Rivers info
         riverStats = new ObjectLayer("River Stats", "Semi-static");
+        PopulateRivers();
             // Write a method that populates rivers with a full array of river objects
         River.upstreamToday = new DailyLayer("Upstream Waterflow", 2);
         River.surfacewater = new DailyLayer("Surface Water", 2);
@@ -200,4 +201,42 @@ public class World {
         }
         return sum;
     }
+
+    // Populate the rivers object
+    private void PopulateRivers()
+    {
+        riverStats.worldArray = new River[WorldX, WorldZ];
+        for (int x = 0; x < WorldX; x++)
+        {
+            for (int z = 0; z < WorldZ; z++)
+            {
+                riverStats.worldArray[x, z] = new River(x, z, hillPer.worldArray[x, z], oceanPer.worldArray[x, z], elevation);
+                UpdateUpstream(x, z, riverStats.worldArray[x, z].downstream);
+            }
+        }
+    }
+
+    // Update the upstream direction nodes based on the downstream one that was just created
+    private void UpdateUpstream(int x, int z, Direction direction)
+    {
+        if (direction != null)
+        {
+            switch (direction.direction)
+            {
+                case "up":
+                    riverStats.worldArray[x, z - 1].upstream.Add(new Direction("down"));
+                    break;
+                case "left":
+                    riverStats.worldArray[x - 1, z].upstream.Add(new Direction("right"));
+                    break;
+                case "down":
+                    riverStats.worldArray[x, z + 1].upstream.Add(new Direction("up"));
+                    break;
+                case "right":
+                    riverStats.worldArray[x + 1, z].upstream.Add(new Direction("left"));
+                    break;
+            }
+        }
+    }
+
 }
