@@ -12,6 +12,7 @@ public class World {
     public SingleValueLayer elevation;
     public SingleValueLayer elevationVertices;
     public SingleValueLayer hillPer;
+    public SingleValueLayer oceanPer;   
     // Temperature Layers
     private SingleValueLayer highTemp;
     private SingleValueLayer lowTemp;
@@ -47,6 +48,7 @@ public class World {
         elevation.readCSVFile(filePathPrefix + "ElevationNiceMapA.csv");
         ConvertElevationToVertices();
         hillPer = CalculateHillPercentage();
+        oceanPer = CalculateOceanPercentage();
         Debug.Log("Elevation Models Complete!");
         // Temperature info
         highTemp.readCSVFile(filePathPrefix + "HighTempNiceMapA.csv");
@@ -117,6 +119,31 @@ public class World {
         return hillPer;
     }
 
+    // Create the Ocean Percentage Layer
+    private SingleValueLayer CalculateOceanPercentage()
+    {
+        // Initialize a new layer
+        SingleValueLayer hillPer = new SingleValueLayer("Ocean Percentage", "Semi-static", 4);
+        // Find the vertexes, sum th abs of all negative values and divide by sum of abs of all values.
+        float[,] vertexArray = elevationVertices.worldArray;
+        float[] corners;
+        float sumOfNegatives;
+        float sumOfAll;
+
+        for (int x = 0; x < WorldX; x++)
+        {
+            for (int z = 0; z < WorldZ; z++)
+            {
+                corners = Support.CellsAroundVertex(x + 1, z + 1, WorldX, WorldZ, vertexArray);
+                sumOfNegatives = FindAbsOfNegatives(corners);
+                sumOfAll = FindAbsSum(corners);
+                hillPer.worldArray[x, z] = sumOfNegatives / sumOfAll;
+            }
+        }
+
+        return hillPer;
+    }
+
     // Calculate the NetDifference around a cell
     private float netDiff(int x, int z)
     {
@@ -149,4 +176,28 @@ public class World {
         maxElevationDifference = maxDiff;
     }
 
+    // Calculate the abs of the sum of all negative numbers in the array
+    private float FindAbsOfNegatives(float[] corners)
+    {
+        float sum = 0f;
+        foreach (float ele in corners)
+        {
+            if (ele > 0)
+            {
+                sum += ele;
+            }
+        }
+        return Math.Abs(sum);
+    }
+
+    // Calculate the sum of the Absolute Value of all numbers
+    private float FindAbsSum(float[] corners)
+    {
+        float sum = 0f;
+        foreach (float ele in corners)
+        {
+            sum += Math.Abs(ele);
+        }
+        return sum;
+    }
 }
