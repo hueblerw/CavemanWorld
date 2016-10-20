@@ -26,8 +26,6 @@ public class River {
         // Generate the Directions
         System.Random randy = new System.Random();
         ChooseDownstream(elevation, randy);
-            // Find Downstream location - (Upstream locations must be generated later)
-        // Then Determine the type
         setRates(hillPer, oceanPer);
     }
 
@@ -55,11 +53,13 @@ public class River {
         if(options.Count == 0)
         {
             downstream = null;
+            type = "lake";
         }
         else
         {
             string choice = options[randy.Next(0, options.Count)];
             downstream = new Direction(choice);
+            type = "river";
             // Update upstream
         }
     }
