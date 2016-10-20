@@ -205,15 +205,29 @@ public class World {
     // Populate the rivers object
     private void PopulateRivers()
     {
+        // Initialize basic river objects
         riverStats.worldArray = new River[WorldX, WorldZ];
         for (int x = 0; x < WorldX; x++)
         {
             for (int z = 0; z < WorldZ; z++)
             {
-                riverStats.worldArray[x, z] = new River(x, z, hillPer.worldArray[x, z], oceanPer.worldArray[x, z], elevation);
-                UpdateUpstream(x, z, riverStats.worldArray[x, z].downstream);
+                riverStats.worldArray[x, z] = new River(x, z, hillPer.worldArray[x, z], oceanPer.worldArray[x, z]);
             }
         }
+        // Create the down and upstream node information
+        System.Random randy = new System.Random();
+        for (int x = 0; x < WorldX; x++)
+        {
+            for (int z = 0; z < WorldZ; z++)
+            {
+                if (oceanPer.worldArray[x, z] < 1f)
+                {
+                    riverStats.worldArray[x, z].ChooseDownstream(elevation, randy);
+                    UpdateUpstream(x, z, riverStats.worldArray[x, z].downstream);
+                }
+            }
+        }
+
     }
 
     // Update the upstream direction nodes based on the downstream one that was just created
@@ -238,5 +252,7 @@ public class World {
             }
         }
     }
+
+    
 
 }

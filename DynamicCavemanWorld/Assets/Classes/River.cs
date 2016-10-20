@@ -19,14 +19,21 @@ public class River {
     private float soilAbsorption;
 
     // Constructor 
-    public River(int x, int z, float hillPer, float oceanPer, SingleValueLayer elevation)
+    public River(int x, int z, float hillPer, float oceanPer)
     {
+        // Initialize the essentials
         this.x = x;
         this.z = z;
+        this.upstream = new List<Direction>();
         // Generate the Directions
-        System.Random randy = new System.Random();
-        ChooseDownstream(elevation, randy);
-        setRates(hillPer, oceanPer);
+        if(oceanPer != 1f)
+        {
+            setRates(hillPer, oceanPer);
+        }
+        else
+        {
+            type = "ocean";
+        }      
     }
 
     // Private methods
@@ -46,7 +53,7 @@ public class River {
     }
 
     // Choose a downstream flow
-    private void ChooseDownstream(SingleValueLayer elevation, System.Random randy)
+    public void ChooseDownstream(SingleValueLayer elevation, System.Random randy)
     {
         float myElevation = elevation.worldArray[x, z];
         List<string> options = Support.getDirectionAsStringBelow(false, x, z, SingleValueLayer.WORLDX, SingleValueLayer.WORLDZ, myElevation, elevation.worldArray);
