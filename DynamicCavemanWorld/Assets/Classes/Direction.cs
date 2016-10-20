@@ -11,28 +11,33 @@ public class Direction {
 
     public float getFloatAtCoordinates(int x, int z, float[,] array)
     {
-        int a = 0;
-        int b = 0;
+        int[] coor = getCoordinateArray(x, z);
+        return array[coor[0], coor[1]];
+    }
+
+    public int[] getCoordinateArray(int x, int z)
+    {
+        int[] coor = new int[2];
         switch (direction)
         {
             case "up":
-                a = x;
-                b = z - 1;
+                coor[0] = x;
+                coor[1] = z - 1;
                 break;
             case "down":
-                a = x;
-                b = z + 1;
+                coor[0] = x;
+                coor[1] = z + 1;
                 break;
             case "left":
-                a = x - 1;
-                b = z;
+                coor[0] = x - 1;
+                coor[1] = z;
                 break;
             case "right":
-                a = x + 1;
-                b = z;
+                coor[0] = x + 1;
+                coor[1] = z;
                 break;
         }
 
-        return array[a, b];
+        return coor;
     }
 }
