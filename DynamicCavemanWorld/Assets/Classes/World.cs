@@ -64,14 +64,14 @@ public class World {
         rainfallTotal.worldArray = rainfall.findYearTotalArray();
         Debug.Log("Rainfall Models Complete!");
         // Rivers info
+        // Initialize Water Stats
         riverStats = new ObjectLayer("River Stats", "Semi-static");
         PopulateRivers();
-            // Write a method that populates rivers with a full array of river objects
         River.upstreamToday = new DailyLayer("Upstream Waterflow", 2);
         River.surfacewater = new DailyLayer("Surface Water", 2);
-        // Initialize Water Stats
-            // Calculate Years worth of river data
-        // Debug.Log("River Models Complete!");
+        // Calculate Years worth of river data
+
+        Debug.Log("River Models Complete!");
     }
     
     // Converts the model's elevation number to a map of vertices which can be used by the view
