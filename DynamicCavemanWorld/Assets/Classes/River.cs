@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class River {
 
@@ -18,11 +19,13 @@ public class River {
     private float soilAbsorption;
 
     // Constructor 
-    public River(int x, int z, float hillPer, float oceanPer)
+    public River(int x, int z, float hillPer, float oceanPer, SingleValueLayer elevation)
     {
         this.x = x;
         this.z = z;
         // Generate the Directions
+        System.Random randy = new System.Random();
+        ChooseDownstream(elevation, randy);
             // Find Downstream location - (Upstream locations must be generated later)
         // Then Determine the type
         setRates(hillPer, oceanPer);
@@ -42,6 +45,12 @@ public class River {
         {
             soilAbsorption = (float)((randy.NextDouble() * 1.5 + .25) * (1.0 - oceanPer));
         }
+    }
+
+    // Choose a downstream flow
+    private void ChooseDownstream(SingleValueLayer elevation, System.Random randy)
+    {
+        
     }
 
 }

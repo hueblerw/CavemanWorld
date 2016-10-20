@@ -20,6 +20,51 @@ public class Support {
         return cells;
     }
 
+    public static List<string> getDirectionAsString(bool diagonals, int x, int z, int WorldX, int WorldZ)
+    {
+        List<string> cellList = new List<string>();
+        // Add strings representing the directions if legal
+        if (x > 0)
+        {
+            cellList.Add("left");
+        }
+        if (x < WorldX - 1)
+        {
+            cellList.Add("right");
+        }
+        if (z > 0)
+        {
+            cellList.Add("up");
+        }
+        if (z < WorldZ - 1)
+        {
+            cellList.Add("down");
+
+        }
+        // Add the diagonals if required and legal
+        if (diagonals)
+        {
+            if (x < WorldX - 1 && z < WorldZ - 1)
+            {
+                cellList.Add("lower right");
+            }
+            if (x > 0 && z > 0)
+            {
+                cellList.Add("upper left");
+            }
+            if (x > 0 && z < WorldZ - 1)
+            {
+                cellList.Add("lower left");
+            }
+            if (x < WorldX - 1 && z > 0)
+            {
+                cellList.Add("upper right");
+            }
+        }
+
+        return cellList;
+    }
+
     // Private methods
     private static List<float> getAround(int x, int z, int WorldX, int WorldZ, float[,] array)
     {
