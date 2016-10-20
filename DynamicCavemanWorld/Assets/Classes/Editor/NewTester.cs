@@ -119,7 +119,7 @@ public class NewTester
     }
 
     [Test]
-    public void HillPerTest()
+    public void HillAndOceanPerTest()
     {
         // Initialize a world
         World testWorld = new World(50, 50);
@@ -131,6 +131,8 @@ public class NewTester
         Assert.Greater(testWorld.maxElevationDifference, 0f);
         Assert.GreaterOrEqual(testWorld.hillPer.worldArray[x, z], 0f);
         Assert.LessOrEqual(testWorld.hillPer.worldArray[x, z], 1f);
+        Assert.GreaterOrEqual(testWorld.oceanPer.worldArray[x, z], 0f);
+        Assert.LessOrEqual(testWorld.oceanPer.worldArray[x, z], 1f);
     }
 
 }
