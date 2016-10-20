@@ -143,10 +143,10 @@ public class NewTester
         River otherRiver = new River(12, 4, .25f, 1f);
 
         Assert.AreEqual(river.x, 4);
-        Assert.AreEqual(river.x, 7);
-        Assert.AreEqual(river.type, "");
+        Assert.AreEqual(river.z, 7);
+        Assert.AreEqual(river.type, null);
         Assert.AreEqual(otherRiver.x, 12);
-        Assert.AreEqual(otherRiver.x, 4);
+        Assert.AreEqual(otherRiver.z, 4);
         Assert.AreEqual(otherRiver.type, "ocean");
     }
 
