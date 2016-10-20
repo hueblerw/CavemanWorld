@@ -23,12 +23,13 @@ public class River {
         this.x = x;
         this.z = z;
         // Generate the Directions
+            // Find Downstream location - (Upstream locations must be generated later)
         // Then Determine the type
-        //  Use hillPer to determine the flow and soilAbsorption rates
         setRates(hillPer, oceanPer);
     }
 
     // Private methods
+    //  Use hillPer to determine the flow and soilAbsorption rates
     private void setRates(float hillPer, float oceanPer)
     {
         System.Random randy = new System.Random();
