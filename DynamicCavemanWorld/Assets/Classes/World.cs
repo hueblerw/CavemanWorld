@@ -23,11 +23,7 @@ public class World {
     public DailyLayer rainfall;
     public SingleValueLayer rainfallTotal;
     // River Layers
-    private ObjectLayer downstream;
-    private ObjectLayer upstream;
     public ObjectLayer riverStats;
-    public DailyLayer surfaceWater;
-    private DailyLayer upstreamToday;
 
     // Constructor
     public World(int x, int z)
@@ -66,12 +62,11 @@ public class World {
         rainfallTotal.worldArray = rainfall.findYearTotalArray();
         Debug.Log("Rainfall Models Complete!");
         // Rivers info
-        downstream = new ObjectLayer("Downstream Directions", "Semi-static");
-        upstream = new ObjectLayer("Upstream Directions", "Semi-static");
         riverStats = new ObjectLayer("River Stats", "Semi-static");
-            // Initialize Water Stats
-        surfaceWater = new DailyLayer("Surface Water", 1);
-        upstreamToday = new DailyLayer("Upstream Water", 1);
+            // Write a method that populates rivers with a full array of river objects
+        River.upstreamToday = new DailyLayer("Upstream Waterflow", 2);
+        River.surfacewater = new DailyLayer("Surface Water", 2);
+        // Initialize Water Stats
             // Calculate Years worth of river data
         // Debug.Log("River Models Complete!");
     }

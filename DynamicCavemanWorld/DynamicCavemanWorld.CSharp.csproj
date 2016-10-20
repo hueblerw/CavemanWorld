@@ -70,6 +70,7 @@
     <Compile Include="Assets\Classes\HumidityLayer.cs" />
     <Compile Include="Assets\Classes\IntDayList.cs" />
     <Compile Include="Assets\Classes\ObjectLayer.cs" />
+    <Compile Include="Assets\Classes\River.cs" />
     <Compile Include="Assets\Classes\SingleValueLayer.cs" />
     <Compile Include="Assets\Classes\TempEquation.cs" />
     <Compile Include="Assets\Classes\World.cs" />
