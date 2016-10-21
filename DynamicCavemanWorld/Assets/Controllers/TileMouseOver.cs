@@ -33,6 +33,7 @@ public class TileMouseOver : MonoBehaviour {
 
     void UpdateTileInfo()
     {
+        TileInfo.text = "OMG A MOUSE!!!"; 
         // Somehow grab the information from the World object to display here.
             // elevation
             // tempToday

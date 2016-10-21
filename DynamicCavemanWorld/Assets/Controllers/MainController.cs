@@ -6,10 +6,11 @@ using System.Collections;
 [RequireComponent(typeof(MeshRenderer))]
 public class MainController : MonoBehaviour {
 
+    public TileMouseOver mouseController;
 	// Use this for initialization
 	void Start () {
         // Generate the model files eventually
-
+        
         // Construct the model from text files
         Debug.Log("Literally, Hello World!");
         World TheWorld = new World(50, 50);
@@ -27,6 +28,8 @@ public class MainController : MonoBehaviour {
         // Create and attach the texture
         meshRenderer.sharedMaterial.mainTexture = ElevationView.BuildTexture(TheWorld);
         Debug.Log("Elevation View Made!");
+        // Initialize the Game interaction Controllers
+        mouseController = new TileMouseOver();
     }
 	
 	// Update is called once per frame
