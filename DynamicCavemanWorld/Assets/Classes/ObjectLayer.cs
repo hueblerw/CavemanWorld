@@ -16,7 +16,7 @@ public class ObjectLayer
     {
         this.layerName = name;
         this.layerType = type;
-}
+    }
 
     // World Array Initializer
 

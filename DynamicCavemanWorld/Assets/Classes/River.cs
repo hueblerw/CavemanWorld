@@ -82,4 +82,10 @@ public class River {
         return output;
     }
 
+    // Calculate the surface water
+
+    // Calculate the flow downstream
+
+    // Pass downstream flow to your target's upstream for tommorrow
+
 }
