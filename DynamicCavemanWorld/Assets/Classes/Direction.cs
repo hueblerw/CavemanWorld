@@ -9,10 +9,17 @@ public class Direction {
         this.direction = direction;
     }
 
+    // Getters and Setters based on the direction from the given coordinate center
     public float getFloatAtCoordinates(int x, int z, float[,] array)
     {
         int[] coor = getCoordinateArray(x, z);
         return array[coor[0], coor[1]];
+    }
+
+    public void setFloatAtCoordinates(int x, int z, float input, float [,] array)
+    {
+        int[] coor = getCoordinateArray(x, z);
+        array[coor[0], coor[1]] = input;
     }
 
     public int[] getCoordinateArray(int x, int z)

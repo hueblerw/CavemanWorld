@@ -85,10 +85,12 @@ public class River {
     }
 
     // Calculate the surface water
-    public float CalculateSurfaceWater(int day, float rainfall)
+    // PRESENTLY WITHOUT SNOW OR MELT OFF!!!!!!!!!!!!
+    public float CalculateSurfaceWater(int day, float rainfall, int temp, float humidity)
     {
         string weather;
         System.Random randy = new System.Random();
+
         // Inputs: Previous, rainfall, upstream
         // Determine if sunny cloudy or rainy
         if(rainfall > 0)
@@ -103,16 +105,16 @@ public class River {
         // Losses: Downstream, Evaporation, SoilAbsorption, Other
         
         float absorption = current * soilAbsorption;
-        float evaportation = FindEvaporation();
+        float evaportation = FindEvaporation(current, temp, humidity, weather);
         // Calculate the flow downstream
         float downstream = current * flowrate;
         // Pass downstream flow to your target's upstream for tommorrow
 
+        upstreamToday.worldArray[day][]
         // update today's levels
         current = current - downstream - evaportation - absorption;
         yesterdaySurface = current;
         return current;
-   
     }
 
     
