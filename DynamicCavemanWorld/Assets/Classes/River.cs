@@ -17,6 +17,7 @@ public class River {
     public List<Direction> upstream;
     private float flowrate;
     private float soilAbsorption;
+    private float yesterdaySurface;
 
     // Constructor 
     public River(int x, int z, float hillPer, float oceanPer)
@@ -24,6 +25,7 @@ public class River {
         // Initialize the essentials
         this.x = x;
         this.z = z;
+        this.yesterdaySurface = 0f;
         this.upstream = new List<Direction>();
         // Generate the Directions
         if(oceanPer != 1f)
@@ -83,9 +85,82 @@ public class River {
     }
 
     // Calculate the surface water
+    public float CalculateSurfaceWater(int day, float rainfall)
+    {
+        string weather;
+        // Inputs: Previous, rainfall, upstream
+        // Determine if sunny cloudy or rainy
+        if(rainfall > 0)
+        {
+            weather = "rainy";
+        }
+        else
+        {
+            weather = DetermineWeather(humidity, randy);
+        }
+        float current = yesterdaySurface + rainfall + upstreamToday.worldArray[PreviousDay(day)][x, z];
+        // Losses: Downstream, Evaporation, SoilAbsorption, Other
+        
+        float absorption = current * soilAbsorption;
+        float evaportation = FindEvaporation();
+        // Calculate the flow downstream
+        float downstream = current * flowrate;
+        // Pass downstream flow to your target's upstream for tommorrow
 
-    // Calculate the flow downstream
+        // update today's levels
+        current = current - downstream - evaportation - absorption;
+        yesterdaySurface = current;
+        return current;
+   
+    }
 
-    // Pass downstream flow to your target's upstream for tommorrow
+    
+    // Calculate the Evaporation
+    private float FindEvaporation(float current, int temp, float humidity, string weather)
+    {
+        double xs;
+        double x;
+        double pws;
+        double pw;
+        float evaporation;
+        double multiplier = 1.0;
 
+        switch (weather)
+        {
+            case "cloudy":
+                multiplier = 100.0;
+                break;
+            case "sunny":
+                multiplier = 300.0;
+                break;
+        }
+        pws = Math.Exp(77.345 + 0.0057 * ((temp + 459.67) * (5.0 / 9.0)) - 7235.0 / ((temp + 459.67) * (5.0 / 9.0))) / (Math.Pow((temp + 459.67) * (5.0 / 9.0), 8.2));
+        xs = 0.62198 * pws / (101325.0 - pws);
+        if(weather != "rainy")
+        {
+            pw = (humidity / multiplier) * pws;
+        }
+        else
+        {
+            pw = pws;
+        }
+        x = 0.62198 * pw / (101325.0 - pw);
+        evaporation = (float) (((1260.0 * 24.0 * Math.Sqrt(2.0 * current * 23.6) / Math.Pow(6.0, .25)) * (xs - x)) / 23600.0);
+
+        return evaporation;
+    }
+    
+
+    // Private Method for getting the previous day number
+    private int PreviousDay(int day)
+    {
+        if(day == 0)
+        {
+            return 119;
+        }
+        else
+        {
+            return day - 1;
+        }
+    }
 }
