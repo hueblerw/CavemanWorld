@@ -91,7 +91,7 @@ public class River {
         string weather;
         System.Random randy = new System.Random();
 
-        // Inputs: Previous, rainfall, upstream
+        // Inputs: Previous, rainfall, EACH upstream
         // Determine if sunny cloudy or rainy
         if(rainfall > 0)
         {
@@ -101,6 +101,7 @@ public class River {
         {
             weather = DetermineWeather(humidity, randy);
         }
+        // DOES THIS NEED TO CHANGE??
         float current = yesterdaySurface + rainfall + upstreamToday.worldArray[PreviousDay(day)][x, z];
         // Losses: Downstream, Evaporation, SoilAbsorption, Other
         
@@ -109,8 +110,7 @@ public class River {
         // Calculate the flow downstream
         float downstream = current * flowrate;
         // Pass downstream flow to your target's upstream for tommorrow
-
-        upstreamToday.worldArray[day][]
+        // **********************
         // update today's levels
         current = current - downstream - evaportation - absorption;
         yesterdaySurface = current;
