@@ -88,6 +88,7 @@ public class River {
     public float CalculateSurfaceWater(int day, float rainfall)
     {
         string weather;
+        System.Random randy = new System.Random();
         // Inputs: Previous, rainfall, upstream
         // Determine if sunny cloudy or rainy
         if(rainfall > 0)
@@ -162,5 +163,22 @@ public class River {
         {
             return day - 1;
         }
+    }
+
+    // Determine if it is cloudy or not
+    private string DetermineWeather(float humidity, System.Random randy)
+    {
+        string weather;
+        double prob = Math.Pow(0.5, humidity / 5.0);
+
+        if (randy.NextDouble() < prob)
+        {
+            weather = "sunny";
+        }
+        else
+        {
+            weather = "cloudy";
+        }
+        return weather;
     }
 }
