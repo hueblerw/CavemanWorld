@@ -193,14 +193,19 @@ public class River {
     }
 
     // Pass the downstream value onto the upstream value for the future
-    private void PassDownstreamToUpstream(int day, float downstream)
+    private void PassDownstreamToUpstream(int day, float downstreamValue)
     {
-        int[] coor = this.downstream.getCoordinateArray(x, z);
-        upstreamToday.worldArray[day][coor[0], coor[1]] += downstream;
-        if (day == 119)
+        // Debug.Log(x + ", " + z + " - " + day);
+        if (downstream != null)
         {
-            lastUpstreamDay.worldArray[x, z] += downstream;
+            int[] coor = downstream.getCoordinateArray(x, z);
+            upstreamToday.worldArray[day][coor[0], coor[1]] += downstreamValue;
+            if (day == 119)
+            {
+                lastUpstreamDay.worldArray[x, z] += downstreamValue;
+            }
         }
+        
     }
     
 

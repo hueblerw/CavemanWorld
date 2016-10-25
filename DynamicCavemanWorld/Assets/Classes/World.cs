@@ -298,7 +298,8 @@ public class World {
                 {
                     // Account for snow fall ***LATER***
                     // Calculate the river flow
-                    riverStats.worldArray[x, z].CalculateSurfaceWater(day, rainfall.worldArray[day][x, z], temps[x, z].getDaysTemp(day), humidity.worldArray[day][x, z], randy);
+                    // Debug.Log(x + ", " + z + " - " + day);
+                    riverStats.worldArray[x, z].CalculateSurfaceWater(day, rainfall.worldArray[day][x, z], temps[x, z].getDaysTemp(day), humidity.CalculateHumidityFromBase(day, x, z), randy);
                 }
             }
             // if day == 1 Reset the lastRiverUpstream layer
