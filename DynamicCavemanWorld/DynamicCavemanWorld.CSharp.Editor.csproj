@@ -98,6 +98,7 @@
   <ItemGroup>
     <Compile Include="Assets\Classes\Editor\NewTester.cs" />
     <Compile Include="Assets\Classes\Editor\RainfallTests.cs" />
+    <Compile Include="Assets\Classes\Editor\TimingTests.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

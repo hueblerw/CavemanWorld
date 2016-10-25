@@ -90,6 +90,18 @@ public class World {
         }
     }
 
+    public void NewYear()
+    {
+        // Create Temperatures
+        CreateYearsTemps();
+        // Create Rainfall
+        rainfall = humidity.GenerateWorldsYearOfRain();
+        rainfallTotal.worldArray = rainfall.findYearTotalArray();
+        // Calculate River Flow
+        CalculateRiverYear();
+        Debug.Log("Generated a new year!");
+    }
+
     // Private methods!
     // Calculate a Years Temperatures
     private void CreateYearsTemps()
