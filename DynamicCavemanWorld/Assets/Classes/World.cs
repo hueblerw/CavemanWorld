@@ -290,9 +290,9 @@ public class World {
         // Iterate
         for (int day = 0; day < 120; day++)
         {
-            for (int x = 0; x < 120; x++)
+            for (int x = 0; x < WorldX; x++)
             {
-                for (int z = 0; z < 120; z++)
+                for (int z = 0; z < WorldZ; z++)
                 {
                     // Account for snow fall ***LATER***
                     // Calculate the river flow
