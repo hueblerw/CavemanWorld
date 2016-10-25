@@ -85,7 +85,6 @@ public class RainfallTests
         rainfallTotal.worldArray = rainfall.findYearTotalArray();
         int positivecount = 0;
         int excesscount = 0;
-        float max = rainfallTotal.worldArray[0, 0];
 
         for (int a = 0; a < 50; a++)
         {
@@ -152,7 +151,7 @@ public class RainfallTests
         // Downstream shit if applicable
         if (testWorld.oceanPer.worldArray[x, z] != 1f)
         {
-            Debug.Log("Downstream: " + testRiver.downstream.direction);
+            // Debug.Log("Downstream: " + testRiver.downstream.direction);
             Assert.GreaterOrEqual(testRiver.downstream.getCoordinateArray(x, z)[0], x - 1);
             Assert.LessOrEqual(testRiver.downstream.getCoordinateArray(x, z)[0], x + 1);
             Assert.GreaterOrEqual(testRiver.downstream.getCoordinateArray(x, z)[1], z - 1);
@@ -169,9 +168,12 @@ public class RainfallTests
             Assert.LessOrEqual(cell.getCoordinateArray(x, z)[1], z + 1);
         }
 
+        Debug.Log("Square: (" + x + ", " + z + ")");
+        Debug.Log("Downstream: " + testRiver.downstream.direction);
         // Ok do the static variables come out as plausible?
         for (int day = 0; day < 120; day++)
         {
+            Debug.Log("day: " + day + " - " + River.surfacewater.worldArray[day][x, z]);
             Assert.GreaterOrEqual(River.surfacewater.worldArray[day][x, z], 0f);
             Assert.GreaterOrEqual(River.upstreamToday.worldArray[day][x, z], 0f);
             Assert.GreaterOrEqual(River.lastUpstreamDay.worldArray[x, z], 0f);

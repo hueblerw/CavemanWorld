@@ -103,12 +103,12 @@ public class River {
         if (this.downstream == null)
         {
             // NOTE: don't flow if there is no downstream
-            downstreamFlow = current * flowrate;
+            downstreamFlow = (float) Math.Round(current * flowrate, 2);
         }
         // Pass downstream flow to your target's upstream for tommorrow
         PassDownstreamToUpstream(day, downstreamFlow);
         // update today's levels
-        current = current - downstreamFlow - evaportation - absorption;
+        current = (float) ChooseMaxOf(Math.Round(current - downstreamFlow - evaportation - absorption, 2), 0.0);
         yesterdaySurface = current;
         // Set the downstream layer correctly
         surfacewater.worldArray[day][x, z] = current;
@@ -210,6 +210,19 @@ public class River {
             }
         }
         
+    }
+
+    // Choose the max of two doubles
+    private double ChooseMaxOf(double a, double b)
+    {
+        if(a > b)
+        {
+            return a;
+        }
+        else
+        {
+            return b;
+        }
     }
     
 }
