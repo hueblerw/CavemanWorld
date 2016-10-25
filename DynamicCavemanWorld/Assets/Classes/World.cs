@@ -93,7 +93,13 @@ public class World {
     // Calculate a Years Temperatures
     private void CreateYearsTemps()
     {
-
+        for (int x = 0; x < WorldX; x++)
+        {
+            for (int z = 0; z < WorldZ; z++)
+            {
+                temps[x, z] = tempEquations.worldArray[x, z].generateYearsTemps();
+            }
+        }
     }
 
     // Find the value of the vertex at the grid crossings
