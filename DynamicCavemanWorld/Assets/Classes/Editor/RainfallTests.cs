@@ -85,18 +85,17 @@ public class RainfallTests
         rainfallTotal.worldArray = rainfall.findYearTotalArray();
         int positivecount = 0;
         int excesscount = 0;
-        float min = 0f;
         float max = rainfallTotal.worldArray[0, 0];
 
         for (int a = 0; a < 50; a++)
         {
             for (int b = 0; b < 50; b++)
             {
-                if(rainfallTotal.worldArray[a,b] >= 0)
+                if (rainfallTotal.worldArray[a, b] >= 0)
                 {
                     positivecount++;
                 }
-                if(rainfallTotal.worldArray[a, b] > 150)
+                if (rainfallTotal.worldArray[a, b] > 150)
                 {
                     excesscount++;
                 }
@@ -168,7 +167,16 @@ public class RainfallTests
             Assert.LessOrEqual(cell.getCoordinateArray(x, z)[0], x + 1);
             Assert.GreaterOrEqual(cell.getCoordinateArray(x, z)[1], z - 1);
             Assert.LessOrEqual(cell.getCoordinateArray(x, z)[1], z + 1);
-        }            
+        }
+
+        // Ok do the static variables come out as plausible?
+        for (int day = 0; day < 120; day++)
+        {
+            Assert.GreaterOrEqual(River.surfacewater.worldArray[day][x, z], 0f);
+            Assert.GreaterOrEqual(River.upstreamToday.worldArray[day][x, z], 0f);
+            Assert.GreaterOrEqual(River.lastUpstreamDay.worldArray[x, z], 0f);
+        }
+        
     }
 
 }
