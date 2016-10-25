@@ -19,6 +19,7 @@ public class World {
     private SingleValueLayer tempMidpt;
     private SingleValueLayer variance;
     public EquationLayer tempEquations;
+    public DailyLayer temps;
     // Rainfall Layers - (temporarily a very simple version with a single humidity number per tile)
     private HumidityLayer humidity;
     public DailyLayer rainfall;
@@ -41,6 +42,7 @@ public class World {
         this.tempMidpt = new SingleValueLayer("TempMidpoint", "Semi-static", 1);
         this.variance = new SingleValueLayer("Variance", "Semi-static", 1);
         this.tempEquations = new EquationLayer("TemperatureEquations", "Semi-static");
+        this.temps = new DailyLayer("Temperatures", 0);
         this.humidity = new HumidityLayer("HumidityLayer", 6, 1);
         string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
 
@@ -56,7 +58,7 @@ public class World {
         tempMidpt.readCSVFile(filePathPrefix + "MidptNiceMapA.csv");
         variance.readCSVFile(filePathPrefix + "VarianceNiceMapA.csv");
         tempEquations.createEquations(highTemp, lowTemp, tempMidpt, variance);
-        // HEY I NEVER MADE A TEMPERATURE LAYER???
+        CreateYearsTemps();
         Debug.Log("Temperature Models Complete!");
         // Rainfall info
         humidity.readCSVFiles(filePathPrefix);
@@ -88,6 +90,12 @@ public class World {
     }
 
     // Private methods!
+    // Calculate a Years Temperatures
+    private void CreateYearsTemps()
+    {
+
+    }
+
     // Find the value of the vertex at the grid crossings
     private float VertexAverage(float[] cellsAround)
     {
