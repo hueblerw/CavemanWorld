@@ -12,7 +12,7 @@ public class World {
     public SingleValueLayer elevation;
     public SingleValueLayer elevationVertices;
     public SingleValueLayer hillPer;
-    public SingleValueLayer oceanPer;   
+    public SingleValueLayer oceanPer;
     // Temperature Layers
     private SingleValueLayer highTemp;
     private SingleValueLayer lowTemp;
@@ -43,7 +43,7 @@ public class World {
         this.tempEquations = new EquationLayer("TemperatureEquations", "Semi-static");
         this.humidity = new HumidityLayer("HumidityLayer", 6, 1);
         string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
-        
+
         // Elevation info
         elevation.readCSVFile(filePathPrefix + "ElevationNiceMapA.csv");
         ConvertElevationToVertices();
@@ -67,14 +67,13 @@ public class World {
         // Initialize Water Stats
         riverStats = new ObjectLayer("River Stats", "Semi-static");
         PopulateRivers();
-        River.upstreamToday = new DailyLayer("Upstream Waterflow", 2);
-        River.surfacewater = new DailyLayer("Surface Water", 2);
-        River.lastUpstreamDay = new SingleValueLayer("First Day of Next Year Upstream", "Yearly", 2);
+        ResetStaticRiverLayers();
+        ResetLastDayLayer();
         // Calculate Years worth of river data
         CalculateRiverYear();
         Debug.Log("River Models Complete!");
     }
-    
+
     // Converts the model's elevation number to a map of vertices which can be used by the view
     public void ConvertElevationToVertices()
     {
@@ -115,7 +114,7 @@ public class World {
             for (int z = 0; z < WorldZ; z++)
             {
                 diff = netDiff(x, z);
-                hillPer.worldArray[x, z] = (float) Math.Round(diff / maxElevationDifference, 4);
+                hillPer.worldArray[x, z] = (float)Math.Round(diff / maxElevationDifference, 4);
             }
         }
         return hillPer;
@@ -166,7 +165,7 @@ public class World {
         float diff;
         for (int x = 0; x < WorldX; x++)
         {
-            for(int z = 0; z < WorldZ; z++)
+            for (int z = 0; z < WorldZ; z++)
             {
                 diff = netDiff(x, z);
                 if (diff > maxDiff)
@@ -252,6 +251,18 @@ public class World {
                     break;
             }
         }
+    }
+
+    // Resets the Static River layers
+    private void ResetStaticRiverLayers()
+    {
+        River.upstreamToday = new DailyLayer("Upstream Waterflow", 2);
+        River.surfacewater = new DailyLayer("Surface Water", 2);
+    }
+
+    private void ResetLastDayLayer()
+    {
+        River.lastUpstreamDay = new SingleValueLayer("First Day of Next Year Upstream", "Yearly", 2);
     }
 
     // Calcuate a year's worth of river data
