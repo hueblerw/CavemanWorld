@@ -110,7 +110,8 @@ public class River {
         // Calculate the flow downstream
         float downstream = current * flowrate;
         // Pass downstream flow to your target's upstream for tommorrow
-        // **********************
+        int[] coor = this.downstream.getCoordinateArray(x, z);
+        upstreamToday.worldArray[day][coor[0], coor[1]] += downstream;
         // update today's levels
         current = current - downstream - evaportation - absorption;
         yesterdaySurface = current;
