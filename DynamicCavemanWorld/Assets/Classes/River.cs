@@ -95,14 +95,7 @@ public class River {
 
         // Inputs: Previous, rainfall, EACH upstream
         // Determine if sunny cloudy or rainy
-        if(rainfall > 0)
-        {
-            weather = "rainy";
-        }
-        else
-        {
-            weather = DetermineWeather(humidity, randy);
-        }
+        weather = DetermineWeather(rainfall, humidity, randy);
         // Calculate the positive incoming water flow
         float current = yesterdaySurface + rainfall + PreviousUpstream(day);
         // Losses: Downstream, Evaporation, SoilAbsorption, Other
@@ -111,12 +104,7 @@ public class River {
         // Calculate the flow downstream
         float downstream = current * flowrate;
         // Pass downstream flow to your target's upstream for tommorrow
-        int[] coor = this.downstream.getCoordinateArray(x, z);
-        upstreamToday.worldArray[day][coor[0], coor[1]] += downstream;
-        if (day == 119)
-        {
-            lastUpstreamDay.worldArray[x, z] += downstream;
-        }
+        PassDownstreamToUpstream(day, downstream);
         // update today's levels
         current = current - downstream - evaportation - absorption;
         yesterdaySurface = current;
@@ -175,8 +163,23 @@ public class River {
         }
     }
 
+    // Determine the weather string
+    private string DetermineWeather(float rainfall, float humidity, System.Random randy)
+    {
+        string weather;
+        if (rainfall > 0)
+        {
+            weather = "rainy";
+        }
+        else
+        {
+            weather = DetermineCloudy(humidity, randy);
+        }
+        return weather;
+    }
+
     // Determine if it is cloudy or not
-    private string DetermineWeather(float humidity, System.Random randy)
+    private string DetermineCloudy(float humidity, System.Random randy)
     {
         string weather;
         double prob = Math.Pow(0.5, humidity / 5.0);
@@ -191,4 +194,17 @@ public class River {
         }
         return weather;
     }
+
+    // Pass the downstream value onto the upstream value for the future
+    private void PassDownstreamToUpstream(int day, float downstream)
+    {
+        int[] coor = this.downstream.getCoordinateArray(x, z);
+        upstreamToday.worldArray[day][coor[0], coor[1]] += downstream;
+        if (day == 119)
+        {
+            lastUpstreamDay.worldArray[x, z] += downstream;
+        }
+    }
+    
+
 }
