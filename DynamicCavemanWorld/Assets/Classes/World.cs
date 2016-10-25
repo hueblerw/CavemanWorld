@@ -58,6 +58,7 @@ public class World {
         tempMidpt.readCSVFile(filePathPrefix + "MidptNiceMapA.csv");
         variance.readCSVFile(filePathPrefix + "VarianceNiceMapA.csv");
         tempEquations.createEquations(highTemp, lowTemp, tempMidpt, variance);
+        // Calculate Years worth of temperature data
         CreateYearsTemps();
         Debug.Log("Temperature Models Complete!");
         // Rainfall info
@@ -275,6 +276,7 @@ public class World {
         River.surfacewater = new DailyLayer("Surface Water", 2);
     }
 
+    // Resets the Static River layers
     private void ResetLastDayLayer()
     {
         River.lastUpstreamDay = new SingleValueLayer("First Day of Next Year Upstream", "Yearly", 2);
