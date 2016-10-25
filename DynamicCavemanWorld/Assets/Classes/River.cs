@@ -99,11 +99,16 @@ public class River {
         float absorption = current * soilAbsorption;
         float evaportation = FindEvaporation(current, temp, humidity, weather);
         // Calculate the flow downstream
-        float downstream = current * flowrate;
+        float downstreamFlow = 0f;
+        if (this.downstream == null)
+        {
+            // NOTE: don't flow if there is no downstream
+            downstreamFlow = current * flowrate;
+        }
         // Pass downstream flow to your target's upstream for tommorrow
-        PassDownstreamToUpstream(day, downstream);
+        PassDownstreamToUpstream(day, downstreamFlow);
         // update today's levels
-        current = current - downstream - evaportation - absorption;
+        current = current - downstreamFlow - evaportation - absorption;
         yesterdaySurface = current;
         // Set the downstream layer correctly
         surfacewater.worldArray[day][x, z] = current;
@@ -195,7 +200,6 @@ public class River {
     // Pass the downstream value onto the upstream value for the future
     private void PassDownstreamToUpstream(int day, float downstreamValue)
     {
-        // Debug.Log(x + ", " + z + " - " + day);
         if (downstream != null)
         {
             int[] coor = downstream.getCoordinateArray(x, z);
