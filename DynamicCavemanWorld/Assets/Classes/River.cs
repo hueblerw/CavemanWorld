@@ -88,14 +88,11 @@ public class River {
 
     // Calculate the surface water
     // PRESENTLY WITHOUT SNOW OR MELT OFF!!!!!!!!!!!!
-    public void CalculateSurfaceWater(int day, float rainfall, int temp, float humidity)
+    public void CalculateSurfaceWater(int day, float rainfall, int temp, float humidity, System.Random randy)
     {
-        string weather;
-        System.Random randy = new System.Random();
-
-        // Inputs: Previous, rainfall, EACH upstream
-        // Determine if sunny cloudy or rainy
-        weather = DetermineWeather(rainfall, humidity, randy);
+        // Inputs: Previous, rainfall, EACH upstream ***SNOW MELT***
+        // Determine if sunny, cloudy, or rainy
+        string weather = DetermineWeather(rainfall, humidity, randy);
         // Calculate the positive incoming water flow
         float current = yesterdaySurface + rainfall + PreviousUpstream(day);
         // Losses: Downstream, Evaporation, SoilAbsorption, Other
