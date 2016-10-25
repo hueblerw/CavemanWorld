@@ -19,7 +19,7 @@ public class World {
     private SingleValueLayer tempMidpt;
     private SingleValueLayer variance;
     public EquationLayer tempEquations;
-    public DailyLayer temps;
+    public IntDayList[,] temps;
     // Rainfall Layers - (temporarily a very simple version with a single humidity number per tile)
     private HumidityLayer humidity;
     public DailyLayer rainfall;
@@ -42,7 +42,7 @@ public class World {
         this.tempMidpt = new SingleValueLayer("TempMidpoint", "Semi-static", 1);
         this.variance = new SingleValueLayer("Variance", "Semi-static", 1);
         this.tempEquations = new EquationLayer("TemperatureEquations", "Semi-static");
-        this.temps = new DailyLayer("Temperatures", 0);
+        this.temps = new IntDayList[WorldX, WorldZ];
         this.humidity = new HumidityLayer("HumidityLayer", 6, 1);
         string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
 
@@ -290,7 +290,7 @@ public class World {
                 {
                     // Account for snow fall ***LATER***
                     // Calculate the river flow
-                    riverStats.worldArray[x, z].CalculateSurfaceWater(day, rainfall.worldArray[day][x, z], temps.worldArray[day][x, z], humidity.worldArray[day][x, z], randy);
+                    riverStats.worldArray[x, z].CalculateSurfaceWater(day, rainfall.worldArray[day][x, z], temps[x, z].getDaysTemp(day), humidity.worldArray[day][x, z], randy);
                 }
             }
             // if day == 1 Reset the lastRiverUpstream layer

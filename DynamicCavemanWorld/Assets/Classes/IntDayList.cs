@@ -9,4 +9,9 @@ public class IntDayList {
         this.days = array;
     }
 
+    public int getDaysTemp(int day)
+    {
+        return this.days[day];
+    }
+
 }
