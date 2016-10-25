@@ -71,7 +71,7 @@ public class World {
         River.surfacewater = new DailyLayer("Surface Water", 2);
         River.lastUpstreamDay = new SingleValueLayer("First Day of Next Year Upstream", "Yearly", 2);
         // Calculate Years worth of river data
-
+        CalculateRiverYear();
         Debug.Log("River Models Complete!");
     }
     
@@ -254,6 +254,15 @@ public class World {
         }
     }
 
-    
+    // Calcuate a year's worth of river data
+    private void CalculateRiverYear()
+    {
+        // Reset the 2 main layers
+        // Iterate through each day
+            // Iterate through each square
+                // Account for snow fall ***LATER***
+                // Calculate the river flow
+                // if day == 1 Reset the lastRiverUpstream layer
+    }
 
 }
