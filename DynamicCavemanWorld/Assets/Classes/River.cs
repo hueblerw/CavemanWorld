@@ -8,6 +8,7 @@ public class River {
     // Static Variables
     public static DailyLayer upstreamToday;
     public static DailyLayer surfacewater;
+    public static SingleValueLayer lastUpstreamDay = new SingleValueLayer("First Day of Next Year Upstream", "Yearly", 2);
 
     // Variables
     public int x;
@@ -27,6 +28,7 @@ public class River {
         this.z = z;
         this.yesterdaySurface = 0f;
         this.upstream = new List<Direction>();
+        
         // Generate the Directions
         if(oceanPer != 1f)
         {
@@ -86,7 +88,7 @@ public class River {
 
     // Calculate the surface water
     // PRESENTLY WITHOUT SNOW OR MELT OFF!!!!!!!!!!!!
-    public float CalculateSurfaceWater(int day, float rainfall, int temp, float humidity)
+    public void CalculateSurfaceWater(int day, float rainfall, int temp, float humidity)
     {
         string weather;
         System.Random randy = new System.Random();
@@ -101,10 +103,9 @@ public class River {
         {
             weather = DetermineWeather(humidity, randy);
         }
-        // DOES THIS NEED TO CHANGE??
-        float current = yesterdaySurface + rainfall + upstreamToday.worldArray[PreviousDay(day)][x, z];
+        // Calculate the positive incoming water flow
+        float current = yesterdaySurface + rainfall + PreviousUpstream(day);
         // Losses: Downstream, Evaporation, SoilAbsorption, Other
-        
         float absorption = current * soilAbsorption;
         float evaportation = FindEvaporation(current, temp, humidity, weather);
         // Calculate the flow downstream
@@ -112,10 +113,15 @@ public class River {
         // Pass downstream flow to your target's upstream for tommorrow
         int[] coor = this.downstream.getCoordinateArray(x, z);
         upstreamToday.worldArray[day][coor[0], coor[1]] += downstream;
+        if (day == 119)
+        {
+            lastUpstreamDay.worldArray[x, z] += downstream;
+        }
         // update today's levels
         current = current - downstream - evaportation - absorption;
         yesterdaySurface = current;
-        return current;
+        // Set the downstream layer correctly
+        surfacewater.worldArray[day][x, z] = current;
     }
 
     
@@ -156,15 +162,16 @@ public class River {
     
 
     // Private Method for getting the previous day number
-    private int PreviousDay(int day)
+    private float PreviousUpstream(int day)
     {
-        if(day == 0)
+        
+        if (day == 0)
         {
-            return 119;
+            return lastUpstreamDay.worldArray[x, z];
         }
         else
         {
-            return day - 1;
+            return upstreamToday.worldArray[day - 1][x, z];
         }
     }
 
