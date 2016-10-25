@@ -13,10 +13,7 @@ public class TimingTests {
     public void NewYearTime()
     {
         World testWorld = new World(50, 50);
-        Stopwatch watch = new Stopwatch();
-        watch.Start();
-            testWorld.NewYear();
-        watch.Stop();
-        Debug.Print(watch.Elapsed.TotalSeconds.ToString());
+        testWorld.NewYear();
     }
+
 }
