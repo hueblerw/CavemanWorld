@@ -149,9 +149,9 @@ public class RainfallTests
         River testRiver = testWorld.riverStats.worldArray[x, z];
 
         // Downstream shit if applicable
-        if (testWorld.oceanPer.worldArray[x, z] != 1f)
+        if (testWorld.oceanPer.worldArray[x, z] != 1f && testRiver.downstream != null)
         {
-            // Debug.Log("Downstream: " + testRiver.downstream.direction);
+            Debug.Log("Downstream: " + testRiver.downstream.direction);
             Assert.GreaterOrEqual(testRiver.downstream.getCoordinateArray(x, z)[0], x - 1);
             Assert.LessOrEqual(testRiver.downstream.getCoordinateArray(x, z)[0], x + 1);
             Assert.GreaterOrEqual(testRiver.downstream.getCoordinateArray(x, z)[1], z - 1);
@@ -169,7 +169,11 @@ public class RainfallTests
         }
 
         Debug.Log("Square: (" + x + ", " + z + ")");
-        Debug.Log("Downstream: " + testRiver.downstream.direction);
+        if(testRiver.downstream != null)
+        {
+            Debug.Log("Downstream: " + testRiver.downstream.direction);
+        }
+        
         // Ok do the static variables come out as plausible?
         for (int day = 0; day < 120; day++)
         {
