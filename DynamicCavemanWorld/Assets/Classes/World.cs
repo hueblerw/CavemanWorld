@@ -69,6 +69,7 @@ public class World {
         PopulateRivers();
         River.upstreamToday = new DailyLayer("Upstream Waterflow", 2);
         River.surfacewater = new DailyLayer("Surface Water", 2);
+        River.lastUpstreamDay = new SingleValueLayer("First Day of Next Year Upstream", "Yearly", 2);
         // Calculate Years worth of river data
 
         Debug.Log("River Models Complete!");

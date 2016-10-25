@@ -8,7 +8,7 @@ public class River {
     // Static Variables
     public static DailyLayer upstreamToday;
     public static DailyLayer surfacewater;
-    public static SingleValueLayer lastUpstreamDay = new SingleValueLayer("First Day of Next Year Upstream", "Yearly", 2);
+    public static SingleValueLayer lastUpstreamDay;
 
     // Variables
     public int x;
