@@ -56,6 +56,7 @@ public class World {
         tempMidpt.readCSVFile(filePathPrefix + "MidptNiceMapA.csv");
         variance.readCSVFile(filePathPrefix + "VarianceNiceMapA.csv");
         tempEquations.createEquations(highTemp, lowTemp, tempMidpt, variance);
+        // HEY I NEVER MADE A TEMPERATURE LAYER???
         Debug.Log("Temperature Models Complete!");
         // Rainfall info
         humidity.readCSVFiles(filePathPrefix);
@@ -268,12 +269,29 @@ public class World {
     // Calcuate a year's worth of river data
     private void CalculateRiverYear()
     {
+        // Initialize a random number generator
+        System.Random randy = new System.Random();
         // Reset the 2 main layers
-        // Iterate through each day
-            // Iterate through each square
-                // Account for snow fall ***LATER***
-                // Calculate the river flow
-                // if day == 1 Reset the lastRiverUpstream layer
+        ResetStaticRiverLayers();
+        // Iterate
+        for (int day = 0; day < 120; day++)
+        {
+            for (int x = 0; x < 120; x++)
+            {
+                for (int z = 0; z < 120; z++)
+                {
+                    // Account for snow fall ***LATER***
+                    // Calculate the river flow
+                    riverStats.worldArray[x, z].CalculateSurfaceWater(day, rainfall.worldArray[day][x, z], temps.worldArray[day][x, z], humidity.worldArray[day][x, z], randy);
+                }
+            }
+            // if day == 1 Reset the lastRiverUpstream layer
+            if (day == 1)
+            {
+                ResetStaticRiverLayers();
+            }
+        }
+                
     }
 
 }
