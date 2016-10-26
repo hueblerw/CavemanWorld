@@ -38,7 +38,9 @@ public class TileMouseOver : MonoBehaviour {
             int[] coor = ConvertToTileCoordinates(hitInfo.point);
             // Highlight
             // Update the Tile Info
-            Debug.Log(coor[0] + ", " + coor[1] + ", " + coor[2]);
+            string info = MainController.TheWorld.getTileInfo(MainController.day, coor[0], coor[2]);
+            string coorInfo = "(" + coor[0] + ", " + coor[1] + ", " + coor[2] + "):";
+            TileInfo.text = "Tile " + coorInfo + "\n" + info;
         }
         else
         {
@@ -67,6 +69,7 @@ public class TileMouseOver : MonoBehaviour {
         return null;
     }
 
+    // Convert hitInfo into a tiles coordinates
     private int[] ConvertToTileCoordinates(Vector3 point)
     {
         int[] coor = new int[3];

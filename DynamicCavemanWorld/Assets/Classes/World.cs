@@ -102,6 +102,16 @@ public class World {
         Debug.Log("Generated a new year!");
     }
 
+    public string getTileInfo(int day, int x, int z)
+    {
+        string info = "Elevation: " + elevation.worldArray[x, z];
+        info += "\n" + "Temp: " + temps[x, z].getDaysTemp(day);
+        info += "\n" + "Rain: " + rainfall.worldArray[day][x, z];
+        info += "\n" + "River Direction: " + riverStats.worldArray[x, z].downstream.direction;
+        info += "\n" + "River Level: " + River.surfacewater.worldArray[day][x, z];
+        return info;
+    }
+
     // Private methods!
     // Calculate a Years Temperatures
     private void CreateYearsTemps()
