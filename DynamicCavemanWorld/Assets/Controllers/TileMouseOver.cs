@@ -9,10 +9,11 @@ public class TileMouseOver : MonoBehaviour {
 
     void Start()
     {
+        // Tile Info
         TileInfo = findTextWithName("TileInfoDisplay");
-        DateInfo = findTextWithName("DateDisplay");
         TileInfo.text = "Tile Info:";
-        DateInfo.text = "Day " + (MainController.day + 1) + ", Year " + MainController.year;
+        // Date Info
+        DateInfo = findTextWithName("DateDisplay");
         Debug.Log("Mouse Over Initialized!");
     }
 
@@ -51,5 +52,10 @@ public class TileMouseOver : MonoBehaviour {
             }
         }
         return null;
+    }
+
+    public void UpdateTheDate()
+    {
+        DateInfo.text = "Day " + (MainController.day + 1) + ", Year " + MainController.year;
     }
 }
