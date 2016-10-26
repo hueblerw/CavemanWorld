@@ -7,10 +7,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(MeshRenderer))]
 public class MainController : MonoBehaviour {
 
-    public Text TileInfo;
-    public Text TimeInfo;
-    public int year;
-    public int day;
+    public static int year;
+    public static int day;
 	// Use this for initialization
 	void Start () {
         // Generate the model files eventually
@@ -40,31 +38,5 @@ public class MainController : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-    void Update () {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitInfo;
-
-        if (GetComponent<Collider>().Raycast(ray, out hitInfo, Mathf.Infinity))
-        {
-            // UpdateTileInfo();
-            // Debug.Log("So I found the world!");
-        }
-        else
-        {
-            // Great!
-        }
-    }
-
-    // Mouse overlay methods
-    private void InitTheMouse(int day, int year)
-    {
-        TileInfo.text = "Square Info:";
-        TimeInfo.text = "Year: " + year + "        Day: " + day;
-    }
-
-    private void UpdateTileInfo()
-    {
-        TileInfo.text = "OMG A MOUSE!!!";
-    }
 
 }

@@ -5,24 +5,51 @@ using System.Collections;
 public class TileMouseOver : MonoBehaviour {
 
     public Text TileInfo;
-    public Text TimeInfo;
+    public Text DateInfo;
 
-	// Update is called once per frame
-    public TileMouseOver(int day, int year)
+    void Start()
     {
-        TileInfo.text = "Square Info:";
-        TimeInfo.text = "Year: " + year + "        Day: " + day;
+        TileInfo = findTextWithName("TileInfoDisplay");
+        DateInfo = findTextWithName("DateDisplay");
+        TileInfo.text = "Tile Info:";
+        DateInfo.text = "Day " + (MainController.day + 1) + ", Year " + MainController.year;
+        Debug.Log("Mouse Over Initialized!");
     }
 
-    public void UpdateTileInfo()
+    // Update is called once per frame
+    void Update()
     {
-        TileInfo.text = "OMG A MOUSE!!!"; 
-        // Somehow grab the information from the World object to display here.
-            // elevation
-            // tempToday
-            // rainToday
-            // surfaceWaterToday
-            // hillPer
-            // oceanPer
+        UpdateTileInfo();
+    }
+
+    private void UpdateTileInfo()
+    {
+        // TileInfo.text = "OMG A MOUSE!!!";
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitInfo;
+
+        if (GetComponent<Collider>().Raycast(ray, out hitInfo, Mathf.Infinity))
+        {
+            GetComponent<Renderer>().material.color = Color.red;
+            // Debug.Log(hitInfo.point);
+        }
+        else
+        {
+            GetComponent<Renderer>().material.color = Color.white;
+        }
+    }
+
+    private Text findTextWithName(string name)
+    {
+        GameObject canvas = GameObject.Find("Canvas");
+        Text[] texts = canvas.GetComponentsInChildren<Text>();
+        for (int i = 0; i < texts.Length; i++)
+        {
+            if (texts[i].name == name)
+            {
+                return texts[i];
+            }
+        }
+        return null;
     }
 }
