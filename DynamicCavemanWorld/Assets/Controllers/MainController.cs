@@ -9,6 +9,7 @@ public class MainController : MonoBehaviour {
 
     public static int year;
     public static int day;
+    public TileMouseOver mouseController;
 	// Use this for initialization
 	void Start () {
         // Generate the model files eventually
@@ -31,10 +32,10 @@ public class MainController : MonoBehaviour {
         meshRenderer.sharedMaterial.mainTexture = ElevationView.BuildTexture(TheWorld);
         Debug.Log("Elevation View Made!");
         // Set the time
-        day = 1;
+        day = 0;
         year = 1;
         // Initialize the Game interaction Controllers
-        // InitTheMouse(day, year);
+        mouseController = new TileMouseOver();
     }
 	
 	// Update is called once per frame

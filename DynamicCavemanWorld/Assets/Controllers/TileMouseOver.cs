@@ -7,13 +7,14 @@ public class TileMouseOver : MonoBehaviour {
     public Text TileInfo;
     public Text DateInfo;
 
-    void Start()
+    public TileMouseOver()
     {
         // Tile Info
         TileInfo = findTextWithName("TileInfoDisplay");
         TileInfo.text = "Tile Info:";
         // Date Info
         DateInfo = findTextWithName("DateDisplay");
+        UpdateTheDate();
         Debug.Log("Mouse Over Initialized!");
     }
 
