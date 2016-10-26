@@ -53,6 +53,7 @@ public class MainController : MonoBehaviour {
         {
             day = 0;
             year += 1;
+            TheWorld.NewYear();
         }
         else
         {
