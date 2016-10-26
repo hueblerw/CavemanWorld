@@ -10,13 +10,15 @@ public class MainController : MonoBehaviour {
     public static int year;
     public static int day;
     public TileMouseOver mouseController;
+    public World TheWorld;
+
 	// Use this for initialization
 	void Start () {
         // Generate the model files eventually
         
         // Construct the model from text files
         Debug.Log("Literally, Hello World!");
-        World TheWorld = new World(50, 50);
+        TheWorld = new World(50, 50);
         Debug.Log("World Model Made!");
 
         // Construct the elevation view
