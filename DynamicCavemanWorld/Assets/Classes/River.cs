@@ -71,7 +71,6 @@ public class River {
             string choice = options[randy.Next(0, options.Count)];
             downstream = new Direction(choice);
             type = "river";
-            // Update upstream
         }
     }
 

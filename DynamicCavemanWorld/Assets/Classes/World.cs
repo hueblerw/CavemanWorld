@@ -320,9 +320,12 @@ public class World {
             {
                 for (int z = 0; z < WorldZ; z++)
                 {
-                    // Account for snow fall ***LATER***
-                    // Calculate the river flow
-                    riverStats.worldArray[x, z].CalculateSurfaceWater(day, rainfall.worldArray[day][x, z], temps[x, z].getDaysTemp(day), humidity.CalculateHumidityFromBase(day, x, z), randy);
+                    if(oceanPer.worldArray[x, z] != 1f)
+                    {
+                        // Account for snow fall ***LATER***
+                        // Calculate the river flow
+                        riverStats.worldArray[x, z].CalculateSurfaceWater(day, rainfall.worldArray[day][x, z], temps[x, z].getDaysTemp(day), humidity.CalculateHumidityFromBase(day, x, z), randy);
+                    } 
                 }
             }
             // if day == 1 Reset the lastRiverUpstream layer

@@ -46,6 +46,7 @@ public class MainController : MonoBehaviour {
         mouseController.UpdateTileInfo();
     }
 
+    // Moves us to the next day
     public void NextDay()
     {
         if (day == 119)
