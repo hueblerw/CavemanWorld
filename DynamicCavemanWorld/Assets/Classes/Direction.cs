@@ -47,4 +47,19 @@ public class Direction {
 
         return coor;
     }
+
+    // Overwrite the ToString method for the Direction object
+    public override string ToString()
+    {
+        if(this != null)
+        {
+            return direction;
+        }
+        else
+        {
+            return "none";
+        }
+    }
+   
+
 }

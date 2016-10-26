@@ -107,7 +107,7 @@ public class World {
         string info = "Elevation: " + elevation.worldArray[x, z];
         info += "\n" + "Temp: " + temps[x, z].getDaysTemp(day);
         info += "\n" + "Rain: " + rainfall.worldArray[day][x, z];
-        info += "\n" + "River Direction: " + riverStats.worldArray[x, z].downstream.direction;
+        info += "\n" + "River Direction: " + riverStats.worldArray[x, z].downstream;
         info += "\n" + "River Level: " + River.surfacewater.worldArray[day][x, z];
         return info;
     }
