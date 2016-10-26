@@ -105,6 +105,8 @@ public class World {
     public string getTileInfo(int day, int x, int z)
     {
         string info = "Elevation: " + elevation.worldArray[x, z];
+        info += "\n" + "Ocean %: " + oceanPer.worldArray[x, z] * 100f + "%";
+        info += "\n" + "Hill %: " + hillPer.worldArray[x, z] * 100f + "%";
         info += "\n" + "Temp: " + temps[x, z].getDaysTemp(day);
         info += "\n" + "Rain: " + rainfall.worldArray[day][x, z];
         info += "\n" + "River Direction: " + riverStats.worldArray[x, z].downstream;
@@ -162,7 +164,7 @@ public class World {
     private SingleValueLayer CalculateOceanPercentage()
     {
         // Initialize a new layer
-        SingleValueLayer hillPer = new SingleValueLayer("Ocean Percentage", "Semi-static", 4);
+        SingleValueLayer oceanPer = new SingleValueLayer("Ocean Percentage", "Semi-static", 4);
         // Find the vertexes, sum th abs of all negative values and divide by sum of abs of all values.
         float[,] vertexArray = elevationVertices.worldArray;
         float[] corners;
@@ -176,11 +178,11 @@ public class World {
                 corners = Support.CellsAroundVertex(x + 1, z + 1, WorldX, WorldZ, vertexArray);
                 sumOfNegatives = FindAbsOfNegatives(corners);
                 sumOfAll = FindAbsSum(corners);
-                hillPer.worldArray[x, z] = sumOfNegatives / sumOfAll;
+                oceanPer.worldArray[x, z] = sumOfNegatives / sumOfAll;
             }
         }
 
-        return hillPer;
+        return oceanPer;
     }
 
     // Calculate the NetDifference around a cell
@@ -221,7 +223,7 @@ public class World {
         float sum = 0f;
         foreach (float ele in corners)
         {
-            if (ele > 0)
+            if (ele < 0)
             {
                 sum += ele;
             }
