@@ -46,4 +46,18 @@ public class MainController : MonoBehaviour {
         mouseController.UpdateTileInfo();
     }
 
+    public void NextDay()
+    {
+        if (day == 119)
+        {
+            day = 0;
+            year += 1;
+        }
+        else
+        {
+            day += 1;
+        }
+        mouseController.UpdateTheDate();
+    }
+
 }

@@ -74,7 +74,6 @@
     <Compile Include="Assets\Classes\SingleValueLayer.cs" />
     <Compile Include="Assets\Classes\TempEquation.cs" />
     <Compile Include="Assets\Classes\World.cs" />
-    <Compile Include="Assets\Controllers\ButtonControllers\NextDayButton.cs" />
     <Compile Include="Assets\Controllers\MainController.cs" />
     <Compile Include="Assets\Controllers\TileMouseOver.cs" />
     <Compile Include="Assets\Resources\SupportingClasses\LightweightMatrixCSharp.cs" />
