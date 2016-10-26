@@ -35,9 +35,13 @@ public class MainController : MonoBehaviour {
         day = 0;
         year = 1;
         // Initialize the Game interaction Controllers
-        mouseController = new TileMouseOver();
+        mouseController = new TileMouseOver(meshCollider, meshRenderer);
     }
 	
 	// Update is called once per frame
+    void Update()
+    {
+        mouseController.UpdateTileInfo();
+    }
 
 }

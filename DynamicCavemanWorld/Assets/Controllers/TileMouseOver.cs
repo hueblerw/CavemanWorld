@@ -6,8 +6,10 @@ public class TileMouseOver : MonoBehaviour {
 
     public Text TileInfo;
     public Text DateInfo;
+    public Collider mapCollider;
+    public Renderer mapRenderer;
 
-    public TileMouseOver()
+    public TileMouseOver(Collider collider, Renderer renderer)
     {
         // Tile Info
         TileInfo = findTextWithName("TileInfoDisplay");
@@ -16,31 +18,38 @@ public class TileMouseOver : MonoBehaviour {
         DateInfo = findTextWithName("DateDisplay");
         UpdateTheDate();
         Debug.Log("Mouse Over Initialized!");
+        // Collider & Renderer
+        mapCollider = collider;
+        mapRenderer = renderer;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        UpdateTileInfo();
-    }
-
-    private void UpdateTileInfo()
+    // Update Tile Info on MouseOver
+    public void UpdateTileInfo()
     {
         // TileInfo.text = "OMG A MOUSE!!!";
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
 
-        if (GetComponent<Collider>().Raycast(ray, out hitInfo, Mathf.Infinity))
+        if (mapCollider.Raycast(ray, out hitInfo, Mathf.Infinity))
         {
-            GetComponent<Renderer>().material.color = Color.red;
+            // Highlight
+            // Update the Tile Info
             // Debug.Log(hitInfo.point);
         }
         else
         {
-            GetComponent<Renderer>().material.color = Color.white;
+            // Un-highlight
         }
     }
 
+    // Update the Display of the Date
+    public void UpdateTheDate()
+    {
+        DateInfo.text = "Day " + (MainController.day + 1) + ", Year " + MainController.year;
+    }
+
+    // Private Methods
     private Text findTextWithName(string name)
     {
         GameObject canvas = GameObject.Find("Canvas");
@@ -55,8 +64,5 @@ public class TileMouseOver : MonoBehaviour {
         return null;
     }
 
-    public void UpdateTheDate()
-    {
-        DateInfo.text = "Day " + (MainController.day + 1) + ", Year " + MainController.year;
-    }
+    
 }
