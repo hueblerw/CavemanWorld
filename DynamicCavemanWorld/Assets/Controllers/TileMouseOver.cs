@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System;
 
 public class TileMouseOver : MonoBehaviour {
 
@@ -33,9 +34,11 @@ public class TileMouseOver : MonoBehaviour {
 
         if (mapCollider.Raycast(ray, out hitInfo, Mathf.Infinity))
         {
+            // Get the Tile Coordinates
+            int[] coor = ConvertToTileCoordinates(hitInfo.point);
             // Highlight
             // Update the Tile Info
-            // Debug.Log(hitInfo.point);
+            Debug.Log(coor[0] + ", " + coor[1] + ", " + coor[2]);
         }
         else
         {
@@ -64,5 +67,13 @@ public class TileMouseOver : MonoBehaviour {
         return null;
     }
 
+    private int[] ConvertToTileCoordinates(Vector3 point)
+    {
+        int[] coor = new int[3];
+        coor[0] = (int) Math.Truncate(point.x / 5.0);
+        coor[1] = (int) Math.Truncate(point.y / 1.0);
+        coor[2] = (int) Math.Truncate(point.z / 5.0);
+        return coor;
+    }
     
 }

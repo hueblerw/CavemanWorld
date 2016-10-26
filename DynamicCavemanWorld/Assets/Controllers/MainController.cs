@@ -10,7 +10,7 @@ public class MainController : MonoBehaviour {
     public static int year;
     public static int day;
     public TileMouseOver mouseController;
-    public World TheWorld;
+    public static World TheWorld;
 
 	// Use this for initialization
 	void Start () {
