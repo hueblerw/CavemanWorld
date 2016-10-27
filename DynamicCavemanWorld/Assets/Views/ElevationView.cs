@@ -5,6 +5,9 @@ using System;
 // Based on code by quill18 in his video series linked to here: https://www.youtube.com/watch?v=bpB4BApnKhM
 public class ElevationView : MonoBehaviour {
 
+    public static float tileSize = 20.0f;
+    public static float heightScale = 3.0f;
+
     public static Mesh BuildMesh(SingleValueLayer elevationVerticesLayer)
     {
         // Set some constants
@@ -13,8 +16,6 @@ public class ElevationView : MonoBehaviour {
         int numOfTilesZ = SingleValueLayer.WORLDZ;
         int numOfTiles = numOfTilesX * numOfTilesZ;
         int numVertices = (numOfTilesX + 1) * (numOfTilesZ + 1);
-        float tileSize = 5.0f;
-        float heightScale = 1.0f;
         
         // Convert to mesh data
         Vector3[] vertices = new Vector3[numVertices];

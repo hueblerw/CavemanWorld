@@ -73,9 +73,10 @@ public class TileMouseOver : MonoBehaviour {
     private int[] ConvertToTileCoordinates(Vector3 point)
     {
         int[] coor = new int[3];
-        coor[0] = (int) Math.Truncate(point.x / 5.0);
-        coor[1] = (int) Math.Truncate(point.y / 1.0);
-        coor[2] = (int) Math.Truncate(point.z / 5.0);
+        // Debug.Log(point.x + ", " + point.y + ", " + point.z);
+        coor[0] = (int) Math.Truncate(point.x / ElevationView.tileSize);
+        coor[1] = (int) Math.Truncate(point.y / ElevationView.heightScale);
+        coor[2] = (int) Math.Truncate(point.z / ElevationView.tileSize);
         return coor;
     }
     

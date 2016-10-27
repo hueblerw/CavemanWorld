@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 public class RainfallTests
 {
@@ -156,12 +157,23 @@ public class RainfallTests
             Assert.LessOrEqual(testRiver.downstream.getCoordinateArray(x, z)[0], x + 1);
             Assert.GreaterOrEqual(testRiver.downstream.getCoordinateArray(x, z)[1], z - 1);
             Assert.LessOrEqual(testRiver.downstream.getCoordinateArray(x, z)[1], z + 1);
-
+            // Does the river flow uphill?
+            Debug.Log("My Elevation: " + testWorld.elevation.worldArray[x, z]);
+            Debug.Log("Elevation Above: " + testWorld.elevation.worldArray[x, z - 1]);
+            Debug.Log("Elevation Below: " + testWorld.elevation.worldArray[x, z + 1]);
+            Debug.Log("Elevation Right: " + testWorld.elevation.worldArray[x + 1, z]);
+            Debug.Log("Elevation Left: " + testWorld.elevation.worldArray[x - 1, z]);
+            List<string> possible = Support.getDirectionAsStringBelow(false, x, z, 50, 50, testWorld.elevation.worldArray[x, z], testWorld.elevation.worldArray);
+            foreach (string dir in possible)
+            {
+                Debug.Log("Possible: " + dir);
+            }
         }
         // Upstream shit
         Debug.Log("Upstream: " + testRiver.printUpstream());
         foreach (Direction cell in testRiver.upstream)
         {
+            // Do the coordinates make sense?
             Assert.GreaterOrEqual(cell.getCoordinateArray(x, z)[0], x - 1);
             Assert.LessOrEqual(cell.getCoordinateArray(x, z)[0], x + 1);
             Assert.GreaterOrEqual(cell.getCoordinateArray(x, z)[1], z - 1);

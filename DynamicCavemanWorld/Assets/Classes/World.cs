@@ -261,7 +261,7 @@ public class World {
         {
             for (int z = 0; z < WorldZ; z++)
             {
-                if (oceanPer.worldArray[x, z] < 1f)
+                if (elevation.worldArray[x, z] >= 0f)
                 {
                     riverStats.worldArray[x, z].ChooseDownstream(elevation, randy);
                     UpdateUpstream(x, z, riverStats.worldArray[x, z].downstream);
