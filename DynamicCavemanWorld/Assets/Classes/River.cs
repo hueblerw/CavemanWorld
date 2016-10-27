@@ -45,14 +45,15 @@ public class River {
     private void setRates(float hillPer, float oceanPer)
     {
         System.Random randy = new System.Random();
-        flowrate = (float) Math.Round((1f - hillPer) + (float) randy.NextDouble() + .1f, 2);
         if (oceanPer == 1f)
         {
-            soilAbsorption = 0f;
+            flowrate = 0f;
+            soilAbsorption = 1f;
         }
         else
         {
-            soilAbsorption = (float)((randy.NextDouble() * 1.5 + .25) * (1.0 - oceanPer));
+            flowrate = (float) Math.Round((((hillPer + randy.NextDouble() + .1) / (1.0 - oceanPer)) / 100.0), 4);
+            soilAbsorption = (float) ((randy.NextDouble() + .2) * (1.0 - oceanPer) * (1.0 - hillPer));
         }
     }
 
@@ -95,7 +96,7 @@ public class River {
         // Calculate the positive incoming water flow
         float current = yesterdaySurface + rainfall + PreviousUpstream(day);
         // Losses: Downstream, Evaporation, SoilAbsorption, Other
-        float absorption = current * soilAbsorption;
+        float absorption = (float) ChooseMinOf(current, soilAbsorption);
         float evaportation = FindEvaporation(current, temp, humidity, weather);
         // Calculate the flow downstream
         float downstreamFlow = 0f;
@@ -222,6 +223,24 @@ public class River {
         {
             return b;
         }
+    }
+
+    private double ChooseMinOf(double a, double b)
+    {
+        if (a < b)
+        {
+            return a;
+        }
+        else
+        {
+            return b;
+        }
+    }
+
+    // Testing method for returning private data as a string
+    public string getPrivateVariables()
+    {
+        return flowrate * 100f + "% - " + soilAbsorption;
     }
     
 }
