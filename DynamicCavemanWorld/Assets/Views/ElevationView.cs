@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 // Based on code by quill18 in his video series linked to here: https://www.youtube.com/watch?v=bpB4BApnKhM
 public class ElevationView : MonoBehaviour {
@@ -68,8 +69,13 @@ public class ElevationView : MonoBehaviour {
         // Initialize some variables
         int worldx = world.WorldX;
         int worldz = world.WorldZ;
-        int pixelsPerTile = 1;
+        int pixelsPerTile = 10;
+        int adjustedX;
+        int adjustedZ;
         float[,] elevations = world.elevation.worldArray;
+        float greenTint;
+        float redTint;
+        float blueTint;
         Color color;
 
         // Create a texture object
@@ -78,15 +84,14 @@ public class ElevationView : MonoBehaviour {
         {
             for (int z = 0; z < worldz * pixelsPerTile; z++)
             {
-                float greenTint;
-                float redTint;
-                float blueTint;
+                adjustedX = (int)Math.Truncate((double) x / pixelsPerTile);
+                adjustedZ = (int)Math.Truncate((double) z / pixelsPerTile);
                 // If underwater make it a shade of blue
-                if (elevations[x, z] < 0.0f)
+                if (elevations[adjustedX, adjustedZ] < 0.0f)
                 {
                     blueTint = 1f;
                     redTint = 0f;
-                    greenTint = (100f + elevations[x, z] * 10f) / 253f;
+                    greenTint = (100f + elevations[adjustedX, adjustedZ] * 10f) / 253f;
                     if (greenTint < 0)
                     {
                         greenTint = 0;
@@ -95,19 +100,19 @@ public class ElevationView : MonoBehaviour {
                 // else make it a shade of green/brown
                 else 
                 {
-                    if(elevations[x, z] < 20.0f)
+                    if(elevations[adjustedX, adjustedZ] < 20.0f)
                     {
-                        if (elevations[x, z] < 10f)
+                        if (elevations[adjustedX, adjustedZ] < 10f)
                         {
                             blueTint = 0f;
                             redTint = 0f;
-                            greenTint = (53f + (10f - elevations[x, z]) * 20f) / 253f;
+                            greenTint = (53f + (10f - elevations[adjustedX, adjustedZ]) * 20f) / 253f;
                         }
                         else
                         {
                             blueTint = 0f;
-                            greenTint = (103f - elevations[x, z] * 5f) / 253f;
-                            redTint = ((20f - elevations[x, z]) * 5f) / 253f;
+                            greenTint = (103f - elevations[adjustedX, adjustedZ] * 5f) / 253f;
+                            redTint = ((20f - elevations[adjustedX, adjustedZ]) * 5f) / 253f;
                         }
                     }
                     else
