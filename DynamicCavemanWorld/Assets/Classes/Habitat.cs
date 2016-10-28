@@ -13,7 +13,7 @@ public class Habitat {
     // Constructor
     public Habitat()
     {
-
+        typePercents = new float[13];
     }
 
     // Habitat Yearly Update Method
@@ -90,6 +90,37 @@ public class Habitat {
     // Determine the Index of the habitat the weather favored this year
     private int DetermineHabitatFavored(string wetness, string temp)
     {
+        int index = 0;
+        // account for temp
+        switch (temp)
+        {
+            case "artic":
+                index = 0;
+                break;
+            case "temperate":
+                index = 4;
+                break;
+            case "tropical":
+                index = 8;
+                break;
+        }
+        // account for wetness
+        switch (wetness)
+        {
+            case "dry":
+                index += 1;
+                break;
+            case "moderate":
+                index += 2;
+                break;
+            case "wet":
+                index += 3;
+                break;
+            case "very wet":
+                index += 4;
+                break;
+        }
 
+        return index;
     }
 }
