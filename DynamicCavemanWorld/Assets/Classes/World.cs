@@ -299,6 +299,7 @@ public class World {
     // Resets the Static River layers
     private void ResetStaticRiverLayers()
     {
+        Debug.Log(riverStats.worldArray[1, 11].yesterdaySurface);
         River.upstreamToday = new DailyLayer("Upstream Waterflow", 2);
         River.surfacewater = new DailyLayer("Surface Water", 2);
     }
@@ -334,7 +335,7 @@ public class World {
             // if day == 1 Reset the lastRiverUpstream layer
             if (day == 1)
             {
-                ResetStaticRiverLayers();
+                ResetLastDayLayer();
             }
         }
                 

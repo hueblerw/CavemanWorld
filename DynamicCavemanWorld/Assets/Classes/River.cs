@@ -18,7 +18,7 @@ public class River {
     public List<Direction> upstream;
     private float flowrate;
     private float soilAbsorption;
-    private float yesterdaySurface;
+    public float yesterdaySurface;
 
     // Constructor 
     public River(int x, int z, float hillPer, float oceanPer)
