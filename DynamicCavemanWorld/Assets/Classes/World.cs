@@ -61,13 +61,13 @@ public class World {
         variance.readCSVFile(filePathPrefix + "VarianceNiceMapA.csv");
         tempEquations.createEquations(highTemp, lowTemp, tempMidpt, variance);
         // Calculate Years worth of temperature data
-        CreateYearsTemps();
+        // CreateYearsTemps();
         Debug.Log("Temperature Models Complete!");
         // Rainfall info
         humidity.readCSVFiles(filePathPrefix);
         rainfall = humidity.GenerateWorldsYearOfRain();
         rainfallTotal = new SingleValueLayer("Yearly Rain Total", "Yearly", 1);
-        rainfallTotal.worldArray = rainfall.findYearTotalArray();
+        // rainfallTotal.worldArray = rainfall.findYearTotalArray();
         Debug.Log("Rainfall Models Complete!");
         // Rivers info
         // Initialize Water Stats
@@ -77,7 +77,10 @@ public class World {
         ResetStaticRiverLayers();
         ResetLastDayLayer();
         // Calculate Habitat Layer - ** for that we need 20 years of time run forward at initialization **
-        CalculateRiverYear();
+        
+
+        // When done initializing the habitats calculate a new year
+        NewYear();
 
         
     }
@@ -342,6 +345,38 @@ public class World {
             }
         }
                 
+    }
+
+
+    // HABITAT INITIALIZATION COUNTERS
+    private void HabitatInitialization()
+    {
+        Habitat temporary = new Habitat();
+        int[,][] habitatTypeCounters = new int[WorldX, WorldZ][];
+        int index;
+        string wetness;
+        string temperateness;
+
+        // Do this for twenty years
+        for (int year = 0; year < 20; year++)
+        {
+            // Generate a new year
+            NewYear();
+            // Create arrays with the relevant data for calcluating the habitats
+            for (int x = 0; x < WorldX; x++)
+            {
+                for (int z = 0; z < WorldZ; z++)
+                {
+                    // Get the index of the expected habitat for each tile that year
+                    wetness = temporary.DetermineWetness(rainfallTotal.worldArray[x, z] + River.AverageRiverLevel(x, z));
+                    temperateness = temporary.DetermineTemp(temps[x, z].Count70DegreeDays(), temps[x, z].Count32DegreeDays());
+                    index = temporary.DetermineHabitatFavored(wetness, temperateness);
+                    // Add a counter for that habitat to that tiles counter array
+                    habitatTypeCounters[x, z][index] += 1;
+                }
+            } 
+        }
+           
     }
 
 }
