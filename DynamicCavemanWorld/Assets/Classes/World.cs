@@ -77,12 +77,10 @@ public class World {
         ResetStaticRiverLayers();
         ResetLastDayLayer();
         // Calculate Habitat Layer - ** for that we need 20 years of time run forward at initialization **
-        
-
+        HabitatInitialization();
         // When done initializing the habitats calculate a new year
         NewYear();
-
-        
+        Debug.Log("Habitats Created!");
     }
 
     // Converts the model's elevation number to a map of vertices which can be used by the view
@@ -351,6 +349,15 @@ public class World {
     // HABITAT INITIALIZATION COUNTERS
     private void HabitatInitialization()
     {
+        // Create the habitat type counters by running twenty years of habitats and seeing the results
+        int[,][] habitatTypeCounters = CreateInitHabCounters();
+        // Initialize the HabitatLayer
+        habitats = new HabitatLayer(habitatTypeCounters);
+    }
+
+    // Create the habitat initialization counters
+    private int[,][] CreateInitHabCounters()
+    {
         Habitat temporary = new Habitat();
         int[,][] habitatTypeCounters = new int[WorldX, WorldZ][];
         int index;
@@ -374,9 +381,10 @@ public class World {
                     // Add a counter for that habitat to that tiles counter array
                     habitatTypeCounters[x, z][index] += 1;
                 }
-            } 
+            }
         }
-           
+
+        return habitatTypeCounters;
     }
 
 }
