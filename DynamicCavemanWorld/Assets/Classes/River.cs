@@ -18,7 +18,7 @@ public class River {
     public List<Direction> upstream;
     private float flowrate;
     private float soilAbsorption;
-    public float yesterdaySurface;
+    private float yesterdaySurface;
 
     // Constructor 
     public River(int x, int z, float hillPer, float oceanPer)
@@ -74,6 +74,31 @@ public class River {
             downstream = new Direction(choice);
             type = "river";
         }
+    }
+
+    // return the average surface water for a tile
+    public static float AverageRiverLevel(int x, int z)
+    {
+        float sum = 0;
+        for (int day = 0; day < 120; day++)
+        {
+            sum += surfacewater.worldArray[day][x, z];
+        }
+        return (sum / 120f);
+    }
+
+    // return the number of days the river is empty in a year
+    public static int DaysEmpty(int x, int z)
+    {
+        int count = 0;
+        for (int day = 0; day < 120; day++)
+        {
+            if(surfacewater.worldArray[day][x, z] == 0)
+            {
+                count++;
+            }
+        }
+        return count;
     }
 
     // printUpstream array as a string
