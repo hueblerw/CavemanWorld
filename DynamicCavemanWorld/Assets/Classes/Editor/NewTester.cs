@@ -157,13 +157,17 @@ public class NewTester
         Direction upwards = new Direction("up");
         Direction downwards = new Direction("down");
         Direction leftwards = new Direction("left");
-        Direction rightwards = new Direction("down");
-        Direction none = null;
+        Direction rightwards = new Direction("right");
+        // Direction none = null;
         int x = 1;
         int z = 2;
         int[] coor = new int[2];
         coor[0] = 2;
         coor[1] = 2;
+        SingleValueLayer ele = new SingleValueLayer("ele", "Testing", 1);
+        string filePath = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\ElevationNiceMapA.csv";
+        ele.readCSVFile(filePath);
+
         // Check it assigns properly
         Assert.AreEqual(upwards.direction, "up");
         Assert.AreEqual(downwards.direction, "down");
@@ -179,7 +183,12 @@ public class NewTester
         Assert.AreEqual(downwards.ToString(), "down");
         Assert.AreEqual(leftwards.ToString(), "left");
         Assert.AreEqual(rightwards.ToString(), "right");
-        Assert.AreEqual(none.ToString(), "none");
+        // Assert.AreEqual(none.ToString(), "none");
+        // Check the get float from direction feature
+        Assert.AreEqual(-3.5, upwards.getFloatAtCoordinates(x, z, ele.worldArray));
+        Assert.AreEqual(-0.5, downwards.getFloatAtCoordinates(x, z, ele.worldArray));
+        Assert.AreEqual(-0.6, leftwards.getFloatAtCoordinates(x, z, ele.worldArray));
+        Assert.AreEqual(-1.6, rightwards.getFloatAtCoordinates(x, z, ele.worldArray));
     }
 
 }
