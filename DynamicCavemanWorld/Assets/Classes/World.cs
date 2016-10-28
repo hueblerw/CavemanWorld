@@ -26,6 +26,8 @@ public class World {
     public SingleValueLayer rainfallTotal;
     // River Layers
     public ObjectLayer riverStats;
+    // Habitat Layer
+    public HabitatLayer habitats;
 
     // Constructor
     public World(int x, int z)
@@ -71,11 +73,13 @@ public class World {
         // Initialize Water Stats
         riverStats = new ObjectLayer("River Stats", "Semi-static");
         PopulateRivers();
+        Debug.Log("Rivers Populated!");
         ResetStaticRiverLayers();
         ResetLastDayLayer();
-        // Calculate Years worth of river data
+        // Calculate Habitat Layer - for that we need 25 years of time run forward at initialization ***
         CalculateRiverYear();
-        Debug.Log("River Models Complete!");
+
+        
     }
 
     // Converts the model's elevation number to a map of vertices which can be used by the view
