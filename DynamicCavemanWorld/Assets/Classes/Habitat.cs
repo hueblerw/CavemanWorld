@@ -22,6 +22,7 @@ public class Habitat {
     public Habitat(int[] habitatCounters)
     {
         typePercents = new double[13];
+        
         // Once the habitats have been loaded figure out which one is dominant
         dominantType = CheckDominantType();
     }
