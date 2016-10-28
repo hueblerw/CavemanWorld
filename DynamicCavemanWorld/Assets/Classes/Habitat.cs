@@ -11,8 +11,15 @@ public class Habitat {
     public string dominantType;
     public double[] typePercents;
 
-    // Constructor
+    // Constructors
+    // Temporary initial constructor to give us access to a method or two
     public Habitat()
+    {
+        typePercents = new double[13];
+    }
+
+    // The normal constructor
+    public Habitat(int[] habitatCounters)
     {
         typePercents = new double[13];
         // Once the habitats have been loaded figure out which one is dominant
@@ -68,7 +75,7 @@ public class Habitat {
 
     // private methods
     // Wetness determination based on the year's rainfall
-    private string DetermineWetness(float water)
+    public string DetermineWetness(float water)
     {
         string wetness;
         if (water < 20f)
@@ -98,7 +105,7 @@ public class Habitat {
     }
 
     // Tempearteness determination based on the year's hot and coldays
-    private string DetermineTemp(int hotDays, int coldDays)
+    public string DetermineTemp(int hotDays, int coldDays)
     {
         // Temperature ifs
         string temperature = "temperate";
@@ -118,7 +125,7 @@ public class Habitat {
     }
 
     // Determine the Index of the habitat the weather favored this year
-    private int DetermineHabitatFavored(string wetness, string temp)
+    public int DetermineHabitatFavored(string wetness, string temp)
     {
         int index = 0;
         // account for temp
