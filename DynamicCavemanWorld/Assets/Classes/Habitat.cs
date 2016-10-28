@@ -45,6 +45,19 @@ public class Habitat {
         }
     }
 
+    // Return a string with the habitat stats in it
+    public override string ToString()
+    {
+        string data = "Habitats: ";
+        for (int i = 0; i < typePercents.Length; i++){
+            if(typePercents[i] != 0.0)
+            {
+                data += "\n" + typePercents[i] * 100.0 + "% " + IndexToString(i);
+            }
+        }
+        return data;
+    }
+
 
     // private methods
     // Wetness determination based on the year's rainfall
@@ -155,6 +168,56 @@ public class Habitat {
         }
 
         return i;
+    }
+
+    // Convert the index to a habitat string
+    private string IndexToString(int index)
+    {
+        string name = "";
+        switch (index)
+        {
+            case 0:
+                name = "glacier";
+                break;
+            case 1:
+                name = "dry tundra";
+                break;
+            case 2:
+                name = "tundra";
+                break;
+            case 3:
+                name = "boreal";
+                break;
+            case 4:
+                name = "artic marsh";
+                break;
+            case 5:
+                name = "desert";
+                break;
+            case 6:
+                name = "plains";
+                break;
+            case 7:
+                name = "forest";
+                break;
+            case 8:
+                name = "swamp";
+                break;
+            case 9:
+                name = "hot desert";
+                break;
+            case 10:
+                name = "savannah";
+                break;
+            case 11:
+                name = "monsoon forest";
+                break;
+            case 12:
+                name = "rainforest";
+                break;
+        }
+
+        return name;
     }
 
 }
