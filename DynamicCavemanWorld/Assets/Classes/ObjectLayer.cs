@@ -1,39 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class VariantLayer
+public class ObjectLayer
 {
 
     // Variables
     public string layerName;
     private string layerType;
-    private int rounded;
     public static int WORLDX = 50;
     public static int WORLDZ = 50;
-    public float[,,] worldArray;
+    public River[,] worldArray;
 
     // Constructor
-    public VariantLayer(string name, string type, int c, int roundTo)
+    public ObjectLayer(string name, string type)
     {
         this.layerName = name;
         this.layerType = type;
-        this.rounded = roundTo;
-        this.worldArray = new float[c, WORLDX, WORLDZ];
-}
+    }
 
     // World Array Initializer
-
-
 
     // Getters
     public string getType()
     {
         return layerType;
-    }
-
-    public int getRounding()
-    {
-        return rounded;
     }
 
 }

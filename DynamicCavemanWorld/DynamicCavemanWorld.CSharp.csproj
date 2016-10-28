@@ -64,13 +64,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Classes\DailyLayer.cs" />
+    <Compile Include="Assets\Classes\Direction.cs" />
     <Compile Include="Assets\Classes\DoubleDayList.cs" />
     <Compile Include="Assets\Classes\EquationLayer.cs" />
     <Compile Include="Assets\Classes\HumidityLayer.cs" />
     <Compile Include="Assets\Classes\IntDayList.cs" />
+    <Compile Include="Assets\Classes\ObjectLayer.cs" />
+    <Compile Include="Assets\Classes\River.cs" />
     <Compile Include="Assets\Classes\SingleValueLayer.cs" />
     <Compile Include="Assets\Classes\TempEquation.cs" />
-    <Compile Include="Assets\Classes\VariantLayer.cs" />
     <Compile Include="Assets\Classes\World.cs" />
     <Compile Include="Assets\Controllers\MainController.cs" />
     <Compile Include="Assets\Controllers\TileMouseOver.cs" />

@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using NUnit.Framework;
+using System;
 
-public class NewTester {
+public class NewTester
+{
 
-	[Test]
-	public void SVLayerTest()
-	{
+    [Test]
+    public void SVLayerTest()
+    {
         // Test all the SingleLayer Values can be initialized
         SingleValueLayer.WORLDX = 50;
         SingleValueLayer.WORLDZ = 50;
@@ -39,17 +41,16 @@ public class NewTester {
     }
 
     [Test]
-    public void VariantLayerTest()
+    public void ObjectLayerTest()
     {
         // Test all the SingleLayer Values can be initialized
-        VariantLayer humidity = new VariantLayer("Humidity", "Semi-static", 6, 1);
+        ObjectLayer downstream = new ObjectLayer("Downstream", "Semi-static");
 
-        Assert.AreEqual("Humidity", humidity.layerName);
-        Assert.AreEqual("Semi-static", humidity.getType());
-        Assert.AreEqual(1, humidity.getRounding());
-        Assert.AreEqual(6 * 50 * 50, humidity.worldArray.Length);
-        Assert.AreEqual(50, VariantLayer.WORLDX);
-        Assert.AreEqual(50, VariantLayer.WORLDZ);
+        Assert.AreEqual("Downstream", downstream.layerName);
+        Assert.AreEqual("Semi-static", downstream.getType());
+        // Assert.AreEqual(50 * 50, downstream.worldArray.Length);
+        Assert.AreEqual(50, ObjectLayer.WORLDX);
+        Assert.AreEqual(50, ObjectLayer.WORLDZ);
     }
 
     [Test]
@@ -60,8 +61,8 @@ public class NewTester {
 
         Assert.AreEqual("TemperatureEquations", testEquation.layerName);
         Assert.AreEqual("Semi-static", testEquation.getType());
-        Assert.AreEqual(50, VariantLayer.WORLDX);
-        Assert.AreEqual(50, VariantLayer.WORLDZ);
+        Assert.AreEqual(50, EquationLayer.WORLDX);
+        Assert.AreEqual(50, EquationLayer.WORLDZ);
     }
 
     [Test]
@@ -117,5 +118,80 @@ public class NewTester {
         Assert.AreEqual((float)9.8, testvariance.worldArray[2, 1]);
 
     }
-    
+
+    [Test]
+    public void HillAndOceanPerTest()
+    {
+        // Initialize a world
+        World testWorld = new World(50, 50);
+        System.Random randy = new System.Random();
+        int x = randy.Next(0, 50);
+        int z = randy.Next(0, 50);
+
+        Debug.Log("MAXELE - " + testWorld.maxElevationDifference);
+        Assert.Greater(testWorld.maxElevationDifference, 0f);
+        Assert.GreaterOrEqual(testWorld.hillPer.worldArray[x, z], 0f);
+        Assert.LessOrEqual(testWorld.hillPer.worldArray[x, z], 1f);
+        Assert.GreaterOrEqual(testWorld.oceanPer.worldArray[x, z], 0f);
+        Assert.LessOrEqual(testWorld.oceanPer.worldArray[x, z], 1f);
+    }
+
+    [Test]
+    public void RiverTest()
+    {
+        // Initialize a river
+        River river = new River(4, 7, .25f, 0f);
+        River otherRiver = new River(12, 4, .25f, 1f);
+
+        Assert.AreEqual(river.x, 4);
+        Assert.AreEqual(river.z, 7);
+        Assert.AreEqual(river.type, null);
+        Assert.AreEqual(otherRiver.x, 12);
+        Assert.AreEqual(otherRiver.z, 4);
+        Assert.AreEqual(otherRiver.type, "ocean");
+    }
+
+    [Test]
+    public void DirectionTest()
+    {
+        // Check the Direction methods work correctly
+        Direction upwards = new Direction("up");
+        Direction downwards = new Direction("down");
+        Direction leftwards = new Direction("left");
+        Direction rightwards = new Direction("right");
+        // Direction none = null;
+        int x = 1;
+        int z = 2;
+        int[] coor = new int[2];
+        coor[0] = 2;
+        coor[1] = 2;
+        SingleValueLayer.WORLDX = 50;
+        SingleValueLayer.WORLDZ = 50;
+        SingleValueLayer ele = new SingleValueLayer("ele", "Testing", 1);
+        string filePath = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\ElevationNiceMapA.csv";
+        ele.readCSVFile(filePath);
+
+        // Check it assigns properly
+        Assert.AreEqual(upwards.direction, "up");
+        Assert.AreEqual(downwards.direction, "down");
+        Assert.AreEqual(leftwards.direction, "left");
+        Assert.AreEqual(rightwards.direction, "right");
+        // Check the get coordinate as array thingy
+        Assert.AreEqual(rightwards.getCoordinateArray(x, z), coor);
+        Assert.AreEqual(upwards.getCoordinateArray(x, z)[1], 1);
+        Assert.AreEqual(leftwards.getCoordinateArray(x, z)[0], 0);
+        Assert.AreEqual(downwards.getCoordinateArray(x, z)[1], 3);
+        // Check the to string method works properly
+        Assert.AreEqual(upwards.ToString(), "up");
+        Assert.AreEqual(downwards.ToString(), "down");
+        Assert.AreEqual(leftwards.ToString(), "left");
+        Assert.AreEqual(rightwards.ToString(), "right");
+        // Assert.AreEqual(none.ToString(), "none");
+        // Check the get float from direction feature
+        Assert.AreEqual(-3.5f, (float) Math.Round(upwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
+        Assert.AreEqual(-0.5f, (float) Math.Round(downwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
+        Assert.AreEqual(-0.6f, (float) Math.Round(leftwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
+        Assert.AreEqual(-1.6f, (float) Math.Round(rightwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
+    }
+
 }

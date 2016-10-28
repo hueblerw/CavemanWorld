@@ -1,18 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshCollider))]
 [RequireComponent(typeof(MeshRenderer))]
 public class MainController : MonoBehaviour {
 
+    public static int year;
+    public static int day;
+    public TileMouseOver mouseController;
+    public static World TheWorld;
+
 	// Use this for initialization
 	void Start () {
         // Generate the model files eventually
-
+        
         // Construct the model from text files
         Debug.Log("Literally, Hello World!");
-        World TheWorld = new World(50, 50);
+        TheWorld = new World(50, 50);
         Debug.Log("World Model Made!");
 
         // Construct the elevation view
@@ -27,10 +33,33 @@ public class MainController : MonoBehaviour {
         // Create and attach the texture
         meshRenderer.sharedMaterial.mainTexture = ElevationView.BuildTexture(TheWorld);
         Debug.Log("Elevation View Made!");
+        // Set the time
+        day = 0;
+        year = 1;
+        // Initialize the Game interaction Controllers
+        mouseController = new TileMouseOver(meshCollider, meshRenderer);
     }
 	
 	// Update is called once per frame
-	void Update () {
-	
-	}
+    void Update()
+    {
+        mouseController.UpdateTileInfo();
+    }
+
+    // Moves us to the next day
+    public void NextDay()
+    {
+        if (day == 119)
+        {
+            day = 0;
+            year += 1;
+            TheWorld.NewYear();
+        }
+        else
+        {
+            day += 1;
+        }
+        mouseController.UpdateTheDate();
+    }
+
 }
