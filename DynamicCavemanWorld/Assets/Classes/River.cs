@@ -52,7 +52,8 @@ public class River {
         }
         else
         {
-            flowrate = (float) Math.Round((((hillPer + randy.NextDouble() + .1) / (1.0 - oceanPer)) / 100.0), 4);
+            flowrate = (float) Math.Round((((hillPer * 1.5 + randy.NextDouble() * 1.5 + 2) / (1.0 - oceanPer)) / 100.0), 4);
+            flowrate = (float) ChooseMinOf(flowrate, .8);
             soilAbsorption = (float) ((randy.NextDouble() + .2) * (1.0 - oceanPer) * (1.0 - hillPer));
         }
     }
@@ -100,7 +101,7 @@ public class River {
         float evaportation = FindEvaporation(current, temp, humidity, weather);
         // Calculate the flow downstream
         float downstreamFlow = 0f;
-        if (this.downstream == null)
+        if (type != "lake")
         {
             // NOTE: don't flow if there is no downstream
             downstreamFlow = (float) Math.Round(current * flowrate, 2);
