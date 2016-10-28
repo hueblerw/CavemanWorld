@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using NUnit.Framework;
+using System;
 
 public class NewTester
 {
@@ -164,6 +165,8 @@ public class NewTester
         int[] coor = new int[2];
         coor[0] = 2;
         coor[1] = 2;
+        SingleValueLayer.WORLDX = 50;
+        SingleValueLayer.WORLDZ = 50;
         SingleValueLayer ele = new SingleValueLayer("ele", "Testing", 1);
         string filePath = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\ElevationNiceMapA.csv";
         ele.readCSVFile(filePath);
@@ -185,10 +188,10 @@ public class NewTester
         Assert.AreEqual(rightwards.ToString(), "right");
         // Assert.AreEqual(none.ToString(), "none");
         // Check the get float from direction feature
-        Assert.AreEqual(-3.5, upwards.getFloatAtCoordinates(x, z, ele.worldArray));
-        Assert.AreEqual(-0.5, downwards.getFloatAtCoordinates(x, z, ele.worldArray));
-        Assert.AreEqual(-0.6, leftwards.getFloatAtCoordinates(x, z, ele.worldArray));
-        Assert.AreEqual(-1.6, rightwards.getFloatAtCoordinates(x, z, ele.worldArray));
+        Assert.AreEqual(-3.5f, (float) Math.Round(upwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
+        Assert.AreEqual(-0.5f, (float) Math.Round(downwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
+        Assert.AreEqual(-0.6f, (float) Math.Round(leftwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
+        Assert.AreEqual(-1.6f, (float) Math.Round(rightwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
     }
 
 }
