@@ -4,56 +4,66 @@ using System.Collections;
 public class Habitat {
 
     // Constant
-    private float EnvironmentalShiftFactor = .01f;
+    private double EnvironmentalShiftFactor = .01; // +/- 1% a year
+    private float RiverEffectFactor = .1f;  // 10% of river volume added to the tiles rainfall
 
     // Variables
     public string dominantType;
-    public float[] typePercents;
+    public double[] typePercents;
 
     // Constructor
     public Habitat()
     {
-        typePercents = new float[13];
+        typePercents = new double[13];
     }
 
     // Habitat Yearly Update Method
-    public void UpdateHabitatYear(int hotDays, int coldDays, float rain, int snowCovered)
+    public void UpdateHabitatYear(int hotDays, int coldDays, float rain, float riverLevel, int snowCovered, System.Random randy)
     {
         int index;
+        int destroyIndex;
+        // if covered in snow glacier advances
         if (snowCovered == 120)
         {
-            index = 0;
+            // do snow stuff - *** UNWRITTEN YET!!! ***
         }
         else
         {
             // Wetness determination statement
-            string wetness = DetermineWetness(rain);
+            string wetness = DetermineWetness(rain + riverLevel * RiverEffectFactor);
             string temp = DetermineTemp(hotDays, coldDays);
             // Get the favored habitat
             index = DetermineHabitatFavored(wetness, temp);
+            // Update the habitat array if not maxed out
+            if (typePercents[index] < 1.0)
+            {
+                typePercents[index] += EnvironmentalShiftFactor;
+                // Generate the random destruction
+                destroyIndex = RandomHabitat(randy);
+                typePercents[destroyIndex] -= EnvironmentalShiftFactor;
+            }   
         }
-
     }
 
 
     // private methods
     // Wetness determination based on the year's rainfall
-    private string DetermineWetness(float rain)
+    private string DetermineWetness(float water)
     {
         string wetness;
-        if (rain < 20f)
+        if (water < 20f)
         {
             wetness = "dry";
         }
         else
         {
-            if (rain < 40f)
+            if (water < 40f)
             {
                 wetness = "moderate";
             }
             else
             {
-                if (rain < 60f)
+                if (water < 60f)
                 {
                     wetness = "wet";
                 }
@@ -123,4 +133,28 @@ public class Habitat {
 
         return index;
     }
+
+    // Generate a random habitat to destroy
+    private int RandomHabitat(System.Random randy)
+    {
+        double prob = randy.NextDouble();
+        double percentCounter = 0.0;
+        int i = 0;
+        bool done = false;
+        while (!done)
+        {
+            percentCounter += typePercents[i];
+            if (percentCounter < prob)
+            {
+                done = true;
+            }
+            else
+            {
+                i++;
+            }
+        }
+
+        return i;
+    }
+
 }
