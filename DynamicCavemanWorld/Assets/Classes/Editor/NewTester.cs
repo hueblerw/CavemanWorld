@@ -150,4 +150,36 @@ public class NewTester
         Assert.AreEqual(otherRiver.type, "ocean");
     }
 
+    [Test]
+    public void DirectionTest()
+    {
+        // Check the Direction methods work correctly
+        Direction upwards = new Direction("up");
+        Direction downwards = new Direction("down");
+        Direction leftwards = new Direction("left");
+        Direction rightwards = new Direction("down");
+        Direction none = null;
+        int x = 1;
+        int z = 2;
+        int[] coor = new int[2];
+        coor[0] = 2;
+        coor[1] = 2;
+        // Check it assigns properly
+        Assert.AreEqual(upwards.direction, "up");
+        Assert.AreEqual(downwards.direction, "down");
+        Assert.AreEqual(leftwards.direction, "left");
+        Assert.AreEqual(rightwards.direction, "right");
+        // Check the get coordinate as array thingy
+        Assert.AreEqual(rightwards.getCoordinateArray(x, z), coor);
+        Assert.AreEqual(upwards.getCoordinateArray(x, z)[1], 1);
+        Assert.AreEqual(leftwards.getCoordinateArray(x, z)[0], 0);
+        Assert.AreEqual(downwards.getCoordinateArray(x, z)[1], 3);
+        // Check the to string method works properly
+        Assert.AreEqual(upwards.ToString(), "up");
+        Assert.AreEqual(downwards.ToString(), "down");
+        Assert.AreEqual(leftwards.ToString(), "left");
+        Assert.AreEqual(rightwards.ToString(), "right");
+        Assert.AreEqual(none.ToString(), "none");
+    }
+
 }
