@@ -22,7 +22,7 @@ public class Habitat {
     public Habitat(int[] habitatCounters)
     {
         typePercents = new double[13];
-        
+        CreateInitialPercentage(habitatCounters);
         // Once the habitats have been loaded figure out which one is dominant
         dominantType = CheckDominantType();
     }
@@ -247,6 +247,15 @@ public class Habitat {
             }
         }
         return IndexToString(maxIndex);
+    }
+
+    // Initialize the Habitats based on the counter array
+    private void CreateInitialPercentage(int[] habitatCounters)
+    {
+        for (int i = 0; i < habitatCounters.Length; i++)
+        {
+            typePercents[i] = habitatCounters[i] / 20.0;
+        }
     }
 
 }
