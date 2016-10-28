@@ -112,6 +112,8 @@ public class World {
         info += "\n" + "River Direction: " + riverStats.worldArray[x, z].downstream;
         info += "\n" + "River Level: " + River.surfacewater.worldArray[day][x, z];
         info += "\n" + "flowrate - absorbtion: " + riverStats.worldArray[x, z].getPrivateVariables();
+        info += "\n" + "Upstream Directions: " + riverStats.worldArray[x, z].printUpstream();
+        info += "\n" + "Upstream River Amount: " + River.upstreamToday.worldArray[day][x, z];
         return info;
     }
 
