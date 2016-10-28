@@ -76,7 +76,7 @@ public class World {
         Debug.Log("Rivers Populated!");
         ResetStaticRiverLayers();
         ResetLastDayLayer();
-        // Calculate Habitat Layer - for that we need 25 years of time run forward at initialization ***
+        // Calculate Habitat Layer - ** for that we need 20 years of time run forward at initialization **
         CalculateRiverYear();
 
         

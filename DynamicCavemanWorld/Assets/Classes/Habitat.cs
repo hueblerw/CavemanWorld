@@ -15,6 +15,8 @@ public class Habitat {
     public Habitat()
     {
         typePercents = new double[13];
+        // Once the habitats have been loaded figure out which one is dominant
+        dominantType = CheckDominantType();
     }
 
     // Habitat Yearly Update Method
@@ -41,6 +43,11 @@ public class Habitat {
                 // Generate the random destruction
                 destroyIndex = RandomHabitat(randy);
                 typePercents[destroyIndex] -= EnvironmentalShiftFactor;
+                // Update what is the dominant type if the type was not previously a majority - i.e. > 50% of the habitat
+                if (typePercents[index] < 0.51)
+                {
+                    dominantType = CheckDominantType();
+                }
             }   
         }
     }
@@ -218,6 +225,20 @@ public class Habitat {
         }
 
         return name;
+    }
+
+    // determine the dominant type
+    private string CheckDominantType()
+    {
+        int maxIndex = 0;
+        for(int i = 0; i < typePercents.Length; i++)
+        {
+            if(typePercents[i] > typePercents[maxIndex])
+            {
+                maxIndex = i;
+            }
+        }
+        return IndexToString(maxIndex);
     }
 
 }
