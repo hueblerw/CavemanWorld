@@ -89,6 +89,15 @@ public class River {
 
     // Calculate the surface water
     // PRESENTLY WITHOUT SNOW OR MELT OFF!!!!!!!!!!!!
+    // Assumes that surface water is river/lake water
+    // Calculate is based on:
+    // Assumption that soil absorbs some amount of water/day statically
+        // NOTE: This is based off of a random number representing unknown soil factors and rockiness gathered from hillPercentage
+    // What flows downhill at a certain rate (4-8% depending on random soil factors and steepness of hills - i.e hillPercentage
+    // Evaporation each day - see evaporation note
+    // rainfall and snow melt runoff
+    // What is inputted in from upstream
+        // NOTE: Tiles can have multiple upstream values but only one downstream value
     public void CalculateSurfaceWater(int day, float rainfall, int temp, float humidity, System.Random randy)
     {
         // Inputs: Previous, rainfall, EACH upstream ***SNOW MELT***
@@ -115,8 +124,14 @@ public class River {
         surfacewater.worldArray[day][x, z] = current;
     }
 
-    
+
     // Calculate the Evaporation
+    // *** Based upon basic physics from this website, with some personalized fudge factors for humidity ***
+    // http://www.engineeringtoolbox.com/evaporation-water-surface-d_690.html
+    // NOTE: assumption is made for simplicity that a river is an inverted pyramid with a height a fixed constant in relation to its surface area
+        // This allows volume to correspond directly with surface area.  This is worked directly into the equations
+        // I also assumed that humidity on rainy days is 100%, and 3 times greater on cloudy days as sunny days
+        // Occurance of sunny days corresponds indirectly with the expectation of rainfall on a given day (i.e. the humidity number generated for the tile).
     private float FindEvaporation(float current, int temp, float humidity, string weather)
     {
         double xs;
