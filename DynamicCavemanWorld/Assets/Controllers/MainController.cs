@@ -53,13 +53,15 @@ public class MainController : MonoBehaviour {
         {
             day = 0;
             year += 1;
+            mouseController.UpdateTheDate();
             TheWorld.NewYear();
         }
         else
         {
             day += 1;
+            mouseController.UpdateTheDate();
         }
-        mouseController.UpdateTheDate();
+        
     }
 
 }

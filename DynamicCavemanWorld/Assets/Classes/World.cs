@@ -126,6 +126,8 @@ public class World {
         Debug.Log("Generated a new year!");
     }
 
+    // Makes the string for the tile info display
+    // Should probably be part of a view
     public string getTileInfo(int day, int x, int z)
     {
         string info = "Elevation: " + elevation.worldArray[x, z];
