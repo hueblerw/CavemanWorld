@@ -96,7 +96,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Classes\Editor\NewTester.cs" />
+    <Compile Include="Assets\Classes\Editor\ClassTester.cs" />
     <Compile Include="Assets\Classes\Editor\RainfallTests.cs" />
     <Compile Include="Assets\Classes\Editor\TimingTests.cs" />
   </ItemGroup>

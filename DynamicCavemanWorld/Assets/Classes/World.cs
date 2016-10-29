@@ -358,7 +358,6 @@ public class World {
     // Create the habitat initialization counters
     private int[,][] CreateInitHabCounters()
     {
-        Habitat temporary = new Habitat();
         int[,][] habitatTypeCounters = new int[WorldX, WorldZ][];
         int index;
         string wetness;
@@ -375,9 +374,9 @@ public class World {
                 for (int z = 0; z < WorldZ; z++)
                 {
                     // Get the index of the expected habitat for each tile that year
-                    wetness = temporary.DetermineWetness(rainfallTotal.worldArray[x, z] + River.AverageRiverLevel(x, z));
-                    temperateness = temporary.DetermineTemp(temps[x, z].Count70DegreeDays(), temps[x, z].Count32DegreeDays());
-                    index = temporary.DetermineHabitatFavored(wetness, temperateness);
+                    wetness = Habitat.DetermineWetness(rainfallTotal.worldArray[x, z] + River.AverageRiverLevel(x, z));
+                    temperateness = Habitat.DetermineTemp(temps[x, z].Count70DegreeDays(), temps[x, z].Count32DegreeDays());
+                    index = Habitat.DetermineHabitatFavored(wetness, temperateness);
                     // Add a counter for that habitat to that tiles counter array
                     habitatTypeCounters[x, z][index] += 1;
                 }

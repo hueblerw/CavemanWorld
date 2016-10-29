@@ -3,7 +3,7 @@ using UnityEditor;
 using NUnit.Framework;
 using System;
 
-public class NewTester
+public class ClassTester
 {
 
     [Test]
@@ -192,6 +192,21 @@ public class NewTester
         Assert.AreEqual(-0.5f, (float) Math.Round(downwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
         Assert.AreEqual(-0.6f, (float) Math.Round(leftwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
         Assert.AreEqual(-1.6f, (float) Math.Round(rightwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
+    }
+
+    [Test]
+    public void HabitatTest()
+    {
+        // Initialize a river
+        River river = new River(4, 7, .25f, 0f);
+        River otherRiver = new River(12, 4, .25f, 1f);
+
+        Assert.AreEqual(river.x, 4);
+        Assert.AreEqual(river.z, 7);
+        Assert.AreEqual(river.type, null);
+        Assert.AreEqual(otherRiver.x, 12);
+        Assert.AreEqual(otherRiver.z, 4);
+        Assert.AreEqual(otherRiver.type, "ocean");
     }
 
 }
