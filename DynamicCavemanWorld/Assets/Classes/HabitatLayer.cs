@@ -13,7 +13,7 @@ public class HabitatLayer {
     // Constructor
     public HabitatLayer(int[,][] habitatCounters)
     {
-        layerName = "Habitat Layer";
+        layerName = "Habitat";
         layerType = "Yearly";
         for (int x = 0; x < WORLDX; x++)
         {
