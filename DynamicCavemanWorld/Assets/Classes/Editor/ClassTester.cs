@@ -234,6 +234,11 @@ public class ClassTester
         string expected = "Habitats: " + "\n" + "5% tundra" + "\n" + "55% boreal" + "\n" + "15% artic marsh" + "\n" + "25% swamp";
         Assert.AreEqual(expected, testHabitat.ToString());
 
+        // Test the Update Habitat Method
+        System.Random randy = new System.Random();
+        testHabitat.UpdateHabitatYear(50, 9, 32.4f, 2.4f, 1, randy);
+        Debug.Log(testHabitat);
+        Assert.AreEqual(.01, testHabitat.typePercents[10]);
     }
 
 }
