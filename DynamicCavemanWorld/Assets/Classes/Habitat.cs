@@ -10,6 +10,7 @@ public class Habitat {
     // Variables
     public string dominantType;
     public double[] typePercents;
+    private int activeHabitats;
 
     // Constructor
     public Habitat(int[] habitatCounters)
@@ -165,7 +166,7 @@ public class Habitat {
         while (!done)
         {
             percentCounter += typePercents[i];
-            if (percentCounter < prob)
+            if (prob < percentCounter)
             {
                 done = true;
             }
