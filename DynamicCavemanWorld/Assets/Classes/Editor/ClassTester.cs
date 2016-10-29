@@ -222,16 +222,16 @@ public class ClassTester
         Assert.AreEqual(Habitat.DetermineWetness(28), "moderate");
         Assert.AreEqual(Habitat.DetermineWetness(46), "wet");
         Assert.AreEqual(Habitat.DetermineWetness(70), "very wet");
-        Assert.AreEqual(Habitat.DetermineHabitatFavored("moderate", "artic"), "tundra");
-        Assert.AreEqual(Habitat.DetermineHabitatFavored("moderate", "tropical"), "savannah");
-        Assert.AreEqual(Habitat.DetermineHabitatFavored("dry", "artic"), "dry tundra");
-        Assert.AreEqual(Habitat.DetermineHabitatFavored("wet", "artic"), "boreal");
-        Assert.AreEqual(Habitat.DetermineHabitatFavored("wet", "temperate"), "forest");
-        Assert.AreEqual(Habitat.DetermineHabitatFavored("very wet", "temperate"), "swamp");
-        Assert.AreEqual(Habitat.DetermineHabitatFavored("very wet", "tropical"), "rainforest");
+        Assert.AreEqual(Habitat.DetermineHabitatFavored("moderate", "artic"), 2);
+        Assert.AreEqual(Habitat.DetermineHabitatFavored("moderate", "tropical"), 10);
+        Assert.AreEqual(Habitat.DetermineHabitatFavored("dry", "artic"), 1);
+        Assert.AreEqual(Habitat.DetermineHabitatFavored("wet", "artic"), 3);
+        Assert.AreEqual(Habitat.DetermineHabitatFavored("wet", "temperate"), 7);
+        Assert.AreEqual(Habitat.DetermineHabitatFavored("very wet", "temperate"), 8);
+        Assert.AreEqual(Habitat.DetermineHabitatFavored("very wet", "tropical"), 12);
 
         // Test the toString method
-        string expected = "Habitat:" + "\n" + "tundra - 5%" + "\n" + "boreal - 55%" + "\n" + "artic marsh - 15%" + "\n" + "swamp - 25%";
+        string expected = "Habitats: " + "\n" + "5% tundra" + "\n" + "55% boreal" + "\n" + "15% artic marsh" + "\n" + "25% swamp";
         Assert.AreEqual(expected, testHabitat.ToString());
 
     }
