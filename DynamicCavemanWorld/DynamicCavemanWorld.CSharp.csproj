@@ -67,6 +67,8 @@
     <Compile Include="Assets\Classes\Direction.cs" />
     <Compile Include="Assets\Classes\DoubleDayList.cs" />
     <Compile Include="Assets\Classes\EquationLayer.cs" />
+    <Compile Include="Assets\Classes\Habitat.cs" />
+    <Compile Include="Assets\Classes\HabitatLayer.cs" />
     <Compile Include="Assets\Classes\HumidityLayer.cs" />
     <Compile Include="Assets\Classes\IntDayList.cs" />
     <Compile Include="Assets\Classes\ObjectLayer.cs" />

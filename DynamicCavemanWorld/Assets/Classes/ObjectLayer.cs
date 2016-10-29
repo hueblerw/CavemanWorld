@@ -7,8 +7,8 @@ public class ObjectLayer
     // Variables
     public string layerName;
     private string layerType;
-    public static int WORLDX = 50;
-    public static int WORLDZ = 50;
+    public static int WORLDX;
+    public static int WORLDZ;
     public River[,] worldArray;
 
     // Constructor
@@ -16,6 +16,8 @@ public class ObjectLayer
     {
         this.layerName = name;
         this.layerType = type;
+        WORLDX = SingleValueLayer.WORLDX;
+        WORLDZ = SingleValueLayer.WORLDZ;
     }
 
     // World Array Initializer

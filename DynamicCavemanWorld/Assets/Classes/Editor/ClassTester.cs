@@ -3,7 +3,7 @@ using UnityEditor;
 using NUnit.Framework;
 using System;
 
-public class NewTester
+public class ClassTester
 {
 
     [Test]
@@ -188,10 +188,95 @@ public class NewTester
         Assert.AreEqual(rightwards.ToString(), "right");
         // Assert.AreEqual(none.ToString(), "none");
         // Check the get float from direction feature
-        Assert.AreEqual(-3.5f, (float) Math.Round(upwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
-        Assert.AreEqual(-0.5f, (float) Math.Round(downwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
-        Assert.AreEqual(-0.6f, (float) Math.Round(leftwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
-        Assert.AreEqual(-1.6f, (float) Math.Round(rightwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
+        Assert.AreEqual(-3.5f, (float)Math.Round(upwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
+        Assert.AreEqual(-0.5f, (float)Math.Round(downwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
+        Assert.AreEqual(-0.6f, (float)Math.Round(leftwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
+        Assert.AreEqual(-1.6f, (float)Math.Round(rightwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
+    }
+
+    [Test]
+    public void HabitatTest()
+    {
+        // Initialize a habitat
+        int[] habitatTypeCounters = new int[13];
+        habitatTypeCounters[3] = 11;
+        habitatTypeCounters[8] = 5;
+        habitatTypeCounters[4] = 3;
+        habitatTypeCounters[2] = 1;
+        Habitat testHabitat = new Habitat(habitatTypeCounters);
+
+        // Test the public variables and the initializer methods indirectly
+        Assert.AreEqual(testHabitat.dominantType, "boreal");
+        Assert.AreEqual(testHabitat.typePercents[2], .05);
+        Assert.AreEqual(testHabitat.typePercents[3], .55);
+        Assert.AreEqual(testHabitat.typePercents[4], .15);
+        Assert.AreEqual(testHabitat.typePercents[8], .25);
+
+        // Test the public static methods
+        Assert.AreEqual(Habitat.DetermineTemp(5, 60), "artic");
+        Assert.AreEqual(Habitat.DetermineTemp(25, 60), "temperate");
+        Assert.AreEqual(Habitat.DetermineTemp(5, 33), "temperate");
+        Assert.AreEqual(Habitat.DetermineTemp(50, 60), "temperate");
+        Assert.AreEqual(Habitat.DetermineTemp(50, 8), "tropical");
+        Assert.AreEqual(Habitat.DetermineWetness(15), "dry");
+        Assert.AreEqual(Habitat.DetermineWetness(28), "moderate");
+        Assert.AreEqual(Habitat.DetermineWetness(46), "wet");
+        Assert.AreEqual(Habitat.DetermineWetness(70), "very wet");
+        Assert.AreEqual(Habitat.DetermineHabitatFavored("moderate", "artic"), 2);
+        Assert.AreEqual(Habitat.DetermineHabitatFavored("moderate", "tropical"), 10);
+        Assert.AreEqual(Habitat.DetermineHabitatFavored("dry", "artic"), 1);
+        Assert.AreEqual(Habitat.DetermineHabitatFavored("wet", "artic"), 3);
+        Assert.AreEqual(Habitat.DetermineHabitatFavored("wet", "temperate"), 7);
+        Assert.AreEqual(Habitat.DetermineHabitatFavored("very wet", "temperate"), 8);
+        Assert.AreEqual(Habitat.DetermineHabitatFavored("very wet", "tropical"), 12);
+
+        // Test the toString method
+        string expected = "Habitats: " + "\n" + "5% tundra" + "\n" + "55% boreal" + "\n" + "15% artic marsh" + "\n" + "25% swamp";
+        Assert.AreEqual(expected, testHabitat.ToString());
+
+        // Test the Update Habitat Method
+        System.Random randy = new System.Random();
+        testHabitat.UpdateHabitatYear(50, 9, 32.4f, 2.4f, 1, randy);
+        Debug.Log(testHabitat);
+        Assert.AreEqual(.01, testHabitat.typePercents[10]);
+    }
+
+    [Test]
+    public void HabitatLayerTest()
+    {
+        // Test all the SingleLayer Values can be initialized
+        World testWorld = new World(50, 50);
+        HabitatLayer tester = testWorld.habitats;
+
+        Assert.AreEqual("Habitat", tester.layerName);
+        Assert.AreEqual("Yearly", tester.getType());
+        // Assert.AreEqual(50 * 50, tester.worldArray.Length);
+        Assert.AreEqual(50, HabitatLayer.WORLDX);
+        Assert.AreEqual(50, HabitatLayer.WORLDZ);
+    }
+
+    [Test]
+    public void IntDayListTest()
+    {
+        int[] coldCountTest = new int[120];
+        int[] hotCountTest = new int[120];
+        System.Random randy = new System.Random();
+
+        for (int i = 0; i < 120; i++)
+        {
+            coldCountTest[i] = randy.Next(-10, 32);
+            hotCountTest[i] = randy.Next(71, 110);
+        }
+
+        IntDayList testList = new IntDayList(coldCountTest);
+
+        Assert.AreEqual(120, testList.Count32DegreeDays());
+        Assert.AreEqual(0, testList.Count70DegreeDays());
+
+        testList = new IntDayList(hotCountTest);
+
+        Assert.AreEqual(0, testList.Count32DegreeDays());
+        Assert.AreEqual(120, testList.Count70DegreeDays());
     }
 
 }

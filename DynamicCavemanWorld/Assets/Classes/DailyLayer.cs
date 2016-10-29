@@ -8,8 +8,8 @@ public class DailyLayer {
     public string layerName;
     private string layerType;
     private int rounded;
-    public static int WORLDX = 50;
-    public static int WORLDZ = 50;
+    public static int WORLDX;
+    public static int WORLDZ;
     public float[][,] worldArray = new float[120][,];
 
     // Constructor
@@ -18,6 +18,8 @@ public class DailyLayer {
         this.layerName = name;
         this.layerType = "Daily";
         this.rounded = roundTo;
+        WORLDX = SingleValueLayer.WORLDX;
+        WORLDZ = SingleValueLayer.WORLDZ;
         for (int i = 0; i < 120; i++)
         {
             worldArray[i] = new float[WORLDX, WORLDZ];
