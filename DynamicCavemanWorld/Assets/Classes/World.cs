@@ -79,7 +79,7 @@ public class World {
         // Calculate Habitat Layer - ** for that we need 20 years of time run forward at initialization **
         HabitatInitialization();
         // When done initializing the habitats calculate a new year
-        NewYear();
+        TempAndRainNewYear();
         Debug.Log("Habitats Created!");
     }
 
@@ -95,7 +95,7 @@ public class World {
         }
     }
 
-    public void NewYear()
+    public void TempAndRainNewYear()
     {
         // Create Temperatures
         CreateYearsTemps();
@@ -104,6 +104,25 @@ public class World {
         rainfallTotal.worldArray = rainfall.findYearTotalArray();
         // Calculate River Flow
         CalculateRiverYear();
+    }
+
+    private void HabitatUpdate()
+    {
+        System.Random randy = new System.Random();
+        for(int x = 0; x < WorldX; x++)
+        {
+            for (int z = 0; z < WorldZ; z++)
+            {
+                habitats.worldArray[x, z].UpdateHabitatYear(temps[x, z].Count70DegreeDays(), temps[x, z].Count32DegreeDays(), rainfallTotal.worldArray[x, z], River.AverageRiverLevel(x, z), 0, randy);
+            }
+        }
+    }
+
+    public void NewYear()
+    {
+        TempAndRainNewYear();
+        // Update the Habitats this year
+        HabitatUpdate();
         Debug.Log("Generated a new year!");
     }
 
@@ -367,12 +386,17 @@ public class World {
         for (int year = 0; year < 20; year++)
         {
             // Generate a new year
-            NewYear();
+            TempAndRainNewYear();
             // Create arrays with the relevant data for calcluating the habitats
             for (int x = 0; x < WorldX; x++)
             {
                 for (int z = 0; z < WorldZ; z++)
                 {
+                    // initialize the habitattype counter with an empty array the first time round
+                    if(year == 0)
+                    {
+                        habitatTypeCounters[x, z] = new int[13];
+                    }
                     // Get the index of the expected habitat for each tile that year
                     wetness = Habitat.DetermineWetness(rainfallTotal.worldArray[x, z] + River.AverageRiverLevel(x, z));
                     temperateness = Habitat.DetermineTemp(temps[x, z].Count70DegreeDays(), temps[x, z].Count32DegreeDays());
