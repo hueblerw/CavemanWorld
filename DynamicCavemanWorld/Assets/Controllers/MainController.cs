@@ -27,11 +27,11 @@ public class MainController : MonoBehaviour {
         MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
         MeshCollider meshCollider = GetComponent<MeshCollider>();
         // Create and attach the mesh
-        Mesh mesh = ElevationView.BuildMesh(TheWorld.elevationVertices);
+        Mesh mesh = WorldView.BuildMesh(TheWorld.elevationVertices);
         meshFilter.mesh = mesh;
         meshCollider.sharedMesh = mesh;
         // Create and attach the texture
-        meshRenderer.sharedMaterial.mainTexture = ElevationView.BuildTexture(TheWorld);
+        meshRenderer.sharedMaterial.mainTexture = WorldView.BuildElevationTexture(TheWorld);
         Debug.Log("Elevation View Made!");
         // Set the time
         day = 0;

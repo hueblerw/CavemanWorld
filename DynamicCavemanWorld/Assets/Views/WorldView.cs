@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 
 // Based on code by quill18 in his video series linked to here: https://www.youtube.com/watch?v=bpB4BApnKhM
-public class ElevationView : MonoBehaviour {
+public class WorldView : MonoBehaviour {
 
     public static float tileSize = 20.0f;
     public static float heightScale = 3.0f;
@@ -65,7 +65,7 @@ public class ElevationView : MonoBehaviour {
     }
 
     // Build the texture for the world
-    public static Texture BuildTexture(World world)
+    public static Texture BuildElevationTexture(World world)
     {
         // Initialize some variables
         int worldx = world.WorldX;
