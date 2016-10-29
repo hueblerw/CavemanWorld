@@ -188,10 +188,10 @@ public class ClassTester
         Assert.AreEqual(rightwards.ToString(), "right");
         // Assert.AreEqual(none.ToString(), "none");
         // Check the get float from direction feature
-        Assert.AreEqual(-3.5f, (float) Math.Round(upwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
-        Assert.AreEqual(-0.5f, (float) Math.Round(downwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
-        Assert.AreEqual(-0.6f, (float) Math.Round(leftwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
-        Assert.AreEqual(-1.6f, (float) Math.Round(rightwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
+        Assert.AreEqual(-3.5f, (float)Math.Round(upwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
+        Assert.AreEqual(-0.5f, (float)Math.Round(downwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
+        Assert.AreEqual(-0.6f, (float)Math.Round(leftwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
+        Assert.AreEqual(-1.6f, (float)Math.Round(rightwards.getFloatAtCoordinates(x, z, ele.worldArray), 1));
     }
 
     [Test]
@@ -302,5 +302,6 @@ public class ClassTester
 
         Assert.AreEqual(0, testList.Count32DegreeDays());
         Assert.AreEqual(120, testList.Count70DegreeDays());
-
     }
+
+}
