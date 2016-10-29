@@ -280,4 +280,27 @@ public class ClassTester
         Assert.AreEqual(50, HabitatLayer.WORLDZ);
     }
 
-}
+    [Test]
+    public void IntDayListTest()
+    {
+        int[] coldCountTest = new int[120];
+        int[] hotCountTest = new int[120];
+        System.Random randy = new System.Random();
+
+        for (int i = 0; i < 120; i++)
+        {
+            coldCountTest[i] = randy.Next(-10, 32);
+            hotCountTest[i] = randy.Next(71, 110);
+        }
+
+        IntDayList testList = new IntDayList(coldCountTest);
+
+        Assert.AreEqual(120, testList.Count32DegreeDays());
+        Assert.AreEqual(0, testList.Count70DegreeDays());
+
+        testList = new IntDayList(hotCountTest);
+
+        Assert.AreEqual(0, testList.Count32DegreeDays());
+        Assert.AreEqual(120, testList.Count70DegreeDays());
+
+    }
