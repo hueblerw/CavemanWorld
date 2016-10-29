@@ -15,6 +15,8 @@ public class HabitatLayer {
     {
         layerName = "Habitat";
         layerType = "Yearly";
+        WORLDX = SingleValueLayer.WORLDX;
+        WORLDZ = SingleValueLayer.WORLDZ;
         for (int x = 0; x < WORLDX; x++)
         {
             for (int z = 0; z < WORLDZ; z++)
