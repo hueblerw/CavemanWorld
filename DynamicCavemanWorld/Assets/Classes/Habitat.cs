@@ -244,23 +244,31 @@ public class Habitat {
     // determine the dominant type
     private string CheckDominantType()
     {
+        return IndexToString(GetDominantIndex());
+    }
+
+
+    // get the index for the dominant habitat
+    public int GetDominantIndex()
+    {
         if (percentOcean != 1)
         {
             int maxIndex = 0;
-            for(int i = 0; i < typePercents.Length; i++)
+            for (int i = 0; i < typePercents.Length; i++)
             {
-                if(typePercents[i] > typePercents[maxIndex])
+                if (typePercents[i] > typePercents[maxIndex])
                 {
                     maxIndex = i;
                 }
             }
-            return IndexToString(maxIndex);
+            return maxIndex;
         }
         else
         {
-            return "ocean";
+            return 13;
         }
     }
+
 
     // Initialize the Habitats based on the counter array
     private void CreateInitialPercentage(int[] habitatCounters)
