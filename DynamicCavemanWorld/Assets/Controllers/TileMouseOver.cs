@@ -79,5 +79,19 @@ public class TileMouseOver : MonoBehaviour {
         coor[2] = (int) Math.Truncate(point.z / WorldView.tileSize);
         return coor;
     }
+
+    public void ToggleButtonDisplayName(string current)
+    {
+        Text button = findTextWithName("ToggleViewButtonText");
+        switch (current)
+        {
+            case "Elevation":
+                button.text = "Elevation Layer";
+                break;
+            case "Habitat":
+                button.text = "Habitat Layer";
+                break;
+        }
+    }
     
 }

@@ -12,7 +12,7 @@ public class MainController : MonoBehaviour {
     public TileMouseOver mouseController;
     public static World TheWorld;
     public Texture2D textureMap;
-    private string currentView;
+    public string currentView;
 
 	// Use this for initialization
 	void Start () {
@@ -75,11 +75,13 @@ public class MainController : MonoBehaviour {
         {
             case "Elevation":
                 meshRenderer.sharedMaterial.mainTexture = WorldView.BuildHabitatTexture(TheWorld, textureMap);
+                mouseController.ToggleButtonDisplayName(currentView);
                 currentView = "Habitat";
                 Debug.Log("Habitat View Made!");
                 break;
             case "Habitat":
                 meshRenderer.sharedMaterial.mainTexture = WorldView.BuildElevationTexture(TheWorld);
+                mouseController.ToggleButtonDisplayName(currentView);
                 currentView = "Elevation";
                 Debug.Log("Elevation View Made!");
                 break;
