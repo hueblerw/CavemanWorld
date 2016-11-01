@@ -64,6 +64,7 @@ public class WorldView : MonoBehaviour {
         return world;
     }
 
+
     // Build the texture for the elevation map
     public static Texture BuildElevationTexture(World world)
     {
@@ -158,24 +159,17 @@ public class WorldView : MonoBehaviour {
             {
                 adjustedX = (int)Math.Truncate((double)x / pixelsPerTile);
                 adjustedZ = (int)Math.Truncate((double)z / pixelsPerTile);
-                // If underwater make it a shade of blue
-                if (elevations[adjustedX, adjustedZ] < 0.0f)
+                // If underwater make it a shade of the final mapTile texture [13]
+                if (true)
                 {
-                    blueTint = 1f;
-                    redTint = 0f;
-                    greenTint = (100f + elevations[adjustedX, adjustedZ] * 10f) / 253f;
-                    if (greenTint < 0)
-                    {
-                        greenTint = 0;
-                    }
+
                 }
                 // else use the habitat texture map to create the appropriate texture
                 else
                 {
                     // Apply the correct texture map
                 }
-                color = new Color(redTint, greenTint, blueTint);
-                texture.SetPixel(x, z, color);
+
             }
         }
 
