@@ -64,7 +64,7 @@ public class WorldView : MonoBehaviour {
         return world;
     }
 
-    // Build the texture for the world
+    // Build the texture for the elevation map
     public static Texture BuildElevationTexture(World world)
     {
         // Initialize some variables
@@ -133,6 +133,57 @@ public class WorldView : MonoBehaviour {
         //texture.filterMode = FilterMode.Point;
         texture.Apply();
         return texture;
-    } 
+    }
+
+
+    // Build a texture for the habitat display
+    public static Texture BuildHabitatTexture(World world)
+    {
+        // Initialize some variables
+        int worldx = world.WorldX;
+        int worldz = world.WorldZ;
+        int pixelsPerTile = 10;
+        int adjustedX;
+        int adjustedZ;
+        float[,] elevations = world.elevation.worldArray;
+        float greenTint;
+        float redTint;
+        float blueTint;
+        Color color;
+
+        // Create a texture object
+        Texture2D texture = new Texture2D(worldx * pixelsPerTile, worldz * pixelsPerTile);
+        for (int x = 0; x < worldx * pixelsPerTile; x++)
+        {
+            for (int z = 0; z < worldz * pixelsPerTile; z++)
+            {
+                adjustedX = (int)Math.Truncate((double)x / pixelsPerTile);
+                adjustedZ = (int)Math.Truncate((double)z / pixelsPerTile);
+                // If underwater make it a shade of blue
+                if (elevations[adjustedX, adjustedZ] < 0.0f)
+                {
+                    blueTint = 1f;
+                    redTint = 0f;
+                    greenTint = (100f + elevations[adjustedX, adjustedZ] * 10f) / 253f;
+                    if (greenTint < 0)
+                    {
+                        greenTint = 0;
+                    }
+                }
+                // else use the habitat texture map to create the appropriate texture
+                else
+                {
+                    // Apply the correct texture map
+                }
+                color = new Color(redTint, greenTint, blueTint);
+                texture.SetPixel(x, z, color);
+            }
+        }
+
+        // Apply the texture  and return it
+        //texture.filterMode = FilterMode.Point;
+        texture.Apply();
+        return texture;
+    }
 
 }
