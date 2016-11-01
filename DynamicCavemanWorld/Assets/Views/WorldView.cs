@@ -148,33 +148,25 @@ public class WorldView : MonoBehaviour {
         int tileMapTilesPerRow = mapTiles.width / pixelsPerTile;
         int adjustedX;
         int adjustedZ;
+        int tileIndex;
+        Color[] colorArray;
         Habitat[,] habitats = world.habitats.worldArray;
         // habitats[adjustedX, adjustedZ].dominantType
 
         // Create a texture object
         Texture2D texture = new Texture2D(worldx * pixelsPerTile, worldz * pixelsPerTile);
-        for (int x = 0; x < worldx * pixelsPerTile; x++)
+        for (int x = 0; x < worldx; x++)
         {
-            for (int z = 0; z < worldz * pixelsPerTile; z++)
+            for (int z = 0; z < worldz; z++)
             {
-                adjustedX = (int)Math.Truncate((double)x / pixelsPerTile);
-                adjustedZ = (int)Math.Truncate((double)z / pixelsPerTile);
-                // If underwater make it a shade of the final mapTile texture [13]
-                if (true)
-                {
-
-                }
-                // else use the habitat texture map to create the appropriate texture
-                else
-                {
-                    // Apply the correct texture map
-                }
-
+                tileIndex = habitats[x, z].GetDominantIndex();
+                colorArray = mapTiles.GetPixels(0, 0, pixelsPerTile, pixelsPerTile);
+                texture.SetPixels(0, 0, pixelsPerTile, pixelsPerTile, colorArray);
             }
         }
 
         // Apply the texture  and return it
-        //texture.filterMode = FilterMode.Point;
+        // texture.filterMode = FilterMode.Point;
         texture.Apply();
         return texture;
     }
