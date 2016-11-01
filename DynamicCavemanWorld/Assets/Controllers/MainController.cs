@@ -12,6 +12,7 @@ public class MainController : MonoBehaviour {
     public TileMouseOver mouseController;
     public static World TheWorld;
     public Texture2D textureMap;
+    private string currentView;
 
 	// Use this for initialization
 	void Start () {
@@ -33,6 +34,7 @@ public class MainController : MonoBehaviour {
         meshCollider.sharedMesh = mesh;
         // Create and attach the texture
         meshRenderer.sharedMaterial.mainTexture = WorldView.BuildElevationTexture(TheWorld);
+        currentView = "Elevation";
         Debug.Log("Elevation View Made!");
         // Set the time
         day = 0;
@@ -63,6 +65,25 @@ public class MainController : MonoBehaviour {
             mouseController.UpdateTheDate();
         }
         
+    }
+
+    // Toggles between the two world display methods
+    public void ToggleView()
+    {
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        switch (currentView)
+        {
+            case "Elevation":
+                meshRenderer.sharedMaterial.mainTexture = WorldView.BuildHabitatTexture(TheWorld, textureMap);
+                currentView = "Habitat";
+                Debug.Log("Habitat View Made!");
+                break;
+            case "Habitat":
+                meshRenderer.sharedMaterial.mainTexture = WorldView.BuildElevationTexture(TheWorld);
+                currentView = "Elevation";
+                Debug.Log("Elevation View Made!");
+                break;
+        }     
     }
 
 }
