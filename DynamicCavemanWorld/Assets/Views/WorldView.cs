@@ -143,7 +143,7 @@ public class WorldView : MonoBehaviour {
         // Initialize some variables
         int worldx = world.WorldX;
         int worldz = world.WorldZ;
-        int pixelsPerTile = 40;
+        int pixelsPerTile = 20;
         int tileMapRows = mapTiles.height / pixelsPerTile;
         int tileMapTilesPerRow = mapTiles.width / pixelsPerTile;
         int adjustedX;
