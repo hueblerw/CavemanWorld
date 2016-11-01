@@ -137,19 +137,18 @@ public class WorldView : MonoBehaviour {
 
 
     // Build a texture for the habitat display
-    public static Texture BuildHabitatTexture(World world)
+    public static Texture BuildHabitatTexture(World world, Texture2D mapTiles)
     {
         // Initialize some variables
         int worldx = world.WorldX;
         int worldz = world.WorldZ;
-        int pixelsPerTile = 10;
+        int pixelsPerTile = 40;
+        int tileMapRows = mapTiles.height / pixelsPerTile;
+        int tileMapTilesPerRow = mapTiles.width / pixelsPerTile;
         int adjustedX;
         int adjustedZ;
-        float[,] elevations = world.elevation.worldArray;
-        float greenTint;
-        float redTint;
-        float blueTint;
-        Color color;
+        Habitat[,] habitats = world.habitats.worldArray;
+        // habitats[adjustedX, adjustedZ].dominantType
 
         // Create a texture object
         Texture2D texture = new Texture2D(worldx * pixelsPerTile, worldz * pixelsPerTile);
