@@ -161,7 +161,7 @@ public class WorldView : MonoBehaviour {
             {
                 tileIndex = habitats[x, z].GetDominantIndex();
                 colorArray = mapTiles.GetPixels(0, 0, pixelsPerTile, pixelsPerTile);
-                texture.SetPixels(0, 0, pixelsPerTile, pixelsPerTile, colorArray);
+                texture.SetPixels(x * pixelsPerTile, z * pixelsPerTile, pixelsPerTile, pixelsPerTile, colorArray);
             }
         }
 
