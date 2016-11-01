@@ -143,22 +143,21 @@ public class WorldView : MonoBehaviour {
         // Initialize some variables
         int worldx = world.WorldX;
         int worldz = world.WorldZ;
-        int pixelsPerTileX = 16;
-        int pixelsPerTileZ = 16;
+        int pixelsPerTile = 64;
         int tileIndex;
         Color[] colorArray;
         Habitat[,] habitats = world.habitats.worldArray;
         // habitats[adjustedX, adjustedZ].dominantType
 
         // Create a texture object
-        Texture2D texture = new Texture2D(worldx * pixelsPerTileX, worldz * pixelsPerTileZ);
+        Texture2D texture = new Texture2D(worldx * pixelsPerTile, worldz * pixelsPerTile);
         for (int x = 0; x < worldx; x++)
         {
             for (int z = 0; z < worldz; z++)
             {
-                tileIndex = habitats[x, z].GetDominantIndex() + 1;
-                colorArray = mapTiles.GetPixels(tileIndex * pixelsPerTileX, 0, pixelsPerTileX, pixelsPerTileZ);
-                texture.SetPixels(x * pixelsPerTileX, z * pixelsPerTileZ, pixelsPerTileX, pixelsPerTileZ, colorArray);
+                tileIndex = habitats[x, z].GetDominantIndex();
+                colorArray = mapTiles.GetPixels(tileIndex * pixelsPerTile, 0, pixelsPerTile, pixelsPerTile);
+                texture.SetPixels(x * pixelsPerTile, z * pixelsPerTile, pixelsPerTile, pixelsPerTile, colorArray);
             }
         }
 
