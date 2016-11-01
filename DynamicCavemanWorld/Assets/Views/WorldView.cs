@@ -6,7 +6,7 @@ using System;
 public class WorldView : MonoBehaviour {
 
     public static float tileSize = 20.0f;
-    public static float heightScale = 3.0f;
+    public static float heightScale = tileSize / 5.0f;
 
     public static Mesh BuildMesh(SingleValueLayer elevationVerticesLayer)
     {
@@ -146,8 +146,6 @@ public class WorldView : MonoBehaviour {
         int pixelsPerTile = 20;
         int tileMapRows = mapTiles.height / pixelsPerTile;
         int tileMapTilesPerRow = mapTiles.width / pixelsPerTile;
-        int adjustedX;
-        int adjustedZ;
         int tileIndex;
         Color[] colorArray;
         Habitat[,] habitats = world.habitats.worldArray;
@@ -160,7 +158,7 @@ public class WorldView : MonoBehaviour {
             for (int z = 0; z < worldz; z++)
             {
                 tileIndex = habitats[x, z].GetDominantIndex();
-                colorArray = mapTiles.GetPixels(0, 0, pixelsPerTile, pixelsPerTile);
+                colorArray = mapTiles.GetPixels(tileIndex * pixelsPerTile, 0, pixelsPerTile, pixelsPerTile);
                 texture.SetPixels(x * pixelsPerTile, z * pixelsPerTile, pixelsPerTile, pixelsPerTile, colorArray);
             }
         }
