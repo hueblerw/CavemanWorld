@@ -203,7 +203,7 @@ public class ClassTester
         habitatTypeCounters[8] = 5;
         habitatTypeCounters[4] = 3;
         habitatTypeCounters[2] = 1;
-        Habitat testHabitat = new Habitat(habitatTypeCounters);
+        Habitat testHabitat = new Habitat(habitatTypeCounters, 0f);
 
         // Test the public variables and the initializer methods indirectly
         Assert.AreEqual(testHabitat.dominantType, "boreal");

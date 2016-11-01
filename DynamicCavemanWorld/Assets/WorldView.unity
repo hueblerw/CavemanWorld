@@ -859,6 +859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseController: {fileID: 0}
+  textureMap: {fileID: 2800000, guid: d2438de44b838e84aa79eaadcee33b9e, type: 3}
 --- !u!64 &1526922184
 MeshCollider:
   m_ObjectHideFlags: 0
