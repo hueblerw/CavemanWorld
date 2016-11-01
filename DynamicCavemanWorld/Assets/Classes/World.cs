@@ -374,7 +374,7 @@ public class World {
         // Create the habitat type counters by running twenty years of habitats and seeing the results
         int[,][] habitatTypeCounters = CreateInitHabCounters();
         // Initialize the HabitatLayer
-        habitats = new HabitatLayer(habitatTypeCounters);
+        habitats = new HabitatLayer(habitatTypeCounters, oceanPer.worldArray);
     }
 
     // Create the habitat initialization counters
