@@ -71,7 +71,7 @@ public class WorldView : MonoBehaviour {
         // Initialize some variables
         int worldx = world.WorldX;
         int worldz = world.WorldZ;
-        int pixelsPerTile = 10;
+        int pixelsPerTile = 1;
         int adjustedX;
         int adjustedZ;
         float[,] elevations = world.elevation.worldArray;

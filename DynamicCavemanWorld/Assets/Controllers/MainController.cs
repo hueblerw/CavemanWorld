@@ -58,6 +58,11 @@ public class MainController : MonoBehaviour {
             year += 1;
             mouseController.UpdateTheDate();
             TheWorld.NewYear();
+            if (currentView == "Habitat")
+            {
+                MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+                meshRenderer.sharedMaterial.mainTexture = WorldView.BuildHabitatTexture(TheWorld, textureMap);
+            }
         }
         else
         {
