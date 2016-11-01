@@ -143,8 +143,8 @@ public class WorldView : MonoBehaviour {
         // Initialize some variables
         int worldx = world.WorldX;
         int worldz = world.WorldZ;
-        int pixelsPerTileX = 64;
-        int pixelsPerTileZ = 64;
+        int pixelsPerTileX = 16;
+        int pixelsPerTileZ = 16;
         int tileIndex;
         Color[] colorArray;
         Habitat[,] habitats = world.habitats.worldArray;
