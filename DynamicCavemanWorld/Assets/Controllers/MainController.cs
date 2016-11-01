@@ -11,6 +11,7 @@ public class MainController : MonoBehaviour {
     public static int day;
     public TileMouseOver mouseController;
     public static World TheWorld;
+    public Texture textureMap;
 
 	// Use this for initialization
 	void Start () {
