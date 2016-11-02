@@ -11,6 +11,8 @@ public class MainController : MonoBehaviour {
     public static int day;
     public TileMouseOver mouseController;
     public static World TheWorld;
+    public Texture2D textureMap;
+    public string currentView;
 
 	// Use this for initialization
 	void Start () {
@@ -27,11 +29,12 @@ public class MainController : MonoBehaviour {
         MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
         MeshCollider meshCollider = GetComponent<MeshCollider>();
         // Create and attach the mesh
-        Mesh mesh = ElevationView.BuildMesh(TheWorld.elevationVertices);
+        Mesh mesh = WorldView.BuildMesh(TheWorld.elevationVertices);
         meshFilter.mesh = mesh;
         meshCollider.sharedMesh = mesh;
         // Create and attach the texture
-        meshRenderer.sharedMaterial.mainTexture = ElevationView.BuildTexture(TheWorld);
+        meshRenderer.sharedMaterial.mainTexture = WorldView.BuildElevationTexture(TheWorld);
+        currentView = "Elevation";
         Debug.Log("Elevation View Made!");
         // Set the time
         day = 0;
@@ -55,6 +58,11 @@ public class MainController : MonoBehaviour {
             year += 1;
             mouseController.UpdateTheDate();
             TheWorld.NewYear();
+            if (currentView == "Habitat")
+            {
+                MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+                meshRenderer.sharedMaterial.mainTexture = WorldView.BuildHabitatTexture(TheWorld, textureMap);
+            }
         }
         else
         {
@@ -62,6 +70,27 @@ public class MainController : MonoBehaviour {
             mouseController.UpdateTheDate();
         }
         
+    }
+
+    // Toggles between the two world display methods
+    public void ToggleView()
+    {
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        switch (currentView)
+        {
+            case "Elevation":
+                meshRenderer.sharedMaterial.mainTexture = WorldView.BuildHabitatTexture(TheWorld, textureMap);
+                mouseController.ToggleButtonDisplayName(currentView);
+                currentView = "Habitat";
+                Debug.Log("Habitat View Made!");
+                break;
+            case "Habitat":
+                meshRenderer.sharedMaterial.mainTexture = WorldView.BuildElevationTexture(TheWorld);
+                mouseController.ToggleButtonDisplayName(currentView);
+                currentView = "Elevation";
+                Debug.Log("Elevation View Made!");
+                break;
+        }     
     }
 
 }

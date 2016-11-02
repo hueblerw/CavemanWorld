@@ -11,7 +11,7 @@ public class HabitatLayer {
     public Habitat[,] worldArray;
 
     // Constructor
-    public HabitatLayer(int[,][] habitatCounters)
+    public HabitatLayer(int[,][] habitatCounters, float[,] oceanPer)
     {
         layerName = "Habitat";
         layerType = "Yearly";
@@ -22,7 +22,7 @@ public class HabitatLayer {
         {
             for (int z = 0; z < WORLDZ; z++)
             {
-                worldArray[x, z] = new Habitat(habitatCounters[x, z]);
+                worldArray[x, z] = new Habitat(habitatCounters[x, z], oceanPer[x, z]);
             }
         }
     }

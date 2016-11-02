@@ -3,10 +3,10 @@ using System.Collections;
 using System;
 
 // Based on code by quill18 in his video series linked to here: https://www.youtube.com/watch?v=bpB4BApnKhM
-public class ElevationView : MonoBehaviour {
+public class WorldView : MonoBehaviour {
 
     public static float tileSize = 20.0f;
-    public static float heightScale = 3.0f;
+    public static float heightScale = tileSize / 5.0f;
 
     public static Mesh BuildMesh(SingleValueLayer elevationVerticesLayer)
     {
@@ -64,13 +64,14 @@ public class ElevationView : MonoBehaviour {
         return world;
     }
 
-    // Build the texture for the world
-    public static Texture BuildTexture(World world)
+
+    // Build the texture for the elevation map
+    public static Texture BuildElevationTexture(World world)
     {
         // Initialize some variables
         int worldx = world.WorldX;
         int worldz = world.WorldZ;
-        int pixelsPerTile = 10;
+        int pixelsPerTile = 1;
         int adjustedX;
         int adjustedZ;
         float[,] elevations = world.elevation.worldArray;
@@ -133,6 +134,37 @@ public class ElevationView : MonoBehaviour {
         //texture.filterMode = FilterMode.Point;
         texture.Apply();
         return texture;
-    } 
+    }
+
+
+    // Build a texture for the habitat display
+    public static Texture BuildHabitatTexture(World world, Texture2D mapTiles)
+    {
+        // Initialize some variables
+        int worldx = world.WorldX;
+        int worldz = world.WorldZ;
+        int pixelsPerTile = 64;
+        int tileIndex;
+        Color[] colorArray;
+        Habitat[,] habitats = world.habitats.worldArray;
+        // habitats[adjustedX, adjustedZ].dominantType
+
+        // Create a texture object
+        Texture2D texture = new Texture2D(worldx * pixelsPerTile, worldz * pixelsPerTile);
+        for (int x = 0; x < worldx; x++)
+        {
+            for (int z = 0; z < worldz; z++)
+            {
+                tileIndex = habitats[x, z].GetDominantIndex();
+                colorArray = mapTiles.GetPixels(tileIndex * pixelsPerTile, 0, pixelsPerTile, pixelsPerTile);
+                texture.SetPixels(x * pixelsPerTile, z * pixelsPerTile, pixelsPerTile, pixelsPerTile, colorArray);
+            }
+        }
+
+        // Apply the texture  and return it
+        // texture.filterMode = FilterMode.Point;
+        texture.Apply();
+        return texture;
+    }
 
 }

@@ -10,13 +10,18 @@ public class Habitat {
     // Variables
     public string dominantType;
     public double[] typePercents;
+    public float percentOcean;
     private int activeHabitats;
 
     // Constructor
-    public Habitat(int[] habitatCounters)
+    public Habitat(int[] habitatCounters, float oceanPer)
     {
         typePercents = new double[13];
-        CreateInitialPercentage(habitatCounters);
+        percentOcean = oceanPer;
+        if(percentOcean != 1f)
+        {
+            CreateInitialPercentage(habitatCounters);
+        }
         // Once the habitats have been loaded figure out which one is dominant
         dominantType = CheckDominantType();
     }
@@ -24,34 +29,38 @@ public class Habitat {
     // Habitat Yearly Update Method
     public void UpdateHabitatYear(int hotDays, int coldDays, float rain, float riverLevel, int snowCovered, System.Random randy)
     {
-        int index;
-        int destroyIndex;
-        // if covered in snow glacier advances
-        if (snowCovered == 120)
+        // if all ocean don't change it
+        if (percentOcean != 1f)
         {
-            // do snow stuff - *** UNWRITTEN YET!!! ***
-        }
-        else
-        {
-            // Wetness determination statement
-            string wetness = DetermineWetness(rain + riverLevel * RiverEffectFactor);
-            string temp = DetermineTemp(hotDays, coldDays);
-            // Get the favored habitat
-            index = DetermineHabitatFavored(wetness, temp);
-            // Update the habitat array if not maxed out
-            if (typePercents[index] < 1.0)
+            int index;
+            int destroyIndex;
+            // if covered in snow glacier advances
+            if (snowCovered == 120)
             {
-                typePercents[index] += EnvironmentalShiftFactor;
-                // Generate the random destruction
-                destroyIndex = RandomHabitat(randy);
-                typePercents[destroyIndex] -= EnvironmentalShiftFactor;
-                // Update what is the dominant type if the type was not previously a majority - i.e. > 50% of the habitat
-                if (typePercents[index] < 0.51)
+                // do snow stuff - *** UNWRITTEN YET!!! ***
+            }
+            else
+            {
+                // Wetness determination statement
+                string wetness = DetermineWetness(rain + riverLevel * RiverEffectFactor);
+                string temp = DetermineTemp(hotDays, coldDays);
+                // Get the favored habitat
+                index = DetermineHabitatFavored(wetness, temp);
+                // Update the habitat array if not maxed out
+                if (typePercents[index] < 1.0)
                 {
-                    dominantType = CheckDominantType();
+                    typePercents[index] += EnvironmentalShiftFactor;
+                    // Generate the random destruction
+                    destroyIndex = RandomHabitat(randy);
+                    typePercents[destroyIndex] -= EnvironmentalShiftFactor;
+                    // Update what is the dominant type if the type was not previously a majority - i.e. > 50% of the habitat
+                    if (typePercents[index] < 0.51)
+                    {
+                        dominantType = CheckDominantType();
+                    }
                 }
-            }   
-        }
+            }
+        } 
     }
 
     // Return a string with the habitat stats in it
@@ -224,6 +233,9 @@ public class Habitat {
             case 12:
                 name = "rainforest";
                 break;
+            case 13:
+                name = "ocean";
+                break;
         }
 
         return name;
@@ -232,16 +244,31 @@ public class Habitat {
     // determine the dominant type
     private string CheckDominantType()
     {
-        int maxIndex = 0;
-        for(int i = 0; i < typePercents.Length; i++)
-        {
-            if(typePercents[i] > typePercents[maxIndex])
-            {
-                maxIndex = i;
-            }
-        }
-        return IndexToString(maxIndex);
+        return IndexToString(GetDominantIndex());
     }
+
+
+    // get the index for the dominant habitat
+    public int GetDominantIndex()
+    {
+        if (percentOcean != 1)
+        {
+            int maxIndex = 0;
+            for (int i = 0; i < typePercents.Length; i++)
+            {
+                if (typePercents[i] > typePercents[maxIndex])
+                {
+                    maxIndex = i;
+                }
+            }
+            return maxIndex;
+        }
+        else
+        {
+            return 13;
+        }
+    }
+
 
     // Initialize the Habitats based on the counter array
     private void CreateInitialPercentage(int[] habitatCounters)

@@ -859,6 +859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseController: {fileID: 0}
+  textureMap: {fileID: 2800000, guid: d2438de44b838e84aa79eaadcee33b9e, type: 3}
 --- !u!64 &1526922184
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -995,7 +996,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1954688305}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1526922183}
+        m_MethodName: ToggleView
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1954688305

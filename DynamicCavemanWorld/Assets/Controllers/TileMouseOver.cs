@@ -74,10 +74,24 @@ public class TileMouseOver : MonoBehaviour {
     {
         int[] coor = new int[3];
         // Debug.Log(point.x + ", " + point.y + ", " + point.z);
-        coor[0] = (int) Math.Truncate(point.x / ElevationView.tileSize);
-        coor[1] = (int) Math.Truncate(point.y / ElevationView.heightScale);
-        coor[2] = (int) Math.Truncate(point.z / ElevationView.tileSize);
+        coor[0] = (int) Math.Truncate(point.x / WorldView.tileSize);
+        coor[1] = (int) Math.Truncate(point.y / WorldView.heightScale);
+        coor[2] = (int) Math.Truncate(point.z / WorldView.tileSize);
         return coor;
+    }
+
+    public void ToggleButtonDisplayName(string current)
+    {
+        Text button = findTextWithName("ToggleViewButtonText");
+        switch (current)
+        {
+            case "Elevation":
+                button.text = "Elevation Layer";
+                break;
+            case "Habitat":
+                button.text = "Habitat Layer";
+                break;
+        }
     }
     
 }

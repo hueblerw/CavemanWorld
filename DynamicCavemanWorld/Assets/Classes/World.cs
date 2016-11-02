@@ -374,7 +374,7 @@ public class World {
         // Create the habitat type counters by running twenty years of habitats and seeing the results
         int[,][] habitatTypeCounters = CreateInitHabCounters();
         // Initialize the HabitatLayer
-        habitats = new HabitatLayer(habitatTypeCounters);
+        habitats = new HabitatLayer(habitatTypeCounters, oceanPer.worldArray);
     }
 
     // Create the habitat initialization counters
@@ -395,17 +395,28 @@ public class World {
             {
                 for (int z = 0; z < WorldZ; z++)
                 {
-                    // initialize the habitattype counter with an empty array the first time round
-                    if(year == 0)
+                    // If the tile is 100% ocean initialize habitat counters to an empty array
+                    if(oceanPer.worldArray[x, z] != 1f)
                     {
-                        habitatTypeCounters[x, z] = new int[13];
+                        // initialize the habitattype counter with an empty array the first time round
+                        if(year == 0)
+                        {
+                            habitatTypeCounters[x, z] = new int[13];
+                        }
+                        // Get the index of the expected habitat for each tile that year
+                        wetness = Habitat.DetermineWetness(rainfallTotal.worldArray[x, z] + River.AverageRiverLevel(x, z));
+                        temperateness = Habitat.DetermineTemp(temps[x, z].Count70DegreeDays(), temps[x, z].Count32DegreeDays());
+                        index = Habitat.DetermineHabitatFavored(wetness, temperateness);
+                        // Add a counter for that habitat to that tiles counter array
+                        habitatTypeCounters[x, z][index] += 1;
                     }
-                    // Get the index of the expected habitat for each tile that year
-                    wetness = Habitat.DetermineWetness(rainfallTotal.worldArray[x, z] + River.AverageRiverLevel(x, z));
-                    temperateness = Habitat.DetermineTemp(temps[x, z].Count70DegreeDays(), temps[x, z].Count32DegreeDays());
-                    index = Habitat.DetermineHabitatFavored(wetness, temperateness);
-                    // Add a counter for that habitat to that tiles counter array
-                    habitatTypeCounters[x, z][index] += 1;
+                    else
+                    {
+                        if (year == 0)
+                        {
+                            habitatTypeCounters[x, z] = new int[13];
+                        }
+                    }    
                 }
             }
         }
