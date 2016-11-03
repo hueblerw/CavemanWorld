@@ -94,11 +94,11 @@ public class DataGenerator {
     }
 
     // Temperature Layers - linked int [,] - note this works for AvgHigh and LowTemp
-    public int[][,] CreateTemperatureLayers(int distMult)
+    public float[][,] CreateTemperatureLayers(int distMult)
     {
-        int[][,] layers = new int[2][,];
-        layers[0] = new int[WORLDX, WORLDZ];
-        layers[1] = new int[WORLDX, WORLDZ];
+        float[][,] layers = new float[2][,];
+        layers[0] = new float[WORLDX, WORLDZ];
+        layers[1] = new float[WORLDX, WORLDZ];
         System.Random randy = new System.Random();
         int sign;
         int average;
@@ -106,24 +106,24 @@ public class DataGenerator {
         int coldminValue;
 
         // Create the hightemperature layer
-        layers[0] = CreateStandardIntLayer(30, 110, 4);
+        layers[0] = CreateStandardFloatLayer(30, 110, 4);
 
         // Then create the linked LowTemperature layer
         coldminValue = -20;
         // First do the upper left square
-        layers[1][0, 0] = randy.Next(coldminValue, layers[0][0, 0] - 15);
+        layers[1][0, 0] = randy.Next(coldminValue, (int) layers[0][0, 0] - 15);
         // Then do the top row based on the square to its left
         for (int x = 1; x < WORLDX; x++)
         {
             sign = GenerateRandomSign(randy);
-            coldmaxValue = layers[0][x, 0] - 15;
+            coldmaxValue = (int) layers[0][x, 0] - 15;
             layers[1][x, 0] = Math.Max(Math.Min((layers[1][x - 1, 0] + sign * randy.Next(0, distMult + 1)), coldmaxValue), coldminValue);
         }
         // Then do the left column based on the square above it
         for (int z = 1; z < WORLDZ; z++)
         {
             sign = GenerateRandomSign(randy);
-            coldmaxValue = layers[0][0, z] - 15;
+            coldmaxValue = (int) layers[0][0, z] - 15;
             layers[1][0, z] = Math.Max(Math.Min((layers[1][0, z - 1] + sign * randy.Next(0, distMult + 1)), coldmaxValue), coldminValue);
         }
         // Then do every other cell in order
@@ -132,7 +132,7 @@ public class DataGenerator {
             for (int x = 1; x < WORLDX; x++)
             {
                 sign = GenerateRandomSign(randy);
-                coldmaxValue = layers[0][x, z] - 15;
+                coldmaxValue = (int) layers[0][x, z] - 15;
                 average = (int)Math.Round((layers[1][x, z - 1] + layers[1][x - 1, z - 1] + layers[1][x - 1, z]) / 3.0, 0);
                 layers[1][x, z] = Math.Max(Math.Min((average + sign * randy.Next(0, distMult + 1)), coldmaxValue), coldminValue);
             }
@@ -142,42 +142,7 @@ public class DataGenerator {
     }
 
 
-    // Private supporting methods
-    private int[,] CreateStandardIntLayer(int minValue, int maxValue, int distMult)
-    {
-        int[,] layer = new int[WORLDX, WORLDZ];
-        System.Random randy = new System.Random();
-        int sign;
-        int average;
-
-        // First do the upper left square
-        layer[0, 0] = randy.Next(minValue, maxValue);
-        // Then do the top row based on the square to its left
-        for (int x = 1; x < WORLDX; x++)
-        {
-            sign = GenerateRandomSign(randy);
-            layer[x, 0] = Math.Max(Math.Min((layer[x - 1, 0] + sign * randy.Next(0, distMult + 1)), maxValue), minValue);
-        }
-        // Then do the left column based on the square above it
-        for (int z = 1; z < WORLDZ; z++)
-        {
-            sign = GenerateRandomSign(randy);
-            layer[0, z] = Math.Max(Math.Min((layer[0, z - 1] + sign * randy.Next(0, distMult + 1)), maxValue), minValue);
-        }
-        // Then do every other cell in order
-        for (int z = 1; z < WORLDZ; z++)
-        {
-            for (int x = 1; x < WORLDX; x++)
-            {
-                sign = GenerateRandomSign(randy);
-                average = (int) Math.Round((layer[x, z - 1] + layer[x - 1, z - 1] + layer[x - 1, z]) / 3.0, 0);
-                layer[x, z] = Math.Max(Math.Min((average + sign * randy.Next(0, distMult + 1)), maxValue), minValue);
-            }
-        }
-
-        return layer;
-    }
-    
+    // Private supporting methods 
     // Generate a random negative sign
     private int GenerateRandomSign(System.Random randy)
     {

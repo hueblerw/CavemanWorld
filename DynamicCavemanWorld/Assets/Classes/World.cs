@@ -63,7 +63,7 @@ public class World {
             // Generate elevation layer
             elevation.worldArray = generator.CreateElevationLayer();
             // Generate temperature info
-            int[][,] temporaryTemps = generator.CreateTemperatureLayers(4);
+            float[][,] temporaryTemps = generator.CreateTemperatureLayers(4);
             highTemp.worldArray = temporaryTemps[0];
             lowTemp.worldArray = temporaryTemps[1];
             tempMidpt.worldArray = generator.CreateStandardFloatLayer(20.2, 40.6, 4.0);

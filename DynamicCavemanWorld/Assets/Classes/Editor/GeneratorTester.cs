@@ -42,7 +42,7 @@ public class GeneratorTester {
         // Set the world size
         DataGenerator generator = new DataGenerator(40, 60);
         // Generate the tested world
-        int[][,] array = generator.CreateTemperatureLayers(4);
+        float[][,] array = generator.CreateTemperatureLayers(4);
         // Generate random coordinates
         System.Random randy = new System.Random();
         int i = randy.Next(0, generator.WORLDX);
