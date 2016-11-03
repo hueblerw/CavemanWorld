@@ -8,7 +8,7 @@ public class GeneratorTester {
 	public void ElevationGeneratorTester()
 	{
         // Set the world size
-        DataGenerator generator = new DataGenerator(80, 60);
+        DataGenerator generator = new DataGenerator(20, 15);
         // Generate the tested world
         float[,] array = generator.CreateElevationLayer();
         // Generate random coordinates
@@ -17,8 +17,8 @@ public class GeneratorTester {
         int j = randy.Next(0, generator.WORLDZ);
         string map ="";
 
-        Assert.AreEqual(80, generator.WORLDX);
-        Assert.AreEqual(60, generator.WORLDZ);
+        Assert.AreEqual(20, generator.WORLDX);
+        Assert.AreEqual(15, generator.WORLDZ);
 
         Assert.GreaterOrEqual(array[0, 0], -3f);
         Assert.LessOrEqual(array[0, 0], 3f);
@@ -26,7 +26,7 @@ public class GeneratorTester {
 
         for(int x = 0; x < generator.WORLDX; x++)
         {
-            for (int z = 0; z < generator.WORLDX; z++)
+            for (int z = 0; z < generator.WORLDZ; z++)
             {
                 map += array[x, z] + ", ";
             }
@@ -50,6 +50,20 @@ public class GeneratorTester {
         string mapA = "";
         string mapB = "";
 
+        for (int x = 0; x < generator.WORLDX; x++)
+        {
+            for (int z = 0; z < generator.WORLDZ; z++)
+            {
+                mapA += array[0][x, z] + ", ";
+                mapB += array[1][x, z] + ", ";
+            }
+            mapA += "\n";
+            mapB += "\n";
+        }
+
+        Debug.Log(mapA);
+        Debug.Log(mapB);
+
         Assert.AreEqual(40, generator.WORLDX);
         Assert.AreEqual(60, generator.WORLDZ);
 
@@ -62,20 +76,6 @@ public class GeneratorTester {
         Assert.LessOrEqual(array[1][0, 0], array[0][0, 0] - 15);
         Assert.GreaterOrEqual(array[1][i, j], -20);
         Assert.LessOrEqual(array[1][i, j], array[0][i, j] - 15);
-
-        for (int x = 0; x < generator.WORLDX; x++)
-        {
-            for (int z = 0; z < generator.WORLDX; z++)
-            {
-                mapA += array[0][x, z] + ", ";
-                mapB += array[1][x, z] + ", ";
-            }
-            mapA += "\n";
-            mapB += "\n";
-        }
-
-        Debug.Log(mapA);
-        Debug.Log(mapB);
     }
 
     [Test]
@@ -101,7 +101,7 @@ public class GeneratorTester {
 
         for (int x = 0; x < generator.WORLDX; x++)
         {
-            for (int z = 0; z < generator.WORLDX; z++)
+            for (int z = 0; z < generator.WORLDZ; z++)
             {
                 map += array[x, z] + ", ";
             }

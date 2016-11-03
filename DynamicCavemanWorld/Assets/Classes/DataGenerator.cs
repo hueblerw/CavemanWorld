@@ -20,7 +20,6 @@ public class DataGenerator {
     public float[,] CreateStandardFloatLayer(double minValue, double maxValue, double distMult)
     {
         float[,] layer = new float[WORLDX, WORLDZ];
-        Debug.Log(WORLDX + ", " + WORLDZ);
         System.Random randy = new System.Random();
         int sign;
         double average;
@@ -37,15 +36,15 @@ public class DataGenerator {
         for (int z = 1; z < WORLDZ; z++)
         {
             sign = GenerateRandomSign(randy);
-            layer[0, z] = (float) Math.Round(Math.Max(Math.Min((layer[z - 1, 0] + sign * randy.NextDouble() * distMult), maxValue), minValue), 1);
+            layer[0, z] = (float) Math.Round(Math.Max(Math.Min((layer[0, z - 1] + sign * randy.NextDouble() * distMult), maxValue), minValue), 1);
         }
         // Then do every other cell in order
-        for (int z = 1; z < WORLDX; z++)
+        for (int z = 1; z < WORLDZ; z++)
         {
             for (int x = 1; x < WORLDX; x++)
             {
                 sign = GenerateRandomSign(randy);
-                average = (layer[z - 1, x] + layer[z - 1, x - 1] + layer[z, x - 1]) / 3.0;
+                average = (layer[x, z - 1] + layer[x - 1, z - 1] + layer[x - 1, z]) / 3.0;
                 layer[0, z] = (float) Math.Round(Math.Max(Math.Min((average + sign * randy.NextDouble() * distMult), maxValue), minValue), 1);
             }
         }
@@ -64,7 +63,7 @@ public class DataGenerator {
         int[] randomNeighbor;
 
         // First do the upper left square
-        layer[0, 0] = (float)(randy.NextDouble() * 6f - 3f);
+        layer[0, 0] = (float) Math.Round((randy.NextDouble() * 6f - 3f), 1);
         // Then do the top row based on the square to its left
         for (int x = 1; x < WORLDX; x++)
         {
@@ -80,7 +79,7 @@ public class DataGenerator {
             layer[0, z] = (float) Math.Round((layer[0, z - 1] + sign * randomRoot), 1);
         }
         // Then do every other cell in order
-        for (int z = 1; z < WORLDX; z++)
+        for (int z = 1; z < WORLDZ; z++)
         {
             for (int x = 1; x < WORLDX; x++)
             {
@@ -126,16 +125,16 @@ public class DataGenerator {
         {
             sign = GenerateRandomSign(randy);
             coldmaxValue = layers[0][0, z] - 15;
-            layers[1][0, z] = Math.Max(Math.Min((layers[1][z - 1, 0] + sign * randy.Next(0, distMult + 1)), coldmaxValue), coldminValue);
+            layers[1][0, z] = Math.Max(Math.Min((layers[1][0, z - 1] + sign * randy.Next(0, distMult + 1)), coldmaxValue), coldminValue);
         }
         // Then do every other cell in order
-        for (int z = 1; z < WORLDX; z++)
+        for (int z = 1; z < WORLDZ; z++)
         {
             for (int x = 1; x < WORLDX; x++)
             {
                 sign = GenerateRandomSign(randy);
                 coldmaxValue = layers[0][x, z] - 15;
-                average = (int)Math.Round((layers[1][z - 1, x] + layers[1][z - 1, x - 1] + layers[1][z, x - 1]) / 3.0, 0);
+                average = (int)Math.Round((layers[1][x, z - 1] + layers[1][x - 1, z - 1] + layers[1][x - 1, z]) / 3.0, 0);
                 layers[1][0, z] = Math.Max(Math.Min((average + sign * randy.Next(0, distMult + 1)), coldmaxValue), coldminValue);
             }
         }
@@ -164,15 +163,15 @@ public class DataGenerator {
         for (int z = 1; z < WORLDZ; z++)
         {
             sign = GenerateRandomSign(randy);
-            layer[0, z] = Math.Max(Math.Min((layer[z - 1, 0] + sign * randy.Next(0, distMult + 1)), maxValue), minValue);
+            layer[0, z] = Math.Max(Math.Min((layer[0, z - 1] + sign * randy.Next(0, distMult + 1)), maxValue), minValue);
         }
         // Then do every other cell in order
-        for (int z = 1; z < WORLDX; z++)
+        for (int z = 1; z < WORLDZ; z++)
         {
             for (int x = 1; x < WORLDX; x++)
             {
                 sign = GenerateRandomSign(randy);
-                average = (int) Math.Round((layer[z - 1, x] + layer[z - 1, x - 1] + layer[z, x - 1]) / 3.0, 0);
+                average = (int) Math.Round((layer[x, z - 1] + layer[x - 1, z - 1] + layer[x - 1, z]) / 3.0, 0);
                 layer[0, z] = Math.Max(Math.Min((average + sign * randy.Next(0, distMult + 1)), maxValue), minValue);
             }
         }
@@ -204,7 +203,7 @@ public class DataGenerator {
         int indexMax = 4;
         int index;
 
-        if(x == WORLDX)
+        if(x == WORLDX - 1)
         {
             indexMax--;
         }
