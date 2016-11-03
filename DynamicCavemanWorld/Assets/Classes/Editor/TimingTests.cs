@@ -22,4 +22,10 @@ public class TimingTests {
         World testWorld = new World(50, 50, true);
     }
 
+    [Test]
+    public void RandomLargeWorldCreationTime()
+    {
+        World testWorld = new World(200, 200, true);
+    }
+
 }

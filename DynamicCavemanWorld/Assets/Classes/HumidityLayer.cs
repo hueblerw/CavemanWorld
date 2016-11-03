@@ -15,8 +15,8 @@ public class HumidityLayer
     private string type = "Semi-static";
     private int rounded;
     private int numFiles;
-    public static int WORLDX = SingleValueLayer.WORLDX;
-    public static int WORLDZ = SingleValueLayer.WORLDZ;
+    public static int WORLDX;
+    public static int WORLDZ;
     public int[] timeIntervals;
     public float[][,] worldArray;
     public bool spread;
@@ -27,6 +27,8 @@ public class HumidityLayer
         this.layerName = name;
         this.rounded = roundTo;
         this.numFiles = numFiles;
+        WORLDX = SingleValueLayer.WORLDX;
+        WORLDZ = SingleValueLayer.WORLDZ;
         worldArray = new float[numFiles][,];
     }
 
@@ -65,6 +67,7 @@ public class HumidityLayer
         // Run 120 times        
         for (int day = 0; day < 120; day++)
         {
+            // Debug.Log(day + "-" + WORLDX + ", " + WORLDZ);
             stormArray = GenerateStormCenters(day, randy);
             // Begin to loop until a storm didn't sucessfully spread
             decay = 0f;

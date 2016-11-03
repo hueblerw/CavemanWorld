@@ -97,8 +97,8 @@ public class MainController : MonoBehaviour {
     public void GenerateNewRandomWorld()
     {
         // Construct a random world of a given size
-        int xDim = int.Parse(mouseController.findTextWithName("X-Dimension").text);
-        int yDim = int.Parse(mouseController.findTextWithName("Y-Dimension").text);
+        int xDim = int.Parse(mouseController.findTextWithName("X-Dim").text);
+        int yDim = int.Parse(mouseController.findTextWithName("Y-Dim").text);
         TheWorld = new World(xDim, yDim, true);
 
         // Construct the elevation view

@@ -30,6 +30,8 @@ public class ClassTester
     public void DailyLayerTest()
     {
         // Test all the SingleLayer Values can be initialized
+        SingleValueLayer.WORLDX = 50;
+        SingleValueLayer.WORLDZ = 50;
         DailyLayer rainfall = new DailyLayer("Rainfall", 1);
 
         Assert.AreEqual("Rainfall", rainfall.layerName);

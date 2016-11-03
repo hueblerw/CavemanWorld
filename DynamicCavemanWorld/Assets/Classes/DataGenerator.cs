@@ -36,7 +36,6 @@ public class DataGenerator {
         for (int z = 1; z < WORLDZ; z++)
         {
             sign = GenerateRandomSign(randy);
-            Debug.Log(z + "-" + layer[0, z - 1]);
             layer[0, z] = (float) Math.Round(Math.Max(Math.Min((layer[0, z - 1] + sign * randy.NextDouble() * distMult), maxValue), minValue), 1);
         }
         // Then do every other cell in order

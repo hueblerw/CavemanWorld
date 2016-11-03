@@ -60,6 +60,7 @@ public class World {
         else
         {
             DataGenerator generator = new DataGenerator(WorldX, WorldZ);
+            Debug.Log(x + ", " + z);
             // Generate elevation layer
             elevation.worldArray = generator.CreateElevationLayer();
             // Generate temperature info
