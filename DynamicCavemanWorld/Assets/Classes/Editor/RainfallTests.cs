@@ -143,7 +143,7 @@ public class RainfallTests
     public void RiverLayerCreationTest()
     {
         // Initialize a world
-        World testWorld = new World(50, 50);
+        World testWorld = new World(50, 50, false);
         System.Random randy = new System.Random();
         int x = randy.Next(0, 50);
         int z = randy.Next(0, 50);

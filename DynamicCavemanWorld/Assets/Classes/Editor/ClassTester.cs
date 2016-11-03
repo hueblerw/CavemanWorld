@@ -123,7 +123,7 @@ public class ClassTester
     public void HillAndOceanPerTest()
     {
         // Initialize a world
-        World testWorld = new World(50, 50);
+        World testWorld = new World(50, 50, false);
         System.Random randy = new System.Random();
         int x = randy.Next(0, 50);
         int z = randy.Next(0, 50);
@@ -245,7 +245,7 @@ public class ClassTester
     public void HabitatLayerTest()
     {
         // Test all the SingleLayer Values can be initialized
-        World testWorld = new World(50, 50);
+        World testWorld = new World(50, 50, false);
         HabitatLayer tester = testWorld.habitats;
 
         Assert.AreEqual("Habitat", tester.layerName);
