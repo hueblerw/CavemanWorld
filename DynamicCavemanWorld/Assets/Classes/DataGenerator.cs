@@ -92,7 +92,7 @@ public class DataGenerator {
     }
 
     // Temperature Layers - linked int [,] - note this works for AvgHigh and LowTemp
-    public static int[][,] CreateTemperatureLayers(int minValue, int maxValue, int distMult)
+    public static int[][,] CreateTemperatureLayers(int distMult)
     {
         int[][,] layers = new int[2][,];
         layers[0] = new int[WORLDX, WORLDZ];
@@ -100,27 +100,29 @@ public class DataGenerator {
         System.Random randy = new System.Random();
         int sign;
         int average;
+        int coldmaxValue;
+        int coldminValue;
 
         // Create the hightemperature layer
         layers[0] = CreateStandardIntLayer(30, 110, 4);
 
         // Then create the linked LowTemperature layer
-        minValue = -20;
+        coldminValue = -20;
         // First do the upper left square
-        layers[1][0, 0] = randy.Next(minValue, layers[0][0, 0] - 15);
+        layers[1][0, 0] = randy.Next(coldminValue, layers[0][0, 0] - 15);
         // Then do the top row based on the square to its left
         for (int x = 1; x < WORLDX; x++)
         {
             sign = GenerateRandomSign(randy);
-            maxValue = layers[0][x, 0] - 15;
-            layers[1][x, 0] = Math.Max(Math.Min((layers[1][x - 1, 0] + sign * randy.Next(0, distMult + 1)), maxValue), minValue);
+            coldmaxValue = layers[0][x, 0] - 15;
+            layers[1][x, 0] = Math.Max(Math.Min((layers[1][x - 1, 0] + sign * randy.Next(0, distMult + 1)), coldmaxValue), coldminValue);
         }
         // Then do the left column based on the square above it
         for (int z = 1; z < WORLDZ; z++)
         {
             sign = GenerateRandomSign(randy);
-            maxValue = layers[0][0, z] - 15;
-            layers[1][0, z] = Math.Max(Math.Min((layers[1][z - 1, 0] + sign * randy.Next(0, distMult + 1)), maxValue), minValue);
+            coldmaxValue = layers[0][0, z] - 15;
+            layers[1][0, z] = Math.Max(Math.Min((layers[1][z - 1, 0] + sign * randy.Next(0, distMult + 1)), coldmaxValue), coldminValue);
         }
         // Then do every other cell in order
         for (int z = 1; z < WORLDX; z++)
@@ -128,9 +130,9 @@ public class DataGenerator {
             for (int x = 1; x < WORLDX; x++)
             {
                 sign = GenerateRandomSign(randy);
-                maxValue = layers[0][x, z] - 15;
+                coldmaxValue = layers[0][x, z] - 15;
                 average = (int)Math.Round((layers[1][z - 1, x] + layers[1][z - 1, x - 1] + layers[1][z, x - 1]) / 3.0, 0);
-                layers[1][0, z] = Math.Max(Math.Min((average + sign * randy.Next(0, distMult + 1)), maxValue), minValue);
+                layers[1][0, z] = Math.Max(Math.Min((average + sign * randy.Next(0, distMult + 1)), coldmaxValue), coldminValue);
             }
         }
 

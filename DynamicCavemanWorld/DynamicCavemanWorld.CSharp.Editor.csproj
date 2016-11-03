@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Classes\Editor\ClassTester.cs" />
+    <Compile Include="Assets\Classes\Editor\GeneratorTester.cs" />
     <Compile Include="Assets\Classes\Editor\RainfallTests.cs" />
     <Compile Include="Assets\Classes\Editor\TimingTests.cs" />
   </ItemGroup>
