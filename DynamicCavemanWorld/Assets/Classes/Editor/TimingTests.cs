@@ -23,6 +23,19 @@ public class TimingTests {
     }
 
     [Test]
+    public void RandomDecentSizeWorld()
+    {
+        World testWorld = new World(100, 100, true);
+    }
+
+    [Test]
+    public void DecentSizeNewYearTime()
+    {
+        World testWorld = new World(100, 100, false);
+        testWorld.NewYear();
+    }
+
+    [Test]
     public void RandomLargeWorldCreationTime()
     {
         World testWorld = new World(200, 200, true);
