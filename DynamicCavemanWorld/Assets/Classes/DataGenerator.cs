@@ -4,19 +4,23 @@ using System;
 
 public class DataGenerator {
 
-    public static int WORLDX;
-    public static int WORLDZ;
+    public int WORLDX;
+    public int WORLDZ;
+
     // constructor
-    public DataGenerator()
+    public DataGenerator(int WorldX, int WorldZ)
     {
+        WORLDX = WorldX;
+        WORLDZ = WorldZ;
     }
 
     // Static methods for creating layers based on inputs:
     // ***************************************************
     // Standard Layer - float [,] - note this works for TempMidpt, Variance, and AvgHumidity layer generation
-    public static float[,] CreateStandardFloatLayer(double minValue, double maxValue, double distMult)
+    public float[,] CreateStandardFloatLayer(double minValue, double maxValue, double distMult)
     {
         float[,] layer = new float[WORLDX, WORLDZ];
+        Debug.Log(WORLDX + ", " + WORLDZ);
         System.Random randy = new System.Random();
         int sign;
         double average;
@@ -50,7 +54,7 @@ public class DataGenerator {
     }
 
     // Elevation Layer
-    public static float[,] CreateElevationLayer()
+    public float[,] CreateElevationLayer()
     {
         float[,] layer = new float[WORLDX, WORLDZ];
         System.Random randy = new System.Random();
@@ -92,7 +96,7 @@ public class DataGenerator {
     }
 
     // Temperature Layers - linked int [,] - note this works for AvgHigh and LowTemp
-    public static int[][,] CreateTemperatureLayers(int distMult)
+    public int[][,] CreateTemperatureLayers(int distMult)
     {
         int[][,] layers = new int[2][,];
         layers[0] = new int[WORLDX, WORLDZ];
@@ -141,7 +145,7 @@ public class DataGenerator {
 
 
     // Private supporting methods
-    private static int[,] CreateStandardIntLayer(int minValue, int maxValue, int distMult)
+    private int[,] CreateStandardIntLayer(int minValue, int maxValue, int distMult)
     {
         int[,] layer = new int[WORLDX, WORLDZ];
         System.Random randy = new System.Random();
@@ -177,7 +181,7 @@ public class DataGenerator {
     }
     
     // Generate a random negative sign
-    private static int GenerateRandomSign(System.Random randy)
+    private int GenerateRandomSign(System.Random randy)
     {
         int num = randy.Next(0, 2);
         if (num == 0)
@@ -188,13 +192,13 @@ public class DataGenerator {
     }
 
     // Generate a number from 0-2 with a square root distribution
-    private static double RandomRoot(System.Random randy)
+    private double RandomRoot(System.Random randy)
     {
         return Math.Pow((Math.Sqrt(2) * (randy.NextDouble())), 2);
     }
 
     // return the coordinates of a random neighbor
-    private static int[] RandomNeighborCoor(int x, int z, System.Random randy)
+    private int[] RandomNeighborCoor(int x, int z, System.Random randy)
     {
         int[] coor = new int[2];
         int indexMax = 4;
