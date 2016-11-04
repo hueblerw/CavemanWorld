@@ -20,7 +20,7 @@ public class MainController : MonoBehaviour {
         
         // Construct the model from text files
         Debug.Log("Literally, Hello World!");
-        TheWorld = new World(50, 50);
+        TheWorld = new World(50, 50, false);
         Debug.Log("World Model Made!");
 
         // Construct the elevation view
@@ -91,6 +91,34 @@ public class MainController : MonoBehaviour {
                 Debug.Log("Elevation View Made!");
                 break;
         }     
+    }
+
+    // Generate's and displays a new random world
+    public void GenerateNewRandomWorld()
+    {
+        // Construct a random world of a given size
+        int xDim = int.Parse(mouseController.findTextWithName("X-Dim").text);
+        int yDim = int.Parse(mouseController.findTextWithName("Y-Dim").text);
+        TheWorld = new World(xDim, yDim, true);
+
+        // Construct the elevation view
+        // Get the Mesh components
+        MeshFilter meshFilter = GetComponent<MeshFilter>();
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        MeshCollider meshCollider = GetComponent<MeshCollider>();
+        // Create and attach the mesh
+        Mesh mesh = WorldView.BuildMesh(TheWorld.elevationVertices);
+        meshFilter.mesh = mesh;
+        meshCollider.sharedMesh = mesh;
+        // Create and attach the texture
+        meshRenderer.sharedMaterial.mainTexture = WorldView.BuildElevationTexture(TheWorld);
+        currentView = "Elevation";
+        Debug.Log("Elevation View Made!");
+        // Set the time
+        day = 0;
+        year = 1;
+        // Initialize the Game interaction Controllers
+        mouseController = new TileMouseOver(meshCollider, meshRenderer);
     }
 
 }

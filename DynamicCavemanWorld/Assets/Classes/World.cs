@@ -30,7 +30,7 @@ public class World {
     public HabitatLayer habitats;
 
     // Constructor
-    public World(int x, int z)
+    public World(int x, int z, bool random)
     {
         // Initialize the variables
         WorldX = x;
@@ -46,25 +46,46 @@ public class World {
         this.tempEquations = new EquationLayer("TemperatureEquations", "Semi-static");
         this.temps = new IntDayList[WorldX, WorldZ];
         this.humidity = new HumidityLayer("HumidityLayer", 6, 1);
-        string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
+
+        if (!random)
+        {
+            string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
+            elevation.readCSVFile(filePathPrefix + "ElevationNiceMapA.csv");
+            highTemp.readCSVFile(filePathPrefix + "HighTempNiceMapA.csv");
+            lowTemp.readCSVFile(filePathPrefix + "LowTempNiceMapA.csv");
+            tempMidpt.readCSVFile(filePathPrefix + "MidptNiceMapA.csv");
+            variance.readCSVFile(filePathPrefix + "VarianceNiceMapA.csv");
+            humidity.readCSVFiles(filePathPrefix);
+        }
+        else
+        {
+            DataGenerator generator = new DataGenerator(WorldX, WorldZ);
+            Debug.Log(x + ", " + z);
+            // Generate elevation layer
+            elevation.worldArray = generator.CreateElevationLayer();
+            // Generate temperature info
+            float[][,] temporaryTemps = generator.CreateTemperatureLayers(4);
+            highTemp.worldArray = temporaryTemps[0];
+            lowTemp.worldArray = temporaryTemps[1];
+            tempMidpt.worldArray = generator.CreateStandardFloatLayer(20.2, 40.6, 4.0);
+            variance.worldArray = generator.CreateStandardFloatLayer(1.0, 16.0, 2.0);
+            // Generate rain info
+            for (int i = 0; i < 6; i++){
+                humidity.worldArray[i] = generator.CreateStandardFloatLayer(0.0, 10.0, 1.0);
+            }
+        }
 
         // Elevation info
-        elevation.readCSVFile(filePathPrefix + "ElevationNiceMapA.csv");
         ConvertElevationToVertices();
         hillPer = CalculateHillPercentage();
         oceanPer = CalculateOceanPercentage();
         Debug.Log("Elevation Models Complete!");
         // Temperature info
-        highTemp.readCSVFile(filePathPrefix + "HighTempNiceMapA.csv");
-        lowTemp.readCSVFile(filePathPrefix + "LowTempNiceMapA.csv");
-        tempMidpt.readCSVFile(filePathPrefix + "MidptNiceMapA.csv");
-        variance.readCSVFile(filePathPrefix + "VarianceNiceMapA.csv");
         tempEquations.createEquations(highTemp, lowTemp, tempMidpt, variance);
         // Calculate Years worth of temperature data
         // CreateYearsTemps();
         Debug.Log("Temperature Models Complete!");
         // Rainfall info
-        humidity.readCSVFiles(filePathPrefix);
         rainfall = humidity.GenerateWorldsYearOfRain();
         rainfallTotal = new SingleValueLayer("Yearly Rain Total", "Yearly", 1);
         // rainfallTotal.worldArray = rainfall.findYearTotalArray();

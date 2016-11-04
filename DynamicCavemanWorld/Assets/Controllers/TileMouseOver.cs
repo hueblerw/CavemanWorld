@@ -55,7 +55,7 @@ public class TileMouseOver : MonoBehaviour {
     }
 
     // Private Methods
-    private Text findTextWithName(string name)
+    public Text findTextWithName(string name)
     {
         GameObject canvas = GameObject.Find("Canvas");
         Text[] texts = canvas.GetComponentsInChildren<Text>();

@@ -30,6 +30,8 @@ public class ClassTester
     public void DailyLayerTest()
     {
         // Test all the SingleLayer Values can be initialized
+        SingleValueLayer.WORLDX = 50;
+        SingleValueLayer.WORLDZ = 50;
         DailyLayer rainfall = new DailyLayer("Rainfall", 1);
 
         Assert.AreEqual("Rainfall", rainfall.layerName);
@@ -123,7 +125,7 @@ public class ClassTester
     public void HillAndOceanPerTest()
     {
         // Initialize a world
-        World testWorld = new World(50, 50);
+        World testWorld = new World(50, 50, false);
         System.Random randy = new System.Random();
         int x = randy.Next(0, 50);
         int z = randy.Next(0, 50);
@@ -245,7 +247,7 @@ public class ClassTester
     public void HabitatLayerTest()
     {
         // Test all the SingleLayer Values can be initialized
-        World testWorld = new World(50, 50);
+        World testWorld = new World(50, 50, false);
         HabitatLayer tester = testWorld.habitats;
 
         Assert.AreEqual("Habitat", tester.layerName);
