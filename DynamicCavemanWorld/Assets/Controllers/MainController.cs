@@ -54,15 +54,7 @@ public class MainController : MonoBehaviour {
     {
         if (day == 119)
         {
-            day = 0;
-            year += 1;
-            mouseController.UpdateTheDate();
-            TheWorld.NewYear();
-            if (currentView == "Habitat")
-            {
-                MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
-                meshRenderer.sharedMaterial.mainTexture = WorldView.BuildHabitatTexture(TheWorld, textureMap);
-            }
+            NewYear();
         }
         else
         {
@@ -70,6 +62,20 @@ public class MainController : MonoBehaviour {
             mouseController.UpdateTheDate();
         }
         
+    }
+
+    // Moves us to the new year.
+    public void NewYear()
+    {
+        day = 0;
+        year += 1;
+        mouseController.UpdateTheDate();
+        TheWorld.NewYear();
+        if (currentView == "Habitat")
+        {
+            MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+            meshRenderer.sharedMaterial.mainTexture = WorldView.BuildHabitatTexture(TheWorld, textureMap);
+        }
     }
 
     // Toggles between the two world display methods
