@@ -4,24 +4,37 @@ using System.Collections;
 public class CameraController : MonoBehaviour {
 
     // Update is called once per frame
-    public float speed = 1.0f;
+    public float speed = 250.0f;
+    float x;
+    float y;
+    float z;
+
+    void Start()
+    {
+        x = 350f;
+        y = 850f;
+        z = 500f;
+        transform.position = new Vector3(x, y, z);
+    }
+
     void Update()
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.position = new Vector3(speed * Time.deltaTime, 0, 0);
+            x += (speed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.position = new Vector3(speed * Time.deltaTime, 0, 0);
+            x -= (speed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            transform.position = new Vector3(0, 0, speed * Time.deltaTime,);
+            z += (speed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            transform.position = new Vector3(0, 0, speed * Time.deltaTime);
+            z -= (speed * Time.deltaTime);
         }
+        transform.position = new Vector3(x, y, z);
     }
 }
