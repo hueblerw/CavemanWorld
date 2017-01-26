@@ -72,6 +72,8 @@ public class TileMouseOver : MonoBehaviour {
     // Convert hitInfo into a tiles coordinates
     private int[] ConvertToTileCoordinates(Vector3 point)
     {
+        // Tile info error is something to do with the rotation or the y's!
+        // If camera is rotated 90-degrees in y the error reverse itself from being and up-down to left-right displacement error.
         int[] coor = new int[3];
         // Debug.Log(point.x + ", " + point.y + ", " + point.z);
         coor[0] = (int) Math.Truncate(point.x / WorldView.tileSize);
