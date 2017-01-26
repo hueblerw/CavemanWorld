@@ -54,15 +54,7 @@ public class MainController : MonoBehaviour {
     {
         if (day == 119)
         {
-            day = 0;
-            year += 1;
-            mouseController.UpdateTheDate();
-            TheWorld.NewYear();
-            if (currentView == "Habitat")
-            {
-                MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
-                meshRenderer.sharedMaterial.mainTexture = WorldView.BuildHabitatTexture(TheWorld, textureMap);
-            }
+            NewYear();
         }
         else
         {
@@ -70,6 +62,20 @@ public class MainController : MonoBehaviour {
             mouseController.UpdateTheDate();
         }
         
+    }
+
+    // Moves us to the new year.
+    public void NewYear()
+    {
+        day = 0;
+        year += 1;
+        mouseController.UpdateTheDate();
+        TheWorld.NewYear();
+        if (currentView == "Habitat")
+        {
+            MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+            meshRenderer.sharedMaterial.mainTexture = WorldView.BuildHabitatTexture(TheWorld, textureMap);
+        }
     }
 
     // Toggles between the two world display methods
@@ -97,8 +103,29 @@ public class MainController : MonoBehaviour {
     public void GenerateNewRandomWorld()
     {
         // Construct a random world of a given size
-        int xDim = int.Parse(mouseController.findTextWithName("X-Dim").text);
-        int yDim = int.Parse(mouseController.findTextWithName("Y-Dim").text);
+        // First get the world dimensions from the main interface.
+        int xDim;
+        int yDim;
+        
+        if (mouseController.findTextWithName("X-Dim").text == "")
+        {
+            xDim = 50;
+        }
+        else
+        {
+            xDim = int.Parse(mouseController.findTextWithName("X-Dim").text);
+        }
+
+        if (mouseController.findTextWithName("Y-Dim").text == "")
+        {
+            yDim = 50;
+        }
+        else
+        {
+            yDim = int.Parse(mouseController.findTextWithName("Y-Dim").text);
+        }
+
+        // Then build a new world of those dimensions
         TheWorld = new World(xDim, yDim, true);
 
         // Construct the elevation view
