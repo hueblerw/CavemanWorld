@@ -21,37 +21,51 @@ public class CameraController : MonoBehaviour {
 
     void Update()
     {
+        // code for translating
         if (Input.GetKey(KeyCode.D))
         {
             x += (speed * Time.deltaTime);
+            ActivateBoundedTransform(x, y, z);
         }
         if (Input.GetKey(KeyCode.A))
         {
             x -= (speed * Time.deltaTime);
+            ActivateBoundedTransform(x, y, z);
         }
         if (Input.GetKey(KeyCode.S))
         {
             z -= (speed * Time.deltaTime);
+            ActivateBoundedTransform(x, y, z);
         }
         if (Input.GetKey(KeyCode.W))
         {
             z += (speed * Time.deltaTime);
+            ActivateBoundedTransform(x, y, z);
         }
+        // Code for zooming in and out
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            y += (speed * Time.deltaTime);
+            y -= (speed * Time.deltaTime);
+            ActivateBoundedTransform(x, y, z);
         }
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            y -= (speed * Time.deltaTime);
+            y += (speed * Time.deltaTime);
+            ActivateBoundedTransform(x, y, z);
         }
-
-        float[] coor = CreateBoundedCooridnates(x, y, z);
-        transform.position = new Vector3(coor[0], coor[1], coor[2]);
+        // Code for rotating the screen
+        if (Input.GetKey(KeyCode.Q))
+        {
+            transform.Rotate((speed / 25) * Time.deltaTime, 0, 0);
+        }
+        if (Input.GetKey(KeyCode.E))
+        {
+            transform.Rotate(-(speed / 25) * Time.deltaTime, 0, 0);
+        }
     }
 
     // Bounds the area the camera can move to.
-    private float[] CreateBoundedCooridnates(float x, float y, float z)
+    private void ActivateBoundedTransform(float x, float y, float z)
     {
         if (x < -200f)
         {
@@ -69,7 +83,7 @@ public class CameraController : MonoBehaviour {
         {
             y = 1200f;
         }
-        float[] coor = new float[3] { x, y, z };
-        return coor;
+
+        transform.position = new Vector3(x, y, z);
     }
 }
