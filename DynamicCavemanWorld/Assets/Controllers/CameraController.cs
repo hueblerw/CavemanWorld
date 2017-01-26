@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class CameraController : MonoBehaviour {
 
@@ -36,6 +37,40 @@ public class CameraController : MonoBehaviour {
         {
             z += (speed * Time.deltaTime);
         }
-        transform.position = new Vector3(x, y, z);
+        if (Input.GetKey(KeyCode.RightShift))
+        {
+            y += (speed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.RightControl))
+        {
+            y -= (speed * Time.deltaTime);
+        }
+
+        float[] coor = CreateBoundedCooridnates(x, y, z);
+
+        transform.position = new Vector3(coor[0], coor[1], coor[2]);
+    }
+
+    // Bounds the area the camera can move to.
+    private float[] CreateBoundedCooridnates(float x, float y, float z)
+    {
+        if (x < -200f)
+        {
+            x = -200f;
+        }
+        if (z < -200f)
+        {
+            z = -200f;
+        }
+        if (y < 0f)
+        {
+            y = 0f;
+        }
+        if (y > 1200f)
+        {
+            y = 1200f;
+        }
+        float[] coor = new float[3] { x, y, z };
+        return coor;
     }
 }
