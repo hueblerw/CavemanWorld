@@ -53,7 +53,7 @@ public class CameraController : MonoBehaviour {
             y += (speed * Time.deltaTime);
             ActivateBoundedTransform(x, y, z);
         }
-        // Code for rotating the screen
+        // Code for rotating the screen along the x axis.
         if (Input.GetKey(KeyCode.Q))
         {
             transform.Rotate((speed / 25) * Time.deltaTime, 0, 0);
@@ -61,6 +61,15 @@ public class CameraController : MonoBehaviour {
         if (Input.GetKey(KeyCode.E))
         {
             transform.Rotate(-(speed / 25) * Time.deltaTime, 0, 0);
+        }
+        // Code for rotating the screen along the z axis.
+        if (Input.GetKey(KeyCode.Tab))
+        {
+            transform.Rotate(0, 0, (speed / 25) * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.R))
+        {
+            transform.Rotate(0, 0, -(speed / 25) * Time.deltaTime);
         }
     }
 
