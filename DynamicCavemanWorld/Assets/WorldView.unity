@@ -263,6 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38e31abe87ab78489cfa1550682a5c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
 --- !u!1 &194397454
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,7 +894,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 783568294}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &783568296
 Behaviour:
   m_ObjectHideFlags: 0
