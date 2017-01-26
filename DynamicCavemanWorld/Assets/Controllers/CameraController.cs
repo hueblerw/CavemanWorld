@@ -21,33 +21,32 @@ public class CameraController : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D))
         {
             x += (speed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A))
         {
             x -= (speed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S))
         {
             z -= (speed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W))
         {
             z += (speed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.RightShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             y += (speed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.RightControl))
+        if (Input.GetKey(KeyCode.LeftControl))
         {
             y -= (speed * Time.deltaTime);
         }
 
         float[] coor = CreateBoundedCooridnates(x, y, z);
-
         transform.position = new Vector3(coor[0], coor[1], coor[2]);
     }
 
