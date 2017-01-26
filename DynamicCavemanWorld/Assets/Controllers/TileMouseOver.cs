@@ -95,5 +95,19 @@ public class TileMouseOver : MonoBehaviour {
                 break;
         }
     }
+
+    public void ToggleLoadingScreen()
+    {
+        Debug.Log("Loading Screen Toggled!");
+        Text loading = findTextWithName("Loading Text");
+        if (loading.enabled == true)
+        {
+            loading.enabled = false;
+        }
+        else
+        {
+            loading.enabled = true;
+        }
+    }
     
 }

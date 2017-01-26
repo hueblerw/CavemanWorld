@@ -41,6 +41,8 @@ public class MainController : MonoBehaviour {
         year = 1;
         // Initialize the Game interaction Controllers
         mouseController = new TileMouseOver(meshCollider, meshRenderer);
+        // Hide the loading screen.
+        mouseController.ToggleLoadingScreen();
     }
 	
 	// Update is called once per frame
@@ -102,6 +104,7 @@ public class MainController : MonoBehaviour {
     // Generate's and displays a new random world
     public void GenerateNewRandomWorld()
     {
+        ToggleLoadingScreen();
         // Construct a random world of a given size
         // First get the world dimensions from the main interface.
         int xDim;
@@ -146,6 +149,14 @@ public class MainController : MonoBehaviour {
         year = 1;
         // Initialize the Game interaction Controllers
         mouseController = new TileMouseOver(meshCollider, meshRenderer);
+        // Toggle the loading Screen
+        ToggleLoadingScreen();
+    }
+
+
+    public void ToggleLoadingScreen()
+    {
+        mouseController.ToggleLoadingScreen();
     }
 
 }
