@@ -49,7 +49,8 @@ public class World {
 
         if (!random)
         {
-            string filePathPrefix = @"C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Resources\CSV\";
+            string filePathPrefix = Application.dataPath + "/Resources/CSV/";
+            Debug.Log(filePathPrefix + "ElevationNiceMapA.csv");
             elevation.readCSVFile(filePathPrefix + "ElevationNiceMapA.csv");
             highTemp.readCSVFile(filePathPrefix + "HighTempNiceMapA.csv");
             lowTemp.readCSVFile(filePathPrefix + "LowTempNiceMapA.csv");

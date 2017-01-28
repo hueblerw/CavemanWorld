@@ -29,7 +29,7 @@ public class SingleValueLayer
     // Layer initialization Method
     public void readCSVFile(string filePath)
     {
-
+        
         StreamReader sr = new StreamReader(filePath);
         float[,] data = new float[WORLDX, WORLDZ];
         int Row = 0;
