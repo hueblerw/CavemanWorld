@@ -4,7 +4,7 @@
 >
 > The world itself is a Civilization-like square map, where instead of the squares being set in stone at the beginning of the game, the world is evolving constantly in response to changes in climate, and the effects of the player.  The world experiences a 120-day year.  Each tile generated is approximately 400 ft by 400 ft.  The goal eventually is to be able to generate in a reasonable time period world of size 250 x 250 tiles.
 >
-> Each squares habitat, food and creature availability are determined by the weather, rainfall, and rivers.  Rivers flow based upon the terrain and rainfall and allow for seasonal flooding.
+> Each square's habitat, food and creature availability are determined by the weather, rainfall, and rivers.  Rivers flow based upon the terrain and rainfall and allow for seasonal flooding.
 >
 > Creatures will either live as solos spread with certain densities across a single tile calculated from the habitat or in herds/tribes that wander in groups from tile to tile in search of resources (primarily food, water, and shelter).
 >
@@ -102,7 +102,7 @@ I shall expand upon how the above premises are implemented.
 * Note: 1/10 of the average amount of water in a river/lake is added to the provinces rainfall total when calculating the habitat of a region.  So a large river/lake could theoretically water a strip of desert into a different habitat (a la the Nile).
 
 ### Daily Temperature
-[image of the temperature curves here]
+![Temperature Curves Image](ReadmePics/TemperatureGraphChart.jpg)
 [Also provide a link to the relevant excel file]
 
 * Using the HighTemp, LowTemp, and Midpoint Layers I create an average Temperature curve for a square.
