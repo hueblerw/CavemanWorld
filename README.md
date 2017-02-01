@@ -90,15 +90,15 @@ I shall expand upon how the above premises are implemented.
   * If there is no space below ground this water will sit above ground and drain into ponds, lakes, creeks and rivers.
 
 * Rivers lose water to evaporation:  
-  * Standing bodies of water lose water to evaporation.  There are many factors involved in this calculation.  For full details of my research on this matter see [this link](put the link here idiot) for the mathematics I adapted to how temperature and humidity effect evaporation rates.  
+  * Standing bodies of water lose water to evaporation.  There are many factors involved in this calculation.  For full details of my research on this matter see [this link](http://www.engineeringtoolbox.com/evaporation-water-surface-d_690.html) for the mathematics I adapted to how temperature and humidity effect evaporation rates.  
   * The general idea being that more water will evaporate in a hot dry climate than in a cold wet one.  
   * I modeled the standing water universally as a river containing a volume of water in (for simplicity's sake) an inverted triangular pyramid of depth approximately 1/3 the width of the river and length the entire length of the tile i.e. 400 ft.  I used basic geometry to then calculate the surface area this volume of water would expose for evaporation. [See this SA = ???V equation and diagram] 
-  * Using the simplified models (ignoring factors like wind-speed and approximating humidity based on my Humidity layer and whether it is rainy, cloudy or sunny that day for example) given on [this website](same website as before idiots) I was able to calculate the evaporation of river water on a given day from the river.
+  * Using the simplified models (ignoring factors like wind-speed and approximating humidity based on my Humidity layer and whether it is rainy, cloudy or sunny that day for example) given on [this website](http://www.engineeringtoolbox.com/evaporation-water-surface-d_690.html) I was able to calculate the evaporation of river water on a given day from the river.
 * Rivers gain water from precipitation runoff:  
   * This means all rainfall is added directly to the river.  
   * No time delay for drainage was implemented for simplicity's sake.  
   * Ultimately precipitation occurring at temperatures below 32-degrees will not be added because it will be on the surface as snow.  
-  * Snow melt will then occur using the model found at [this website](Snow-melt model by temperature) and be added to the river water allowing for the possibility of spring flooding events.  These store water for use by the environment at periods of time where water might otherwise be in short supply.
+  * Snow melt will then occur using the model found at [this website](https://www.cs.utah.edu/~shirley/papers/snowTerrain/terrain-node10.html) and be added to the river water allowing for the possibility of spring flooding events.  These store water for use by the environment at periods of time where water might otherwise be in short supply.
 * Note: 1/10 of the average amount of water in a river/lake is added to the provinces rainfall total when calculating the habitat of a region.  So a large river/lake could theoretically water a strip of desert into a different habitat (a la the Nile).
 
 ### Daily Temperature
@@ -112,13 +112,18 @@ I shall expand upon how the above premises are implemented.
     * These coefficients are solved through creation of seven linear functions given the curve passes through five given points and two derivatives are certain locations are known.  
     * The system is then solved through matrix multiplication.
     * This requires a Matrix class to be created and used to create the coefficients (then saved) of the average temperature curve.
-    * For this purpose I used a class provided at [matrix class website](put the address here idiot) by ???
+    * For this purpose I used a Matrix class in C#
+    Written by Ivan Kuckir (ivan.kuckir@gmail.com, http://blog.ivank.net)
+    Faculty of Mathematics and Physics
+    Charles University in Prague
+    (C) 2010
+    Found at [this website](http://www.ivank.net/blogspot/matrix_cs/Matrix.cs)
     * Note: There remains a mathematical flaw in the model that is corrected at present by limiting the possible range of input values for the midpoint.  However, this also has the advantage of moderating the extreme lengths of the seasons and minimizing extreme temperature shift that can occur with extremely short season change intervals.
 * The Variant Layer provides a +/- x.  The temperature varies randomly +/- x degrees away from the average temperature curve on a given day.
 * Like all daily stats, stats for each day of the year are constructed at the start of each new year.  The screen is simply updated as the next day is triggered.
 
 ## Visual Model
-* The visual model is adapted from a series of videos on Unity given by quill18 to suit my purposes.  A link to the videos is provided [here](???)
+* The visual model is adapted from a series of videos on Unity given by quill18 to suit my purposes.  A link to the video series is provided [here](https://www.youtube.com/watch?v=bpB4BApnKhM).
 * The habitat tile icons themselves are taken from internet photos of real world environments and place in 64 x 64 pixel images on the world itself.  
 * The keyboard controls are adapted from standard ASWD controls and using Shift-Ctrl for up and down as down in Kerbal Space Program.  
 * TAB-R rotation is my own variation to these controls.
