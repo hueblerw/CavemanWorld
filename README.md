@@ -100,8 +100,10 @@ I shall expand upon how the above premises are implemented.
   * Standing bodies of water lose water to evaporation.  There are many factors involved in this calculation.  For full details of my research on this matter see [this link](http://www.engineeringtoolbox.com/evaporation-water-surface-d_690.html) for the mathematics I adapted to how temperature and humidity effect evaporation rates.  
   * The general idea being that more water will evaporate in a hot dry climate than in a cold wet one.  
   * I modeled the standing water universally as a river containing a volume of water in (for simplicity's sake) an inverted triangular pyramid of depth approximately 1/3 the width of the river and length the entire length of the tile i.e. 400 ft.  I used basic geometry to then calculate the surface area this volume of water would expose for evaporation. 
-  
-  [See this SA = ???V equation and diagram] 
+  Given a Volume V, and a river Length L in feet, this equation gives the SA available for evaporation:
+
+  ![River Model](ReadmePics/triangularwaterpic.jpg)
+  ![V to SA Equation](ReadmePics/VolumeToSAEquation.jpg)
 
   * Using the simplified models (ignoring factors like wind-speed and approximating humidity based on my Humidity layer and whether it is rainy, cloudy or sunny that day for example) given on [this website](http://www.engineeringtoolbox.com/evaporation-water-surface-d_690.html) I was able to calculate the evaporation of river water on a given day from the river.
 * Rivers gain water from precipitation runoff:  
