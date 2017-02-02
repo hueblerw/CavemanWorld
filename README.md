@@ -41,11 +41,13 @@ Then the top row is generated.  Each new square is dependent on the value in the
 >
 The same process is repeated using the square value directly above the present square to generate the values in the first column.
 >
+![Squares Interior Generation](ReadmePics/SquaresDiagram.jpg)
+>
 For all subsequent squares, one of the four squares (left, up-and-left, up, and up-right) are chosen randomly.  To find the value of the new square, the value of the randomly chosen square is added to a random +/- x.
 >
 This allows for gradual change in most situations, but allows for a large difference to grow between adjacent regions as well.  This process allows the world to ocassionally generate cliffs and very steep slopes, while the majority of terrain is similar to that terrain around it.
 >
-[Insert square generation images here]
+![Squares Interior Generation](ReadmePics/SquaresRandomDiagram.jpg)
 
 ### Rainfall Generation Technique
 >
@@ -55,11 +57,11 @@ Six humidity waypoints are generated for each square.  They guide the humidity v
 >
 Using this humidity value there is an x % chance of a storm being generated on a tile each day.
 >
-[Graph of randomly created stars in an area]
+![Storms Spawned](ReadmePics/StormsSpawned.jpg)
 >
 Each storm has a y % chance (also calculated from the humidity value) to spread out from its point of origin to other squares.  The storm will weaken and become less likely to spread the further it spreads out from the initial spawn point.
 >
-[Graph of a single storm once spread out]
+![Full Storms](ReadmePics/Storms.jpg)
 >
 This is carried out for all storms spawned on a given day.  These storms deliver rainfall to the tiles in a manner that is logically consistent with storms spreading over an area and also allows for regional and season variation in rainfall, with a certain amount of randomness as well.
 
