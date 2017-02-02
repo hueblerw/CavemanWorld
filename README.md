@@ -67,7 +67,7 @@ This is carried out for all storms spawned on a given day.  These storms deliver
 >
 Once the entire Elevation Map has been generated, the maximum average absolute difference in elevation of all the squares around each square is found.  That square will have 100% hill percentage.  All other squares "hilliness" is measured as a percentage of that average absolute difference over the maximum average absolute difference.  "Hilliness" is used to calculate water flow rates from rivers, drainage rates, rockiness (i.e. stone and metal resources available), and the amount of passable terrain on a square.
 
-![AverageAbsoluteDifferenceEquation](ReadmePics/AverageAbsoluteDifferenceEquation.pdf)
+![AverageAbsoluteDifferenceEquation](ReadmePics/AverageAbsoluteDifferenceEquation.jpg)
 
 ### Rivers
 The premise of rivers is as follows:
