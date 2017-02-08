@@ -29,8 +29,10 @@ public class SingleValueLayer
     // Layer initialization Method
     public void readCSVFile(string filePath)
     {
-
-        StreamReader sr = new StreamReader(filePath);
+        TextAsset CSVFile = Resources.Load(filePath) as TextAsset;
+        Debug.Log("*****************************************");
+        Debug.Log(CSVFile.text);
+        StreamReader sr = new StreamReader(CSVFile.text);
         float[,] data = new float[WORLDX, WORLDZ];
         int Row = 0;
         while (!sr.EndOfStream)

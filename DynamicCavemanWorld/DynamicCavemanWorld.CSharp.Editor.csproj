@@ -101,5 +101,19 @@
     <Compile Include="Assets\Classes\Editor\RainfallTests.cs" />
     <Compile Include="Assets\Classes\Editor\TimingTests.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Resources\CSV\ElevationNiceMapA.txt" />
+    <None Include="Assets\Resources\CSV\HighTempNiceMapA.txt" />
+    <None Include="Assets\Resources\CSV\HumidityNiceMapA-1.txt" />
+    <None Include="Assets\Resources\CSV\HumidityNiceMapA-2.txt" />
+    <None Include="Assets\Resources\CSV\HumidityNiceMapA-3.txt" />
+    <None Include="Assets\Resources\CSV\HumidityNiceMapA-4.txt" />
+    <None Include="Assets\Resources\CSV\HumidityNiceMapA-5.txt" />
+    <None Include="Assets\Resources\CSV\HumidityNiceMapA-6.txt" />
+    <None Include="Assets\Resources\CSV\HumidityNiceMapA.txt" />
+    <None Include="Assets\Resources\CSV\LowTempNiceMapA.txt" />
+    <None Include="Assets\Resources\CSV\MidptNiceMapA.txt" />
+    <None Include="Assets\Resources\CSV\VarianceNiceMapA.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
