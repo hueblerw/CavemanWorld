@@ -51,7 +51,7 @@ public class World {
         {
             string filePathPrefix = @"CSV\";
             elevation.readCSVFile(filePathPrefix + "ElevationNiceMapA");
-            Debug.Log("**************************************");
+            // Debug.Log("**************************************");
             highTemp.readCSVFile(filePathPrefix + "HighTempNiceMapA");
             lowTemp.readCSVFile(filePathPrefix + "LowTempNiceMapA");
             tempMidpt.readCSVFile(filePathPrefix + "MidptNiceMapA");
