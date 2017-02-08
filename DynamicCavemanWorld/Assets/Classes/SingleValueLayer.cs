@@ -29,18 +29,17 @@ public class SingleValueLayer
     // Layer initialization Method
     public void readCSVFile(string filePath)
     {
-
-        StreamReader sr = new StreamReader(filePath);
+        TextAsset CSVFile = Resources.Load(filePath) as TextAsset;
+        string[] rows = CSVFile.text.Split('\n');
+        // Debug.Log("*****************************************");
         float[,] data = new float[WORLDX, WORLDZ];
-        int Row = 0;
-        while (!sr.EndOfStream)
+        for (int Row = 0; Row < rows.Length; Row++)
         {
-            string[] Line = sr.ReadLine().Split(',');
+            string[] Line = rows[Row].Split(',');
             for(int i = 0; i < Line.Length; i++)
             {
                 data[i, Row] = (float)Convert.ToDouble(Line[i]);
             }
-            Row++;
         }
         this.worldArray = data;
 

@@ -35,20 +35,19 @@ public class HumidityLayer
     // Layer initialization Method
     public void readCSVFiles(string filePathPrefix)
     {
-
+        
         for (int n = 1; n < numFiles + 1; n++)
         {
-            StreamReader sr = new StreamReader(filePathPrefix + "HumidityNiceMapA-" + n + ".csv");
+            TextAsset CSVFile = Resources.Load(filePathPrefix + "HumidityNiceMapA-" + n) as TextAsset;
+            string[] rows = CSVFile.text.Split('\n');
             float[,] data = new float[WORLDX, WORLDZ];
-            int Row = 0;
-            while (!sr.EndOfStream)
+            for (int Row = 0; Row < rows.Length; Row++)
             {
-                string[] Line = sr.ReadLine().Split(',');
+                string[] Line = rows[Row].Split(',');
                 for (int i = 0; i < Line.Length; i++)
                 {
                     data[i, Row] = (float)Convert.ToDouble(Line[i]);
                 }
-                Row++;
             }
             this.worldArray[n - 1] = data;
         }   
