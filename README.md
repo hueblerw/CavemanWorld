@@ -1,7 +1,10 @@
 # CavemanWorld
 [Link To A Demonstration Video](https://www.youtube.com/watch?v=FU3Tt19u90k)
 
-[Link to Download the "game"](DynamicCavemanWorld/Builds/GameBuild.rar)
+[Link to Windows Download of the "game"](DynamicCavemanWorld/Builds/GameBuild.rar)
+* Note: Once at the page click download to download a build of the game.
+
+[Link to MacOSX  Download of the "game"](DynamicCavemanWorld/Builds/MacBuildDownload.zip)
 * Note: Once at the page click download to download a build of the game.
 
 ## Premise
