@@ -39,17 +39,15 @@ public class HumidityLayer
         for (int n = 1; n < numFiles + 1; n++)
         {
             TextAsset CSVFile = Resources.Load(filePathPrefix + "HumidityNiceMapA-" + n) as TextAsset;
-            StreamReader sr = new StreamReader(Application.dataPath + "/Resources/" + filePathPrefix + "HumidityNiceMapA-" + n + ".txt");
+            string[] rows = CSVFile.text.Split('\n');
             float[,] data = new float[WORLDX, WORLDZ];
-            int Row = 0;
-            while (!sr.EndOfStream)
+            for (int Row = 0; Row < rows.Length; Row++)
             {
-                string[] Line = sr.ReadLine().Split(',');
+                string[] Line = rows[Row].Split(',');
                 for (int i = 0; i < Line.Length; i++)
                 {
                     data[i, Row] = (float)Convert.ToDouble(Line[i]);
                 }
-                Row++;
             }
             this.worldArray[n - 1] = data;
         }   

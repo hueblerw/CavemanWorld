@@ -30,18 +30,16 @@ public class SingleValueLayer
     public void readCSVFile(string filePath)
     {
         TextAsset CSVFile = Resources.Load(filePath) as TextAsset;
-        StreamReader sr = new StreamReader(Application.dataPath + "/Resources/" + filePath + ".txt");
-        Debug.Log("*****************************************");
+        string[] rows = CSVFile.text.Split('\n');
+        // Debug.Log("*****************************************");
         float[,] data = new float[WORLDX, WORLDZ];
-        int Row = 0;
-        while (!sr.EndOfStream)
+        for (int Row = 0; Row < rows.Length; Row++)
         {
-            string[] Line = sr.ReadLine().Split(',');
+            string[] Line = rows[Row].Split(',');
             for(int i = 0; i < Line.Length; i++)
             {
                 data[i, Row] = (float)Convert.ToDouble(Line[i]);
             }
-            Row++;
         }
         this.worldArray = data;
 
