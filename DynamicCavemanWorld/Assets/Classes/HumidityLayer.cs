@@ -35,10 +35,11 @@ public class HumidityLayer
     // Layer initialization Method
     public void readCSVFiles(string filePathPrefix)
     {
-
+        
         for (int n = 1; n < numFiles + 1; n++)
         {
-            StreamReader sr = new StreamReader(filePathPrefix + "HumidityNiceMapA-" + n + ".csv");
+            TextAsset CSVFile = Resources.Load(filePathPrefix + "HumidityNiceMapA-" + n) as TextAsset;
+            StreamReader sr = new StreamReader(Application.dataPath + "/Resources/" + filePathPrefix + "HumidityNiceMapA-" + n + ".txt");
             float[,] data = new float[WORLDX, WORLDZ];
             int Row = 0;
             while (!sr.EndOfStream)
