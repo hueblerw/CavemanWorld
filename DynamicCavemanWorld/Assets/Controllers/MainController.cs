@@ -13,6 +13,7 @@ public class MainController : MonoBehaviour {
     public static World TheWorld;
     public Texture2D textureMap;
     public string currentView;
+    public Canvas cntrlInfo;
 
 	// Use this for initialization
 	void Start () {
@@ -146,6 +147,13 @@ public class MainController : MonoBehaviour {
         year = 1;
         // Initialize the Game interaction Controllers
         mouseController = new TileMouseOver(meshCollider, meshRenderer);
+    }
+    
+
+    // Hides the Control Information Screen
+    public void ToggleCntrlInfoScreen()
+    {
+        cntrlInfo.enabled = false;
     }
 
 }

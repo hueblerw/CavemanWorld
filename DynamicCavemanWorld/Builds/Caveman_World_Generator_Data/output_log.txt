@@ -2,9 +2,9 @@ Mono path[0] = 'C:/Users/William/Documents/World Generator Maps/CavemanWorld/Dyn
 Mono path[1] = 'C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Builds/Caveman_World_Generator_Data/Mono'
 Mono config path = 'C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Builds/Caveman_World_Generator_Data/Mono/etc'
 PlayerConnection initialized from C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Builds/Caveman_World_Generator_Data (debug = 0)
-PlayerConnection initialized network socket : 0.0.0.0 55301
-Multi-casting "[IP] 192.168.1.136 [Port] 55301 [Flags] 2 [Guid] 792096328 [EditorId] 819270067 [Version] 1048832 [Id] WindowsPlayer(WilliamDesktop) [Debug] 0" to [225.0.0.222:54997]...
-PlayerConnection already initialized - listening to [192.168.1.136:55301]
+PlayerConnection initialized network socket : 0.0.0.0 55278
+Multi-casting "[IP] 192.168.1.136 [Port] 55278 [Flags] 2 [Guid] 1011912917 [EditorId] 354403988 [Version] 1048832 [Id] WindowsPlayer(WilliamDesktop) [Debug] 0" to [225.0.0.222:54997]...
+PlayerConnection already initialized - listening to [192.168.1.136:55278]
 Initialize engine version: 5.4.1f1 (649f48bbbf0f)
 GfxDevice: creating device client; threaded=1
 Direct3D:
@@ -21,7 +21,7 @@ Platform assembly: C:\Users\William\Documents\World Generator Maps\CavemanWorld\
 Loading C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.057 seconds
+- Completed reload, in  0.047 seconds
 Platform assembly: C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Data\Managed\System.dll (this message is harmless)
 desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
@@ -32,25 +32,15 @@ The referenced script on this Behaviour (Game Object 'Canvas') is missing!
  
 (Filename: C:/buildslave/unity/build/Runtime/Mono/MonoBehaviour.cpp Line: 1656)
 
-UnloadTime: 1.219460 ms
+UnloadTime: 1.111639 ms
 Literally, Hello World!
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
 UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
-MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:22)
- 
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/MainController.cs Line: 22)
-
-**************************************
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:54)
 MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:23)
  
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 54)
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/MainController.cs Line: 23)
 
 Elevation Models Complete!
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
@@ -58,7 +48,7 @@ UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
 World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:83)
-MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:23)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:24)
  
 (Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 83)
 
@@ -68,7 +58,7 @@ UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
 World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:88)
-MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:23)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:24)
  
 (Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 88)
 
@@ -78,7 +68,7 @@ UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
 World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:93)
-MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:23)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:24)
  
 (Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 93)
 
@@ -88,7 +78,7 @@ UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
 World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:98)
-MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:23)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:24)
  
 (Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 98)
 
@@ -98,7 +88,7 @@ UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
 World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:105)
-MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:23)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:24)
  
 (Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 105)
 
@@ -107,18 +97,18 @@ UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
 UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
-MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:24)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:25)
  
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/MainController.cs Line: 24)
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/MainController.cs Line: 25)
 
 Elevation View Made!
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
 UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
-MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:38)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:39)
  
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/MainController.cs Line: 38)
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/MainController.cs Line: 39)
 
 Mouse Over Initialized!
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
@@ -126,9 +116,9 @@ UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
 TileMouseOver:.ctor(Collider, Renderer) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\TileMouseOver.cs:21)
-MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:43)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:44)
  
 (Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/TileMouseOver.cs Line: 21)
 
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 2e7c -> priority: 1 
+  Thread -> id: a68 -> priority: 1 
