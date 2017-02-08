@@ -30,9 +30,8 @@ public class SingleValueLayer
     public void readCSVFile(string filePath)
     {
         TextAsset CSVFile = Resources.Load(filePath) as TextAsset;
+        StreamReader sr = new StreamReader(Application.dataPath + "/Resources/" + filePath + ".txt");
         Debug.Log("*****************************************");
-        Debug.Log(CSVFile.text);
-        StreamReader sr = new StreamReader(CSVFile.text);
         float[,] data = new float[WORLDX, WORLDZ];
         int Row = 0;
         while (!sr.EndOfStream)

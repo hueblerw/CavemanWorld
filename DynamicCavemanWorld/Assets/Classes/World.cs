@@ -55,7 +55,7 @@ public class World {
             highTemp.readCSVFile(filePathPrefix + "HighTempNiceMapA");
             lowTemp.readCSVFile(filePathPrefix + "LowTempNiceMapA");
             tempMidpt.readCSVFile(filePathPrefix + "MidptNiceMapA");
-            variance.readCSVFile(filePathPrefix + "VarianceNiceMap");
+            variance.readCSVFile(filePathPrefix + "VarianceNiceMapA");
             humidity.readCSVFiles(filePathPrefix);
         }
         else
