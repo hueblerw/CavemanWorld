@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class LoadingScreenController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+    Component loadingUpdater;
+
+    // Use this for initialization
+    void Start () {
+        loadingUpdater = GetComponent("LoadingStatus");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        // loadingUpdater = "World Creation!";
 	}
 }
