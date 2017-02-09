@@ -17,12 +17,16 @@ public class MainController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Debug.Log("Enter the World Scene!");
+        // Assign the world created from the loading screen.
+        TheWorld = LoadingScreenController.TheWorld;
         // Generate the model files eventually
-        
+
         // Construct the model from text files
-        Debug.Log("Literally, Hello World!");
-        TheWorld = new World(50, 50, false);
-        Debug.Log("World Model Made!");
+        if (TheWorld == null)
+        {
+            TheWorld = new World(50, 50, false);
+        }     
 
         // Construct the elevation view
         // Get the Mesh components
