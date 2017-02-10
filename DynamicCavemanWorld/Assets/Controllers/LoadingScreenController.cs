@@ -11,6 +11,14 @@ public class LoadingScreenController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         loadingUpdater = GetComponent("LoadingStatus");
+        StartCoroutine(LateStart(.1f));
+    }
+
+
+    IEnumerator LateStart(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
         // Generate the model files eventually
 
         // Construct the model from text files
@@ -19,11 +27,11 @@ public class LoadingScreenController : MonoBehaviour {
         Debug.Log("World Model Made!");
 
         SceneManager.LoadScene("WorldView");
-        
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+
+    // Update is called once per frame
+    void Update () {
         // loadingUpdater = "World Creation!";
 	}
 }

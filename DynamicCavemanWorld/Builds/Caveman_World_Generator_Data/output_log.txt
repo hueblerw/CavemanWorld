@@ -2,10 +2,10 @@ Mono path[0] = 'C:/Users/William/Documents/World Generator Maps/CavemanWorld/Dyn
 Mono path[1] = 'C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Builds/Caveman_World_Generator_Data/Mono'
 Mono config path = 'C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Builds/Caveman_World_Generator_Data/Mono/etc'
 PlayerConnection initialized from C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Builds/Caveman_World_Generator_Data (debug = 0)
-PlayerConnection initialized network socket : 0.0.0.0 55090
-Multi-casting "[IP] 192.168.1.136 [Port] 55090 [Flags] 2 [Guid] 2926018761 [EditorId] 3440287250 [Version] 1048832 [Id] WindowsPlayer(WilliamDesktop) [Debug] 0" to [225.0.0.222:54997]...
-Started listening to [0.0.0.0:55090]
-PlayerConnection already initialized - listening to [0.0.0.0:55090]
+PlayerConnection initialized network socket : 0.0.0.0 55338
+Multi-casting "[IP] 192.168.1.136 [Port] 55338 [Flags] 2 [Guid] 3148746855 [EditorId] 146822249 [Version] 1048832 [Id] WindowsPlayer(WilliamDesktop) [Debug] 0" to [225.0.0.222:54997]...
+Started listening to [0.0.0.0:55338]
+PlayerConnection already initialized - listening to [0.0.0.0:55338]
 Initialize engine version: 5.5.1f1 (88d00a7498cd)
 GfxDevice: creating device client; threaded=1
 Direct3D:
@@ -25,22 +25,25 @@ Platform assembly: C:\Users\William\Documents\World Generator Maps\CavemanWorld\
 Loading C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
 Loading C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.132 seconds
+- Completed reload, in  0.135 seconds
 Platform assembly: C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Data\Managed\System.dll (this message is harmless)
 desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 4.158935 ms
+UnloadTime: 1.061945 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 38e8 -> priority: 1 
 Literally, Hello World!
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
 UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
-LoadingScreenController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:17)
+<LateStart>c__Iterator0:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:25)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
  
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/LoadingScreenController.cs Line: 17)
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/LoadingScreenController.cs Line: 25)
 
 Elevation Models Complete!
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
@@ -48,7 +51,8 @@ UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
 World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:83)
-LoadingScreenController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:18)
+<LateStart>c__Iterator0:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:26)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
  
 (Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 83)
 
@@ -58,7 +62,8 @@ UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
 World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:88)
-LoadingScreenController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:18)
+<LateStart>c__Iterator0:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:26)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
  
 (Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 88)
 
@@ -68,7 +73,8 @@ UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
 World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:93)
-LoadingScreenController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:18)
+<LateStart>c__Iterator0:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:26)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
  
 (Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 93)
 
@@ -78,7 +84,8 @@ UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
 World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:98)
-LoadingScreenController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:18)
+<LateStart>c__Iterator0:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:26)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
  
 (Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 98)
 
@@ -88,7 +95,8 @@ UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
 World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:105)
-LoadingScreenController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:18)
+<LateStart>c__Iterator0:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:26)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
  
 (Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 105)
 
@@ -97,23 +105,22 @@ UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
 UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
-LoadingScreenController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:19)
+<LateStart>c__Iterator0:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:27)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
  
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/LoadingScreenController.cs Line: 19)
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/LoadingScreenController.cs Line: 27)
 
 The referenced script on this Behaviour (Game Object 'Canvas') is missing!
  
 (Filename: C:/buildslave/unity/build/Runtime/Mono/MonoBehaviour.cpp Line: 1754)
 
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-Setting up 1 worker threads for Enlighten.
-  Thread -> id: 3558 -> priority: 1 
-UnloadTime: 4.556487 ms
-System memory in use before: 16.4 MB.
-System memory in use after: 16.4 MB.
+UnloadTime: 4.440534 ms
+System memory in use before: 16.6 MB.
+System memory in use after: 16.6 MB.
 
-Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 383.
-Total: 1.586292 ms (FindLiveObjects: 0.018070 ms CreateObjectMapping: 0.015661 ms MarkObjects: 1.538706 ms  DeleteObjects: 0.008432 ms)
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 382.
+Total: 1.635986 ms (FindLiveObjects: 0.013552 ms CreateObjectMapping: 0.014757 ms MarkObjects: 1.593219 ms  DeleteObjects: 0.009035 ms)
 
 Enter the World Scene!
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
