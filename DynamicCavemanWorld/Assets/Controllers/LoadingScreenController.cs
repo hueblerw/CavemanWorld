@@ -19,14 +19,20 @@ public class LoadingScreenController : MonoBehaviour {
     {
         yield return new WaitForSeconds(waitTime);
 
+        TheWorld = WorldFromFile();
+        SceneManager.LoadScene("WorldView");
+    }
+
+
+    private World WorldFromFile()
+    {
         // Generate the model files eventually
 
         // Construct the model from text files
         Debug.Log("Literally, Hello World!");
-        TheWorld = new World(50, 50, false);
+        World InitWorld = new World(50, 50, false);
         Debug.Log("World Model Made!");
-
-        SceneManager.LoadScene("WorldView");
+        return InitWorld;
     }
 
 
