@@ -4,7 +4,7 @@
 [Link to Windows Download of the "game"](DynamicCavemanWorld/Builds/GameBuild.rar)
 * Note: Once at the page click download to download a build of the game.
 
-[Link to MacOSX  Download of the "game"](DynamicCavemanWorld/Builds/MacBuildDownload.zip)
+[Link to MacOSX  Download of the "game"](DynamicCavemanWorld/Builds/MacGameBuild.zip)
 * Note: Once at the page click download to download a build of the game.
 
 ## Premise
