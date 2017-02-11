@@ -108,49 +108,27 @@ public class MainController : MonoBehaviour {
     public void GenerateNewRandomWorld()
     {
         // Construct a random world of a given size
-        // First get the world dimensions from the main interface.
-        int xDim;
-        int yDim;
-        
+        // First get the world dimensions from the main interface.     
         if (mouseController.findTextWithName("X-Dim").text == "")
         {
-            xDim = 50;
+            LoadingScreenController.WorldX = 50;
         }
         else
         {
-            xDim = int.Parse(mouseController.findTextWithName("X-Dim").text);
+            LoadingScreenController.WorldX = int.Parse(mouseController.findTextWithName("X-Dim").text);
         }
 
         if (mouseController.findTextWithName("Y-Dim").text == "")
         {
-            yDim = 50;
+            LoadingScreenController.WorldZ = 50;
         }
         else
         {
-            yDim = int.Parse(mouseController.findTextWithName("Y-Dim").text);
+            LoadingScreenController.WorldZ = int.Parse(mouseController.findTextWithName("Y-Dim").text);
         }
-
+        // Trigger the Loading Screen
         // Then build a new world of those dimensions
-        TheWorld = new World(xDim, yDim, true);
-
-        // Construct the elevation view
-        // Get the Mesh components
-        MeshFilter meshFilter = GetComponent<MeshFilter>();
-        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
-        MeshCollider meshCollider = GetComponent<MeshCollider>();
-        // Create and attach the mesh
-        Mesh mesh = WorldView.BuildMesh(TheWorld.elevationVertices);
-        meshFilter.mesh = mesh;
-        meshCollider.sharedMesh = mesh;
-        // Create and attach the texture
-        meshRenderer.sharedMaterial.mainTexture = WorldView.BuildElevationTexture(TheWorld);
-        currentView = "Elevation";
-        Debug.Log("Elevation View Made!");
-        // Set the time
-        day = 0;
-        year = 1;
-        // Initialize the Game interaction Controllers
-        mouseController = new TileMouseOver(meshCollider, meshRenderer);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("LoadingScreen");
     }
     
 
