@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LoadingScreenController : MonoBehaviour {
 
-    Component loadingUpdater;
+    Text loadingUpdater;
     public static World TheWorld;
     public static int WorldX;
     public static int WorldZ;
-    public TileMouseOver mouseController;
+
     private const float WAIT = .1f;
 
     // Use this for initialization
     void Start () {
-        loadingUpdater = GetComponent("LoadingStatus");
+        
+
         if (TheWorld == null)
         {
             Debug.Log("Load World");
@@ -22,6 +24,8 @@ public class LoadingScreenController : MonoBehaviour {
         }
         else
         {
+            loadingUpdater = findTextWithName("LoadingStatus");
+            loadingUpdater.text = "Generating New World";
             Debug.Log("Generate World");
             StartCoroutine(LateGenerator());
         }
@@ -69,6 +73,23 @@ public class LoadingScreenController : MonoBehaviour {
         Debug.Log("World Model Made!");
         return InitWorld;
     }
+
+
+    // Private Methods
+    public Text findTextWithName(string name)
+    {
+        GameObject panel = GameObject.Find("Panel");
+        Text[] texts = panel.GetComponentsInChildren<Text>();
+        for (int i = 0; i < texts.Length; i++)
+        {
+            if (texts[i].name == name)
+            {
+                return texts[i];
+            }
+        }
+        return null;
+    }
+
 
 
     // Update is called once per frame
