@@ -406,7 +406,7 @@ public class World {
                     {
                         // Account for snow fall ***LATER***
                         // Calculate the river flow
-                        riverStats.worldArray[x, z].CalculateSurfaceWater(day, rainfall.worldArray[day][x, z], temps[x, z].getDaysTemp(day), humidity.CalculateHumidityFromBase(day, x, z), randy);
+                        riverStats.worldArray[x, z].CalculateSurfaceWater(day, rainfall.worldArray[day][x, z], snow.worldArray[day][x, z], temps[x, z].getDaysTemp(day), humidity.CalculateHumidityFromBase(day, x, z), randy);
                     } 
                 }
             }

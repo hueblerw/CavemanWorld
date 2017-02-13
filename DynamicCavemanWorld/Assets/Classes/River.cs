@@ -8,6 +8,7 @@ public class River {
     // Static Variables
     public static DailyLayer upstreamToday;
     public static DailyLayer surfacewater;
+    public static DailyLayer surfaceSnow;
     public static SingleValueLayer lastUpstreamDay;
 
     // Variables
@@ -19,6 +20,7 @@ public class River {
     private float flowrate;
     private float soilAbsorption;
     private float yesterdaySurface;
+    private float yesterdaySnow;
 
     // Constructor 
     public River(int x, int z, float hillPer, float oceanPer)
@@ -27,6 +29,7 @@ public class River {
         this.x = x;
         this.z = z;
         this.yesterdaySurface = 0f;
+        this.yesterdaySnow = 0f;
         this.upstream = new List<Direction>();
         
         // Generate the Directions
@@ -123,13 +126,33 @@ public class River {
     // rainfall and snow melt runoff
     // What is inputted in from upstream
         // NOTE: Tiles can have multiple upstream values but only one downstream value
-    public void CalculateSurfaceWater(int day, float rainfall, int temp, float humidity, System.Random randy)
+    public void CalculateSurfaceWater(int day, float rainfall, float snow, int temp, float humidity, System.Random randy)
     {
+        float melt = 0f;
         // Inputs: Previous, rainfall, EACH upstream ***SNOW MELT***
+        // Add snowfall to the surfaceSnow
+        surfaceSnow.worldArray[day][x, z] = yesterdaySnow + snow;
+        // Melt Snow from the surface according to this website https://www.cs.utah.edu/~shirley/papers/snowTerrain/terrain-node10.html
+        // Snow melt = (temp - 32) * ((3 * 1.8) / 25.4)
+        if (temp > 32 && surfaceSnow.worldArray[day][x, z] > 0f)
+        {
+            melt = ((float) temp - 32f) * ((3f * 1.8f) / 25.4f);
+            // If the melt is greater than snow on the ground, melt it all and reset the melt value to how much was left.
+            // Else just melt the appropriate amount.
+            if (melt > surfaceSnow.worldArray[day][x, z])
+            {
+                melt = surfaceSnow.worldArray[day][x, z];
+                surfaceSnow.worldArray[day][x, z] = 0f;
+            }
+            else
+            {
+                surfaceSnow.worldArray[day][x, z] -= melt;
+            } 
+        }
         // Determine if sunny, cloudy, or rainy
         string weather = DetermineWeather(rainfall, humidity, randy);
         // Calculate the positive incoming water flow
-        float current = yesterdaySurface + rainfall + PreviousUpstream(day);
+        float current = yesterdaySurface + rainfall + PreviousUpstream(day) + melt;
         // Losses: Downstream, Evaporation, SoilAbsorption, Other
         float absorption = (float) ChooseMinOf(current, soilAbsorption);
         float evaportation = FindEvaporation(current, temp, humidity, weather);
@@ -145,6 +168,7 @@ public class River {
         // update today's levels
         current = (float) ChooseMaxOf(Math.Round(current - downstreamFlow - evaportation - absorption, 2), 0.0);
         yesterdaySurface = current;
+        yesterdaySnow = surfaceSnow.worldArray[day][x, z];
         // Set the downstream layer correctly
         surfacewater.worldArray[day][x, z] = current;
     }
