@@ -5,6 +5,7 @@ public class Habitat {
 
     // Constant
     private double EnvironmentalShiftFactor = .01; // +/- 1% a year
+    private double GlacialShiftFactor = .10; // +/- 10% a year
     private float RiverEffectFactor = .1f;  // 10% of river volume added to the tiles rainfall
 
     // Variables
@@ -27,7 +28,7 @@ public class Habitat {
     }
 
     // Habitat Yearly Update Method
-    public void UpdateHabitatYear(int hotDays, int coldDays, float rain, float riverLevel, int snowCovered, System.Random randy)
+    public void UpdateHabitatYear(int hotDays, int coldDays, float rain, float riverLevel, bool snowCovered, System.Random randy)
     {
         // if all ocean don't change it
         if (percentOcean != 1f)
@@ -35,9 +36,18 @@ public class Habitat {
             int index;
             int destroyIndex;
             // if covered in snow glacier advances
-            if (snowCovered == 120)
+            if (snowCovered)
             {
-                // do snow stuff - *** UNWRITTEN YET!!! ***
+                // do snow stuff - Add glacial shift each year snow covers the surface the ENTIRE YEAR
+                typePercents[0] += GlacialShiftFactor;
+                // Generate the random destruction for x tiles
+                for (int i = 0; i < (int)(GlacialShiftFactor / EnvironmentalShiftFactor); i++)
+                {
+                    destroyIndex = RandomHabitat(randy);
+                    typePercents[destroyIndex] -= EnvironmentalShiftFactor;
+                }
+                // Check if the dominant type has changed - since it probably has.
+                dominantType = CheckDominantType();
             }
             else
             {

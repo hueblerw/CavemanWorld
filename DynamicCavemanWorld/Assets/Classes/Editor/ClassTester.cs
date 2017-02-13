@@ -238,7 +238,7 @@ public class ClassTester
 
         // Test the Update Habitat Method
         System.Random randy = new System.Random();
-        testHabitat.UpdateHabitatYear(50, 9, 32.4f, 2.4f, 1, randy);
+        testHabitat.UpdateHabitatYear(50, 9, 32.4f, 2.4f, false, randy);
         Debug.Log(testHabitat);
         Assert.AreEqual(.01, testHabitat.typePercents[10]);
     }

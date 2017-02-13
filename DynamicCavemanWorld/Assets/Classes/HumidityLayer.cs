@@ -226,6 +226,7 @@ public class HumidityLayer
         return humidity;
     }
 
+
     // Getter methods
     public string getType()
     {

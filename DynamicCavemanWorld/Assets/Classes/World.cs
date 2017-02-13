@@ -23,6 +23,7 @@ public class World {
     // Rainfall Layers - (temporarily a very simple version with a single humidity number per tile)
     private HumidityLayer humidity;
     public DailyLayer rainfall;
+    public DailyLayer snow;
     public SingleValueLayer rainfallTotal;
     // River Layers
     public ObjectLayer riverStats;
@@ -124,10 +125,38 @@ public class World {
         // Create Rainfall
         rainfall = humidity.GenerateWorldsYearOfRain();
         rainfallTotal.worldArray = rainfall.findYearTotalArray();
+        // Sort Into Snowfall
+        snow = SortSnowDayByTemps(temps, rainfall);
         // Calculate River Flow
         CalculateRiverYear();
     }
 
+
+    // Sorts the days it snows from the days it rains
+    private DailyLayer SortSnowDayByTemps(IntDayList[,] temps, DailyLayer rainfall)
+    {
+        DailyLayer snowfall = new DailyLayer("snow", 1);
+
+        for (int day = 0; day < 120; day++)
+        {
+            for (int x = 0; x < WorldX; x++)
+            {
+                for (int z = 0; z < WorldZ; z++)
+                {
+                    if(temps[x, z].getDaysTemp(day) <= 32)
+                    {
+                        snowfall.worldArray[day][x, z] = rainfall.worldArray[day][x, z];
+                        rainfall.worldArray[day][x, z] = 0f;
+                    }
+                }
+            }
+        }
+
+        return snowfall;
+    }
+
+
+    // Updates the Habitat from year to year based on new data
     private void HabitatUpdate()
     {
         System.Random randy = new System.Random();
@@ -135,7 +164,7 @@ public class World {
         {
             for (int z = 0; z < WorldZ; z++)
             {
-                habitats.worldArray[x, z].UpdateHabitatYear(temps[x, z].Count70DegreeDays(), temps[x, z].Count32DegreeDays(), rainfallTotal.worldArray[x, z], River.AverageRiverLevel(x, z), 0, randy);
+                habitats.worldArray[x, z].UpdateHabitatYear(temps[x, z].Count70DegreeDays(), temps[x, z].Count32DegreeDays(), rainfallTotal.worldArray[x, z], River.AverageRiverLevel(x, z), River.surfaceSnow.AreAllZero(x, z), randy);
             }
         }
     }
@@ -157,7 +186,9 @@ public class World {
         info += "\n" + "Hill %: " + hillPer.worldArray[x, z] * 100f + "%";
         info += "\n" + "Temp: " + temps[x, z].getDaysTemp(day);
         info += "\n" + "Rain: " + rainfall.worldArray[day][x, z];
+        info += "\n" + "Snow: " + snow.worldArray[day][x, z];
         info += "\n" + "River Direction: " + riverStats.worldArray[x, z].downstream;
+        info += "\n" + "Snow Level: " + River.surfaceSnow.worldArray[day][x, z];
         info += "\n" + "River Level: " + River.surfacewater.worldArray[day][x, z];
         info += "\n" + "flowrate - absorbtion: " + riverStats.worldArray[x, z].getPrivateVariables();
         info += "\n" + "Upstream Directions: " + riverStats.worldArray[x, z].printUpstream();
@@ -345,12 +376,15 @@ public class World {
         }
     }
 
+
     // Resets the Static River layers
     private void ResetStaticRiverLayers()
     {
         River.upstreamToday = new DailyLayer("Upstream Waterflow", 2);
         River.surfacewater = new DailyLayer("Surface Water", 2);
+        River.surfaceSnow = new DailyLayer("Surface Snow", 2);
     }
+
 
     // Resets the Static River layers
     private void ResetLastDayLayer()
@@ -376,7 +410,7 @@ public class World {
                     {
                         // Account for snow fall ***LATER***
                         // Calculate the river flow
-                        riverStats.worldArray[x, z].CalculateSurfaceWater(day, rainfall.worldArray[day][x, z], temps[x, z].getDaysTemp(day), humidity.CalculateHumidityFromBase(day, x, z), randy);
+                        riverStats.worldArray[x, z].CalculateSurfaceWater(day, rainfall.worldArray[day][x, z], snow.worldArray[day][x, z], temps[x, z].getDaysTemp(day), humidity.CalculateHumidityFromBase(day, x, z), randy);
                     } 
                 }
             }
