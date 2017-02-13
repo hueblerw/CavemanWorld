@@ -188,6 +188,7 @@ public class World {
         info += "\n" + "Rain: " + rainfall.worldArray[day][x, z];
         info += "\n" + "Snow: " + snow.worldArray[day][x, z];
         info += "\n" + "River Direction: " + riverStats.worldArray[x, z].downstream;
+        info += "\n" + "Snow Level: " + River.surfaceSnow.worldArray[day][x, z];
         info += "\n" + "River Level: " + River.surfacewater.worldArray[day][x, z];
         info += "\n" + "flowrate - absorbtion: " + riverStats.worldArray[x, z].getPrivateVariables();
         info += "\n" + "Upstream Directions: " + riverStats.worldArray[x, z].printUpstream();
