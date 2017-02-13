@@ -59,6 +59,26 @@ public class DailyLayer {
         return (float) Math.Round(sum, 1);
     }
 
+    // Returns true if all values are not zero, false if any value is zero.
+    public bool AreAllZero()
+    {
+        for (int day = 0; day < 120; day++)
+        {
+            for (int x = 0; x < WORLDX; x++)
+            {
+                for (int z = 0; z < WORLDZ; z++)
+                {
+                    if (worldArray[day][x, z] == 0f)
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return true;
+    }
+
     // Getters
     public string getType()
     {
