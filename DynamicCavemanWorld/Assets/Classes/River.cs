@@ -116,7 +116,6 @@ public class River {
     }
 
     // Calculate the surface water
-    // PRESENTLY WITHOUT SNOW OR MELT OFF!!!!!!!!!!!!
     // Assumes that surface water is river/lake water
     // Calculate is based on:
     // Assumption that soil absorbs some amount of water/day statically
