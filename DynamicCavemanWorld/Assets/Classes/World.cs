@@ -145,7 +145,7 @@ public class World {
                 {
                     if(temps[x, z].getDaysTemp(day) < 32)
                     {
-                        snow.worldArray[day][x, z] = rainfall.worldArray[day][x, z];
+                        snowfall.worldArray[day][x, z] = rainfall.worldArray[day][x, z];
                         rainfall.worldArray[day][x, z] = 0f;
                     }
                 }
