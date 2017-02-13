@@ -60,19 +60,13 @@ public class DailyLayer {
     }
 
     // Returns true if all values are not zero, false if any value is zero.
-    public bool AreAllZero()
+    public bool AreAllZero(int x, int z)
     {
         for (int day = 0; day < 120; day++)
         {
-            for (int x = 0; x < WORLDX; x++)
+            if (worldArray[day][x, z] == 0f)
             {
-                for (int z = 0; z < WORLDZ; z++)
-                {
-                    if (worldArray[day][x, z] == 0f)
-                    {
-                        return false;
-                    }
-                }
+                return false;
             }
         }
 
