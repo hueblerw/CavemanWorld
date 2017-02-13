@@ -23,6 +23,7 @@ public class World {
     // Rainfall Layers - (temporarily a very simple version with a single humidity number per tile)
     private HumidityLayer humidity;
     public DailyLayer rainfall;
+    public DailyLayer snow;
     public SingleValueLayer rainfallTotal;
     // River Layers
     public ObjectLayer riverStats;
@@ -124,10 +125,38 @@ public class World {
         // Create Rainfall
         rainfall = humidity.GenerateWorldsYearOfRain();
         rainfallTotal.worldArray = rainfall.findYearTotalArray();
+        // Sort Into Snowfall
+        snow = SortSnowDayByTemps(temps, rainfall);
         // Calculate River Flow
         CalculateRiverYear();
     }
 
+
+    // Sorts the days it snows from the days it rains
+    private DailyLayer SortSnowDayByTemps(IntDayList[,] temps, DailyLayer rainfall)
+    {
+        DailyLayer snowfall = new DailyLayer("snow", 1);
+
+        for (int day = 0; day < 120; day++)
+        {
+            for (int x = 0; x < WorldX; x++)
+            {
+                for (int z = 0; z < WorldZ; z++)
+                {
+                    if(temps[x, z].getDaysTemp(day) < 32)
+                    {
+                        snow.worldArray[day][x, z] = rainfall.worldArray[day][x, z];
+                        rainfall.worldArray[day][x, z] = 0f;
+                    }
+                }
+            }
+        }
+
+        return snowfall;
+    }
+
+
+    // Updates the Habitat from year to year based on new data
     private void HabitatUpdate()
     {
         System.Random randy = new System.Random();
