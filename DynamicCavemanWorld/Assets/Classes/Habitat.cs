@@ -27,7 +27,7 @@ public class Habitat {
     }
 
     // Habitat Yearly Update Method
-    public void UpdateHabitatYear(int hotDays, int coldDays, float rain, float riverLevel, int snowCovered, System.Random randy)
+    public void UpdateHabitatYear(int hotDays, int coldDays, float rain, float riverLevel, bool snowCovered, System.Random randy)
     {
         // if all ocean don't change it
         if (percentOcean != 1f)
@@ -35,7 +35,7 @@ public class Habitat {
             int index;
             int destroyIndex;
             // if covered in snow glacier advances
-            if (snowCovered == 120)
+            if (snowCovered)
             {
                 // do snow stuff - *** UNWRITTEN YET!!! ***
             }

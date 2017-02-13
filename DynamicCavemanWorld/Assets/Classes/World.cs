@@ -164,7 +164,7 @@ public class World {
         {
             for (int z = 0; z < WorldZ; z++)
             {
-                habitats.worldArray[x, z].UpdateHabitatYear(temps[x, z].Count70DegreeDays(), temps[x, z].Count32DegreeDays(), rainfallTotal.worldArray[x, z], River.AverageRiverLevel(x, z), 0, randy);
+                habitats.worldArray[x, z].UpdateHabitatYear(temps[x, z].Count70DegreeDays(), temps[x, z].Count32DegreeDays(), rainfallTotal.worldArray[x, z], River.AverageRiverLevel(x, z), River.surfaceSnow.AreAllZero(), randy);
             }
         }
     }
