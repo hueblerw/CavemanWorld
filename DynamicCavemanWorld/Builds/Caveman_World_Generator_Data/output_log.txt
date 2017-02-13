@@ -2,10 +2,10 @@ Mono path[0] = 'C:/Users/William/Documents/World Generator Maps/CavemanWorld/Dyn
 Mono path[1] = 'C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Builds/Caveman_World_Generator_Data/Mono'
 Mono config path = 'C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Builds/Caveman_World_Generator_Data/Mono/etc'
 PlayerConnection initialized from C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Builds/Caveman_World_Generator_Data (debug = 0)
-PlayerConnection initialized network socket : 0.0.0.0 55025
-Multi-casting "[IP] 192.168.1.136 [Port] 55025 [Flags] 2 [Guid] 2501003724 [EditorId] 2486743589 [Version] 1048832 [Id] WindowsPlayer(WilliamDesktop) [Debug] 0" to [225.0.0.222:54997]...
-Started listening to [0.0.0.0:55025]
-PlayerConnection already initialized - listening to [0.0.0.0:55025]
+PlayerConnection initialized network socket : 0.0.0.0 55135
+Multi-casting "[IP] 192.168.1.136 [Port] 55135 [Flags] 2 [Guid] 1792672585 [EditorId] 2797763943 [Version] 1048832 [Id] WindowsPlayer(WilliamDesktop) [Debug] 0" to [225.0.0.222:54997]...
+Started listening to [0.0.0.0:55135]
+PlayerConnection already initialized - listening to [0.0.0.0:55135]
 Initialize engine version: 5.5.1f1 (88d00a7498cd)
 GfxDevice: creating device client; threaded=1
 Direct3D:
@@ -25,14 +25,14 @@ Platform assembly: C:\Users\William\Documents\World Generator Maps\CavemanWorld\
 Loading C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
 Loading C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.124 seconds
+- Completed reload, in  0.135 seconds
 Platform assembly: C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Data\Managed\System.dll (this message is harmless)
 desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 2.265142 ms
+UnloadTime: 1.141154 ms
 Load World
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
 UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
@@ -43,7 +43,7 @@ LoadingScreenController:Start() (at C:\Users\William\Documents\World Generator M
 (Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/LoadingScreenController.cs Line: 22)
 
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 1394 -> priority: 1 
+  Thread -> id: 12e0 -> priority: 1 
 Literally, Hello World!
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
 UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
@@ -60,60 +60,60 @@ UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
 UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
-World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:83)
+World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:84)
 LoadingScreenController:WorldFromFile() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:59)
 <LateStart>c__Iterator0:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:39)
 UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
  
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 83)
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 84)
 
 Temperature Models Complete!
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
 UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
-World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:88)
+World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:89)
 LoadingScreenController:WorldFromFile() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:59)
 <LateStart>c__Iterator0:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:39)
 UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
  
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 88)
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 89)
 
 Rainfall Models Complete!
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
 UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
-World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:93)
+World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:94)
 LoadingScreenController:WorldFromFile() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:59)
 <LateStart>c__Iterator0:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:39)
 UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
  
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 93)
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 94)
 
 Rivers Populated!
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
 UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
-World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:98)
+World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:99)
 LoadingScreenController:WorldFromFile() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:59)
 <LateStart>c__Iterator0:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:39)
 UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
  
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 98)
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 99)
 
 Habitats Created!
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
 UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
-World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:105)
+World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:106)
 LoadingScreenController:WorldFromFile() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:59)
 <LateStart>c__Iterator0:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:39)
 UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
  
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 105)
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 106)
 
 World Model Made!
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
@@ -131,163 +131,12 @@ The referenced script on this Behaviour (Game Object 'Canvas') is missing!
 (Filename: C:/buildslave/unity/build/Runtime/Mono/MonoBehaviour.cpp Line: 1754)
 
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.970603 ms
+UnloadTime: 5.162753 ms
 System memory in use before: 16.6 MB.
 System memory in use after: 16.6 MB.
 
 Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 382.
-Total: 1.569426 ms (FindLiveObjects: 0.017769 ms CreateObjectMapping: 0.012047 ms MarkObjects: 1.529671 ms  DeleteObjects: 0.009035 ms)
-
-Enter the World Scene!
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:20)
- 
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/MainController.cs Line: 20)
-
-Elevation View Made!
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:43)
- 
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/MainController.cs Line: 43)
-
-Mouse Over Initialized!
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-TileMouseOver:.ctor(Collider, Renderer) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\TileMouseOver.cs:21)
-MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:48)
- 
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/TileMouseOver.cs Line: 21)
-
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.983338 ms
-System memory in use before: 16.9 MB.
-System memory in use after: 16.5 MB.
-
-Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 278.
-Total: 1.668513 ms (FindLiveObjects: 0.015661 ms CreateObjectMapping: 0.012348 ms MarkObjects: 1.534490 ms  DeleteObjects: 0.105712 ms)
-
-Generate World
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-LoadingScreenController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:29)
- 
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/LoadingScreenController.cs Line: 29)
-
-Literally, Hello World!
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:71)
-<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:48)
-UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
- 
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/LoadingScreenController.cs Line: 71)
-
-75, 50
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:64)
-LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:72)
-<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:48)
-UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
- 
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 64)
-
-Elevation Models Complete!
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:83)
-LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:72)
-<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:48)
-UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
- 
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 83)
-
-Temperature Models Complete!
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:88)
-LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:72)
-<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:48)
-UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
- 
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 88)
-
-Rainfall Models Complete!
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:93)
-LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:72)
-<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:48)
-UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
- 
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 93)
-
-Rivers Populated!
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:98)
-LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:72)
-<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:48)
-UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
- 
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 98)
-
-Habitats Created!
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:105)
-LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:72)
-<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:48)
-UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
- 
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 105)
-
-World Model Made!
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:73)
-<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:48)
-UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
- 
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/LoadingScreenController.cs Line: 73)
-
-The referenced script on this Behaviour (Game Object 'Canvas') is missing!
- 
-(Filename: C:/buildslave/unity/build/Runtime/Mono/MonoBehaviour.cpp Line: 1754)
-
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.329486 ms
-System memory in use before: 16.6 MB.
-System memory in use after: 16.6 MB.
-
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 382.
-Total: 3.422560 ms (FindLiveObjects: 0.019576 ms CreateObjectMapping: 0.012047 ms MarkObjects: 3.382504 ms  DeleteObjects: 0.007830 ms)
+Total: 1.630264 ms (FindLiveObjects: 0.019877 ms CreateObjectMapping: 0.012348 ms MarkObjects: 1.588400 ms  DeleteObjects: 0.009336 ms)
 
 Enter the World Scene!
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
@@ -339,34 +188,12 @@ UnityEngine.EventSystems.EventSystem:Update() (at C:\buildslave\unity\build\Exte
  
 (Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/MainController.cs Line: 96)
 
-Elevation View Made!
-UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
-UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
-UnityEngine.Logger:Log(LogType, Object)
-UnityEngine.Debug:Log(Object)
-MainController:ToggleView() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:102)
-UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:153)
-UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:634)
-UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:769)
-UnityEngine.Events.UnityEvent:Invoke() (at C:\buildslave\unity\build\Runtime\Export\UnityEvent_0.cs:53)
-UnityEngine.UI.Button:Press() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\UI\Core\Button.cs:35)
-UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\UI\Core\Button.cs:44)
-UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\ExecuteEvents.cs:52)
-UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\ExecuteEvents.cs:269)
-UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:531)
-UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent(Int32) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:430)
-UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:410)
-UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:184)
-UnityEngine.EventSystems.EventSystem:Update() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\EventSystem.cs:287)
- 
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/MainController.cs Line: 102)
-
 Generated a new year!
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
 UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
-World:NewYear() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:148)
+World:NewYear() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:177)
 MainController:NewYear() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:78)
 UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:153)
 UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:634)
@@ -382,5 +209,247 @@ UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\builds
 UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:184)
 UnityEngine.EventSystems.EventSystem:Update() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\EventSystem.cs:287)
  
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 148)
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 177)
+
+Generated a new year!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+World:NewYear() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:177)
+MainController:NewYear() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:78)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:153)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:634)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:769)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\buildslave\unity\build\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\UI\Core\Button.cs:35)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\UI\Core\Button.cs:44)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:531)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent(Int32) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:430)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:410)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:184)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\EventSystem.cs:287)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 177)
+
+Generated a new year!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+World:NewYear() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:177)
+MainController:NewYear() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:78)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:153)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:634)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:769)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\buildslave\unity\build\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\UI\Core\Button.cs:35)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\UI\Core\Button.cs:44)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:531)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent(Int32) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:430)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:410)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:184)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\EventSystem.cs:287)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 177)
+
+Generated a new year!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+World:NewYear() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:177)
+MainController:NewYear() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:78)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:153)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:634)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:769)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\buildslave\unity\build\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\UI\Core\Button.cs:35)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\UI\Core\Button.cs:44)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:531)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent(Int32) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:430)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:410)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:184)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\EventSystem.cs:287)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 177)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.108025 ms
+System memory in use before: 277.5 MB.
+System memory in use after: 277.0 MB.
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 278.
+Total: 1.950413 ms (FindLiveObjects: 0.021684 ms CreateObjectMapping: 0.013552 ms MarkObjects: 1.794705 ms  DeleteObjects: 0.118663 ms)
+
+Generate World
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+LoadingScreenController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:29)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/LoadingScreenController.cs Line: 29)
+
+Literally, Hello World!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:71)
+<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:48)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/LoadingScreenController.cs Line: 71)
+
+60, 60
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:65)
+LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:72)
+<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:48)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 65)
+
+Elevation Models Complete!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:84)
+LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:72)
+<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:48)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 84)
+
+Temperature Models Complete!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:89)
+LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:72)
+<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:48)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 89)
+
+Rainfall Models Complete!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:94)
+LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:72)
+<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:48)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 94)
+
+Rivers Populated!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:99)
+LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:72)
+<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:48)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 99)
+
+Habitats Created!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:106)
+LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:72)
+<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:48)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 106)
+
+World Model Made!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:73)
+<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:48)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/LoadingScreenController.cs Line: 73)
+
+The referenced script on this Behaviour (Game Object 'Canvas') is missing!
+ 
+(Filename: C:/buildslave/unity/build/Runtime/Mono/MonoBehaviour.cpp Line: 1754)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.283105 ms
+System memory in use before: 16.6 MB.
+System memory in use after: 16.6 MB.
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 382.
+Total: 3.815594 ms (FindLiveObjects: 0.015962 ms CreateObjectMapping: 0.011444 ms MarkObjects: 3.779755 ms  DeleteObjects: 0.007830 ms)
+
+Enter the World Scene!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:20)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/MainController.cs Line: 20)
+
+Elevation View Made!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:43)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/MainController.cs Line: 43)
+
+Mouse Over Initialized!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+TileMouseOver:.ctor(Collider, Renderer) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\TileMouseOver.cs:21)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:48)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/TileMouseOver.cs Line: 21)
+
+Habitat View Made!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+MainController:ToggleView() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:96)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:153)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:634)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\buildslave\unity\build\Runtime\Export\UnityEvent.cs:769)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\buildslave\unity\build\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\UI\Core\Button.cs:35)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\UI\Core\Button.cs:44)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:531)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent(Int32) (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:430)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:410)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\InputModules\StandaloneInputModule.cs:184)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\buildslave\unity\build\Extensions\guisystem\UnityEngine.UI\EventSystem\EventSystem.cs:287)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/MainController.cs Line: 96)
 
