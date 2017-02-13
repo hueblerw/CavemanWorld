@@ -186,6 +186,7 @@ public class World {
         info += "\n" + "Hill %: " + hillPer.worldArray[x, z] * 100f + "%";
         info += "\n" + "Temp: " + temps[x, z].getDaysTemp(day);
         info += "\n" + "Rain: " + rainfall.worldArray[day][x, z];
+        info += "\n" + "Snow: " + snow.worldArray[day][x, z];
         info += "\n" + "River Direction: " + riverStats.worldArray[x, z].downstream;
         info += "\n" + "River Level: " + River.surfacewater.worldArray[day][x, z];
         info += "\n" + "flowrate - absorbtion: " + riverStats.worldArray[x, z].getPrivateVariables();
