@@ -36,6 +36,7 @@ LEFT-SHIFT, LEFT-CTRL are zoom-in and zoom-out respectively.
   * Surface-Water (i.e. River or lake water level)
   * River flow input direction, River flow output direction
   * Hill Percentage (a measure of roughly how hilly the terrain is).
+  * Snow fall and amount of Snow Cover on the ground.
 * Rivers flow downhill and water contained in them drains away in soil and evaporates according to scientific principles.
 * A crude visualization of the elevation and habitat maps has been created including a button allowing for a toggle between the visualization modes.
 
@@ -72,6 +73,8 @@ Each storm has a y % chance (also calculated from the humidity value) to spread 
 ![Full Storms](ReadmePics/Storms.jpg)
 >
 This is carried out for all storms spawned on a given day.  These storms deliver rainfall to the tiles in a manner that is logically consistent with storms spreading over an area and also allows for regional and season variation in rainfall, with a certain amount of randomness as well.
+> 
+If the temperature is lower than 32 degrees then the rain falls as snow which doesn't immediately enter the drainage system but sits on the surface.  If the temperature is higher than 32 degrees, precipitation falls as rain and any surface snow begins to melt.
 
 ### Hill Percentage Calculation
 >
@@ -86,11 +89,9 @@ The premise of rivers is as follows:
 2. Rivers lose water to evaporation.
 3. Rivers lose water to soil absorption.
 4. Rivers gain water from precipitation runoff.
+5. Rivers gain water from snow melt.
 
 Other factors I either will or wish to take into account in the future are:
-
-* Rivers gain water through snow-melt.  (Math complete, but not implemented in present product)
-[Link to the full experimental excel file without macros enabled](ReadmePics/RevisedWeatherGraphsTest.xlsx)
 * Plant-life absorbs and traps water in its soil thus increasing soil absorption.  (Ambition not yet attempted)
 
 I shall expand upon how the above premises are implemented.
@@ -118,7 +119,7 @@ I shall expand upon how the above premises are implemented.
   * This means all rainfall is added directly to the river.  
   * No time delay for drainage was implemented for simplicity's sake.  
   * Ultimately precipitation occurring at temperatures below 32-degrees will not be added because it will be on the surface as snow.  
-  * Snow melt will then occur using the model found at [this website](https://www.cs.utah.edu/~shirley/papers/snowTerrain/terrain-node10.html) and be added to the river water allowing for the possibility of spring flooding events.  These store water for use by the environment at periods of time where water might otherwise be in short supply.
+  * Snow melt then occurs using the model found at [this website](https://www.cs.utah.edu/~shirley/papers/snowTerrain/terrain-node10.html) and be added to the river water allowing for the possibility of spring flooding events.  These store water for use by the environment at periods of time where water might otherwise be in short supply.
 * Note: 1/10 of the average amount of water in a river/lake is added to the provinces rainfall total when calculating the habitat of a region.  So a large river/lake could theoretically water a strip of desert into a different habitat (a la the Nile).
 
 ### Daily Temperature
