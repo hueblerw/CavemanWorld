@@ -375,12 +375,15 @@ public class World {
         }
     }
 
+
     // Resets the Static River layers
     private void ResetStaticRiverLayers()
     {
         River.upstreamToday = new DailyLayer("Upstream Waterflow", 2);
         River.surfacewater = new DailyLayer("Surface Water", 2);
+        River.surfaceSnow = new DailyLayer("Surface Snow", 2);
     }
+
 
     // Resets the Static River layers
     private void ResetLastDayLayer()
