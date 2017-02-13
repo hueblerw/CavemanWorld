@@ -143,7 +143,7 @@ public class World {
             {
                 for (int z = 0; z < WorldZ; z++)
                 {
-                    if(temps[x, z].getDaysTemp(day) < 32)
+                    if(temps[x, z].getDaysTemp(day) <= 32)
                     {
                         snowfall.worldArray[day][x, z] = rainfall.worldArray[day][x, z];
                         rainfall.worldArray[day][x, z] = 0f;
