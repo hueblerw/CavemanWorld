@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/LoadingScreen.unity
+- path: Assets/WorldView.unity
   isLoaded: 1
   isActive: 1
