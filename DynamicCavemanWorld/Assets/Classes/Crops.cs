@@ -72,11 +72,11 @@ public class Crops {
             SwitchVariables(i);
             if (DayTempAllowCrop(day, temps) && DayRainAllowCrop(day, x, z, rainfall))
             {
-                Debug.Log("Crops Allowed!");
+                // Debug.Log("Crops Allowed!");
                 double cropMultiplier = (1.0 / ((120 - growthPeriod) * 100.0)) * 400.0;
                 // Calculate the crop quality
                 currentCrops[i] = cropQuality(day, temps) * cropMultiplier * humanFoodUnits;
-                Debug.Log(x + ", " + z + " / " + cropQuality(day, temps) + " / " + cropMultiplier + " / " + humanFoodUnits);
+                // Debug.Log(x + ", " + z + " / " + cropQuality(day, temps) + " / " + cropMultiplier + " / " + humanFoodUnits);
             }
         }
 

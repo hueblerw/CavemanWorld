@@ -69,6 +69,21 @@ public class MainController : MonoBehaviour {
         
     }
 
+    // Moves us up 15 days
+    public void AdvanceFifteenDays()
+    {
+        if (day >= 104)
+        {
+            NewYear();
+        }
+        else
+        {
+            day += 15;
+            mouseController.UpdateTheDate();
+        }
+
+    }
+
     // Moves us to the new year.
     public void NewYear()
     {
