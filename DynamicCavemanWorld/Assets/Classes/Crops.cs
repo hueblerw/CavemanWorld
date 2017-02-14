@@ -57,6 +57,10 @@ public class Crops {
     }
 
 
+    // NOTE ***************
+    // So far the crops can't grow early in the year because for that they need access to information from the previous year.
+    // Implementation of that will be a bit tricky so I am saving it for later.
+    // Also, these represent the number of new crops that grew today.  A scavenger would have access to the last x days worth of crops.
     // Calculate how much of a crop is present upon request
     public double[] ReturnCurrentCropArray(int day, int x, int z, DailyLayer rainfall, IntDayList temps)
     {
