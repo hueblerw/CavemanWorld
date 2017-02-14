@@ -81,7 +81,6 @@ public class MainController : MonoBehaviour {
             day += 15;
             mouseController.UpdateTheDate();
         }
-
     }
 
     // Moves us to the new year.

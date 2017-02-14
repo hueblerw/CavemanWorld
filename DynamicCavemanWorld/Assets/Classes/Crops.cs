@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class Crops {
 
+    // THREE HUGE ISSUES REMAIN:
+    // CONSUMPTION REDUCING THE AVAILABLE ???
+    // OVERLAP FROM THE PREVIOUS YEAR NEEDS TO BE ALLOWED
+    // RIVERS CREATE AN OPTIONAL SERIES OF VALUES IN RAINFALL IN THE ENVIRONMENT
+        // How to implement that is a major headache potentially, but does vastly increase the availability of crops.
+
     // Constants
     private const int NUM_OF_CROPS = 12;
 
