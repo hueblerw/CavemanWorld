@@ -72,9 +72,11 @@ public class Crops {
             SwitchVariables(i);
             if (DayTempAllowCrop(day, temps) && DayRainAllowCrop(day, x, z, rainfall))
             {
-                double cropMultiplier = ((1.0 / (120 - growthPeriod)) * 100.0) * 400.0;
+                Debug.Log("Crops Allowed!");
+                double cropMultiplier = (1.0 / ((120 - growthPeriod) * 100.0)) * 400.0;
                 // Calculate the crop quality
                 currentCrops[i] = cropQuality(day, temps) * cropMultiplier * humanFoodUnits;
+                Debug.Log(x + ", " + z + " / " + cropQuality(day, temps) + " / " + cropMultiplier + " / " + humanFoodUnits);
             }
         }
 
@@ -113,13 +115,16 @@ public class Crops {
         // temperature multiplier is % of days that are within the ideal temperature range.
         for (int d = day; d > startGrowthDay; d--)
         {
-            if (temps.getDaysTemp(d) < minTemp || temps.getDaysTemp(d) > maxTemp)
+            if (temps.getDaysTemp(d) >= minTemp || temps.getDaysTemp(d) <= maxTemp)
             {
                 goodDays++;
             }
         }
         // rain multiplier is between 50% and 125%  based on how close to ideal the rainfall level was.
-        double rainMultiplier = 1.25 - Math.Abs(rainSum - ((maxWater + minWater) / 2.0)) * .75;
+        double maxDist = (maxWater - minWater) / 2.0;
+        double idealRain = (maxWater + minWater) / 2.0;
+        double rainMultiplier = 1.25 - ((Math.Abs(rainSum - idealRain) / maxDist) * .75);
+        // return the two modifiers used together.
         return (goodDays / growthPeriod) * rainMultiplier * 100.0;
     }
 
