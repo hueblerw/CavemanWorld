@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Crops {
 
+    // Constants
+    private const int NUM_OF_CROPS = 12;
+
     // Variables
     public float[] usedCrops;
     public bool missingCrops;
@@ -14,11 +17,12 @@ public class Crops {
     private int growthPeriod;
     private double humanFoodUnits;
     private string cropName;
+    private double rainSum;
     
     // Constructor
     public Crops()
     {
-        usedCrops = new float[15];
+        usedCrops = new float[NUM_OF_CROPS];
         missingCrops = false;
     }
 
@@ -34,14 +38,25 @@ public class Crops {
 
 
     // Calculate how much of a crop is present upon request
-    public float[] ReturnCurrentCropArray(int day, DailyLayer rainfall, IntDayList temps)
+    public double[] ReturnCurrentCropArray(int day, int x, int z, DailyLayer rainfall, IntDayList temps)
     {
+        double[] currentCrops = new double[NUM_OF_CROPS];
+        // For each of the crops
+            // If he crop can grow in the region return the crops store the crops returned value in the current crop array for today.
+        for (int i = 0; i < NUM_OF_CROPS; i++)
+        {
+            if (DayTempAllowCrop(day, temps) && DayRainAllowCrop(day, x, z, rainfall))
+            {
+                // Calculate the crop quality
+            }
+        }
 
+        return currentCrops;
     }
 
 
     // Determine if starting on today the previous days have a suitable temperature range.
-    public bool DayTempAllowCrop(int day, IntDayList temps)
+    private bool DayTempAllowCrop(int day, IntDayList temps)
     {
         if (day - growthPeriod > 0)
         {
@@ -59,7 +74,35 @@ public class Crops {
         {
             return false;
         }
-    } 
+    }
+
+
+    // Determine if starting on today the previous days have a suitable rainfall sum.
+    private bool DayRainAllowCrop(int day, int x, int z, DailyLayer rain)
+    {
+        double sum = 0;
+        if (day - growthPeriod > 0)
+        {
+            int startGrowthDay = day - growthPeriod;
+            for (int d = day; d > startGrowthDay; d--)
+            {
+                sum += rain.worldArray[d][x, z];
+            }
+            if (sum >= minWater && sum <= maxWater)
+            {
+                rainSum = sum;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 
     // Crop Variable switch statement
