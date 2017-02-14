@@ -75,6 +75,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Classes\Crops.cs" />
     <Compile Include="Assets\Classes\DailyLayer.cs" />
     <Compile Include="Assets\Classes\DataGenerator.cs" />
     <Compile Include="Assets\Classes\Direction.cs" />

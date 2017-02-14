@@ -13,6 +13,10 @@ public class Habitat {
     public double[] typePercents;
     public float percentOcean;
     private int activeHabitats;
+    public Crops crops;
+    // public Graze grazing;
+    // public Trees forest;
+    // public Game game;
 
     // Constructor
     public Habitat(int[] habitatCounters, float oceanPer)
@@ -25,6 +29,8 @@ public class Habitat {
         }
         // Once the habitats have been loaded figure out which one is dominant
         dominantType = CheckDominantType();
+        // Create empty Plant & Animal Habitat objects
+        Crops crops = new Crops();
     }
 
     // Habitat Yearly Update Method
