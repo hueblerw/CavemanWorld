@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,6 +38,25 @@ public class Crops {
     }
 
 
+    // Print the Current Crop Array
+    public string PrintCurrentCropArray(int day, int x, int z, DailyLayer rainfall, IntDayList temps)
+    {
+        // get today's crop array
+        double[] cropArray = ReturnCurrentCropArray(day, x, z, rainfall, temps);
+        string printString = "";
+        // convert all non-zero values to the appropriate display strings
+        for (int i = 0; i < NUM_OF_CROPS; i++)
+        {
+            if (cropArray[i] != 0.0)
+            {
+                printString += SwitchName(i) + ": " + cropArray[i] + "\n";
+            }
+        }
+
+        return printString;
+    }
+
+
     // Calculate how much of a crop is present upon request
     public double[] ReturnCurrentCropArray(int day, int x, int z, DailyLayer rainfall, IntDayList temps)
     {
@@ -45,9 +65,12 @@ public class Crops {
             // If he crop can grow in the region return the crops store the crops returned value in the current crop array for today.
         for (int i = 0; i < NUM_OF_CROPS; i++)
         {
+            SwitchVariables(i);
             if (DayTempAllowCrop(day, temps) && DayRainAllowCrop(day, x, z, rainfall))
             {
+                double cropMultiplier = ((1.0 / (120 - growthPeriod)) * 100.0) * 400.0;
                 // Calculate the crop quality
+                currentCrops[i] = cropQuality(day, temps) * cropMultiplier * humanFoodUnits;
             }
         }
 
@@ -58,12 +81,13 @@ public class Crops {
     // Determine if starting on today the previous days have a suitable temperature range.
     private bool DayTempAllowCrop(int day, IntDayList temps)
     {
+        // Can grow if the temperature is within +/- 10 degrees of the ideal temperature range
         if (day - growthPeriod > 0)
         {
             int startGrowthDay = day - growthPeriod;
             for (int d = day; d > startGrowthDay; d--)
             {
-                if (temps.getDaysTemp(d) < minTemp || temps.getDaysTemp(d) > maxTemp)
+                if (temps.getDaysTemp(d) < minTemp - 10 || temps.getDaysTemp(d) > maxTemp + 10)
                 {
                     return false;
                 }
@@ -77,9 +101,29 @@ public class Crops {
     }
 
 
+    // Return the growing crops Quality
+    private double cropQuality(int day, IntDayList temps)
+    {
+        int goodDays = 0;
+        int startGrowthDay = day - growthPeriod;
+        // temperature multiplier is % of days that are within the ideal temperature range.
+        for (int d = day; d > startGrowthDay; d--)
+        {
+            if (temps.getDaysTemp(d) < minTemp || temps.getDaysTemp(d) > maxTemp)
+            {
+                goodDays++;
+            }
+        }
+        // rain multiplier is between 50% and 125%  based on how close to ideal the rainfall level was.
+        double rainMultiplier = 1.25 - Math.Abs(rainSum - ((maxWater + minWater) / 2.0)) * .75;
+        return (goodDays / growthPeriod) * rainMultiplier * 100.0;
+    }
+
+
     // Determine if starting on today the previous days have a suitable rainfall sum.
     private bool DayRainAllowCrop(int day, int x, int z, DailyLayer rain)
     {
+        // can grow ONLY if the rainfall is within the ideal rainfall range
         double sum = 0;
         if (day - growthPeriod > 0)
         {
@@ -231,6 +275,66 @@ public class Crops {
                 humanFoodUnits = 1.0; // ?????????????????
                 break;
         }
+    }
+
+
+    // Crop get name only statement
+    private string SwitchName(int cropNum)
+    {
+        string name = "";
+        switch (cropNum)
+        {
+            // Wheat
+            case 0:
+                name = "wheat";
+                break;
+            // Corn
+            case 1:
+                name = "corn";
+                break;
+            // Potato
+            case 2:
+                name = "potato";
+                break;
+            // Apple Tree
+            case 3:
+                name = "apple";
+                break;
+            // Grapes
+            case 4:
+                name = "grape";
+                break;
+            // Beans
+            case 5:
+                name = "beans";
+                break;
+            // Rice
+            case 6:
+                name = "rice";
+                break;
+            // Onions
+            case 7:
+                name = "onions";
+                break;
+            // Carrots
+            case 8:
+                name = "carrots";
+                break;
+            // Roots
+            case 9:
+                name = "roots";
+                break;
+            // Berries
+            case 10:
+                name = "berries";
+                break;
+            // Nuts
+            case 11:
+                name = "nuts";
+                break;
+        }
+
+        return name;
     }
 
 }
