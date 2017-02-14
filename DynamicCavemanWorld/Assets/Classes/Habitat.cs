@@ -30,7 +30,7 @@ public class Habitat {
         // Once the habitats have been loaded figure out which one is dominant
         dominantType = CheckDominantType();
         // Create empty Plant & Animal Habitat objects
-        Crops crops = new Crops();
+        crops = new Crops();
     }
 
     // Habitat Yearly Update Method
