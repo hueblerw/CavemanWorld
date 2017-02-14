@@ -44,11 +44,47 @@ public class Crops {
     }
 
 
+    // Return an array containing totals of each crop for the entire year.
+    public double[] SumCropsForYear(int x, int z, DailyLayer rainfall, IntDayList temps)
+    {
+        double[] cropSum = new double[NUM_OF_CROPS];
+        double[] cropDay = new double[NUM_OF_CROPS];
+        for (int d = 0; d < 120; d++)
+        {
+            cropDay = ReturnCurrentCropArray(d, x, z, rainfall, temps);
+            for (int i = 0; i < NUM_OF_CROPS; i++)
+            {
+                cropSum[i] += cropDay[i];
+            }
+        }
+        return cropSum;
+    }
+
+
     // Print the Current Crop Array
     public string PrintCurrentCropArray(int day, int x, int z, DailyLayer rainfall, IntDayList temps)
     {
         // get today's crop array
         double[] cropArray = ReturnCurrentCropArray(day, x, z, rainfall, temps);
+        string printString = "";
+        // convert all non-zero values to the appropriate display strings
+        for (int i = 0; i < NUM_OF_CROPS; i++)
+        {
+            if (cropArray[i] != 0.0)
+            {
+                printString += SwitchName(i) + ": " + cropArray[i] + "\n";
+            }
+        }
+
+        return printString;
+    }
+
+
+    // Print the Year's Crop Array
+    public string PrintYearsCropArray(int x, int z, DailyLayer rainfall, IntDayList temps)
+    {
+        // get year's crop array
+        double[] cropArray = SumCropsForYear(x, z, rainfall, temps);
         string printString = "";
         // convert all non-zero values to the appropriate display strings
         for (int i = 0; i < NUM_OF_CROPS; i++)
