@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class Crops {
 
-    // THREE HUGE ISSUES REMAIN:
+    // FOUR HUGE ISSUES REMAIN:
     // CONSUMPTION REDUCING THE AVAILABLE ???
     // OVERLAP FROM THE PREVIOUS YEAR NEEDS TO BE ALLOWED
     // RIVERS CREATE AN OPTIONAL SERIES OF VALUES IN RAINFALL IN THE ENVIRONMENT
         // How to implement that is a major headache potentially, but does vastly increase the availability of crops.
+
 
     // Constants
     private const int NUM_OF_CROPS = 12;
@@ -41,6 +42,23 @@ public class Crops {
 
         // Regenerate any crops that can regenerate.
 
+    }
+
+
+    // Return an array containing totals of each crop the last X Days.
+    public double[] SumCropsForLastX(int day, int lastXDays, int x, int z, DailyLayer rainfall, IntDayList temps)
+    {
+        double[] cropSum = new double[NUM_OF_CROPS];
+        double[] cropDay = new double[NUM_OF_CROPS];
+        for (int d = day - lastXDays + 1; d < day; d++)
+        {
+            cropDay = ReturnCurrentCropArray(d, x, z, rainfall, temps);
+            for (int i = 0; i < NUM_OF_CROPS; i++)
+            {
+                cropSum[i] += cropDay[i];
+            }
+        }
+        return cropSum;
     }
 
 
