@@ -26,6 +26,7 @@ public class Crops {
     private double humanFoodUnits;
     private string cropName;
     private double rainSum;
+    private double percentGrowable;
     
     // Constructor
     public Crops()
@@ -125,6 +126,7 @@ public class Crops {
     public double[] ReturnCurrentCropArray(int day, int x, int z, DailyLayer rainfall, IntDayList temps)
     {
         double[] currentCrops = new double[NUM_OF_CROPS];
+        percentGrowable = 1.0;
         // For each of the crops
             // If he crop can grow in the region return the crops store the crops returned value in the current crop array for today.
         for (int i = 0; i < NUM_OF_CROPS; i++)
@@ -135,7 +137,7 @@ public class Crops {
                 // Debug.Log("Crops Allowed!");
                 double cropMultiplier = (1.0 / ((120 - growthPeriod) * 100.0)) * 400.0;
                 // Calculate the crop quality
-                currentCrops[i] = cropQuality(day, temps) * cropMultiplier * humanFoodUnits;
+                currentCrops[i] = cropQuality(day, temps) * cropMultiplier * humanFoodUnits * percentGrowable;
                 // Debug.Log(x + ", " + z + " / " + cropQuality(day, temps) + " / " + cropMultiplier + " / " + humanFoodUnits);
             }
         }
@@ -197,10 +199,17 @@ public class Crops {
         if (day - growthPeriod > 0)
         {
             int startGrowthDay = day - growthPeriod;
+            // Sum the rainfall in the crops growing period
             for (int d = day; d > startGrowthDay; d--)
             {
                 sum += rain.worldArray[d][x, z];
             }
+            // If that sum is in the acceptable range set the rainSum variable and return true, else return false.
+                // Ideally if any value in the range of values from sum to sum + surfacewaterSum is between minWater and maxWater
+                // Return true and rainSum set and percentGrowable set.
+                    // rainSum = Average(Min(sum + surfaceSum, maxWater), Max(sum, minWater));
+                    // percentGrowable = (Min(sum + surfaceSum, maxWater) + Max(sum, minWater)) / surfaceSum;
+                // Else return false
             if (sum >= minWater && sum <= maxWater)
             {
                 rainSum = sum;
