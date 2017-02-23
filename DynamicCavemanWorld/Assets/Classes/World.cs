@@ -199,7 +199,7 @@ public class World {
             // info += "\n" + "Crops Today:";
             // info += "\n" + habitats.worldArray[x, z].crops.PrintCurrentCropArray(day, x, z, rainfall, temps[x, z]);
             info += "\n" + "Crops Year Total:";
-            info += "\n" + habitats.worldArray[x, z].crops.PrintYearsCropArray(x, z, rainfall, temps[x, z]);
+            info += "\n" + habitats.worldArray[x, z].crops.PrintYearsCropArray(x, z, rainfall, temps[x, z], River.surfacewater);
         }
         return info;
     }

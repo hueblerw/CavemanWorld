@@ -47,13 +47,13 @@ public class Crops {
 
 
     // Return an array containing totals of each crop the last X Days.
-    public double[] SumCropsForLastX(int day, int lastXDays, int x, int z, DailyLayer rainfall, IntDayList temps)
+    public double[] SumCropsForLastX(int day, int lastXDays, int x, int z, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
     {
         double[] cropSum = new double[NUM_OF_CROPS];
         double[] cropDay = new double[NUM_OF_CROPS];
         for (int d = day - lastXDays + 1; d < day; d++)
         {
-            cropDay = ReturnCurrentCropArray(d, x, z, rainfall, temps);
+            cropDay = ReturnCurrentCropArray(d, x, z, rainfall, temps, rivers);
             for (int i = 0; i < NUM_OF_CROPS; i++)
             {
                 cropSum[i] += cropDay[i];
@@ -64,13 +64,13 @@ public class Crops {
 
 
     // Return an array containing totals of each crop for the entire year.
-    public double[] SumCropsForYear(int x, int z, DailyLayer rainfall, IntDayList temps)
+    public double[] SumCropsForYear(int x, int z, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
     {
         double[] cropSum = new double[NUM_OF_CROPS];
         double[] cropDay = new double[NUM_OF_CROPS];
         for (int d = 0; d < 120; d++)
         {
-            cropDay = ReturnCurrentCropArray(d, x, z, rainfall, temps);
+            cropDay = ReturnCurrentCropArray(d, x, z, rainfall, temps, rivers);
             for (int i = 0; i < NUM_OF_CROPS; i++)
             {
                 cropSum[i] += cropDay[i];
@@ -81,10 +81,10 @@ public class Crops {
 
 
     // Print the Current Crop Array
-    public string PrintCurrentCropArray(int day, int x, int z, DailyLayer rainfall, IntDayList temps)
+    public string PrintCurrentCropArray(int day, int x, int z, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
     {
         // get today's crop array
-        double[] cropArray = ReturnCurrentCropArray(day, x, z, rainfall, temps);
+        double[] cropArray = ReturnCurrentCropArray(day, x, z, rainfall, temps, rivers);
         string printString = "";
         // convert all non-zero values to the appropriate display strings
         for (int i = 0; i < NUM_OF_CROPS; i++)
@@ -100,10 +100,10 @@ public class Crops {
 
 
     // Print the Year's Crop Array
-    public string PrintYearsCropArray(int x, int z, DailyLayer rainfall, IntDayList temps)
+    public string PrintYearsCropArray(int x, int z, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
     {
         // get year's crop array
-        double[] cropArray = SumCropsForYear(x, z, rainfall, temps);
+        double[] cropArray = SumCropsForYear(x, z, rainfall, temps, rivers);
         string printString = "";
         // convert all non-zero values to the appropriate display strings
         for (int i = 0; i < NUM_OF_CROPS; i++)
@@ -123,7 +123,7 @@ public class Crops {
     // Implementation of that will be a bit tricky so I am saving it for later.
     // Also, these represent the number of new crops that grew today.  A scavenger would have access to the last x days worth of crops.
     // Calculate how much of a crop is present upon request
-    public double[] ReturnCurrentCropArray(int day, int x, int z, DailyLayer rainfall, IntDayList temps)
+    public double[] ReturnCurrentCropArray(int day, int x, int z, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
     {
         double[] currentCrops = new double[NUM_OF_CROPS];
         percentGrowable = 1.0;
@@ -132,7 +132,7 @@ public class Crops {
         for (int i = 0; i < NUM_OF_CROPS; i++)
         {
             SwitchVariables(i);
-            if (DayTempAllowCrop(day, temps) && DayRainAllowCrop(day, x, z, rainfall))
+            if (DayTempAllowCrop(day, temps) && DayRainAllowCrop(day, x, z, rainfall, rivers))
             {
                 // Debug.Log("Crops Allowed!");
                 double cropMultiplier = (1.0 / ((120 - growthPeriod) * 100.0)) * 400.0;
@@ -192,10 +192,11 @@ public class Crops {
 
 
     // Determine if starting on today the previous days have a suitable rainfall sum.
-    private bool DayRainAllowCrop(int day, int x, int z, DailyLayer rain)
+    private bool DayRainAllowCrop(int day, int x, int z, DailyLayer rain, DailyLayer rivers)
     {
         // can grow ONLY if the rainfall is within the ideal rainfall range
         double sum = 0;
+        double surfaceSum = 0;
         if (day - growthPeriod > 0)
         {
             int startGrowthDay = day - growthPeriod;
@@ -203,16 +204,29 @@ public class Crops {
             for (int d = day; d > startGrowthDay; d--)
             {
                 sum += rain.worldArray[d][x, z];
+                surfaceSum += rivers.worldArray[d][x, z];
             }
             // If that sum is in the acceptable range set the rainSum variable and return true, else return false.
                 // Ideally if any value in the range of values from sum to sum + surfacewaterSum is between minWater and maxWater
+                    // if((sum > minWater && sum > maxWater) || (sum < minWater && sum + surfaceSum > minWater))
                 // Return true and rainSum set and percentGrowable set.
-                    // rainSum = Average(Min(sum + surfaceSum, maxWater), Max(sum, minWater));
-                    // percentGrowable = (Min(sum + surfaceSum, maxWater) + Max(sum, minWater)) / surfaceSum;
+                    // rainSum = Average(Math.Min(sum + surfaceSum, maxWater), Math.Max(sum, minWater));
+                    // percentGrowable = (Math.Min(sum + surfaceSum, maxWater) + Math.Max(sum, minWater)) / surfaceSum;
                 // Else return false
-            if (sum >= minWater && sum <= maxWater)
-            {
-                rainSum = sum;
+            if ((sum > minWater && sum < maxWater) || (sum < minWater && (sum + surfaceSum) > minWater))
+                {
+                // Set the rainSum with the midpoint of the trapezoid of possible return values.
+                rainSum = Average(Math.Min(sum + surfaceSum, maxWater), Math.Max(sum, minWater));
+                // Set the percent Growable as the percent of the tile that actually is in the acceptable water range.
+                if (surfaceSum == 0)
+                {
+                    percentGrowable = 1.0;
+                }
+                else
+                {
+                    percentGrowable = (Math.Min(sum + surfaceSum, maxWater) + Math.Max(sum, minWater)) / surfaceSum;
+                }
+                // return true because stuff grows here
                 return true;
             }
             else
@@ -414,5 +428,13 @@ public class Crops {
 
         return name;
     }
+
+
+    // Averages two doubles
+    private double Average(double a, double b)
+    {
+        return (a + b) / 2.0;
+    }
+
 
 }
