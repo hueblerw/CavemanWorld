@@ -16,7 +16,6 @@ public class LoadingScreenController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         
-
         if (TheWorld == null)
         {
             Debug.Log("Load World");
