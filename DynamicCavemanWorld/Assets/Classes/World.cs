@@ -187,13 +187,20 @@ public class World {
         info += "\n" + "Temp: " + temps[x, z].getDaysTemp(day);
         info += "\n" + "Rain: " + rainfall.worldArray[day][x, z];
         info += "\n" + "Snow: " + snow.worldArray[day][x, z];
-        info += "\n" + "River Direction: " + riverStats.worldArray[x, z].downstream;
-        info += "\n" + "Snow Level: " + River.surfaceSnow.worldArray[day][x, z];
-        info += "\n" + "River Level: " + River.surfacewater.worldArray[day][x, z];
-        info += "\n" + "flowrate - absorbtion: " + riverStats.worldArray[x, z].getPrivateVariables();
-        info += "\n" + "Upstream Directions: " + riverStats.worldArray[x, z].printUpstream();
-        info += "\n" + "Upstream River Amount: " + River.upstreamToday.worldArray[day][x, z];
-        info += "\n" + habitats.worldArray[x, z];
+        if (oceanPer.worldArray[x, z] != 1.0)
+        {
+            info += "\n" + "River Direction: " + riverStats.worldArray[x, z].downstream;
+            info += "\n" + "Snow Cover: " + River.surfaceSnow.worldArray[day][x, z];
+            info += "\n" + "River Level: " + River.surfacewater.worldArray[day][x, z];
+            info += "\n" + "flowrate - absorbtion: " + riverStats.worldArray[x, z].getPrivateVariables();
+            info += "\n" + "Upstream Directions: " + riverStats.worldArray[x, z].printUpstream();
+            info += "\n" + "Upstream River Amount: " + River.upstreamToday.worldArray[day][x, z];
+            info += "\n" + habitats.worldArray[x, z];
+            info += "\n" + "Crops Today:";
+            info += "\n" + habitats.worldArray[x, z].crops.PrintCurrentCropArray(day, x, z, rainfall, temps[x, z], River.surfacewater);
+            info += "\n" + "Crops Year Total:";
+            info += "\n" + habitats.worldArray[x, z].crops.PrintYearsCropArray(x, z, rainfall, temps[x, z], River.surfacewater);
+        }
         return info;
     }
 
