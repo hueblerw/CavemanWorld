@@ -15,7 +15,7 @@ public class MainController : MonoBehaviour {
     public string currentView;
     public Canvas cntrlInfo;
     public bool clockRunning;
-    public float speed = 1.0f;
+    public float clockSpeed = 1.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -66,7 +66,7 @@ public class MainController : MonoBehaviour {
         while (clockRunning)
         {
             NextDay();
-            yield return new WaitForSeconds(speed);
+            yield return new WaitForSeconds(clockSpeed);
         }
     }
 
@@ -86,6 +86,7 @@ public class MainController : MonoBehaviour {
         
     }
 
+
     // Moves us up 15 days
     public void AdvanceFifteenDays()
     {
@@ -100,6 +101,7 @@ public class MainController : MonoBehaviour {
         }
     }
 
+
     // Moves us to the new year.
     public void NewYear()
     {
@@ -113,6 +115,7 @@ public class MainController : MonoBehaviour {
             meshRenderer.sharedMaterial.mainTexture = WorldView.BuildHabitatTexture(TheWorld, textureMap);
         }
     }
+
 
     // Toggles between the two world display methods
     public void ToggleView()
@@ -134,6 +137,7 @@ public class MainController : MonoBehaviour {
                 break;
         }     
     }
+
 
     // Generate's and displays a new random world
     public void GenerateNewRandomWorld()
@@ -169,6 +173,8 @@ public class MainController : MonoBehaviour {
         cntrlInfo.enabled = false;
     }
 
+
+    // Toggles the Clock on and off
     public void ToggleTheClock()
     {
         if (clockRunning)
