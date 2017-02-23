@@ -8,9 +8,6 @@ public class Crops {
     // FOUR HUGE ISSUES REMAIN:
     // CONSUMPTION REDUCING THE AVAILABLE ???
     // OVERLAP FROM THE PREVIOUS YEAR NEEDS TO BE ALLOWED
-    // RIVERS CREATE AN OPTIONAL SERIES OF VALUES IN RAINFALL IN THE ENVIRONMENT
-        // How to implement that is a major headache potentially, but does vastly increase the availability of crops.
-
 
     // Constants
     private const int NUM_OF_CROPS = 12;
@@ -138,7 +135,7 @@ public class Crops {
                 double cropMultiplier = (1.0 / ((120 - growthPeriod) * 100.0)) * 400.0;
                 // Calculate the crop quality
                 currentCrops[i] = cropQuality(day, temps) * cropMultiplier * humanFoodUnits * percentGrowable;
-                // Debug.Log(x + ", " + z + " / " + cropQuality(day, temps) + " / " + cropMultiplier + " / " + humanFoodUnits);
+                // Debug.Log(x + ", " + z + " / " + cropQuality(day, temps) + " / " + percentGrowable + " / " + humanFoodUnits);
             }
         }
 
@@ -195,6 +192,7 @@ public class Crops {
     private bool DayRainAllowCrop(int day, int x, int z, DailyLayer rain, DailyLayer rivers)
     {
         // can grow ONLY if the rainfall is within the ideal rainfall range
+        const double RIVERWATERINGCONSTANT = .2;
         double sum = 0;
         double surfaceSum = 0;
         if (day - growthPeriod > 0)
@@ -204,14 +202,11 @@ public class Crops {
             for (int d = day; d > startGrowthDay; d--)
             {
                 sum += rain.worldArray[d][x, z];
-                surfaceSum += rivers.worldArray[d][x, z];
+                surfaceSum += rivers.worldArray[d][x, z] * RIVERWATERINGCONSTANT;
             }
             // If that sum is in the acceptable range set the rainSum variable and return true, else return false.
                 // Ideally if any value in the range of values from sum to sum + surfacewaterSum is between minWater and maxWater
-                    // if((sum > minWater && sum > maxWater) || (sum < minWater && sum + surfaceSum > minWater))
                 // Return true and rainSum set and percentGrowable set.
-                    // rainSum = Average(Math.Min(sum + surfaceSum, maxWater), Math.Max(sum, minWater));
-                    // percentGrowable = (Math.Min(sum + surfaceSum, maxWater) + Math.Max(sum, minWater)) / surfaceSum;
                 // Else return false
             if ((sum > minWater && sum < maxWater) || (sum < minWater && (sum + surfaceSum) > minWater))
                 {
@@ -224,7 +219,7 @@ public class Crops {
                 }
                 else
                 {
-                    percentGrowable = (Math.Min(sum + surfaceSum, maxWater) + Math.Max(sum, minWater)) / surfaceSum;
+                    percentGrowable = (Math.Min(sum + surfaceSum, maxWater) - Math.Max(sum, minWater)) / surfaceSum;
                 }
                 // return true because stuff grows here
                 return true;
