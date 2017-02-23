@@ -14,9 +14,12 @@ public class MainController : MonoBehaviour {
     public Texture2D textureMap;
     public string currentView;
     public Canvas cntrlInfo;
+    public bool clockRunning;
+    public float speed = 1.0f;
 
 	// Use this for initialization
 	void Start () {
+        clockRunning = false;
         Debug.Log("Enter the World Scene!");
         // Assign the world created from the loading screen.
         TheWorld = LoadingScreenController.TheWorld;
@@ -48,11 +51,25 @@ public class MainController : MonoBehaviour {
         mouseController = new TileMouseOver(meshCollider, meshRenderer);
     }
 	
+
 	// Update is called once per frame
     void Update()
     {
+        // Update the mouse-over tile info
         mouseController.UpdateTileInfo();
     }
+
+
+    // Advances a day everytime speed seconds if the clock is running
+    IEnumerator RunTheClock()
+    {
+        while (clockRunning)
+        {
+            NextDay();
+            yield return new WaitForSeconds(speed);
+        }
+    }
+
 
     // Moves us to the next day
     public void NextDay()
@@ -150,6 +167,19 @@ public class MainController : MonoBehaviour {
     public void ToggleCntrlInfoScreen()
     {
         cntrlInfo.enabled = false;
+    }
+
+    public void ToggleTheClock()
+    {
+        if (clockRunning)
+        {
+            clockRunning = false;
+        }
+        else
+        {
+            clockRunning = true;
+            StartCoroutine(RunTheClock());
+        }
     }
 
 }
