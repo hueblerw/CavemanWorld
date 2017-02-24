@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Habitat {
 
-    // Constant
+    // Constants
     private double EnvironmentalShiftFactor = .01; // +/- 1% a year
     private double GlacialShiftFactor = .10; // +/- 10% a year
     private float RiverEffectFactor = .1f;  // 10% of river volume added to the tiles rainfall
@@ -13,6 +13,7 @@ public class Habitat {
     public double[] typePercents;
     public float percentOcean;
     private int activeHabitats;
+    public int quality;
     public Crops crops;
     public Graze grazing;
     // public Trees forest;
@@ -29,6 +30,9 @@ public class Habitat {
         }
         // Once the habitats have been loaded figure out which one is dominant
         dominantType = CheckDominantType();
+        // Create base quality
+        // Temporarily quality = 50;
+        quality = 50;
         // Create empty Plant & Animal Habitat objects
         crops = new Crops();
         grazing = new Graze();
