@@ -15,7 +15,6 @@ public class Graze {
     }
 
     // NOTE: NOT IMPLEMENTED
-    // USING THE RIVER NUMBERS FOR TO BOOST RAINFALL
     // Balance
 
     // Return the grass number for today
@@ -35,7 +34,7 @@ public class Graze {
 
 
     // Return the grazing available for this square today.
-    public double getGrazing(int day, int x, int z, int quality, double oceanPer, double[] habitatPercents, DailyLayer rainfall, IntDayList temps)
+    public double getGrazing(int day, int x, int z, int quality, double oceanPer, double[] habitatPercents, DailyLayer rainfall, IntDayList temps, DailyLayer surfaceWater)
     {
         // Get the % of terrain that has grass
         double grassPercent = 0.0;
@@ -45,7 +44,7 @@ public class Graze {
             grassPercent += habitatPercents[2 + i];
             desertPercent += habitatPercents[1 + i];
         }
-        double last5Rain = Last5DaysOfRain(day, x, z, rainfall);
+        double last5Rain = Last5DaysOfRain(day, x, z, rainfall, surfaceWater);
         // Calculate the grass mass.
         double grass = getGrass(quality, oceanPer, grassPercent, desertPercent, last5Rain, temps.getDaysTemp(day));
         // Calculate the grazing available
@@ -55,13 +54,26 @@ public class Graze {
     }
 
 
+    // Return the year's total foragable grazing.
+    // Used by the game and herds to determine food availability
+    public double YearsGrazingForage(int x, int z, int quality, double oceanPer, double[] habitatPercents, DailyLayer rainfall, IntDayList temps, DailyLayer surfaceWater)
+    {
+        double sum = 0.0;
+        for (int d = 0; d < 120; d++)
+        {
+            sum += getGrazing(d, x, z, quality, oceanPer, habitatPercents, rainfall, temps, surfaceWater);    
+        }
+        return (sum * Habitat.FORAGECONSTANT);
+    }
+
+
     // Get last 5 Days of Rain
-    private double Last5DaysOfRain(int day, int x, int z, DailyLayer rainfall)
+    private double Last5DaysOfRain(int day, int x, int z, DailyLayer rainfall, DailyLayer surfaceWater)
     {
         double last5Rain = 0.0;
         for (int d = day; d > 0 && d > day - 5; d--)
         {
-            last5Rain += rainfall.worldArray[d][x, z];
+            last5Rain += rainfall.worldArray[d][x, z] + surfaceWater.worldArray[day][x, z] * (Habitat.RIVERWATERINGCONSTANT / 2.0);
         }
 
         return last5Rain;

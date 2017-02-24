@@ -192,7 +192,6 @@ public class Crops {
     private bool DayRainAllowCrop(int day, int x, int z, DailyLayer rain, DailyLayer rivers)
     {
         // can grow ONLY if the rainfall is within the ideal rainfall range
-        const double RIVERWATERINGCONSTANT = .2;
         double sum = 0;
         double surfaceSum = 0;
         if (day - growthPeriod > 0)
@@ -202,7 +201,7 @@ public class Crops {
             for (int d = day; d > startGrowthDay; d--)
             {
                 sum += rain.worldArray[d][x, z];
-                surfaceSum += rivers.worldArray[d][x, z] * RIVERWATERINGCONSTANT;
+                surfaceSum += rivers.worldArray[d][x, z] * Habitat.RIVERWATERINGCONSTANT;
             }
             // If that sum is in the acceptable range set the rainSum variable and return true, else return false.
                 // Ideally if any value in the range of values from sum to sum + surfacewaterSum is between minWater and maxWater
