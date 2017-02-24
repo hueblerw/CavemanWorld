@@ -44,13 +44,13 @@ public class Crops {
 
 
     // Return an array containing totals of each crop the last X Days.
-    public double[] SumCropsForLastX(int day, int lastXDays, int x, int z, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
+    public double[] SumCropsForLastX(int day, int lastXDays, int x, int z, double oceanPer, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
     {
         double[] cropSum = new double[NUM_OF_CROPS];
         double[] cropDay = new double[NUM_OF_CROPS];
         for (int d = day - lastXDays + 1; d < day; d++)
         {
-            cropDay = ReturnCurrentCropArray(d, x, z, rainfall, temps, rivers);
+            cropDay = ReturnCurrentCropArray(d, x, z, oceanPer, rainfall, temps, rivers);
             for (int i = 0; i < NUM_OF_CROPS; i++)
             {
                 cropSum[i] += cropDay[i];
@@ -61,13 +61,13 @@ public class Crops {
 
 
     // Return an array containing totals of each crop for the entire year.
-    public double[] SumCropsForYear(int x, int z, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
+    public double[] SumCropsForYear(int x, int z, double oceanPer, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
     {
         double[] cropSum = new double[NUM_OF_CROPS];
         double[] cropDay = new double[NUM_OF_CROPS];
         for (int d = 0; d < 120; d++)
         {
-            cropDay = ReturnCurrentCropArray(d, x, z, rainfall, temps, rivers);
+            cropDay = ReturnCurrentCropArray(d, x, z, oceanPer, rainfall, temps, rivers);
             for (int i = 0; i < NUM_OF_CROPS; i++)
             {
                 cropSum[i] += cropDay[i];
@@ -78,10 +78,10 @@ public class Crops {
 
 
     // Print the Current Crop Array
-    public string PrintCurrentCropArray(int day, int x, int z, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
+    public string PrintCurrentCropArray(int day, int x, int z, double oceanPer, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
     {
         // get today's crop array
-        double[] cropArray = ReturnCurrentCropArray(day, x, z, rainfall, temps, rivers);
+        double[] cropArray = ReturnCurrentCropArray(day, x, z, oceanPer, rainfall, temps, rivers);
         string printString = "";
         // convert all non-zero values to the appropriate display strings
         for (int i = 0; i < NUM_OF_CROPS; i++)
@@ -97,10 +97,10 @@ public class Crops {
 
 
     // Print the Year's Crop Array
-    public string PrintYearsCropArray(int x, int z, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
+    public string PrintYearsCropArray(int x, int z, double oceanPer, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
     {
         // get year's crop array
-        double[] cropArray = SumCropsForYear(x, z, rainfall, temps, rivers);
+        double[] cropArray = SumCropsForYear(x, z, oceanPer, rainfall, temps, rivers);
         string printString = "";
         // convert all non-zero values to the appropriate display strings
         for (int i = 0; i < NUM_OF_CROPS; i++)
@@ -120,7 +120,7 @@ public class Crops {
     // Implementation of that will be a bit tricky so I am saving it for later.
     // Also, these represent the number of new crops that grew today.  A scavenger would have access to the last x days worth of crops.
     // Calculate how much of a crop is present upon request
-    public double[] ReturnCurrentCropArray(int day, int x, int z, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
+    public double[] ReturnCurrentCropArray(int day, int x, int z, double oceanPer, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
     {
         double[] currentCrops = new double[NUM_OF_CROPS];
         percentGrowable = 1.0;
@@ -132,7 +132,7 @@ public class Crops {
             if (DayTempAllowCrop(day, temps) && DayRainAllowCrop(day, x, z, rainfall, rivers))
             {
                 // Debug.Log("Crops Allowed!");
-                double cropMultiplier = (1.0 / ((80 - growthPeriod) * 100.0)) * 400.0;
+                double cropMultiplier = (1.0 / ((80 - growthPeriod) * 100.0)) * 400.0 * (1.0 - oceanPer);
                 // Calculate the crop quality
                 currentCrops[i] = cropQuality(day, temps) * cropMultiplier * humanFoodUnits * percentGrowable;
                 // Debug.Log(x + ", " + z + " / " + cropQuality(day, temps) + " / " + percentGrowable + " / " + humanFoodUnits);

@@ -197,9 +197,9 @@ public class World {
             info += "\n" + "Upstream River Amount: " + River.upstreamToday.worldArray[day][x, z];
             info += "\n" + habitats.worldArray[x, z];
             info += "\n" + "Crops Today:";
-            info += "\n" + habitats.worldArray[x, z].crops.PrintCurrentCropArray(day, x, z, rainfall, temps[x, z], River.surfacewater);
+            info += "\n" + habitats.worldArray[x, z].crops.PrintCurrentCropArray(day, x, z, oceanPer.worldArray[x, z], rainfall, temps[x, z], River.surfacewater);
             info += "\n" + "Crops Year Total:";
-            info += "\n" + habitats.worldArray[x, z].crops.PrintYearsCropArray(x, z, rainfall, temps[x, z], River.surfacewater);
+            info += "\n" + habitats.worldArray[x, z].crops.PrintYearsCropArray(x, z, oceanPer.worldArray[x, z], rainfall, temps[x, z], River.surfacewater);
         }
         return info;
     }
