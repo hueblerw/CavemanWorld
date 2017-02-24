@@ -14,7 +14,7 @@ public class Habitat {
     public float percentOcean;
     private int activeHabitats;
     public Crops crops;
-    // public Graze grazing;
+    public Graze grazing;
     // public Trees forest;
     // public Game game;
 
@@ -31,6 +31,7 @@ public class Habitat {
         dominantType = CheckDominantType();
         // Create empty Plant & Animal Habitat objects
         crops = new Crops();
+        grazing = new Graze();
     }
 
     // Habitat Yearly Update Method
