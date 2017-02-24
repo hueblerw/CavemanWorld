@@ -16,6 +16,7 @@ public class Graze {
 
     // NOTE: NOT IMPLEMENTED
     // USING THE RIVER NUMBERS FOR TO BOOST RAINFALL
+    // Balance
 
     // Return the grass number for today
     public double getGrass(int quality, double oceanPer, double grassPercent, double desertPercent, double last5Rain, float temp)
