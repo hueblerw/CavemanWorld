@@ -132,7 +132,7 @@ public class Crops {
             if (DayTempAllowCrop(day, temps) && DayRainAllowCrop(day, x, z, rainfall, rivers))
             {
                 // Debug.Log("Crops Allowed!");
-                double cropMultiplier = (1.0 / ((120 - growthPeriod) * 100.0)) * 400.0;
+                double cropMultiplier = (1.0 / ((80 - growthPeriod) * 100.0)) * 400.0;
                 // Calculate the crop quality
                 currentCrops[i] = cropQuality(day, temps) * cropMultiplier * humanFoodUnits * percentGrowable;
                 // Debug.Log(x + ", " + z + " / " + cropQuality(day, temps) + " / " + percentGrowable + " / " + humanFoodUnits);
