@@ -1,21 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Habitat {
 
-    // Constant
+    // Constants
+    public const double RIVERWATERINGCONSTANT = .2;
+    public const double FORAGECONSTANT = .2;
+    public const double SEEDCONSTANT = 1.5 * 0.002314009;
+    public const double SHRUBCONSTANT = 45.0 * 0.004338767;
+    public const double SCRUBCONSTANT = 55.0 * 0.006363525;
+    public const double DESERTSCRUBCONSTANT = 35.0 * 0.004049516;
+    public const double FORESTLEAVESCONSTANT = 200.0 * 0.019283411;
+    public const double PINENEEDLECONSTANT = 150.0 * 0.008677535;
+    public const double TROPICALEAFGROWTH = 1.2;
+    public const double ARTICLEAFGROWTH = 0.8;
     private double EnvironmentalShiftFactor = .01; // +/- 1% a year
     private double GlacialShiftFactor = .10; // +/- 10% a year
-    private float RiverEffectFactor = .1f;  // 10% of river volume added to the tiles rainfall
+    private float RiverEffectFactor = (float) (RIVERWATERINGCONSTANT / 2.0f);  // 10% of river volume added to the tiles rainfall
 
     // Variables
     public string dominantType;
     public double[] typePercents;
     public float percentOcean;
     private int activeHabitats;
+    public int quality;
     public Crops crops;
-    // public Graze grazing;
-    // public Trees forest;
+    public Graze grazing;
+    public Trees forest;
     // public Game game;
 
     // Constructor
@@ -29,8 +41,13 @@ public class Habitat {
         }
         // Once the habitats have been loaded figure out which one is dominant
         dominantType = CheckDominantType();
+        // Create base quality
+        // Temporarily quality = 50;
+        quality = 50;
         // Create empty Plant & Animal Habitat objects
         crops = new Crops();
+        grazing = new Graze();
+        forest = new Trees();
     }
 
     // Habitat Yearly Update Method
@@ -78,6 +95,25 @@ public class Habitat {
             }
         } 
     }
+
+
+    // Get The Seed total for this habitat for the year
+    public double getSeeds(int x, int z, DailyLayer rainfall, IntDayList temps, DailyLayer surfaceWater)
+    {
+        double totalSeeds = grazing.getSeeds(x, z, quality, percentOcean, typePercents, rainfall, temps, surfaceWater);
+        totalSeeds += forest.getSeeds(typePercents, quality);
+        return Math.Round(totalSeeds * FORAGECONSTANT, 2);
+    }
+
+
+    // Get The Foiliage total for this habitat for the year
+    public double getFoilage(IntDayList temps)
+    {
+        double totalFoilage = grazing.getFoilage(typePercents, quality, temps);
+        totalFoilage += forest.getFoilage(typePercents, quality, temps);
+        return Math.Round(totalFoilage * FORAGECONSTANT, 2);
+    }
+
 
     // Return a string with the habitat stats in it
     public override string ToString()

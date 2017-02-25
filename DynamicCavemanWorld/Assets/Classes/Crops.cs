@@ -44,13 +44,13 @@ public class Crops {
 
 
     // Return an array containing totals of each crop the last X Days.
-    public double[] SumCropsForLastX(int day, int lastXDays, int x, int z, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
+    public double[] SumCropsForLastX(int day, int lastXDays, int x, int z, double oceanPer, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
     {
         double[] cropSum = new double[NUM_OF_CROPS];
         double[] cropDay = new double[NUM_OF_CROPS];
         for (int d = day - lastXDays + 1; d < day; d++)
         {
-            cropDay = ReturnCurrentCropArray(d, x, z, rainfall, temps, rivers);
+            cropDay = ReturnCurrentCropArray(d, x, z, oceanPer, rainfall, temps, rivers);
             for (int i = 0; i < NUM_OF_CROPS; i++)
             {
                 cropSum[i] += cropDay[i];
@@ -61,13 +61,13 @@ public class Crops {
 
 
     // Return an array containing totals of each crop for the entire year.
-    public double[] SumCropsForYear(int x, int z, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
+    public double[] SumCropsForYear(int x, int z, double oceanPer, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
     {
         double[] cropSum = new double[NUM_OF_CROPS];
         double[] cropDay = new double[NUM_OF_CROPS];
         for (int d = 0; d < 120; d++)
         {
-            cropDay = ReturnCurrentCropArray(d, x, z, rainfall, temps, rivers);
+            cropDay = ReturnCurrentCropArray(d, x, z, oceanPer, rainfall, temps, rivers);
             for (int i = 0; i < NUM_OF_CROPS; i++)
             {
                 cropSum[i] += cropDay[i];
@@ -78,40 +78,41 @@ public class Crops {
 
 
     // Print the Current Crop Array
-    public string PrintCurrentCropArray(int day, int x, int z, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
+    public string PrintCurrentCropArray(int day, int x, int z, double oceanPer, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
     {
         // get today's crop array
-        double[] cropArray = ReturnCurrentCropArray(day, x, z, rainfall, temps, rivers);
-        string printString = "";
-        // convert all non-zero values to the appropriate display strings
-        for (int i = 0; i < NUM_OF_CROPS; i++)
+        double[] cropArray = ReturnCurrentCropArray(day, x, z, oceanPer, rainfall, temps, rivers);
+        return CreateCropArrayPrintString(cropArray);
+    }
+
+
+    // Print that grew the last X days
+    public string PrintLastXDaysOfCrops(int today, int range, int x, int z, double oceanPer, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
+    {
+        // get a sum of last X days crop arrays
+        double[] sumArray = new double[NUM_OF_CROPS];
+        double[] cropArray;
+        for (int d = today; d > 0 && d > (today - range); d--)
         {
-            if (cropArray[i] != 0.0)
+            cropArray = ReturnCurrentCropArray(today, x, z, oceanPer, rainfall, temps, rivers);
+            for (int i = 0; i < NUM_OF_CROPS; i++)
             {
-                printString += SwitchName(i) + ": " + cropArray[i] + "\n";
+                if (cropArray[i] != 0.0)
+                {
+                    sumArray[i] += cropArray[i];
+                }
             }
         }
-
-        return printString;
+        return CreateCropArrayPrintString(sumArray);
     }
 
 
     // Print the Year's Crop Array
-    public string PrintYearsCropArray(int x, int z, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
+    public string PrintYearsCropArray(int x, int z, double oceanPer, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
     {
         // get year's crop array
-        double[] cropArray = SumCropsForYear(x, z, rainfall, temps, rivers);
-        string printString = "";
-        // convert all non-zero values to the appropriate display strings
-        for (int i = 0; i < NUM_OF_CROPS; i++)
-        {
-            if (cropArray[i] != 0.0)
-            {
-                printString += SwitchName(i) + ": " + cropArray[i] + "\n";
-            }
-        }
-
-        return printString;
+        double[] cropArray = SumCropsForYear(x, z, oceanPer, rainfall, temps, rivers);
+        return CreateCropArrayPrintString(cropArray);
     }
 
 
@@ -120,7 +121,7 @@ public class Crops {
     // Implementation of that will be a bit tricky so I am saving it for later.
     // Also, these represent the number of new crops that grew today.  A scavenger would have access to the last x days worth of crops.
     // Calculate how much of a crop is present upon request
-    public double[] ReturnCurrentCropArray(int day, int x, int z, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
+    public double[] ReturnCurrentCropArray(int day, int x, int z, double oceanPer, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
     {
         double[] currentCrops = new double[NUM_OF_CROPS];
         percentGrowable = 1.0;
@@ -132,7 +133,7 @@ public class Crops {
             if (DayTempAllowCrop(day, temps) && DayRainAllowCrop(day, x, z, rainfall, rivers))
             {
                 // Debug.Log("Crops Allowed!");
-                double cropMultiplier = (1.0 / ((120 - growthPeriod) * 100.0)) * 400.0;
+                double cropMultiplier = (1.0 / ((80 - growthPeriod) * 100.0)) * 400.0 * (1.0 - oceanPer);
                 // Calculate the crop quality
                 currentCrops[i] = cropQuality(day, temps) * cropMultiplier * humanFoodUnits * percentGrowable;
                 // Debug.Log(x + ", " + z + " / " + cropQuality(day, temps) + " / " + percentGrowable + " / " + humanFoodUnits);
@@ -192,7 +193,6 @@ public class Crops {
     private bool DayRainAllowCrop(int day, int x, int z, DailyLayer rain, DailyLayer rivers)
     {
         // can grow ONLY if the rainfall is within the ideal rainfall range
-        const double RIVERWATERINGCONSTANT = .2;
         double sum = 0;
         double surfaceSum = 0;
         if (day - growthPeriod > 0)
@@ -202,7 +202,7 @@ public class Crops {
             for (int d = day; d > startGrowthDay; d--)
             {
                 sum += rain.worldArray[d][x, z];
-                surfaceSum += rivers.worldArray[d][x, z] * RIVERWATERINGCONSTANT;
+                surfaceSum += rivers.worldArray[d][x, z] * Habitat.RIVERWATERINGCONSTANT;
             }
             // If that sum is in the acceptable range set the rainSum variable and return true, else return false.
                 // Ideally if any value in the range of values from sum to sum + surfacewaterSum is between minWater and maxWater
@@ -422,6 +422,22 @@ public class Crops {
         }
 
         return name;
+    }
+
+
+    // Create CropArrayPrintString
+    private string CreateCropArrayPrintString(double[] cropArray)
+    {
+        string printString = "";
+        // convert all non-zero values to the appropriate display strings
+        for (int i = 0; i < cropArray.Length; i++)
+        {
+            if (cropArray[i] != 0.0)
+            {
+                printString += SwitchName(i) + ": " + cropArray[i] + "\n";
+            }
+        }
+        return printString;
     }
 
 

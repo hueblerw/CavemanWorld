@@ -81,6 +81,7 @@
     <Compile Include="Assets\Classes\Direction.cs" />
     <Compile Include="Assets\Classes\DoubleDayList.cs" />
     <Compile Include="Assets\Classes\EquationLayer.cs" />
+    <Compile Include="Assets\Classes\Graze.cs" />
     <Compile Include="Assets\Classes\Habitat.cs" />
     <Compile Include="Assets\Classes\HabitatLayer.cs" />
     <Compile Include="Assets\Classes\HumidityLayer.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Assets\Classes\River.cs" />
     <Compile Include="Assets\Classes\SingleValueLayer.cs" />
     <Compile Include="Assets\Classes\TempEquation.cs" />
+    <Compile Include="Assets\Classes\Trees.cs" />
     <Compile Include="Assets\Classes\World.cs" />
     <Compile Include="Assets\Controllers\CameraController.cs" />
     <Compile Include="Assets\Controllers\LoadingScreenController.cs" />

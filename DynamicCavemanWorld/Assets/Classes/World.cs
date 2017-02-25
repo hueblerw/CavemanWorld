@@ -4,6 +4,9 @@ using System;
 
 public class World {
 
+    // Constants
+    private const int CROP_PERSISTENCE = 5;
+
     // Global Layers
     public int WorldX;
     public int WorldZ;
@@ -196,10 +199,18 @@ public class World {
             info += "\n" + "Upstream Directions: " + riverStats.worldArray[x, z].printUpstream();
             info += "\n" + "Upstream River Amount: " + River.upstreamToday.worldArray[day][x, z];
             info += "\n" + habitats.worldArray[x, z];
-            info += "\n" + "Crops Today:";
-            info += "\n" + habitats.worldArray[x, z].crops.PrintCurrentCropArray(day, x, z, rainfall, temps[x, z], River.surfacewater);
+            info += "\n" + "Crops Forageable Today:";
+            info += "\n" + habitats.worldArray[x, z].crops.PrintLastXDaysOfCrops(day, CROP_PERSISTENCE, x, z, oceanPer.worldArray[x, z], rainfall, temps[x, z], River.surfacewater);
             info += "\n" + "Crops Year Total:";
-            info += "\n" + habitats.worldArray[x, z].crops.PrintYearsCropArray(x, z, rainfall, temps[x, z], River.surfacewater);
+            info += "\n" + habitats.worldArray[x, z].crops.PrintYearsCropArray(x, z, oceanPer.worldArray[x, z], rainfall, temps[x, z], River.surfacewater);
+                // info += "\n" + "Grazing Today:";
+                // info += habitats.worldArray[x, z].grazing.getGrazing(day, x, z, habitats.worldArray[x, z].quality, oceanPer.worldArray[x, z], habitats.worldArray[x, z].typePercents, rainfall, temps[x, z], River.surfacewater);
+                // info += "\n" + "Foragable Grazing For the Year:";
+                // info += habitats.worldArray[x, z].grazing.YearsGrazingForage(x, z, habitats.worldArray[x, z].quality, oceanPer.worldArray[x, z], habitats.worldArray[x, z].typePercents, rainfall, temps[x, z], River.surfacewater);
+            info += "\n" + "Grazing / Seeds / Foiliage Year Totals:";
+            info += "\n" + habitats.worldArray[x, z].grazing.YearsGrazingForage(x, z, habitats.worldArray[x, z].quality, oceanPer.worldArray[x, z], habitats.worldArray[x, z].typePercents, rainfall, temps[x, z], River.surfacewater);
+            info += " / " + habitats.worldArray[x, z].getSeeds(x, z, rainfall, temps[x, z], River.surfacewater);
+            info += " / " + habitats.worldArray[x, z].getFoilage(temps[x, z]);
         }
         return info;
     }
