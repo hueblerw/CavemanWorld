@@ -7,8 +7,6 @@ public class Trees {
     private const double OAKSEEDCONSTANT = 2.023809524 * 0.003020609;
     private const double PINESEEDCONSTANT = 2.777777778 * 0.003856682;
     private const double TROPFOILAGECONSTANT = 1.5 * 0.002314009;
-    private const double TROPICALEAFGROWTH = 1.2;
-    private const double ARTICLEAFGROWTH = 0.8;
     private const double MONSOONFORESTLEAFAGE = 1.5;
     private const double RAINFORESTLEAFAGE = 2.0;
     private const double SWAMPLEAFAGE = 1.25;
@@ -63,19 +61,17 @@ public class Trees {
     public double getFoilageProduced(double[] habitatPer, int quality, IntDayList temps)
     {
         // Shrub Foilage - ALL
-        double foilage = (habitatPer[11] + habitatPer[12]) * Habitat.SHRUBCONSTANT * TROPFOILAGECONSTANT;
+        double foilage = (habitatPer[11] + habitatPer[12]) * Habitat.SHRUBCONSTANT * Habitat.TROPICALEAFGROWTH;
         foilage += (habitatPer[7] + habitatPer[8]) * Habitat.SHRUBCONSTANT;
-        foilage += (habitatPer[3] + habitatPer[4]) * Habitat.SHRUBCONSTANT * ARTICLEAFGROWTH;
+        foilage += (habitatPer[3] + habitatPer[4]) * Habitat.SHRUBCONSTANT * Habitat.ARTICLEAFGROWTH;
         // Scrub Foilage - FORESTS ONLY, NO SWAMP
-        foilage = (habitatPer[11] + habitatPer[12]) * Habitat.SCRUBCONSTANT * TROPFOILAGECONSTANT;
+        foilage = (habitatPer[11] + habitatPer[12]) * Habitat.SCRUBCONSTANT * Habitat.TROPICALEAFGROWTH;
         foilage += (habitatPer[7] + habitatPer[8]) * Habitat.SCRUBCONSTANT;
-        foilage += (habitatPer[3] + habitatPer[4]) * Habitat.SCRUBCONSTANT * ARTICLEAFGROWTH;
+        foilage += (habitatPer[3] + habitatPer[4]) * Habitat.SCRUBCONSTANT * Habitat.ARTICLEAFGROWTH;
         // Desert Scrub Foilage - NOT APPLICABLE IN FORESTS!
         // Forest Leaves - ALL
         foilage = (habitatPer[11] * MONSOONFORESTLEAFAGE + habitatPer[12] * RAINFORESTLEAFAGE) * Habitat.FORESTLEAVESCONSTANT;
         foilage += (habitatPer[7] + habitatPer[8] * SWAMPLEAFAGE) * Habitat.FORESTLEAVESCONSTANT;
-        // Pine Leaves - ARTIC FORESTS ONLY
-        foilage += (habitatPer[3] + habitatPer[4] * SWAMPLEAFAGE) * Habitat.PINENEEDLECONSTANT;
         // Temperature Effect
         double sum = 0.0;
         int todayTemp;
@@ -92,6 +88,8 @@ public class Trees {
                 }
             }
         }
+        // Pine Leaves - ARTIC FORESTS ONLY - NOTE THESE ARE EVERGREEN AND BLOOM EVENLY ALL YEAR!
+        sum += (habitatPer[3] + habitatPer[4] * SWAMPLEAFAGE) * Habitat.PINENEEDLECONSTANT * 120;
         return sum;
     }
 

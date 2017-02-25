@@ -76,6 +76,41 @@ public class Graze {
     }
 
 
+    // Return the Foilage available in the forest
+    public double getFoilageProduced(double[] habitatPer, int quality, IntDayList temps)
+    {
+        // Shrub Foilage - PLAINS ONLY, NO DESERTS
+        double foilage = habitatPer[10] * Habitat.SHRUBCONSTANT * Habitat.TROPICALEAFGROWTH;
+        foilage += habitatPer[6] * Habitat.SHRUBCONSTANT;
+        foilage += habitatPer[2] * Habitat.SHRUBCONSTANT * Habitat.ARTICLEAFGROWTH;
+        // Scrub Foilage - ALL
+        foilage = (habitatPer[9] + habitatPer[10]) * Habitat.SCRUBCONSTANT * Habitat.TROPICALEAFGROWTH;
+        foilage += (habitatPer[5] + habitatPer[6]) * Habitat.SCRUBCONSTANT;
+        foilage += (habitatPer[1] + habitatPer[2]) * Habitat.SCRUBCONSTANT * Habitat.ARTICLEAFGROWTH;
+        // Desert Scrub Foilage - DESERT ONLY
+        foilage += (habitatPer[1] + habitatPer[5] + habitatPer[9]) * Habitat.DESERTSCRUBCONSTANT;
+        // Forest Leaves - NONE
+        // Temperature Effect
+        double sum = 0.0;
+        int todayTemp;
+        for (int d = 0; d < 120; d++)
+        {
+            todayTemp = temps.getDaysTemp(d);
+            if (todayTemp > 50)
+                sum += foilage;
+            else
+            {
+                if (todayTemp > 30)
+                {
+                    sum += ((todayTemp - 30.0) / 20.0) * foilage;
+                }
+            }
+        }
+        // Pine Leaves - NONE - NOTE THESE ARE EVERGREEN AND BLOOM EVENLY ALL YEAR!
+        return sum;
+    }
+
+
     // Get last 5 Days of Rain
     private double Last5DaysOfRain(int day, int x, int z, DailyLayer rainfall, DailyLayer surfaceWater)
     {

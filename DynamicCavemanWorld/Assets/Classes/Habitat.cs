@@ -12,6 +12,8 @@ public class Habitat {
     public const double DESERTSCRUBCONSTANT = 35.0 * 0.004049516;
     public const double FORESTLEAVESCONSTANT = 200.0 * 0.019283411;
     public const double PINENEEDLECONSTANT = 150.0 * 0.008677535;
+    public const double TROPICALEAFGROWTH = 1.2;
+    public const double ARTICLEAFGROWTH = 0.8;
     private double EnvironmentalShiftFactor = .01; // +/- 1% a year
     private double GlacialShiftFactor = .10; // +/- 10% a year
     private float RiverEffectFactor = (float) (RIVERWATERINGCONSTANT / 2.0f);  // 10% of river volume added to the tiles rainfall
