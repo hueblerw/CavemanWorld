@@ -8,7 +8,7 @@ public class Habitat {
     public const double FORAGECONSTANT = .2;
     private double EnvironmentalShiftFactor = .01; // +/- 1% a year
     private double GlacialShiftFactor = .10; // +/- 10% a year
-    private float RiverEffectFactor = .1f;  // 10% of river volume added to the tiles rainfall
+    private float RiverEffectFactor = (float) (RIVERWATERINGCONSTANT / 2.0f);  // 10% of river volume added to the tiles rainfall
 
     // Variables
     public string dominantType;

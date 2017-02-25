@@ -15,6 +15,7 @@ public class Graze {
     }
 
     // NOTE: NOT IMPLEMENTED
+    // OVERGRAZING
     // Balance
 
     // Return the grass number for today
@@ -78,4 +79,6 @@ public class Graze {
 
         return last5Rain;
     }
+
+
 }
