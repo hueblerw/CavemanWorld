@@ -18,7 +18,7 @@ public class Habitat {
     public int quality;
     public Crops crops;
     public Graze grazing;
-    // public Trees forest;
+    public Trees forest;
     // public Game game;
 
     // Constructor
@@ -38,6 +38,7 @@ public class Habitat {
         // Create empty Plant & Animal Habitat objects
         crops = new Crops();
         grazing = new Graze();
+        forest = new Trees();
     }
 
     // Habitat Yearly Update Method
