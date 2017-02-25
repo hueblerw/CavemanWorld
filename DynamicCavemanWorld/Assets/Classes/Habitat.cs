@@ -102,7 +102,7 @@ public class Habitat {
     {
         double totalSeeds = grazing.getSeeds(x, z, quality, percentOcean, typePercents, rainfall, temps, surfaceWater);
         totalSeeds += forest.getSeeds(typePercents, quality);
-        return Math.Round(totalSeeds, 2);
+        return Math.Round(totalSeeds * FORAGECONSTANT, 2);
     }
 
 
@@ -111,7 +111,7 @@ public class Habitat {
     {
         double totalFoilage = grazing.getFoilage(typePercents, quality, temps);
         totalFoilage += forest.getFoilage(typePercents, quality, temps);
-        return Math.Round(totalFoilage, 2);
+        return Math.Round(totalFoilage * FORAGECONSTANT, 2);
     }
 
 

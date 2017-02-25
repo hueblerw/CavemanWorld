@@ -196,8 +196,8 @@ public class World {
             info += "\n" + "Upstream Directions: " + riverStats.worldArray[x, z].printUpstream();
             info += "\n" + "Upstream River Amount: " + River.upstreamToday.worldArray[day][x, z];
             info += "\n" + habitats.worldArray[x, z];
-            info += "\n" + "Crops Today:";
-            info += "\n" + habitats.worldArray[x, z].crops.PrintCurrentCropArray(day, x, z, oceanPer.worldArray[x, z], rainfall, temps[x, z], River.surfacewater);
+            // info += "\n" + "Crops Today:";
+            // info += "\n" + habitats.worldArray[x, z].crops.PrintCurrentCropArray(day, x, z, oceanPer.worldArray[x, z], rainfall, temps[x, z], River.surfacewater);
             info += "\n" + "Crops Year Total:";
             info += "\n" + habitats.worldArray[x, z].crops.PrintYearsCropArray(x, z, oceanPer.worldArray[x, z], rainfall, temps[x, z], River.surfacewater);
                 // info += "\n" + "Grazing Today:";
