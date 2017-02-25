@@ -82,17 +82,7 @@ public class Crops {
     {
         // get today's crop array
         double[] cropArray = ReturnCurrentCropArray(day, x, z, oceanPer, rainfall, temps, rivers);
-        string printString = "";
-        // convert all non-zero values to the appropriate display strings
-        for (int i = 0; i < NUM_OF_CROPS; i++)
-        {
-            if (cropArray[i] != 0.0)
-            {
-                printString += SwitchName(i) + ": " + cropArray[i] + "\n";
-            }
-        }
-
-        return printString;
+        return CreateCropArrayPrintString(cropArray);
     }
 
 
@@ -113,19 +103,7 @@ public class Crops {
                 }
             }
         }
-
-        // PRINT THE ARRAY
-        string printString = "";
-        // convert all non-zero values to the appropriate display strings
-        for (int i = 0; i < NUM_OF_CROPS; i++)
-        {
-            if (sumArray[i] != 0.0)
-            {
-                printString += SwitchName(i) + ": " + sumArray[i] + "\n";
-            }
-        }
-
-        return printString;
+        return CreateCropArrayPrintString(sumArray);
     }
 
 
@@ -134,17 +112,7 @@ public class Crops {
     {
         // get year's crop array
         double[] cropArray = SumCropsForYear(x, z, oceanPer, rainfall, temps, rivers);
-        string printString = "";
-        // convert all non-zero values to the appropriate display strings
-        for (int i = 0; i < NUM_OF_CROPS; i++)
-        {
-            if (cropArray[i] != 0.0)
-            {
-                printString += SwitchName(i) + ": " + cropArray[i] + "\n";
-            }
-        }
-
-        return printString;
+        return CreateCropArrayPrintString(cropArray);
     }
 
 
@@ -454,6 +422,22 @@ public class Crops {
         }
 
         return name;
+    }
+
+
+    // Create CropArrayPrintString
+    private string CreateCropArrayPrintString(double[] cropArray)
+    {
+        string printString = "";
+        // convert all non-zero values to the appropriate display strings
+        for (int i = 0; i < cropArray.Length; i++)
+        {
+            if (cropArray[i] != 0.0)
+            {
+                printString += SwitchName(i) + ": " + cropArray[i] + "\n";
+            }
+        }
+        return printString;
     }
 
 
