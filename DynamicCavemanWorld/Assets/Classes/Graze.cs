@@ -69,10 +69,9 @@ public class Graze {
 
 
     // Returns the seeds produced by the grazing
-    public double getSeeds(int quality, double oceanPer, double grassPercent, double desertPercent, double last5Rain, float temp)
+    public double getSeeds(int quality, double oceanPer, double grassPercent, double desertPercent)
     {
-        double grass = getGrass(quality, oceanPer, grassPercent, desertPercent, last5Rain, temp);
-        return grass * Habitat.SEEDCONSTANT;
+        return 0.0;
     }
 
 
