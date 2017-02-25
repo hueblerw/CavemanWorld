@@ -200,10 +200,14 @@ public class World {
             info += "\n" + habitats.worldArray[x, z].crops.PrintCurrentCropArray(day, x, z, oceanPer.worldArray[x, z], rainfall, temps[x, z], River.surfacewater);
             info += "\n" + "Crops Year Total:";
             info += "\n" + habitats.worldArray[x, z].crops.PrintYearsCropArray(x, z, oceanPer.worldArray[x, z], rainfall, temps[x, z], River.surfacewater);
-            info += "\n" + "Grazing Today:";
-            info += habitats.worldArray[x, z].grazing.getGrazing(day, x, z, habitats.worldArray[x, z].quality, oceanPer.worldArray[x, z], habitats.worldArray[x, z].typePercents, rainfall, temps[x, z], River.surfacewater);
-            // info += "\n" + "Foragable Grazing For the Year:";
-            // info += habitats.worldArray[x, z].grazing.YearsGrazingForage(x, z, habitats.worldArray[x, z].quality, oceanPer.worldArray[x, z], habitats.worldArray[x, z].typePercents, rainfall, temps[x, z], River.surfacewater);
+                // info += "\n" + "Grazing Today:";
+                // info += habitats.worldArray[x, z].grazing.getGrazing(day, x, z, habitats.worldArray[x, z].quality, oceanPer.worldArray[x, z], habitats.worldArray[x, z].typePercents, rainfall, temps[x, z], River.surfacewater);
+                // info += "\n" + "Foragable Grazing For the Year:";
+                // info += habitats.worldArray[x, z].grazing.YearsGrazingForage(x, z, habitats.worldArray[x, z].quality, oceanPer.worldArray[x, z], habitats.worldArray[x, z].typePercents, rainfall, temps[x, z], River.surfacewater);
+            info += info += "\n" + "Grazing / Seeds / Foiliage Year Totals:";
+            info += "\n" + habitats.worldArray[x, z].grazing.YearsGrazingForage(x, z, habitats.worldArray[x, z].quality, oceanPer.worldArray[x, z], habitats.worldArray[x, z].typePercents, rainfall, temps[x, z], River.surfacewater);
+            info += " / " + habitats.worldArray[x, z].getSeeds(x, z, rainfall, temps[x, z], River.surfacewater);
+            info += " / " + habitats.worldArray[x, z].getFoilage(temps[x, z]);
         }
         return info;
     }

@@ -64,7 +64,7 @@ public class Graze {
         {
             sum += getGrazing(d, x, z, quality, oceanPer, habitatPercents, rainfall, temps, surfaceWater);    
         }
-        return (sum * Habitat.FORAGECONSTANT);
+        return Math.Round((sum * Habitat.FORAGECONSTANT), 2);
     }
 
 
@@ -77,7 +77,7 @@ public class Graze {
 
 
     // Return the Foilage available in the forest
-    public double getFoilageProduced(double[] habitatPer, int quality, IntDayList temps)
+    public double getFoilage(double[] habitatPer, int quality, IntDayList temps)
     {
         // Shrub Foilage - PLAINS ONLY, NO DESERTS
         double foilage = habitatPer[10] * Habitat.SHRUBCONSTANT * Habitat.TROPICALEAFGROWTH;

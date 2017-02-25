@@ -58,7 +58,7 @@ public class Trees {
 
 
     // Return the Foilage available in the forest
-    public double getFoilageProduced(double[] habitatPer, int quality, IntDayList temps)
+    public double getFoilage(double[] habitatPer, int quality, IntDayList temps)
     {
         // Shrub Foilage - ALL
         double foilage = (habitatPer[11] + habitatPer[12]) * Habitat.SHRUBCONSTANT * Habitat.TROPICALEAFGROWTH;

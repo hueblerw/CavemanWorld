@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Habitat {
 
@@ -94,6 +95,25 @@ public class Habitat {
             }
         } 
     }
+
+
+    // Get The Seed total for this habitat for the year
+    public double getSeeds(int x, int z, DailyLayer rainfall, IntDayList temps, DailyLayer surfaceWater)
+    {
+        double totalSeeds = grazing.getSeeds(x, z, quality, percentOcean, typePercents, rainfall, temps, surfaceWater);
+        totalSeeds += forest.getSeeds(typePercents, quality);
+        return Math.Round(totalSeeds, 2);
+    }
+
+
+    // Get The Foiliage total for this habitat for the year
+    public double getFoilage(IntDayList temps)
+    {
+        double totalFoilage = grazing.getFoilage(typePercents, quality, temps);
+        totalFoilage += forest.getFoilage(typePercents, quality, temps);
+        return Math.Round(totalFoilage, 2);
+    }
+
 
     // Return a string with the habitat stats in it
     public override string ToString()
