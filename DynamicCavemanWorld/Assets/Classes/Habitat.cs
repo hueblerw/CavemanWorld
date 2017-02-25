@@ -6,6 +6,7 @@ public class Habitat {
     // Constants
     public const double RIVERWATERINGCONSTANT = .2;
     public const double FORAGECONSTANT = .2;
+    public const double SEEDCONSTANT = 1.5 * 0.002314009;
     private double EnvironmentalShiftFactor = .01; // +/- 1% a year
     private double GlacialShiftFactor = .10; // +/- 10% a year
     private float RiverEffectFactor = (float) (RIVERWATERINGCONSTANT / 2.0f);  // 10% of river volume added to the tiles rainfall

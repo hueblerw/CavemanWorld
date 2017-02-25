@@ -68,6 +68,14 @@ public class Graze {
     }
 
 
+    // Returns the seeds produced by the grazing
+    public double getSeeds(int quality, double oceanPer, double grassPercent, double desertPercent, double last5Rain, float temp)
+    {
+        double grass = getGrass(quality, oceanPer, grassPercent, desertPercent, last5Rain, temp);
+        return grass * Habitat.SEEDCONSTANT;
+    }
+
+
     // Get last 5 Days of Rain
     private double Last5DaysOfRain(int day, int x, int z, DailyLayer rainfall, DailyLayer surfaceWater)
     {
