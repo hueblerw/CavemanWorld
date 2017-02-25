@@ -96,6 +96,39 @@ public class Crops {
     }
 
 
+    // Print that grew the last X days
+    public string PrintLastXDaysOfCrops(int today, int range, int x, int z, double oceanPer, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
+    {
+        // get a sum of last X days crop arrays
+        double[] sumArray = new double[NUM_OF_CROPS];
+        double[] cropArray;
+        for (int d = today; d > 0 && d > (today - range); d--)
+        {
+            cropArray = ReturnCurrentCropArray(today, x, z, oceanPer, rainfall, temps, rivers);
+            for (int i = 0; i < NUM_OF_CROPS; i++)
+            {
+                if (cropArray[i] != 0.0)
+                {
+                    sumArray[i] += cropArray[i];
+                }
+            }
+        }
+
+        // PRINT THE ARRAY
+        string printString = "";
+        // convert all non-zero values to the appropriate display strings
+        for (int i = 0; i < NUM_OF_CROPS; i++)
+        {
+            if (sumArray[i] != 0.0)
+            {
+                printString += SwitchName(i) + ": " + sumArray[i] + "\n";
+            }
+        }
+
+        return printString;
+    }
+
+
     // Print the Year's Crop Array
     public string PrintYearsCropArray(int x, int z, double oceanPer, DailyLayer rainfall, IntDayList temps, DailyLayer rivers)
     {
