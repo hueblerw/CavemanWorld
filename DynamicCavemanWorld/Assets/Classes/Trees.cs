@@ -50,7 +50,7 @@ public class Trees {
 
 
     // Return the seeds the forest produces
-    public double getSeedsProduced(double[] habitatPer, int quality)
+    public double getSeeds(double[] habitatPer, int quality)
     {
         double seeds = getTrees("tropical", habitatPer, quality) * Habitat.SEEDCONSTANT;
         seeds += getTrees("oaks", habitatPer, quality) * OAKSEEDCONSTANT;
@@ -94,4 +94,5 @@ public class Trees {
         }
         return sum;
     }
+
 }

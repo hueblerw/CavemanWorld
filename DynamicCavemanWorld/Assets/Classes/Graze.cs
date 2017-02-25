@@ -69,9 +69,10 @@ public class Graze {
 
 
     // Returns the seeds produced by the grazing
-    public double getSeeds(int quality, double oceanPer, double grassPercent, double desertPercent)
+    public double getSeeds(int x, int z, int quality, double oceanPer, double[] habitatPercents, DailyLayer rainfall, IntDayList temps, DailyLayer surfaceWater)
     {
-        return 0.0;
+        double seeds = (YearsGrazingForage(x, z, quality, oceanPer, habitatPercents, rainfall, temps, surfaceWater) / Habitat.FORAGECONSTANT) / GRASSCALORIECONTENT;
+        return (seeds * Habitat.SEEDCONSTANT);
     }
 
 
