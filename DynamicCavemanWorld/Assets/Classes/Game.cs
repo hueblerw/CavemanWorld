@@ -27,7 +27,7 @@ public class Game
     public string PrintYearsGameArray(double oceanPer, int quality, double[] habitatPer, double grazing, double seeds, double foilage)
     {
         // get year's crop array
-        int[] gameArray = getGameAnimals(oceanPer, quality, habitatPer, grazing, seeds, foilage)
+        int[] gameArray = getGameAnimals(oceanPer, quality, habitatPer, grazing, seeds, foilage);
         return CreateGameArrayPrintString(gameArray);
     }
 
