@@ -4,19 +4,16 @@
 [Link to Windows Download of the "game"](DynamicCavemanWorld/Builds/GameBuild.rar)
 * Note: Once at the page click download to download a build of the game.
 
-[Link to MacOSX  Download of the "game"](DynamicCavemanWorld/Builds/MacGameBuild.zip)
-* Note: Once at the page click download to download a build of the game.
-
 ## Premise
-> A random world generator for an ultimate game that would have the player playing a tribe (or tribes) in the era of man's transition from Hunter-Gatherer Stone Age into the early Agricultural Civilizations of the Stone, Bronze, and Early Iron Ages.
+> A random world generator for a game that will have the player playing a tribe (or tribes) in the era of man's transition from Hunter-Gatherer Stone Age into the early Agricultural Civilizations of the Stone, Bronze, and Early Iron Ages.
 >
-> The world itself is a Civilization-like square map, where instead of the squares being set in stone at the beginning of the game, the world is evolving constantly in response to changes in climate, and the effects of the player.  The world experiences a 120-day year.  Each tile generated is approximately 400 ft by 400 ft.  The goal eventually is to be able to generate world of size 250 x 250 tiles in a reasonable time period.
+> The world itself is a Civilization-like square-grid map, where instead of the squares being set in stone at the beginning of the game, the world is evolving constantly in response to changes in climate and the effects of the player.  The world experiences a 120-day year.  Each tile generated is approximately 400 ft by 400 ft.  The goal eventually is to be able to generate world of size 250 x 250 tiles in a reasonable time period.
 >
 > Each square's habitat, food and creature availability are determined by the weather, rainfall, and rivers.  Rivers flow based upon the terrain and rainfall and allow for seasonal flooding.
 >
-> Creatures will either live as solos spread with certain densities across a single tile calculated from the habitat or in herds/tribes that wander in groups from tile to tile in search of resources (primarily food, water, and shelter).
+> Creatures will either live spread with certain densities across a single tile calculated from the habitat, in herds/tribes that wander in groups from tile to tile in search of resources (primarily food, water, and shelter), or as solo "monsters" that wander alone across the world (i.e. Sabre-Toothed Tigers, etc).
 >
-> People will live in tribe "herds".  Ultimately, they are to have a cultural evolution system which will allow new cultures to appear and disappear and change over time.
+> People will live in tribe "herds".  They will have a cultural evolution system which will allow new cultures to appear and disappear and change over time.
 
 ## Present Product
 Current Features:
@@ -27,16 +24,21 @@ TAB, R allows for up-down rotation.
 LEFT-SHIFT, LEFT-CTRL are zoom-in and zoom-out respectively.
 * Opens by loading a pre-created 50 x 50 world that contains some variety of lands and habitats.
 * Randomly generates worlds of any customizable size.  However, reasonable time margins (i.e. less than a minute of generation time) only exist for worlds smaller than 150 x 150.  (Note:  The worlds can have lopsided dimensions, i.e. 40 x 70)
-* Time to generate a new year presently is about a sec for 50 x 50 worlds, but seems to be growing at O[n^2] presently.  (Ideally eventually this process can run in the background during the present year experienced so it will be a non-factor.  However, this is the main limiting factor in world generation since all new worlds are run for 20 years prior to being displayed to generate starting habitats.)
+* Time to generate a new year presently is about a sec for 50 x 50 worlds, but seems to be growing at O[n] presently.  (Ideally, eventually this process can run in the background during the present year experienced so it will be a non-factor.  However, this is the main limiting factor in world generation since all new worlds are run for 20 years prior to being displayed to generate starting habitats.)
 * Presently, the world has been simulated for 20 years prior to when it first appears upon the screen.  The percentages of the habitats given correspond to the percentages of time the square fell into the appropriate habitat groupings.
-* Allows the advancement of time Day-by-Day, and Year-By-Year.
+* Allows the advancement of time Day-by-Day, 15 days at a time, and Year-By-Year.
+* The clock button advances time one day per second for demonstration purposes.
 * Mousing over a particular tile provides a display of that tile's properties on the current day of that year.  This information includes: 
   * Habitat Percentages 
   * Elevation, Temperature, & Rainfall
   * Surface-Water (i.e. River or lake water level)
   * River flow input direction, River flow output direction
-  * Hill Percentage (a measure of roughly how hilly the terrain is).
-  * Snow fall and amount of Snow Cover on the ground.
+  * Hill Percentage (a measure of roughly how hilly the terrain is)
+  * Snow fall and amount of Snow Cover on the ground
+  * Available Grazing, Seeds, and Foilage for animals to consume
+  * Human gatherable crops that successfully grow on this tile this year
+  * Whether you can gather the crops that particular day
+  * Game animals, or animals that live on a single tile and do not migrate
 * Rivers flow downhill and water contained in them drains away in soil and evaporates according to scientific principles.
 * A crude visualization of the elevation and habitat maps has been created including a button allowing for a toggle between the visualization modes.
 
@@ -119,7 +121,7 @@ I shall expand upon how the above premises are implemented.
   * This means all rainfall is added directly to the river.  
   * No time delay for drainage was implemented for simplicity's sake.  
   * Ultimately precipitation occurring at temperatures below 32-degrees will not be added because it will be on the surface as snow.  
-  * Snow melt then occurs using the model found at [this website](https://www.cs.utah.edu/~shirley/papers/snowTerrain/terrain-node10.html) and be added to the river water allowing for the possibility of spring flooding events.  These store water for use by the environment at periods of time where water might otherwise be in short supply.
+  * Snow melt then occurs using the model found at [this website](https://www.cs.utah.edu/~shirley/papers/snowTerrain/terrain-node10.html) and is added to the river water allowing for the possibility of spring flooding events.  These store water for use by the environment at periods of time where water might otherwise be in short supply.
 * Note: 1/10 of the average amount of water in a river/lake is added to the provinces rainfall total when calculating the habitat of a region.  So a large river/lake could theoretically water a strip of desert into a different habitat (a la the Nile).
 
 ### Daily Temperature
@@ -145,6 +147,21 @@ I shall expand upon how the above premises are implemented.
 
 ## Visual Model
 * The visual model is adapted from a series of videos on Unity given by quill18 to suit my purposes.  A link to the video series is provided [here](https://www.youtube.com/watch?v=bpB4BApnKhM).
-* The habitat tile icons themselves are taken from internet photos of real world environments and place in 64 x 64 pixel images on the world itself.  
+* The habitat tile icons themselves are taken from internet photos of real world environments and place in 64 x 64 pixel images on the world itself.  This is a simple temporary display system.  I intend to use Unity's terrain objects in the future once the models are working.
 * The keyboard controls are adapted from standard ASWD controls and using Shift-Ctrl for up and down as down in Kerbal Space Program.  
 * TAB-R rotation is my own variation to these controls.
+
+## Plants and Game
+* All crops have a preferred rainfall and temperature range and time of growth.
+  * If the rainfall and temperatures on tile are acceptable for growth within their time growth span some crops will grow that year.
+  * The crops are available for 5 days after they succesfully flower.
+  * The food reported on screen in one unit represents enough calories to feed one human for a day.
+  * This is calculated estimating the calorie content of foods and human calorie demands based on an average sized and fit individual.
+  * This information is taken from websites like these: [human calorie needs]( https://www.cnpp.usda.gov/sites/default/files/usda_food_patterns/EstimatedCalorieNeedsPerDayTable.pdf), and [food calorie content](http://nutritiondata.self.com).
+* Grazing, Seeds, and Foilage is calculated roughly from the weather and the habitat percentage.  
+  * It is presumed only 20% of vegetable matter is foragable. 
+  * Caloric content is calculated with the same website, with the exception of grazing.  
+  * Grazing uses toned down estimations from [grazing estimations](https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1097070.pdf)
+* Game is calculated based on the availablity of its foods, it relative commoness, and the habitats it prefers to live in.
+  * Caloric content is based on [animal caloric needs](http://www.world-builders.org/lessons/less/biomes/annutrita.html) info on that website.
+  * Initial calculations and testing were done in this excel file.
