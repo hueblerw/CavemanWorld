@@ -40,6 +40,7 @@ public class TileMouseOver : MonoBehaviour {
             // Update the Tile Info
             string info = MainController.TheWorld.getTileInfo(MainController.day, coor[0], coor[2]);
             string coorInfo = "(" + coor[0] + ", " + coor[1] + ", " + coor[2] + "):";
+            // TileInfo.text = "Mouse Numbers: " + hitInfo.point.x + ", " + hitInfo.point.y + ", " + hitInfo.point.z;
             TileInfo.text = "Tile " + coorInfo + "\n" + info;
         }
         else

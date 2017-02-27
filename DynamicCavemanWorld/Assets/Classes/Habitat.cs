@@ -28,7 +28,7 @@ public class Habitat {
     public Crops crops;
     public Graze grazing;
     public Trees forest;
-    // public Game game;
+    public Game game;
 
     // Constructor
     public Habitat(int[] habitatCounters, float oceanPer)
@@ -48,6 +48,7 @@ public class Habitat {
         crops = new Crops();
         grazing = new Graze();
         forest = new Trees();
+        game = new Game();
     }
 
     // Habitat Yearly Update Method
@@ -112,6 +113,13 @@ public class Habitat {
         double totalFoilage = grazing.getFoilage(typePercents, quality, temps);
         totalFoilage += forest.getFoilage(typePercents, quality, temps);
         return Math.Round(totalFoilage * FORAGECONSTANT, 2);
+    }
+
+
+    // Get the Game on this habitat
+    public string PrintGame(double grazing, double seeds, double foilage)
+    {
+        return game.PrintYearsGameArray(percentOcean, quality, typePercents, grazing, seeds, foilage);
     }
 
 
