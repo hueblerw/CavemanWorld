@@ -1,5 +1,7 @@
 ﻿
 
+using System;
+
 public class Game
 {
     // Constants
@@ -18,6 +20,35 @@ public class Game
     public Game()
     {
         overconsumedArray = new int[NUM_OF_GAME_ANIMALS];
+    }
+
+
+    // Print the Year's Game Array
+    public string PrintYearsGameArray(double oceanPer, int quality, double[] habitatPer, double grazing, double seeds, double foilage)
+    {
+        // get year's crop array
+        int[] gameArray = getGameAnimals(oceanPer, quality, habitatPer, grazing, seeds, foilage)
+        return CreateGameArrayPrintString(gameArray);
+    }
+
+
+    // Create the string to print
+    private string CreateGameArrayPrintString(int[] gameArray)
+    {
+        string gameString = "";
+        for (int i = 0; i < NUM_OF_GAME_ANIMALS; i++)
+        {
+            if (i == NUM_OF_HERBIVORES)
+            {
+                gameString += "\n";
+            }
+            if (gameArray[i] != 0)
+            {
+                gameString += SwitchName(i) + ": " + gameArray[i] + " / ";
+            }
+        }
+
+        return gameString;
     }
 
 

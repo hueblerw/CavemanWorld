@@ -211,6 +211,8 @@ public class World {
             info += "\n" + habitats.worldArray[x, z].grazing.YearsGrazingForage(x, z, habitats.worldArray[x, z].quality, oceanPer.worldArray[x, z], habitats.worldArray[x, z].typePercents, rainfall, temps[x, z], River.surfacewater);
             info += " / " + habitats.worldArray[x, z].getSeeds(x, z, rainfall, temps[x, z], River.surfacewater);
             info += " / " + habitats.worldArray[x, z].getFoilage(temps[x, z]);
+            info += "\n" + "Game Year Totals:";
+            // info += " / " + habitats.worldArray[x, z];
         }
         return info;
     }
