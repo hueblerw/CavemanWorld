@@ -215,7 +215,7 @@ public class World {
             info += " / " + seeds;
             info += " / " + foilage;
             info += "\n" + "Game Year Totals:";
-            info += " / " + habitats.worldArray[x, z].PrintGame(graze, seeds, foilage);
+            info += "\n" + habitats.worldArray[x, z].PrintGame(graze, seeds, foilage);
         }
         return info;
     }
