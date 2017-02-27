@@ -32,6 +32,13 @@ public class World {
     public ObjectLayer riverStats;
     // Habitat Layer
     public HabitatLayer habitats;
+    // Mineral Layers
+    // public MineralLayer surfaceStone;
+    // public MineralLayer surfaceIron;
+    // public MineralLayer surfaceMinerals;
+    // public MineralLayer miningStone;
+    // public MineralLayer miningIron;
+    // public MineralLayer miningMinerals;
 
     // Constructor
     public World(int x, int z, bool random)

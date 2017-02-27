@@ -80,7 +80,7 @@ public class Game
                 double calculation = ((meatAvailable / 120.0) / foodConsumed);
                 calculation *= abundance * habitatSum;
                 calculation *= (1 - (50 - quality) / 200.0);
-                gameArray[i] = (int)calculation;
+                gameArray[i] = (int) Math.Truncate(calculation);
             }
         }
 
