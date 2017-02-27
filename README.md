@@ -145,12 +145,6 @@ I shall expand upon how the above premises are implemented.
 * The Variant Layer provides a +/- x.  The temperature varies randomly +/- x degrees away from the average temperature curve on a given day.
 * Like all daily stats, stats for each day of the year are constructed at the start of each new year.  The screen is simply updated as the next day is triggered.
 
-## Visual Model
-* The visual model is adapted from a series of videos on Unity given by quill18 to suit my purposes.  A link to the video series is provided [here](https://www.youtube.com/watch?v=bpB4BApnKhM).
-* The habitat tile icons themselves are taken from internet photos of real world environments and place in 64 x 64 pixel images on the world itself.  This is a simple temporary display system.  I intend to use Unity's terrain objects in the future once the models are working.
-* The keyboard controls are adapted from standard ASWD controls and using Shift-Ctrl for up and down as down in Kerbal Space Program.  
-* TAB-R rotation is my own variation to these controls.
-
 ## Plants and Game
 * All crops have a preferred rainfall and temperature range and time of growth.
   * If the rainfall and temperatures on tile are acceptable for growth within their time growth span some crops will grow that year.
@@ -171,3 +165,9 @@ I shall expand upon how the above premises are implemented.
   * Thus, they will roam around the map to prevent exhausting the resources of a particular area.
   * These include most large game animals like deer, cows, pigs, mammoth, etc.
   * Calculations for these are done in the exact same way as for game (see the excel file above to see how this will roughly work in future).
+  
+## Visual Model
+* The visual model is adapted from a series of videos on Unity given by quill18 to suit my purposes.  A link to the video series is provided [here](https://www.youtube.com/watch?v=bpB4BApnKhM).
+* The habitat tile icons themselves are taken from internet photos of real world environments and place in 64 x 64 pixel images on the world itself.  This is a simple temporary display system.  I intend to use Unity's terrain objects in the future once the models are working.
+* The keyboard controls are adapted from standard ASWD controls and using Shift-Ctrl for up and down as down in Kerbal Space Program.  
+* TAB-R rotation is my own variation to these controls.
