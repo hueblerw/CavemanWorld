@@ -164,4 +164,10 @@ I shall expand upon how the above premises are implemented.
   * Grazing uses toned down estimations from [grazing estimations](https://www.nrcs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb1097070.pdf)
 * Game is calculated based on the availablity of its foods, it relative commoness, and the habitats it prefers to live in.
   * Caloric content is based on [animal caloric needs](http://www.world-builders.org/lessons/less/biomes/annutrita.html) info on that website.
-  * Initial calculations and testing were done in this excel file.
+  * Initial calculations and testing were done in [this excel file](ReadmePics/NumbersforCavemangamefoodandconsumption.xlsx).
+
+## Herds
+  * Not yet implemented these will be large groups of animals that cannot be supported by a single tile.
+  * Thus, they will roam around the map to prevent exhausting the resources of a particular area.
+  * These include most large game animals like deer, cows, pigs, mammoth, etc.
+  * Calculations for these are done in the exact same way as for game (see the excel file above to see how this will roughly work in future).
