@@ -28,7 +28,7 @@ public class Habitat {
     public Crops crops;
     public Graze grazing;
     public Trees forest;
-    // public Game game;
+    public Game game;
 
     // Constructor
     public Habitat(int[] habitatCounters, float oceanPer)
@@ -48,6 +48,7 @@ public class Habitat {
         crops = new Crops();
         grazing = new Graze();
         forest = new Trees();
+        game = new Game();
     }
 
     // Habitat Yearly Update Method
