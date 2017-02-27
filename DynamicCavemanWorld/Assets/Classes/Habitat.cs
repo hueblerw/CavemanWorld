@@ -116,6 +116,13 @@ public class Habitat {
     }
 
 
+    // Get the Game on this habitat
+    public string PrintGame(double grazing, double seeds, double foilage)
+    {
+        return game.PrintYearsGameArray(percentOcean, quality, typePercents, grazing, seeds, foilage);
+    }
+
+
     // Return a string with the habitat stats in it
     public override string ToString()
     {
