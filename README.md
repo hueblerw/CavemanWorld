@@ -1,5 +1,5 @@
 # CavemanWorld
-Synopsis:  Caveman World Generator generates dynamic random worlds, whose tiles evolve in response to changes in world conditions such as climate, environmental engineering, population stresses, and over-consumption of resources.
+Synopsis:  Caveman World Generator generates dynamic random worlds, whose tiles evolve in response to changes in world conditions such as climate, environmental engineering, population stresses, and over-consumption of resources.  Most Civilization style games have more or less static world environments.  This is very much not the case in the real world.  There are many civilizations that have decayed due to changes in climate or using up their resources.  (Think of the early stone-age settlements in the middle east or Easter Island or the Anasazi as examples).  This tries to create a game board that models some of the impacts various factors can have to change the environment in which people live.
 
 [Link To A Demonstration Video](https://www.youtube.com/watch?v=TcAmKIIaUvo&t=62s)
 
@@ -173,3 +173,30 @@ I shall expand upon how the above premises are implemented.
 * The habitat tile icons themselves are taken from internet photos of real world environments and place in 64 x 64 pixel images on the world itself.  This is a simple temporary display system.  I intend to use Unity's terrain objects in the future once the models are working.
 * The keyboard controls are adapted from standard ASWD controls and using Shift-Ctrl for up and down as down in Kerbal Space Program.  
 * TAB-R rotation is my own variation to these controls.
+
+## Future Features
+* Minerals
+  * Surface Deposits of Stone, Iron, & Copper
+  * Minable Deposits of Stone, Iron, & Copper
+  * Luxury Minerals - Gold, etc.
+  * Caves - shelter spaces where people can take shelter
+* Luxury Resources
+  * Luxury Minerals
+  * Plants like Cotton, Smokable Herbs, Medicinal Herbs, etc.
+  * Other special resources
+* Herds
+  * Groups of larger animals that wander the map searching for food.
+* Monsters
+  * Solo Predators that roam the map searching for prey.
+* Oceans
+  * Fish
+  * Whales
+  * Others
+* Humans
+  * Tribes - behave like herds wandering the map or living in set villages.
+  * Technology system
+  * Trade
+  * Diplomacy
+  * Cultural Evolution System
+  * Warfare
+  * Tribal and Cultural Divergence - the natural splitting of populations and cultures over time.
