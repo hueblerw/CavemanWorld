@@ -1,4 +1,6 @@
 # CavemanWorld
+Synopsis:  Caveman World Generator generates dynamic random worlds, whose tiles evolve in response to changes in world conditions such as climate, environmental engineering, population stresses, and over-consumption of resources.
+
 [Link To A Demonstration Video](https://www.youtube.com/watch?v=TcAmKIIaUvo&t=62s)
 
 [Link to Windows Download of the "game"](DynamicCavemanWorld/Builds/GameBuild.rar)
