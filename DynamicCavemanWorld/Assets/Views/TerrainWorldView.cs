@@ -14,8 +14,9 @@ public class TerrainWorldView : MonoBehaviour {
     public GameObject[] treeModels;
     public Texture2D[] splatTextures = new Texture2D[3];
 
+
     // The method which initially builds the world view.
-    public TerrainWorldView(World theWorld)
+    public void PassInTheWorld(World theWorld)
     {
         X = theWorld.WorldX;
         Z = theWorld.WorldZ;
@@ -35,10 +36,10 @@ public class TerrainWorldView : MonoBehaviour {
         // Load some materials
         tCollide.material = colliderPhysics;
         BuildSplats(terrainData);
-        // LoadTreePrototypes(terrainData);
+        LoadTreePrototypes(terrainData);
         // Apply the data in here
-        ConstructElevations(terrainData);
-        PaintSoils(terrainData);
+        ApplyModel(terrainData);
+        PaintRocks(terrainData);
         // Connect the terrain data to the terrain object
         terrain.terrainData = terrainData;
         tCollide.terrainData = terrainData;
@@ -47,7 +48,7 @@ public class TerrainWorldView : MonoBehaviour {
 
     // Paint the rocks texture in appropriately
     // Maybe also add rock detail thingies
-    private void PaintSoils(TerrainData terrainData)
+    private void PaintRocks(TerrainData battlefieldData)
     {
 
     }
@@ -56,9 +57,12 @@ public class TerrainWorldView : MonoBehaviour {
     // Add the trees
     private void LoadTreePrototypes(TerrainData terrainData)
     {
-        TreePrototype[] treeProtos = new TreePrototype[1];
-        treeProtos[0] = new TreePrototype();
-        treeProtos[0].prefab = treeModels[0];
+        TreePrototype[] treeProtos = new TreePrototype[3];
+        for (int i = 0; i < splatTextures.Length; i++)
+        {
+            treeProtos[i] = new TreePrototype();
+            treeProtos[i].prefab = treeModels[i];
+        }
         terrainData.treePrototypes = treeProtos;
     }
 
@@ -71,31 +75,28 @@ public class TerrainWorldView : MonoBehaviour {
         {
             splatProtos[i] = new SplatPrototype();
             splatProtos[i].texture = splatTextures[i];
-            Debug.Log("wtf - " + i);
         }
         terrainData.splatPrototypes = splatProtos;
     }
 
 
-    private void ConstructElevations(TerrainData terrainData)
+    private void ApplyModel(TerrainData terrainData)
     {
         terrainData.heightmapResolution = X + 1;
         terrainData.baseMapResolution = Z + 1;
         terrainData.SetDetailResolution(64, 32);
         // Set the size after the resoultion always
-        terrainData.size = new Vector3(X * 50, 4 * 50, Z * 50);
-        HMWidth = terrainData.heightmapWidth;
-        HMHeight = terrainData.heightmapHeight;
+        terrainData.size = new Vector3(X * 5, 4 * 5, Z * 5);
+        int HMWidth = terrainData.heightmapWidth;
+        int HMHeight = terrainData.heightmapHeight;
         Debug.Log(HMWidth + ", " + HMHeight);
-        Debug.Log("scale: " + terrainData.heightmapScale);
-        // Get and set the heights from the elevation map
+        // Debug.Log("scale: " + terrainData.heightmapScale);
+        // Get and set the heights for hills and rockiness
         float[,] heights = terrainData.GetHeights(0, 0, HMWidth, HMHeight);
-        // heights = currentWorld.
+        // heights = current.CreateHeightsArray(HMWidth, HMHeight);
         terrainData.SetHeights(0, 0, heights);
-        // Paint the rockinesss
-
         // Create the trees
-
+        // CreateTheTrees(terrainData, HMWidth, HMHeight);
     }
 
 

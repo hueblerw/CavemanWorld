@@ -16,6 +16,7 @@ public class MainController : MonoBehaviour {
     public Canvas cntrlInfo;
     public bool clockRunning;
     public float clockSpeed = 1.0f;
+    public TerrainWorldView terrainWorld;
 
     private const bool USE_TERRAIN_VIEW = true;
 
@@ -53,7 +54,7 @@ public class MainController : MonoBehaviour {
         else
         {
             // Create the terrain view instead
-            TerrainWorldView terrainWorld = new TerrainWorldView(TheWorld);
+            terrainWorld.PassInTheWorld(TheWorld);
             Debug.Log("Terrain View Made");
         }
         

@@ -1466,8 +1466,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderPhysics: {fileID: 13400000, guid: 10571bb624c3dec4e951806cc4d25c35, type: 2}
   treeModels:
-  - {fileID: 100000, guid: c91c1eb85782d5748ace27eb4d7415bb, type: 3}
   - {fileID: 100016, guid: 469edab27ab6d004d84af2c4a851bd7f, type: 3}
+  - {fileID: 100000, guid: c91c1eb85782d5748ace27eb4d7415bb, type: 3}
   - {fileID: 100004, guid: d027af1092f6b434090f040565e7e656, type: 3}
   splatTextures:
   - {fileID: 2800000, guid: c6e0767b1f8c34890ac245217f4b9731, type: 3}
@@ -2129,6 +2129,7 @@ MonoBehaviour:
   cntrlInfo: {fileID: 1117697585}
   clockRunning: 0
   clockSpeed: 1
+  terrainWorld: {fileID: 1099287714}
 --- !u!64 &1526922184
 MeshCollider:
   m_ObjectHideFlags: 0
