@@ -14,6 +14,9 @@ public class TerrainWorldView : MonoBehaviour {
     public GameObject[] treeModels;
     public Texture2D[] splatTextures = new Texture2D[3];
 
+    // Constants
+    private const int SQUARE_MULTIPLIER = 20 * 5; // Tiles on square side - 5 meters??? (20 feet???) for each square
+
 
     // The method which initially builds the world view.
     public void PassInTheWorld(World theWorld)
@@ -86,9 +89,9 @@ public class TerrainWorldView : MonoBehaviour {
         terrainData.baseMapResolution = Z + 1;
         terrainData.SetDetailResolution(64, 32);
         // Set the size after the resoultion always
-        terrainData.size = new Vector3(X * 5, 4 * 5, Z * 5);
-        int HMWidth = terrainData.heightmapWidth;
-        int HMHeight = terrainData.heightmapHeight;
+        terrainData.size = new Vector3(X * SQUARE_MULTIPLIER, 4 * SQUARE_MULTIPLIER, Z * SQUARE_MULTIPLIER);
+        HMWidth = terrainData.heightmapWidth;
+        HMHeight = terrainData.heightmapHeight;
         Debug.Log(HMWidth + ", " + HMHeight);
         // Debug.Log("scale: " + terrainData.heightmapScale);
         // Get and set the heights for hills and rockiness
@@ -96,7 +99,6 @@ public class TerrainWorldView : MonoBehaviour {
         // heights = current.CreateHeightsArray(HMWidth, HMHeight);
         terrainData.SetHeights(0, 0, heights);
         // Create the trees
-        // CreateTheTrees(terrainData, HMWidth, HMHeight);
     }
 
 
