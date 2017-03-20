@@ -10,13 +10,15 @@ public class TerrainWorldView : MonoBehaviour {
     private int HMWidth;
     private int HMHeight;
     private World currentWorld;
+    private float[] minMaxElevationValues;
+    private float maxVertDist;
     public PhysicMaterial colliderPhysics;
     public GameObject[] treeModels;
     public Texture2D[] splatTextures = new Texture2D[3];
 
     // Constants
     private const int SQUARE_MULTIPLIER = 20 * 5; // Tiles on square side - 5 meters??? (20 feet???) for each square
-
+    private const float HEIGHT_TO_WIDTH_RATIO = 0.2f;
 
     // The method which initially builds the world view.
     public void PassInTheWorld(World theWorld)
@@ -89,17 +91,32 @@ public class TerrainWorldView : MonoBehaviour {
         terrainData.baseMapResolution = Z + 1;
         terrainData.SetDetailResolution(64, 32);
         // Set the size after the resoultion always
-        terrainData.size = new Vector3(X * SQUARE_MULTIPLIER, 4 * SQUARE_MULTIPLIER, Z * SQUARE_MULTIPLIER);
+        minMaxElevationValues = currentWorld.elevationVertices.getMinMaxValues();
+        maxVertDist = minMaxElevationValues[1] - minMaxElevationValues[0];
+        terrainData.size = new Vector3(X * SQUARE_MULTIPLIER, maxVertDist * HEIGHT_TO_WIDTH_RATIO * SQUARE_MULTIPLIER, Z * SQUARE_MULTIPLIER);
         HMWidth = terrainData.heightmapWidth;
         HMHeight = terrainData.heightmapHeight;
         Debug.Log(HMWidth + ", " + HMHeight);
         // Debug.Log("scale: " + terrainData.heightmapScale);
         // Get and set the heights for hills and rockiness
         float[,] heights = terrainData.GetHeights(0, 0, HMWidth, HMHeight);
-        // heights = current.CreateHeightsArray(HMWidth, HMHeight);
+        heights = ConvertElevationToHeights(heights);
         terrainData.SetHeights(0, 0, heights);
         // Create the trees
     }
 
+
+    private float[,] ConvertElevationToHeights(float[,] heights)
+    {
+        for (int i = 0; i < HMWidth; i++)
+        {
+            for (int j = 0; j < HMHeight; j++)
+            {
+                // Debug.Log((int)((i / (double) HMWidth) * X) + ", " + (int)((j / (double)HMWidth) * X));
+                heights[i, j] = (currentWorld.elevationVertices.worldArray[(int)((i / (double)HMWidth) * X), (int)((j / (double)HMHeight) * Z)] - minMaxElevationValues[0]) / maxVertDist;
+            }
+        }
+        return heights;
+    }
 
 }

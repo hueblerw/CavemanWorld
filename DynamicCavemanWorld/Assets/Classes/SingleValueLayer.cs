@@ -56,4 +56,45 @@ public class SingleValueLayer
         return rounded;
     }
 
+
+    // Gets the lowest and highest values in the array.
+    public float[] getMinMaxValues()
+    {
+        float[] minMax = new float[2];
+        minMax[0] = getMinValue();
+        minMax[1] = getMaxValue();
+        return minMax;
+    }
+
+    private float getMinValue()
+    {
+        float extrema = 0f;
+        for (int i = 0; i < WORLDX; i++)
+        {
+            for (int j = 0; j < WORLDZ; j++)
+            {
+                if (worldArray[i, j] < extrema)
+                {
+                    extrema = worldArray[i, j];
+                }
+            }
+        }
+        return extrema;
+    }
+
+    private float getMaxValue()
+    {
+        float extrema = 0f;
+        for (int i = 0; i < WORLDX; i++)
+        {
+            for (int j = 0; j < WORLDZ; j++)
+            {
+                if (worldArray[i, j] > extrema)
+                {
+                    extrema = worldArray[i, j];
+                }
+            }
+        }
+        return extrema;
+    }
 }
