@@ -14,7 +14,7 @@ public class TerrainWorldView : MonoBehaviour {
     private float maxVertDist;
     public PhysicMaterial colliderPhysics;
     public GameObject[] treeModels;
-    public Texture2D[] splatTextures = new Texture2D[3];
+    public Texture2D[] splatTextures = new Texture2D[6];
 
     // Constants
     private const int SQUARE_MULTIPLIER = 20 * 5; // Tiles on square side - 5 meters??? (20 feet???) for each square
@@ -53,9 +53,39 @@ public class TerrainWorldView : MonoBehaviour {
 
     // Paint the rocks texture in appropriately
     // Maybe also add rock detail thingies
-    private void PaintRocks(TerrainData battlefieldData)
+    private void PaintRocks(TerrainData terrainData)
     {
+        float[,,] splatMaps = terrainData.GetAlphamaps(0, 0, terrainData.alphamapWidth, terrainData.alphamapHeight);
+        for (int aX = 0; aX < terrainData.alphamapWidth; aX++)
+        {
+            for (int aY = 0; aY < terrainData.alphamapHeight; aY++)
+            {
+                float x = (float) aX / terrainData.alphamapWidth;
+                float y = (float) aY / terrainData.alphamapHeight;
+                float angle = terrainData.GetSteepness(y, x); // Flip x and y
+                float cliffiness = angle / 90f; 
+                // Ulitmately normal will be the even terrain and cliffy will be the odd terrain.
+                splatMaps[aX, aY, 0] = 1 - cliffiness;
+                splatMaps[aX, aY, 1] = cliffiness;
 
+            }
+        }
+
+        terrainData.SetAlphamaps(0, 0, splatMaps);
+    }
+
+
+    // Paint the appropriate soils for the habitat type
+    private void PaintSoils(TerrainData terrainData)
+    {
+        float[,,] splatMaps = terrainData.GetAlphamaps(0, 0, terrainData.alphamapWidth, terrainData.alphamapHeight);
+        for (int aX = 0; aX < terrainData.alphamapWidth; aX++)
+        {
+            for (int aY = 0; aY < terrainData.alphamapHeight; aY++)
+            {
+
+            }
+        }
     }
 
 
@@ -63,7 +93,7 @@ public class TerrainWorldView : MonoBehaviour {
     private void LoadTreePrototypes(TerrainData terrainData)
     {
         TreePrototype[] treeProtos = new TreePrototype[3];
-        for (int i = 0; i < splatTextures.Length; i++)
+        for (int i = 0; i < treeModels.Length; i++)
         {
             treeProtos[i] = new TreePrototype();
             treeProtos[i].prefab = treeModels[i];
@@ -80,6 +110,7 @@ public class TerrainWorldView : MonoBehaviour {
         {
             splatProtos[i] = new SplatPrototype();
             splatProtos[i].texture = splatTextures[i];
+            splatProtos[i].tileSize = new Vector2(30f, 30f);
         }
         terrainData.splatPrototypes = splatProtos;
     }
