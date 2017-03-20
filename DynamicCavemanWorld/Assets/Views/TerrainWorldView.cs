@@ -44,7 +44,8 @@ public class TerrainWorldView : MonoBehaviour {
         LoadTreePrototypes(terrainData);
         // Apply the data in here
         ApplyModel(terrainData);
-        PaintRocks(terrainData);
+        PaintSoils(terrainData);
+        //PaintRocks(terrainData);
         // Connect the terrain data to the terrain object
         terrain.terrainData = terrainData;
         tCollide.terrainData = terrainData;
@@ -58,15 +59,15 @@ public class TerrainWorldView : MonoBehaviour {
         float[,,] splatMaps = terrainData.GetAlphamaps(0, 0, terrainData.alphamapWidth, terrainData.alphamapHeight);
         for (int aX = 0; aX < terrainData.alphamapWidth; aX++)
         {
-            for (int aY = 0; aY < terrainData.alphamapHeight; aY++)
+            for (int aZ = 0; aZ < terrainData.alphamapHeight; aZ++)
             {
                 float x = (float) aX / terrainData.alphamapWidth;
-                float y = (float) aY / terrainData.alphamapHeight;
-                float angle = terrainData.GetSteepness(y, x); // Flip x and y
+                float z = (float) aZ / terrainData.alphamapHeight;
+                float angle = terrainData.GetSteepness(z, x); // Flip x and y
                 float cliffiness = angle / 90f; 
                 // Ulitmately normal will be the even terrain and cliffy will be the odd terrain.
-                splatMaps[aX, aY, 0] = 1 - cliffiness;
-                splatMaps[aX, aY, 1] = cliffiness;
+                splatMaps[aX, aZ, 0] = 1 - cliffiness;
+                splatMaps[aX, aZ, 1] = cliffiness;
 
             }
         }
@@ -78,14 +79,30 @@ public class TerrainWorldView : MonoBehaviour {
     // Paint the appropriate soils for the habitat type
     private void PaintSoils(TerrainData terrainData)
     {
+        Debug.Log(terrainData.alphamapWidth + ", " + terrainData.alphamapHeight);
         float[,,] splatMaps = terrainData.GetAlphamaps(0, 0, terrainData.alphamapWidth, terrainData.alphamapHeight);
         for (int aX = 0; aX < terrainData.alphamapWidth; aX++)
         {
-            for (int aY = 0; aY < terrainData.alphamapHeight; aY++)
+            for (int aZ = 0; aZ < terrainData.alphamapHeight; aZ++)
             {
-
+                // Get the world coordinates
+                int x = (int) (((double)aX / terrainData.alphamapWidth) * X);
+                int z = (int) (((double)aZ / terrainData.alphamapHeight) * Z);
+                if (aX == 0)
+                {
+                    Debug.Log(x + ", " + z);
+                }
+                // Paint under water sand colored - NEEDS A BETTER ALGORITHYM
+                if (currentWorld.elevation.worldArray[x, z] < 0f)
+                {
+                    splatMaps[aX, aZ, 0] = 0f;
+                    splatMaps[aX, aZ, 2] = 1f;
+                }
+                // Else Paint the land habitat appropriate colors.
             }
         }
+
+        terrainData.SetAlphamaps(0, 0, splatMaps);
     }
 
 
