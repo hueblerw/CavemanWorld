@@ -1464,12 +1464,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646bee57849063e4195e3431d0b00ac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splatTextures:
-  - {fileID: 2800000, guid: c72ca61ea20252f489698aa02dbc850b, type: 3}
-  - {fileID: 2800000, guid: c8ee3362855be054b989dad7dc116eb9, type: 3}
-  - {fileID: 2800000, guid: 2243bcff58d214640a07d92fda407a8d, type: 3}
   colliderPhysics: {fileID: 13400000, guid: 10571bb624c3dec4e951806cc4d25c35, type: 2}
-  decidiousTree: {fileID: 0}
+  treeModels:
+  - {fileID: 100000, guid: c91c1eb85782d5748ace27eb4d7415bb, type: 3}
+  - {fileID: 100016, guid: 469edab27ab6d004d84af2c4a851bd7f, type: 3}
+  - {fileID: 100004, guid: d027af1092f6b434090f040565e7e656, type: 3}
+  splatTextures:
+  - {fileID: 2800000, guid: c6e0767b1f8c34890ac245217f4b9731, type: 3}
+  - {fileID: 2800000, guid: bfd675cc0db1d4656b75dc6d6ba91142, type: 3}
+  - {fileID: 2800000, guid: 440eb36db91ca410f800ff3cfe43572f, type: 3}
 --- !u!1 &1117697581
 GameObject:
   m_ObjectHideFlags: 0

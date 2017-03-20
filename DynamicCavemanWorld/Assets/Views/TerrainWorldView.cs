@@ -10,10 +10,9 @@ public class TerrainWorldView : MonoBehaviour {
     private int HMWidth;
     private int HMHeight;
     private World currentWorld;
-    public Texture2D[] splatTextures = new Texture2D[3];
     public PhysicMaterial colliderPhysics;
-    public GameObject decidiousTree;
-
+    public GameObject[] treeModels;
+    public Texture2D[] splatTextures = new Texture2D[3];
 
     // The method which initially builds the world view.
     public TerrainWorldView(World theWorld)
@@ -59,7 +58,7 @@ public class TerrainWorldView : MonoBehaviour {
     {
         TreePrototype[] treeProtos = new TreePrototype[1];
         treeProtos[0] = new TreePrototype();
-        treeProtos[0].prefab = decidiousTree;
+        treeProtos[0].prefab = treeModels[0];
         terrainData.treePrototypes = treeProtos;
     }
 

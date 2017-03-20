@@ -75,6 +75,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="DynamicCavemanWorld.CSharp.Plugins.csproj">
+      <Project>{02B278F6-CC49-1722-CA43-23EDF42D55A6}</Project>
+      <Name>DynamicCavemanWorld.CSharp.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\Classes\Crops.cs" />
     <Compile Include="Assets\Classes\DailyLayer.cs" />
     <Compile Include="Assets\Classes\DataGenerator.cs" />
@@ -115,6 +121,11 @@
     <None Include="Assets\Resources\CSV\LowTempNiceMapA.txt" />
     <None Include="Assets\Resources\CSV\MidptNiceMapA.txt" />
     <None Include="Assets\Resources\CSV\VarianceNiceMapA.txt" />
+    <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
