@@ -99,6 +99,7 @@
     <Compile Include="Assets\Controllers\TileMouseOver.cs" />
     <Compile Include="Assets\Resources\SupportingClasses\LightweightMatrixCSharp.cs" />
     <Compile Include="Assets\Resources\SupportingClasses\Support.cs" />
+    <Compile Include="Assets\Views\TerrainWorldView.cs" />
     <Compile Include="Assets\Views\WorldView.cs" />
   </ItemGroup>
   <ItemGroup>
