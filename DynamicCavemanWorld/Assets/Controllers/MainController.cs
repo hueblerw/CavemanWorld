@@ -53,14 +53,15 @@ public class MainController : MonoBehaviour {
         else
         {
             // Create the terrain view instead
-            TerrainWorldView.BuildWorld(TheWorld);
+            TerrainWorldView terrainWorld = new TerrainWorldView(TheWorld);
+            Debug.Log("Terrain View Made");
         }
         
         // Set the time
         day = 0;
         year = 1;
         // Initialize the Game interaction Controllers
-        mouseController = new TileMouseOver(meshCollider, meshRenderer);
+        // mouseController = new TileMouseOver(meshCollider, meshRenderer);
     }
 	
 
@@ -68,7 +69,7 @@ public class MainController : MonoBehaviour {
     void Update()
     {
         // Update the mouse-over tile info
-        mouseController.UpdateTileInfo();
+        // mouseController.UpdateTileInfo();
     }
 
 

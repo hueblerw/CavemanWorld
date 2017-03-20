@@ -10,7 +10,7 @@ public class TerrainWorldView : MonoBehaviour {
     private int HMWidth;
     private int HMHeight;
     private World currentWorld;
-    public Texture2D[] splatTextures = new Texture2D[2];
+    public Texture2D[] splatTextures = new Texture2D[3];
     public PhysicMaterial colliderPhysics;
     public GameObject decidiousTree;
 
@@ -29,8 +29,9 @@ public class TerrainWorldView : MonoBehaviour {
     private void CreateTerrainObjects()
     {
         // Create the empty obects that are needed.
-        Terrain terrain = gameObject.AddComponent<Terrain>();
-        TerrainCollider tCollide = gameObject.AddComponent<TerrainCollider>();
+        GameObject myself = GameObject.Find("TerrainTileMap");
+        Terrain terrain = myself.AddComponent<Terrain>();
+        TerrainCollider tCollide = myself.AddComponent<TerrainCollider>();
         TerrainData terrainData = new TerrainData();
         // Load some materials
         tCollide.material = colliderPhysics;
