@@ -36,10 +36,10 @@ public class TerrainWorldView : MonoBehaviour {
         // Load some materials
         tCollide.material = colliderPhysics;
         BuildSplats(terrainData);
-        LoadTreePrototypes(terrainData);
+        // LoadTreePrototypes(terrainData);
         // Apply the data in here
-        ApplyModel(terrainData);
-        PaintRocks(terrainData);
+        ConstructElevations(terrainData);
+        PaintSoils(terrainData);
         // Connect the terrain data to the terrain object
         terrain.terrainData = terrainData;
         tCollide.terrainData = terrainData;
@@ -48,7 +48,7 @@ public class TerrainWorldView : MonoBehaviour {
 
     // Paint the rocks texture in appropriately
     // Maybe also add rock detail thingies
-    private void PaintRocks(TerrainData terrainData)
+    private void PaintSoils(TerrainData terrainData)
     {
 
     }
@@ -72,18 +72,19 @@ public class TerrainWorldView : MonoBehaviour {
         {
             splatProtos[i] = new SplatPrototype();
             splatProtos[i].texture = splatTextures[i];
+            Debug.Log("wtf - " + i);
         }
         terrainData.splatPrototypes = splatProtos;
     }
 
 
-    private void ApplyModel(TerrainData terrainData)
+    private void ConstructElevations(TerrainData terrainData)
     {
         terrainData.heightmapResolution = X + 1;
         terrainData.baseMapResolution = Z + 1;
         terrainData.SetDetailResolution(64, 32);
         // Set the size after the resoultion always
-        terrainData.size = new Vector3(X * 5, 4 * 5, Z * 5);
+        terrainData.size = new Vector3(X * 50, 4 * 50, Z * 50);
         HMWidth = terrainData.heightmapWidth;
         HMHeight = terrainData.heightmapHeight;
         Debug.Log(HMWidth + ", " + HMHeight);
