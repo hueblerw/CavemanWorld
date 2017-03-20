@@ -17,6 +17,8 @@ public class MainController : MonoBehaviour {
     public bool clockRunning;
     public float clockSpeed = 1.0f;
 
+    private const bool USE_TERRAIN_VIEW = true;
+
 	// Use this for initialization
 	void Start () {
         clockRunning = false;
@@ -31,19 +33,29 @@ public class MainController : MonoBehaviour {
             TheWorld = new World(50, 50, false);
         }     
 
-        // Construct the elevation view
-        // Get the Mesh components
-        MeshFilter meshFilter = GetComponent<MeshFilter>();
-        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
-        MeshCollider meshCollider = GetComponent<MeshCollider>();
-        // Create and attach the mesh
-        Mesh mesh = WorldView.BuildMesh(TheWorld.elevationVertices);
-        meshFilter.mesh = mesh;
-        meshCollider.sharedMesh = mesh;
-        // Create and attach the texture
-        meshRenderer.sharedMaterial.mainTexture = WorldView.BuildElevationTexture(TheWorld);
-        currentView = "Elevation";
-        Debug.Log("Elevation View Made!");
+        // Construct the view
+        if (!USE_TERRAIN_VIEW)
+        {
+            // Make the Mesh style world view
+            // Get the Mesh components
+            MeshFilter meshFilter = GetComponent<MeshFilter>();
+            MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+            MeshCollider meshCollider = GetComponent<MeshCollider>();
+            // Create and attach the mesh
+            Mesh mesh = WorldView.BuildMesh(TheWorld.elevationVertices);
+            meshFilter.mesh = mesh;
+            meshCollider.sharedMesh = mesh;
+            // Create and attach the texture
+            meshRenderer.sharedMaterial.mainTexture = WorldView.BuildElevationTexture(TheWorld);
+            currentView = "Elevation";
+            Debug.Log("Elevation View Made!");
+        }
+        else
+        {
+            // Create the terrain view instead
+            TerrainWorldView.BuildWorld(TheWorld);
+        }
+        
         // Set the time
         day = 0;
         year = 1;

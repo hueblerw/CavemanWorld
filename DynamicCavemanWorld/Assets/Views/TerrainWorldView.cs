@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class TerrainWorldView : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+
+    // The method which initially builds the world view.
+    public static void BuildWorldTerrainWorldView(World theWorld)
+    {
+
+    }
+
+
 }
