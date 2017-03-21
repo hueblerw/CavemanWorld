@@ -17,7 +17,7 @@ public class TerrainWorldView : MonoBehaviour {
     public Texture2D[] splatTextures = new Texture2D[7];
 
     // Constants
-    private const int SQUARE_MULTIPLIER = 20 * 5; // Tiles on square side - 5 meters??? (20 feet???) for each square
+    private const int SQUARE_MULTIPLIER = 10 * 5; // Tiles on square side - 5 meters??? (20 feet???) for each square
     private const float HEIGHT_TO_WIDTH_RATIO = 0.2f;
 
     // The method which initially builds the world view.
@@ -44,11 +44,12 @@ public class TerrainWorldView : MonoBehaviour {
         LoadTreePrototypes(terrainData);
         // Apply the data in here
         ApplyModel(terrainData);
-        PaintSoils(terrainData);
+        terrain.terrainData = terrainData;
+        PaintSoils(terrain, terrainData);
         // Smooth out the squares???
         // ???????????
         // Paint the cliffs
-        PaintRocks(terrainData);
+        //PaintRocks(terrainData);
         // Connect the terrain data to the terrain object
         terrain.terrainData = terrainData;
         tCollide.terrainData = terrainData;
@@ -84,7 +85,7 @@ public class TerrainWorldView : MonoBehaviour {
 
 
     // Paint the appropriate soils for the habitat type
-    private void PaintSoils(TerrainData terrainData)
+    private void PaintSoils(Terrain currentTerrain, TerrainData terrainData)
     {
         Debug.Log(terrainData.alphamapWidth + ", " + terrainData.alphamapHeight);
         float[,,] splatMaps = terrainData.GetAlphamaps(0, 0, terrainData.alphamapWidth, terrainData.alphamapHeight);
@@ -95,8 +96,9 @@ public class TerrainWorldView : MonoBehaviour {
                 // Get the world coordinates
                 int x = (int) (((double)aX / terrainData.alphamapWidth) * X);
                 int z = (int) (((double)aZ / terrainData.alphamapHeight) * Z);
-                // Paint under water sand colored - NEEDS A BETTER ALGORITHYM
-                if (currentWorld.elevation.worldArray[x, z] < 0f)
+                // Base the land off the actual grid thing
+                float presentHeight = currentTerrain.SampleHeight(new Vector3(z * SQUARE_MULTIPLIER, 0f, x * SQUARE_MULTIPLIER));
+                if (((presentHeight / terrainData.size.y) * maxVertDist) < -minMaxElevationValues[0])
                 {
                     splatMaps[aX, aZ, 0] = 0f;
                     splatMaps[aX, aZ, 2] = 1f;
@@ -107,7 +109,7 @@ public class TerrainWorldView : MonoBehaviour {
                     float[] soilPercents = CalculateSoilTypes(currentWorld.habitats.worldArray[x, z].typePercents);
                     for (int i = 0; i < splatTextures.Length; i += 2)
                     {
-                        splatMaps[aX, aZ, i] = soilPercents[i / 2];
+                        //splatMaps[aX, aZ, i] = soilPercents[i / 2];
                     } 
                 }
             }
@@ -134,6 +136,7 @@ public class TerrainWorldView : MonoBehaviour {
     private void AddTrees(Terrain currentTerrain, TerrainData terrainData)
     {
         List<TreeInstance> trees = new List<TreeInstance>();
+        // Debug.Log(minMaxElevationValues[0]);
         for (int x = 0; x < X; x++)
         {
             for (int z = 0; z < Z; z++)
@@ -147,13 +150,14 @@ public class TerrainWorldView : MonoBehaviour {
                         float randy = Random.Range(0f, 1f);
                         for (int i = 0; i < treeModels.Length; i++)
                         {
-                            if (randy < treePercents[i])
+                            float presentHeight = currentTerrain.SampleHeight(new Vector3((x + .1f * Lx) * SQUARE_MULTIPLIER, 0f, (z + .1f * Lz) * SQUARE_MULTIPLIER));
+                            if ((presentHeight / terrainData.size.y) * maxVertDist > -minMaxElevationValues[0] && randy < treePercents[i])
                             {
                                 TreeInstance nextTree = new TreeInstance();
                                 nextTree.prototypeIndex = i;
                                 nextTree.heightScale = 1f;
                                 nextTree.widthScale = 1f;
-                                nextTree.position = new Vector3((x + .1f * Lx) / X, (currentTerrain.SampleHeight(new Vector3((x + .1f * Lx) * SQUARE_MULTIPLIER, 0f, (z + .1f * Lz) * SQUARE_MULTIPLIER)) / terrainData.size.y), (z + .1f * Lz) / Z);
+                                nextTree.position = new Vector3((x + .1f * Lx) / X, presentHeight / terrainData.size.y, (z + .1f * Lz) / Z);
                                 nextTree.lightmapColor = Color.white;
                                 trees.Add(nextTree);
                             }
