@@ -15,6 +15,7 @@ public class TerrainWorldView : MonoBehaviour {
     public PhysicMaterial colliderPhysics;
     public GameObject[] treeModels;
     public Texture2D[] splatTextures = new Texture2D[7];
+    public GameObject ocean;
 
     // Constants
     private const int SQUARE_MULTIPLIER = 20 * 5; // Tiles on square side - 5 meters??? (20 feet???) for each square
@@ -26,6 +27,7 @@ public class TerrainWorldView : MonoBehaviour {
         X = theWorld.WorldX;
         Z = theWorld.WorldZ;
         currentWorld = theWorld;
+        ocean = GameObject.Find("WaterBasicDaytime");
         CreateTerrainObjects();
     }
 
@@ -45,6 +47,9 @@ public class TerrainWorldView : MonoBehaviour {
         // Apply the data in here
         ApplyModel(terrainData);
         terrain.terrainData = terrainData;
+        // Create the ocean
+        CreateOcean(terrainData);
+        // Paint the soils
         PaintSoils(terrain, terrainData);
         // Smooth out the squares???
         // ???????????
@@ -246,4 +251,13 @@ public class TerrainWorldView : MonoBehaviour {
 
         return treePercents;
     }
+
+
+    // Create the ocean
+    private void CreateOcean(TerrainData terrainData)
+    {
+        ocean.transform.position = new Vector3((X * SQUARE_MULTIPLIER / 2.0f), (-minMaxElevationValues[0] / maxVertDist) * terrainData.size.y, Z * SQUARE_MULTIPLIER / 2.0f);
+        ocean.transform.localScale = new Vector3(X, 0f, Z);
+    }
+
 }
