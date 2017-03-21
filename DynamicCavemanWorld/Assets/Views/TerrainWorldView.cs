@@ -12,6 +12,7 @@ public class TerrainWorldView : MonoBehaviour {
     private World currentWorld;
     private float[] minMaxElevationValues;
     private float maxVertDist;
+    private float[] treePositions;
     public PhysicMaterial colliderPhysics;
     public GameObject[] treeModels;
     public Texture2D[] splatTextures = new Texture2D[7];
@@ -36,6 +37,7 @@ public class TerrainWorldView : MonoBehaviour {
     private void CreateTerrainObjects()
     {
         // Create the empty obects that are needed.
+        Debug.Log("Running Create TerrainObjects");
         GameObject myself = GameObject.Find("TerrainTileMap");
         Terrain terrain = myself.AddComponent<Terrain>();
         TerrainCollider tCollide = myself.AddComponent<TerrainCollider>();
@@ -141,6 +143,15 @@ public class TerrainWorldView : MonoBehaviour {
     private void AddTrees(Terrain currentTerrain, TerrainData terrainData)
     {
         List<TreeInstance> trees = new List<TreeInstance>();
+        int p = 1;
+        if (treePositions == null)
+        {
+            treePositions = new float[100];
+            for (int t = 0; t < 100; t++)
+            {
+                treePositions[t] = Random.Range(0f, 100f);
+            }
+        }
         // Debug.Log(minMaxElevationValues[0]);
         for (int x = 0; x < X; x++)
         {
@@ -148,26 +159,28 @@ public class TerrainWorldView : MonoBehaviour {
             {
                 // For some reason seem to need to flip the x, z coordinates here
                 float[] treePercents = CalculateTreePercents(currentWorld.habitats.worldArray[z, x].typePercents);
-                for (int Lx = 0; Lx < 10; Lx++)
+                for (int t = 0; t < treePositions.Length; t++)
                 {
-                    for (int Lz = 0; Lz < 10; Lz++)
+                    
+                    float randy = Random.Range(0f, 1f);
+                    float Lx = treePositions[t] / 10f;
+                    float Lz = treePositions[(t + p) % 100] / 10f;
+                    for (int i = 0; i < treeModels.Length; i++)
                     {
-                        float randy = Random.Range(0f, 1f);
-                        for (int i = 0; i < treeModels.Length; i++)
+                        float presentHeight = currentTerrain.SampleHeight(new Vector3((x + .1f * Lx) * SQUARE_MULTIPLIER, 0f, (z + .1f * Lz) * SQUARE_MULTIPLIER));
+                        if ((presentHeight / terrainData.size.y) * maxVertDist > -minMaxElevationValues[0] && randy < treePercents[i])
                         {
-                            float presentHeight = currentTerrain.SampleHeight(new Vector3((x + .1f * Lx) * SQUARE_MULTIPLIER, 0f, (z + .1f * Lz) * SQUARE_MULTIPLIER));
-                            if ((presentHeight / terrainData.size.y) * maxVertDist > -minMaxElevationValues[0] && randy < treePercents[i])
-                            {
-                                TreeInstance nextTree = new TreeInstance();
-                                nextTree.prototypeIndex = i;
-                                nextTree.heightScale = 1f;
-                                nextTree.widthScale = 1f;
-                                nextTree.position = new Vector3((x + .1f * Lx) / X, presentHeight / terrainData.size.y, (z + .1f * Lz) / Z);
-                                nextTree.lightmapColor = Color.white;
-                                trees.Add(nextTree);
-                            }
+                            TreeInstance nextTree = new TreeInstance();
+                            nextTree.prototypeIndex = i;
+                            nextTree.heightScale = 1f;
+                            nextTree.widthScale = 1f;
+                            nextTree.position = new Vector3((x + .1f * Lx) / X, presentHeight / terrainData.size.y, (z + .1f * Lz) / Z);
+                            nextTree.lightmapColor = Color.white;
+                            trees.Add(nextTree);
+                            p++;
                         }
                     }
+                  
                 } 
             }
         }

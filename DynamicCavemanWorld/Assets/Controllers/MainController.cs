@@ -139,6 +139,10 @@ public class MainController : MonoBehaviour {
             MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
             meshRenderer.sharedMaterial.mainTexture = WorldView.BuildHabitatTexture(TheWorld, textureMap);
         }
+        else
+        {
+            terrainWorld.PassInTheWorld(TheWorld);
+        }
     }
 
 
