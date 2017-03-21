@@ -14,7 +14,7 @@ public class TerrainWorldView : MonoBehaviour {
     private float maxVertDist;
     public PhysicMaterial colliderPhysics;
     public GameObject[] treeModels;
-    public Texture2D[] splatTextures = new Texture2D[6];
+    public Texture2D[] splatTextures = new Texture2D[7];
 
     // Constants
     private const int SQUARE_MULTIPLIER = 20 * 5; // Tiles on square side - 5 meters??? (20 feet???) for each square
@@ -88,10 +88,6 @@ public class TerrainWorldView : MonoBehaviour {
                 // Get the world coordinates
                 int x = (int) (((double)aX / terrainData.alphamapWidth) * X);
                 int z = (int) (((double)aZ / terrainData.alphamapHeight) * Z);
-                if (aX == 0)
-                {
-                    Debug.Log(x + ", " + z);
-                }
                 // Paint under water sand colored - NEEDS A BETTER ALGORITHYM
                 if (currentWorld.elevation.worldArray[x, z] < 0f)
                 {
@@ -99,6 +95,14 @@ public class TerrainWorldView : MonoBehaviour {
                     splatMaps[aX, aZ, 2] = 1f;
                 }
                 // Else Paint the land habitat appropriate colors.
+                else
+                {
+                    float[] soilPercents = CalculateSoilTypes(currentWorld.habitats.worldArray[x, z].typePercents);
+                    for (int i = 0; i < splatTextures.Length; i += 2)
+                    {
+                        splatMaps[aX, aZ, i] = soilPercents[i / 2];
+                    } 
+                }
             }
         }
 
@@ -135,8 +139,8 @@ public class TerrainWorldView : MonoBehaviour {
 
     private void ApplyModel(TerrainData terrainData)
     {
-        terrainData.heightmapResolution = X + 1;
-        terrainData.baseMapResolution = Z + 1;
+        terrainData.heightmapResolution = 32 + 1;
+        terrainData.baseMapResolution = 32 + 1;
         terrainData.SetDetailResolution(64, 32);
         // Set the size after the resoultion always
         minMaxElevationValues = currentWorld.elevationVertices.getMinMaxValues();
@@ -167,4 +171,19 @@ public class TerrainWorldView : MonoBehaviour {
         return heights;
     }
 
+
+    private float[] CalculateSoilTypes(double[] habitatPercents)
+    {
+        float[] soilPercents = new float[(splatTextures.Length + 1) / 2];
+        // desert soils - temperate to warm deserts
+        soilPercents[1] = (float) (habitatPercents[1] + habitatPercents[2]);
+        // mud soilds - swamps, tundra, rainforest
+        soilPercents[2] = (float) (habitatPercents[1] + habitatPercents[2] + habitatPercents[4] + habitatPercents[8] + habitatPercents[12]);
+        // glacier soils - glacier, maybe snow cover later
+        soilPercents[3] = (float) habitatPercents[0];
+        // normal soils - grasslands, forests
+        soilPercents[0] = 1.0f - soilPercents[1] - soilPercents[2] - soilPercents[3];
+
+        return soilPercents;
+    }
 }
