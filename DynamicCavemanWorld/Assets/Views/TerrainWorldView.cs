@@ -49,7 +49,7 @@ public class TerrainWorldView : MonoBehaviour {
         // Smooth out the squares???
         // ???????????
         // Paint the cliffs
-        //PaintRocks(terrainData);
+        PaintRocks(terrainData);
         // Connect the terrain data to the terrain object
         terrain.terrainData = terrainData;
         tCollide.terrainData = terrainData;
@@ -109,7 +109,7 @@ public class TerrainWorldView : MonoBehaviour {
                     float[] soilPercents = CalculateSoilTypes(currentWorld.habitats.worldArray[x, z].typePercents);
                     for (int i = 0; i < splatTextures.Length; i += 2)
                     {
-                        //splatMaps[aX, aZ, i] = soilPercents[i / 2];
+                        splatMaps[aX, aZ, i] = soilPercents[i / 2];
                     } 
                 }
             }
@@ -222,7 +222,7 @@ public class TerrainWorldView : MonoBehaviour {
     {
         float[] soilPercents = new float[(splatTextures.Length + 1) / 2];
         // desert soils - temperate to warm deserts
-        soilPercents[1] = (float) (habitatPercents[1] + habitatPercents[2]);
+        soilPercents[1] = (float) (habitatPercents[5] + habitatPercents[9]);
         // mud soilds - swamps, tundra, rainforest
         soilPercents[2] = (float) (habitatPercents[1] + habitatPercents[2] + habitatPercents[4] + habitatPercents[8] + habitatPercents[12]);
         // glacier soils - glacier, maybe snow cover later
