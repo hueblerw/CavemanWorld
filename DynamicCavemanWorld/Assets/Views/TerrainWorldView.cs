@@ -17,7 +17,7 @@ public class TerrainWorldView : MonoBehaviour {
     public Texture2D[] splatTextures = new Texture2D[7];
 
     // Constants
-    private const int SQUARE_MULTIPLIER = 10 * 5; // Tiles on square side - 5 meters??? (20 feet???) for each square
+    private const int SQUARE_MULTIPLIER = 20 * 5; // Tiles on square side - 5 meters??? (20 feet???) for each square
     private const float HEIGHT_TO_WIDTH_RATIO = 0.2f;
 
     // The method which initially builds the world view.
