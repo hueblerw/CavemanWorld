@@ -45,10 +45,15 @@ public class TerrainWorldView : MonoBehaviour {
         // Apply the data in here
         ApplyModel(terrainData);
         PaintSoils(terrainData);
-        //PaintRocks(terrainData);
+        // Smooth out the squares???
+        // ???????????
+        // Paint the cliffs
+        PaintRocks(terrainData);
         // Connect the terrain data to the terrain object
         terrain.terrainData = terrainData;
         tCollide.terrainData = terrainData;
+        // Add the trees
+        AddTrees(terrain, terrainData);
     }
 
 
@@ -66,9 +71,11 @@ public class TerrainWorldView : MonoBehaviour {
                 float angle = terrainData.GetSteepness(z, x); // Flip x and y
                 float cliffiness = angle / 90f; 
                 // Ulitmately normal will be the even terrain and cliffy will be the odd terrain.
-                splatMaps[aX, aZ, 0] = 1 - cliffiness;
-                splatMaps[aX, aZ, 1] = cliffiness;
-
+                for (int i = 0; i < splatTextures.Length - 1; i += 2)
+                {
+                    splatMaps[aX, aZ, i] = (1f - cliffiness) * splatMaps[aX, aZ, i];
+                    splatMaps[aX, aZ, i + 1] = cliffiness * splatMaps[aX, aZ, i];
+                }
             }
         }
 
@@ -110,7 +117,7 @@ public class TerrainWorldView : MonoBehaviour {
     }
 
 
-    // Add the trees
+    // Add the tree Prototypes
     private void LoadTreePrototypes(TerrainData terrainData)
     {
         TreePrototype[] treeProtos = new TreePrototype[3];
@@ -120,6 +127,46 @@ public class TerrainWorldView : MonoBehaviour {
             treeProtos[i].prefab = treeModels[i];
         }
         terrainData.treePrototypes = treeProtos;
+    }
+
+
+    // Populate the Trees
+    private void AddTrees(Terrain currentTerrain, TerrainData terrainData)
+    {
+        List<TreeInstance> trees = new List<TreeInstance>();
+        for (int x = 0; x < X; x++)
+        {
+            for (int z = 0; z < Z; z++)
+            {
+                float[] treePercents = CalculateTreePercents(currentWorld.habitats.worldArray[x, z].typePercents);
+                for (int Lx = 0; Lx < 10; Lx++)
+                {
+                    for (int Lz = 0; Lz < 10; Lz++)
+                    {
+                        if (x == 0)
+                        {
+                            Debug.Log(x + .1f * Lx + ", " + z + .1f * Lz);
+                            Debug.Log(currentTerrain.SampleHeight(new Vector3(x + .1f * Lx, 0f, z + .1f * Lz)));
+                        }
+                        float randy = Random.Range(0f, 1f);
+                        for (int i = 0; i < treeModels.Length; i++)
+                        {
+                            if (randy < treePercents[i])
+                            {
+                                TreeInstance nextTree = new TreeInstance();
+                                nextTree.prototypeIndex = i;
+                                nextTree.heightScale = 1f;
+                                nextTree.widthScale = 1f;
+                                nextTree.position = new Vector3((x + .1f * Lx) / HMWidth,  ((float) currentTerrain.SampleHeight(new Vector3(x + .1f * Lx, 0f, z + .1f * Lz)) / (float) terrainData.size.y), (z + .1f * Lz) / HMHeight);
+                                nextTree.lightmapColor = Color.white;
+                                trees.Add(nextTree);
+                            }
+                        }
+                    }
+                } 
+            }
+        }
+        terrainData.treeInstances = trees.ToArray();
     }
 
 
@@ -139,7 +186,7 @@ public class TerrainWorldView : MonoBehaviour {
 
     private void ApplyModel(TerrainData terrainData)
     {
-        terrainData.heightmapResolution = 32 + 1;
+        terrainData.heightmapResolution = 64 + 1;
         terrainData.baseMapResolution = 32 + 1;
         terrainData.SetDetailResolution(64, 32);
         // Set the size after the resoultion always
@@ -154,7 +201,6 @@ public class TerrainWorldView : MonoBehaviour {
         float[,] heights = terrainData.GetHeights(0, 0, HMWidth, HMHeight);
         heights = ConvertElevationToHeights(heights);
         terrainData.SetHeights(0, 0, heights);
-        // Create the trees
     }
 
 
@@ -185,5 +231,19 @@ public class TerrainWorldView : MonoBehaviour {
         soilPercents[0] = 1.0f - soilPercents[1] - soilPercents[2] - soilPercents[3];
 
         return soilPercents;
+    }
+
+
+    private float[] CalculateTreePercents(double[] habitatPercents)
+    {
+        float[] treePercents = new float[3];
+        // Conifers are cold trees - in future maybe artic marsh is marsh plants???
+        treePercents[0] = (float) (habitatPercents[3] + habitatPercents[4]);
+        // Decidious Trees are temperate trees - in future maybe swamp is marsh plants???
+        treePercents[1] = (float)(habitatPercents[7] + habitatPercents[8]);
+        // Palm are tropical trees
+        treePercents[2] = (float)(habitatPercents[11] + habitatPercents[12]);
+
+        return treePercents;
     }
 }
