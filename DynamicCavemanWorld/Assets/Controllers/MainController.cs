@@ -50,19 +50,23 @@ public class MainController : MonoBehaviour {
             meshRenderer.sharedMaterial.mainTexture = WorldView.BuildElevationTexture(TheWorld);
             currentView = "Elevation";
             Debug.Log("Elevation View Made!");
+            // Set the time
+            day = 0;
+            year = 1;
+            // Initialize the Game interaction Controllers
+            mouseController = new TileMouseOver(meshCollider, meshRenderer);
         }
         else
         {
             // Create the terrain view instead
             terrainWorld.PassInTheWorld(TheWorld);
             Debug.Log("Terrain View Made");
+            // Set the time
+            day = 0;
+            year = 1;
+            // Initialize the Game interaction Controllers
+            mouseController = new TileMouseOver(terrainWorld.GetComponent<Collider>());
         }
-        
-        // Set the time
-        day = 0;
-        year = 1;
-        // Initialize the Game interaction Controllers
-        // mouseController = new TileMouseOver(meshCollider, meshRenderer);
     }
 	
 
@@ -70,7 +74,14 @@ public class MainController : MonoBehaviour {
     void Update()
     {
         // Update the mouse-over tile info
-        // mouseController.UpdateTileInfo();
+        if (USE_TERRAIN_VIEW)
+        {
+            mouseController.TerrainUpdateInfo();
+        }
+        else
+        {
+            mouseController.UpdateTileInfo();
+        }
     }
 
 

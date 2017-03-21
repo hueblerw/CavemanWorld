@@ -18,7 +18,7 @@ public class TerrainWorldView : MonoBehaviour {
     public GameObject ocean;
 
     // Constants
-    private const int SQUARE_MULTIPLIER = 20 * 5; // Tiles on square side - 5 meters??? (20 feet???) for each square
+    public const int SQUARE_MULTIPLIER = 20 * 5; // Tiles on square side - 5 meters??? (20 feet???) for each square
     private const float HEIGHT_TO_WIDTH_RATIO = 0.2f;
 
     // The method which initially builds the world view.

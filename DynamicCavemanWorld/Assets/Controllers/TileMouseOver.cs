@@ -9,9 +9,13 @@ public class TileMouseOver : MonoBehaviour {
     public Text DateInfo;
     public Collider mapCollider;
     public Renderer mapRenderer;
+    private bool terrainView;
+    public float SQUARE_MULTIPLIER; 
 
+    // Constructor for the Habitat View
     public TileMouseOver(Collider collider, Renderer renderer)
     {
+        terrainView = false;
         // Tile Info
         TileInfo = findTextWithName("TileInfoDisplay");
         TileInfo.text = "Tile Info:";
@@ -22,6 +26,22 @@ public class TileMouseOver : MonoBehaviour {
         // Collider & Renderer
         mapCollider = collider;
         mapRenderer = renderer;
+        SQUARE_MULTIPLIER = WorldView.tileSize; // Matches the tile size variable in WorldView
+    }
+
+    // Constructor for the Terrain View
+    public TileMouseOver(Collider terrainCollider)
+    {
+        terrainView = true;
+        // Tile Info
+        TileInfo = findTextWithName("TileInfoDisplay");
+        TileInfo.text = "Tile Info:";
+        // Date Info
+        DateInfo = findTextWithName("DateDisplay");
+        UpdateTheDate();
+        Debug.Log("Mouse Over Initialized!");
+        mapCollider = terrainCollider;
+        SQUARE_MULTIPLIER = 20 * 5; // Tiles on square side - 5 meters??? (20 feet???) for each square
     }
 
     // Update is called once per frame
@@ -46,6 +66,24 @@ public class TileMouseOver : MonoBehaviour {
         else
         {
             // Un-highlight
+        }
+    }
+
+    // Terrain Update the tile info method
+    public void TerrainUpdateInfo()
+    {
+        // TileInfo.text = "OMG A MOUSE!!!";
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitInfo;
+        if (mapCollider.Raycast(ray, out hitInfo, Mathf.Infinity))
+        {
+            int[] coor = ConvertToTileCoordinates(hitInfo.point);
+            // Highlight
+            // Update the Tile Info
+            string info = MainController.TheWorld.getTileInfo(MainController.day, coor[2], coor[0]);  // Invert the x, z coordinates here
+            string coorInfo = "(" + coor[0] + ", " + coor[1] + ", " + coor[2] + "):";
+            TileInfo.text = "Mouse Numbers: " + hitInfo.point.x + ", " + hitInfo.point.y + ", " + hitInfo.point.z;
+            TileInfo.text = "Tile " + coorInfo + "\n" + info;
         }
     }
 
@@ -77,9 +115,9 @@ public class TileMouseOver : MonoBehaviour {
         // If camera is rotated 90-degrees in y the error reverse itself from being and up-down to left-right displacement error.
         int[] coor = new int[3];
         // Debug.Log(point.x + ", " + point.y + ", " + point.z);
-        coor[0] = (int) Math.Truncate(point.x / WorldView.tileSize);
+        coor[0] = (int) Math.Truncate(point.x / SQUARE_MULTIPLIER);
         coor[1] = (int) Math.Truncate(point.y / WorldView.heightScale);
-        coor[2] = (int) Math.Truncate(point.z / WorldView.tileSize);
+        coor[2] = (int) Math.Truncate(point.z / SQUARE_MULTIPLIER);
         return coor;
     }
 
