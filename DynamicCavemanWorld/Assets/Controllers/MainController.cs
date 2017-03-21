@@ -60,6 +60,7 @@ public class MainController : MonoBehaviour {
         {
             // Create the terrain view instead
             terrainWorld.PassInTheWorld(TheWorld);
+            currentView = "Terrain";
             Debug.Log("Terrain View Made");
             // Set the time
             day = 0;

@@ -157,24 +157,23 @@ public class TerrainWorldView : MonoBehaviour {
         {
             for (int z = 0; z < Z; z++)
             {
-                // For some reason seem to need to flip the x, z coordinates here
-                float[] treePercents = CalculateTreePercents(currentWorld.habitats.worldArray[z, x].typePercents);
+                float[] treePercents = CalculateTreePercents(currentWorld.habitats.worldArray[x, z].typePercents);
                 for (int t = 0; t < treePositions.Length; t++)
                 {
-                    
                     float randy = Random.Range(0f, 1f);
                     float Lx = treePositions[t] / 10f;
                     float Lz = treePositions[(t + p) % 100] / 10f;
                     for (int i = 0; i < treeModels.Length; i++)
                     {
-                        float presentHeight = currentTerrain.SampleHeight(new Vector3((x + .1f * Lx) * SQUARE_MULTIPLIER, 0f, (z + .1f * Lz) * SQUARE_MULTIPLIER));
+                        // For some reason seem to need to flip the x, z coordinates here
+                        float presentHeight = currentTerrain.SampleHeight(new Vector3((z + .1f * Lz) * SQUARE_MULTIPLIER, 0f, (x + .1f * Lx) * SQUARE_MULTIPLIER));
                         if ((presentHeight / terrainData.size.y) * maxVertDist > -minMaxElevationValues[0] && randy < treePercents[i])
                         {
                             TreeInstance nextTree = new TreeInstance();
                             nextTree.prototypeIndex = i;
                             nextTree.heightScale = 1f;
                             nextTree.widthScale = 1f;
-                            nextTree.position = new Vector3((x + .1f * Lx) / X, presentHeight / terrainData.size.y, (z + .1f * Lz) / Z);
+                            nextTree.position = new Vector3((z + .1f * Lz) / Z, presentHeight / terrainData.size.y, (x + .1f * Lx) / X);
                             nextTree.lightmapColor = Color.white;
                             trees.Add(nextTree);
                             p++;
