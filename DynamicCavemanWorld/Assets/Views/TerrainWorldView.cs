@@ -138,16 +138,12 @@ public class TerrainWorldView : MonoBehaviour {
         {
             for (int z = 0; z < Z; z++)
             {
-                float[] treePercents = CalculateTreePercents(currentWorld.habitats.worldArray[x, z].typePercents);
+                // For some reason seem to need to flip the x, z coordinates here
+                float[] treePercents = CalculateTreePercents(currentWorld.habitats.worldArray[z, x].typePercents);
                 for (int Lx = 0; Lx < 10; Lx++)
                 {
                     for (int Lz = 0; Lz < 10; Lz++)
                     {
-                        if (x == 0)
-                        {
-                            Debug.Log(x + .1f * Lx + ", " + z + .1f * Lz);
-                            Debug.Log(currentTerrain.SampleHeight(new Vector3(x + .1f * Lx, 0f, z + .1f * Lz)));
-                        }
                         float randy = Random.Range(0f, 1f);
                         for (int i = 0; i < treeModels.Length; i++)
                         {
@@ -157,7 +153,7 @@ public class TerrainWorldView : MonoBehaviour {
                                 nextTree.prototypeIndex = i;
                                 nextTree.heightScale = 1f;
                                 nextTree.widthScale = 1f;
-                                nextTree.position = new Vector3((x + .1f * Lx) / HMWidth,  ((float) currentTerrain.SampleHeight(new Vector3(x + .1f * Lx, 0f, z + .1f * Lz)) / (float) terrainData.size.y), (z + .1f * Lz) / HMHeight);
+                                nextTree.position = new Vector3((x + .1f * Lx) / X, (currentTerrain.SampleHeight(new Vector3((x + .1f * Lx) * SQUARE_MULTIPLIER, 0f, (z + .1f * Lz) * SQUARE_MULTIPLIER)) / terrainData.size.y), (z + .1f * Lz) / Z);
                                 nextTree.lightmapColor = Color.white;
                                 trees.Add(nextTree);
                             }
