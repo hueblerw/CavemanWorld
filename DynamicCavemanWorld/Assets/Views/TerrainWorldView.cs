@@ -171,8 +171,16 @@ public class TerrainWorldView : MonoBehaviour {
                         {
                             TreeInstance nextTree = new TreeInstance();
                             nextTree.prototypeIndex = i;
-                            nextTree.heightScale = 1f;
-                            nextTree.widthScale = 1f;
+                            if (i == 3)
+                            {
+                                nextTree.heightScale = Random.Range(1f, 1.25f);
+                                nextTree.widthScale = Random.Range(1f, 1.25f);
+                            }
+                            else
+                            {
+                                nextTree.heightScale = Random.Range(.8f, 1f);
+                                nextTree.widthScale = Random.Range(.8f, 1f);
+                            }
                             nextTree.position = new Vector3((z + .1f * Lz) / Z, presentHeight / terrainData.size.y, (x + .1f * Lx) / X);
                             nextTree.lightmapColor = Color.white;
                             trees.Add(nextTree);
@@ -206,7 +214,7 @@ public class TerrainWorldView : MonoBehaviour {
         terrainData.heightmapResolution = 64 + 1;
         terrainData.baseMapResolution = 32 + 1;
         terrainData.SetDetailResolution(64, 32);
-        terrainData.alphamapResolution = 1000;
+        terrainData.alphamapResolution = ((X + Z) / 2) * SQUARE_MULTIPLIER;
         // Set the size after the resoultion always
         minMaxElevationValues = currentWorld.elevationVertices.getMinMaxValues();
         maxVertDist = minMaxElevationValues[1] - minMaxElevationValues[0];
