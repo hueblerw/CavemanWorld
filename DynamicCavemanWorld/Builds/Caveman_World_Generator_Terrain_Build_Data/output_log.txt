@@ -2,10 +2,10 @@ Mono path[0] = 'C:/Users/William/Documents/World Generator Maps/CavemanWorld/Dyn
 Mono path[1] = 'C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Builds/Caveman_World_Generator_Terrain_Build_Data/Mono'
 Mono config path = 'C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Builds/Caveman_World_Generator_Terrain_Build_Data/Mono/etc'
 PlayerConnection initialized from C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Builds/Caveman_World_Generator_Terrain_Build_Data (debug = 0)
-PlayerConnection initialized network socket : 0.0.0.0 55155
-Multi-casting "[IP] 192.168.1.121 [Port] 55155 [Flags] 2 [Guid] 2045494042 [EditorId] 1590249107 [Version] 1048832 [Id] WindowsPlayer(WilliamDesktop) [Debug] 0" to [225.0.0.222:54997]...
-Started listening to [0.0.0.0:55155]
-PlayerConnection already initialized - listening to [0.0.0.0:55155]
+PlayerConnection initialized network socket : 0.0.0.0 55164
+Multi-casting "[IP] 192.168.1.121 [Port] 55164 [Flags] 2 [Guid] 1395003728 [EditorId] 1590249107 [Version] 1048832 [Id] WindowsPlayer(WilliamDesktop) [Debug] 0" to [225.0.0.222:54997]...
+Started listening to [0.0.0.0:55164]
+PlayerConnection already initialized - listening to [0.0.0.0:55164]
 Initialize engine version: 5.5.1f1 (88d00a7498cd)
 GfxDevice: creating device client; threaded=1
 Direct3D:
@@ -27,14 +27,14 @@ Platform assembly: C:\Users\William\Documents\World Generator Maps\CavemanWorld\
 Loading C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Terrain_Build_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Terrain_Build_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
 Loading C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Terrain_Build_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.028 seconds
+- Completed reload, in  0.877 seconds
 Platform assembly: C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Terrain_Build_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Builds\Caveman_World_Generator_Terrain_Build_Data\Managed\System.dll (this message is harmless)
 desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 3.874613 ms
+UnloadTime: 35.396774 ms
 Load World
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
 UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
@@ -45,7 +45,7 @@ LoadingScreenController:Start() (at C:\Users\William\Documents\World Generator M
 (Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/LoadingScreenController.cs Line: 21)
 
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 1510 -> priority: 1 
+  Thread -> id: e0c -> priority: 1 
 Literally, Hello World!
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
 UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
@@ -133,12 +133,12 @@ The referenced script on this Behaviour (Game Object 'Canvas') is missing!
 (Filename: C:/buildslave/unity/build/Runtime/Mono/MonoBehaviour.cpp Line: 1754)
 
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.954626 ms
-System memory in use before: 33.9 MB.
-System memory in use after: 34.0 MB.
+UnloadTime: 4.655258 ms
+System memory in use before: 35.9 MB.
+System memory in use after: 35.9 MB.
 
-Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 644.
-Total: 2.490414 ms (FindLiveObjects: 0.028912 ms CreateObjectMapping: 0.025298 ms MarkObjects: 2.420842 ms  DeleteObjects: 0.014155 ms)
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 657.
+Total: 2.334405 ms (FindLiveObjects: 0.020781 ms CreateObjectMapping: 0.022588 ms MarkObjects: 2.280194 ms  DeleteObjects: 0.009035 ms)
 
 Enter the World Scene!
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
@@ -160,17 +160,6 @@ MainController:Start() (at C:\Users\William\Documents\World Generator Maps\Cavem
  
 (Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Views/TerrainWorldView.cs Line: 40)
 
-Unable to find shaders used for the terrain engine. Please include Nature/Terrain/Diffuse shader in Graphics settings.
-UnityEngine.GameObject:Internal_AddComponentWithType(Type)
-UnityEngine.GameObject:AddComponent(Type) (at C:\buildslave\unity\build\artifacts\generated\common\runtime\GameObjectBindings.gen.cs:352)
-UnityEngine.GameObject:AddComponent() (at C:\buildslave\unity\build\artifacts\generated\common\runtime\GameObjectBindings.gen.cs:357)
-TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:42)
-TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
-MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
-
-[C:/buildslave/unity/build/Runtime/Terrain/SplatMaterials.cpp line 384] 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/GameObjectBindings.gen.cs Line: 352)
-
 Failed to get pixels of splat texture
 UnityEngine.TerrainData:set_splatPrototypes(SplatPrototype[])
 TerrainWorldView:BuildSplats(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:200)
@@ -317,20 +306,97 @@ MainController:Start() (at C:\Users\William\Documents\World Generator Maps\Cavem
 
 [C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 547)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_alphamapResolution(Int32)
+UnityEngine.TerrainData:set_alphamapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:520)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:209)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 520)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_alphamapResolution(Int32)
+UnityEngine.TerrainData:set_alphamapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:520)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:209)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 520)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_alphamapResolution(Int32)
+UnityEngine.TerrainData:set_alphamapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:520)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:209)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 520)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_alphamapResolution(Int32)
+UnityEngine.TerrainData:set_alphamapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:520)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:209)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 520)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_alphamapResolution(Int32)
+UnityEngine.TerrainData:set_alphamapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:520)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:209)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 520)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_alphamapResolution(Int32)
+UnityEngine.TerrainData:set_alphamapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:520)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:209)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 520)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_alphamapResolution(Int32)
+UnityEngine.TerrainData:set_alphamapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:520)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:209)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 520)
 
 65, 65
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
 UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
 UnityEngine.Debug:Log(Object)
-TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:215)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:216)
 TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
 TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
 MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
  
-(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Views/TerrainWorldView.cs Line: 215)
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Views/TerrainWorldView.cs Line: 216)
 
-512, 512
+1000, 1000
 UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
 UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
 UnityEngine.Logger:Log(LogType, Object)
@@ -361,13 +427,443 @@ MainController:Start() (at C:\Users\William\Documents\World Generator Maps\Cavem
  
 (Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/TileMouseOver.cs Line: 42)
 
-Unable to find shaders used for the terrain engine. Please include Nature/Terrain/Diffuse shader in Graphics settings.
+Failed to get pixels of splat texture
  
-(Filename: C:/buildslave/unity/build/Runtime/Terrain/TreeRenderer.cpp Line: 308)
+(Filename: C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp Line: 244)
 
-Unable to find shaders used for the terrain engine. Please include Nature/Terrain/Diffuse shader in Graphics settings.
+Failed to get pixels of splat texture
  
-(Filename: C:/buildslave/unity/build/Runtime/Terrain/DetailRenderer.cpp Line: 65)
+(Filename: C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp Line: 244)
+
+Failed to get pixels of splat texture
+ 
+(Filename: C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp Line: 244)
+
+Failed to get pixels of splat texture
+ 
+(Filename: C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp Line: 244)
+
+Failed to get pixels of splat texture
+ 
+(Filename: C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp Line: 244)
+
+Failed to get pixels of splat texture
+ 
+(Filename: C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp Line: 244)
+
+Failed to get pixels of splat texture
+ 
+(Filename: C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp Line: 244)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 54.389454 ms
+System memory in use before: 48.1 MB.
+System memory in use after: 44.2 MB.
+
+Unloading 243 unused Assets to reduce memory usage. Loaded Objects now: 314.
+Total: 3.522239 ms (FindLiveObjects: 0.026202 ms CreateObjectMapping: 0.023491 ms MarkObjects: 2.260919 ms  DeleteObjects: 1.210722 ms)
+
+Generate World
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+LoadingScreenController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:28)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/LoadingScreenController.cs Line: 28)
+
+Literally, Hello World!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:70)
+<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:47)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/LoadingScreenController.cs Line: 70)
+
+60, 60
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:75)
+LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:71)
+<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:47)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 75)
+
+Elevation Models Complete!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:94)
+LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:71)
+<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:47)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 94)
+
+Temperature Models Complete!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:99)
+LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:71)
+<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:47)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 99)
+
+Rainfall Models Complete!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:104)
+LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:71)
+<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:47)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 104)
+
+Rivers Populated!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:109)
+LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:71)
+<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:47)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 109)
+
+Habitats Created!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+World:.ctor(Int32, Int32, Boolean) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Classes\World.cs:116)
+LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:71)
+<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:47)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Classes/World.cs Line: 116)
+
+World Model Made!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+LoadingScreenController:WorldofSize(Int32, Int32) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:72)
+<LateGenerator>c__Iterator1:MoveNext() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\LoadingScreenController.cs:47)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr) (at C:\buildslave\unity\build\Runtime\Export\Coroutines.cs:17)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/LoadingScreenController.cs Line: 72)
+
+The referenced script on this Behaviour (Game Object 'Canvas') is missing!
+ 
+(Filename: C:/buildslave/unity/build/Runtime/Mono/MonoBehaviour.cpp Line: 1754)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.317739 ms
+System memory in use before: 36.2 MB.
+System memory in use after: 36.2 MB.
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 666.
+Total: 4.973600 ms (FindLiveObjects: 0.023792 ms CreateObjectMapping: 0.021082 ms MarkObjects: 4.917883 ms  DeleteObjects: 0.010541 ms)
+
+Enter the World Scene!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:26)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/MainController.cs Line: 26)
+
+Running Create TerrainObjects
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:40)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Views/TerrainWorldView.cs Line: 40)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_splatPrototypes(SplatPrototype[])
+TerrainWorldView:BuildSplats(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:200)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:47)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Views/TerrainWorldView.cs Line: 200)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_splatPrototypes(SplatPrototype[])
+TerrainWorldView:BuildSplats(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:200)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:47)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Views/TerrainWorldView.cs Line: 200)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_splatPrototypes(SplatPrototype[])
+TerrainWorldView:BuildSplats(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:200)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:47)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Views/TerrainWorldView.cs Line: 200)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_splatPrototypes(SplatPrototype[])
+TerrainWorldView:BuildSplats(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:200)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:47)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Views/TerrainWorldView.cs Line: 200)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_splatPrototypes(SplatPrototype[])
+TerrainWorldView:BuildSplats(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:200)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:47)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Views/TerrainWorldView.cs Line: 200)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_splatPrototypes(SplatPrototype[])
+TerrainWorldView:BuildSplats(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:200)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:47)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Views/TerrainWorldView.cs Line: 200)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_splatPrototypes(SplatPrototype[])
+TerrainWorldView:BuildSplats(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:200)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:47)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Views/TerrainWorldView.cs Line: 200)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_baseMapResolution(Int32)
+UnityEngine.TerrainData:set_baseMapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:547)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:207)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 547)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_baseMapResolution(Int32)
+UnityEngine.TerrainData:set_baseMapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:547)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:207)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 547)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_baseMapResolution(Int32)
+UnityEngine.TerrainData:set_baseMapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:547)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:207)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 547)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_baseMapResolution(Int32)
+UnityEngine.TerrainData:set_baseMapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:547)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:207)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 547)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_baseMapResolution(Int32)
+UnityEngine.TerrainData:set_baseMapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:547)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:207)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 547)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_baseMapResolution(Int32)
+UnityEngine.TerrainData:set_baseMapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:547)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:207)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 547)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_baseMapResolution(Int32)
+UnityEngine.TerrainData:set_baseMapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:547)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:207)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 547)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_alphamapResolution(Int32)
+UnityEngine.TerrainData:set_alphamapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:520)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:209)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 520)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_alphamapResolution(Int32)
+UnityEngine.TerrainData:set_alphamapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:520)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:209)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 520)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_alphamapResolution(Int32)
+UnityEngine.TerrainData:set_alphamapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:520)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:209)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 520)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_alphamapResolution(Int32)
+UnityEngine.TerrainData:set_alphamapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:520)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:209)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 520)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_alphamapResolution(Int32)
+UnityEngine.TerrainData:set_alphamapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:520)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:209)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 520)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_alphamapResolution(Int32)
+UnityEngine.TerrainData:set_alphamapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:520)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:209)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 520)
+
+Failed to get pixels of splat texture
+UnityEngine.TerrainData:set_Internal_alphamapResolution(Int32)
+UnityEngine.TerrainData:set_alphamapResolution(Int32) (at C:\buildslave\unity\build\artifacts\generated\common\modules\Terrain\TerrainDataBindings.gen.cs:520)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:209)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+
+[C:/buildslave/unity/build/Runtime/Terrain/SplatDatabase.cpp line 244] 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/modules/Terrain/TerrainDataBindings.gen.cs Line: 520)
+
+65, 65
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+TerrainWorldView:ApplyModel(TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:216)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:50)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Views/TerrainWorldView.cs Line: 216)
+
+1000, 1000
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+TerrainWorldView:PaintSoils(Terrain, TerrainData) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:97)
+TerrainWorldView:CreateTerrainObjects() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:55)
+TerrainWorldView:PassInTheWorld(World) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Views\TerrainWorldView.cs:32)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:62)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Views/TerrainWorldView.cs Line: 97)
+
+Terrain View Made
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:64)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/MainController.cs Line: 64)
+
+Mouse Over Initialized!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+TileMouseOver:.ctor(Collider) (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\TileMouseOver.cs:42)
+MainController:Start() (at C:\Users\William\Documents\World Generator Maps\CavemanWorld\DynamicCavemanWorld\Assets\Controllers\MainController.cs:69)
+ 
+(Filename: C:/Users/William/Documents/World Generator Maps/CavemanWorld/DynamicCavemanWorld/Assets/Controllers/TileMouseOver.cs Line: 42)
 
 Failed to get pixels of splat texture
  

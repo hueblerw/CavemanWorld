@@ -206,6 +206,7 @@ public class TerrainWorldView : MonoBehaviour {
         terrainData.heightmapResolution = 64 + 1;
         terrainData.baseMapResolution = 32 + 1;
         terrainData.SetDetailResolution(64, 32);
+        terrainData.alphamapResolution = 1000;
         // Set the size after the resoultion always
         minMaxElevationValues = currentWorld.elevationVertices.getMinMaxValues();
         maxVertDist = minMaxElevationValues[1] - minMaxElevationValues[0];
