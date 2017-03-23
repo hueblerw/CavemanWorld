@@ -332,7 +332,8 @@ public class TerrainWorldView : MonoBehaviour {
                     float randy = Random.Range(0f, 1f);
                     if (randy < grassPer[1])
                     {
-                        currentMap[x, z] = 1;
+                        // SEEMS TO BE THE NUMBER OF THINGS ADDED
+                        currentMap[x, z] = 2;
                     }
                 }
             }
