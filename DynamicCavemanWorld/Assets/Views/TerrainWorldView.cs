@@ -46,6 +46,7 @@ public class TerrainWorldView : MonoBehaviour {
         // Load some materials
         tCollide.material = colliderPhysics;
         BuildSplats(terrainData);
+        BuildDetailSplats(terrainData);
         LoadTreePrototypes(terrainData);
         // Apply the data in here
         ApplyModel(terrainData);
@@ -54,8 +55,6 @@ public class TerrainWorldView : MonoBehaviour {
         CreateOcean(terrainData);
         // Paint the soils
         PaintSoils(terrain, terrainData);
-        // Smooth out the squares???
-        // ???????????
         // Paint the cliffs
         PaintRocks(terrainData);
         // Connect the terrain data to the terrain object
@@ -63,6 +62,8 @@ public class TerrainWorldView : MonoBehaviour {
         tCollide.terrainData = terrainData;
         // Add the trees
         AddTrees(terrain, terrainData);
+        // Add the Grass
+        AddDetails(terrainData);
     }
 
 
@@ -145,6 +146,7 @@ public class TerrainWorldView : MonoBehaviour {
     {
         List<TreeInstance> trees = new List<TreeInstance>();
         int p = 1;
+        // Generate the random number array if it has not already been generated
         if (treePositions == null)
         {
             treePositions = new float[100];
@@ -167,23 +169,11 @@ public class TerrainWorldView : MonoBehaviour {
                     for (int i = 0; i < treeModels.Length; i++)
                     {
                         // For some reason seem to need to flip the x, z coordinates here
+                        float maxPossibleHeight = terrainData.size.y;
                         float presentHeight = currentTerrain.SampleHeight(new Vector3((z + .1f * Lz) * SQUARE_MULTIPLIER, 0f, (x + .1f * Lx) * SQUARE_MULTIPLIER));
-                        if ((presentHeight / terrainData.size.y) * maxVertDist > -minMaxElevationValues[0] && randy < treePercents[i])
+                        if ((presentHeight / maxPossibleHeight) * maxVertDist > -minMaxElevationValues[0] && randy < treePercents[i])
                         {
-                            TreeInstance nextTree = new TreeInstance();
-                            nextTree.prototypeIndex = i;
-                            if (i == 3)
-                            {
-                                nextTree.heightScale = Random.Range(1f, 1.25f);
-                                nextTree.widthScale = Random.Range(1f, 1.25f);
-                            }
-                            else
-                            {
-                                nextTree.heightScale = Random.Range(.8f, 1f);
-                                nextTree.widthScale = Random.Range(.8f, 1f);
-                            }
-                            nextTree.position = new Vector3((z + .1f * Lz) / Z, presentHeight / terrainData.size.y, (x + .1f * Lx) / X);
-                            nextTree.lightmapColor = Color.white;
+                            TreeInstance nextTree = CreateNewTreeInstance(i, x, Lx, z, Lz, maxPossibleHeight, presentHeight);
                             trees.Add(nextTree);
                             p++;
                         }
@@ -272,6 +262,95 @@ public class TerrainWorldView : MonoBehaviour {
         treePercents[2] = (float)(habitatPercents[11] + habitatPercents[12]);
 
         return treePercents;
+    }
+
+
+    private float[] CalculateGrassPercents(double[] habitatPercents)
+    {
+        float[] grassPercents = new float[2];
+        // So far grass grows everywhere except in very dry terrains like deserts
+        // Desert terrains and glaciers
+        grassPercents[0] = (float) (habitatPercents[0] + habitatPercents[1] + habitatPercents[5] + habitatPercents[9]);
+        grassPercents[1] = 1.0f - grassPercents[0];
+
+        return grassPercents;
+    }
+
+
+    // Create new Tree Instance
+    private TreeInstance CreateNewTreeInstance(int i, int x, float Lx, int z, float Lz, float maxPossibleHeight, float presentHeight)
+    {
+        TreeInstance nextTree = new TreeInstance();
+        nextTree.prototypeIndex = i;
+        if (i == 3)
+        {
+            nextTree.heightScale = Random.Range(1f, 1.25f);
+            nextTree.widthScale = Random.Range(1f, 1.25f);
+        }
+        else
+        {
+            nextTree.heightScale = Random.Range(.8f, 1f);
+            nextTree.widthScale = Random.Range(.8f, 1f);
+        }
+        nextTree.position = new Vector3((z + .1f * Lz) / Z, presentHeight / maxPossibleHeight, (x + .1f * Lx) / X);
+        nextTree.lightmapColor = Color.white;
+        return nextTree;
+    }
+
+
+    // Load in the detail prototype textures from the file.
+    private void BuildDetailSplats(TerrainData terrainData)
+    {
+        DetailPrototype[] grasses = new DetailPrototype[grassTextures.Length];
+        for (int g = 0; g < grassTextures.Length; g++)
+        {
+            grasses[g] = new DetailPrototype();
+            grasses[g].prototypeTexture = grassTextures[g];
+        }
+        terrainData.detailPrototypes = grasses;
+    }
+
+
+    // Paint the Details Textures
+    // So far this is just grass
+    private void AddDetails(TerrainData terrainData)
+    {
+        // Get the detail maps
+        int[][,] detailsMaps = GetDetailMaps(terrainData);
+        // Make some grass where appropriate
+        for (int i = 0; i < detailsMaps.Length; i++)
+        {
+            int[,] currentMap = detailsMaps[i];
+            Debug.Log(terrainData.detailWidth + ", " + terrainData.detailHeight);
+            for (int x = 0; x < terrainData.detailWidth; x++)
+            {
+                for (int z = 0; z < terrainData.detailWidth; z++)
+                {
+                    int aX = (int) ((float) x / terrainData.detailWidth) * X;
+                    int aZ = (int)((float)z / terrainData.detailWidth) * Z;
+                    float[] grassPer = CalculateGrassPercents(currentWorld.habitats.worldArray[aX, aZ].typePercents);
+                    float randy = Random.Range(0f, 1f);
+                    if (randy < grassPer[1])
+                    {
+                        currentMap[x, z] = 1;
+                    }
+                }
+            }
+            // Reapply the detail layer
+            terrainData.SetDetailLayer(0, 0, i, currentMap);
+        }
+    }
+
+
+    // Get the detail maps from the terrain data
+    private int[][,] GetDetailMaps(TerrainData terrainData)
+    {
+        int[][,] detailsMaps = new int[grassTextures.Length][,];
+        for (int i = 0; i < terrainData.detailPrototypes.Length; i++)
+        {
+            detailsMaps[i] = terrainData.GetDetailLayer(0, 0, terrainData.detailWidth, terrainData.detailHeight, i);
+        }
+        return detailsMaps;
     }
 
 
