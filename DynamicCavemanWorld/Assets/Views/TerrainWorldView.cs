@@ -17,6 +17,7 @@ public class TerrainWorldView : MonoBehaviour {
     public GameObject[] treeModels;
     public Texture2D[] splatTextures = new Texture2D[7];
     public GameObject ocean;
+    public Texture2D[] grassTextures = new Texture2D[2];
 
     // Constants
     public const int SQUARE_MULTIPLIER = 20 * 5; // Tiles on square side - 5 meters??? (20 feet???) for each square
@@ -213,7 +214,7 @@ public class TerrainWorldView : MonoBehaviour {
     {
         terrainData.heightmapResolution = 64 + 1;
         terrainData.baseMapResolution = 32 + 1;
-        terrainData.SetDetailResolution(64, 32);
+        terrainData.SetDetailResolution(2048, 128);
         terrainData.alphamapResolution = ((X + Z) / 2) * SQUARE_MULTIPLIER;
         // Set the size after the resoultion always
         minMaxElevationValues = currentWorld.elevationVertices.getMinMaxValues();

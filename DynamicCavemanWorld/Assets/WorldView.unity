@@ -1533,6 +1533,9 @@ MonoBehaviour:
   - {fileID: 2800000, guid: ef5c51cfa2ce46043a41a376b560c525, type: 3}
   - {fileID: 2800000, guid: e4388c2b0c4828445a5e3163dd39ad96, type: 3}
   ocean: {fileID: 0}
+  grassTextures:
+  - {fileID: 2800000, guid: 2c528fec5d95e4ac28cf46399b887662, type: 3}
+  - {fileID: 2800000, guid: d6cdc79ec19714fcd980ca3f6ac01a0a, type: 3}
 --- !u!1 &1117697581
 GameObject:
   m_ObjectHideFlags: 0
