@@ -91,6 +91,7 @@
     <Compile Include="Assets\Classes\Graze.cs" />
     <Compile Include="Assets\Classes\Habitat.cs" />
     <Compile Include="Assets\Classes\HabitatLayer.cs" />
+    <Compile Include="Assets\Classes\Herd.cs" />
     <Compile Include="Assets\Classes\HumidityLayer.cs" />
     <Compile Include="Assets\Classes\IntDayList.cs" />
     <Compile Include="Assets\Classes\ObjectLayer.cs" />
