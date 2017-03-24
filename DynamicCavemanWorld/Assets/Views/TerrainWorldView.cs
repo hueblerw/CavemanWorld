@@ -22,6 +22,7 @@ public class TerrainWorldView : MonoBehaviour {
     // Constants
     public const int SQUARE_MULTIPLIER = 20 * 5; // Tiles on square side - 5 meters??? (20 feet???) for each square
     private const float HEIGHT_TO_WIDTH_RATIO = 0.2f;
+    private const float TREE_HEIGHT_SCALE = (SQUARE_MULTIPLIER / 100f) * .8f;
 
     // The method which initially builds the world view.
     public void PassInTheWorld(World theWorld)
@@ -29,7 +30,7 @@ public class TerrainWorldView : MonoBehaviour {
         X = theWorld.WorldX;
         Z = theWorld.WorldZ;
         currentWorld = theWorld;
-        ocean = GameObject.Find("WaterBasicDaytime");
+        ocean = GameObject.Find("OceanPreFab");
         CreateTerrainObjects();
     }
 
@@ -46,7 +47,7 @@ public class TerrainWorldView : MonoBehaviour {
         // Load some materials
         tCollide.material = colliderPhysics;
         BuildSplats(terrainData);
-        BuildDetailSplats(terrainData);
+        // BuildDetailSplats(terrainData);
         LoadTreePrototypes(terrainData);
         // Apply the data in here
         ApplyModel(terrainData);
@@ -63,7 +64,7 @@ public class TerrainWorldView : MonoBehaviour {
         // Add the trees
         AddTrees(terrain, terrainData);
         // Add the Grass
-        AddDetails(terrainData);
+        // AddDetails(terrainData);
     }
 
 
@@ -106,7 +107,7 @@ public class TerrainWorldView : MonoBehaviour {
                 int x = (int) (((double)aX / terrainData.alphamapWidth) * X);
                 int z = (int) (((double)aZ / terrainData.alphamapHeight) * Z);
                 // Base the land off the actual grid thing
-                float presentHeight = currentTerrain.SampleHeight(new Vector3(z * SQUARE_MULTIPLIER, 0f, x * SQUARE_MULTIPLIER));
+                float presentHeight = currentTerrain.SampleHeight(new Vector3(aZ * (terrainData.size.z / terrainData.alphamapHeight), 0f, aX * (terrainData.size.x / terrainData.alphamapWidth)));
                 if (((presentHeight / terrainData.size.y) * maxVertDist) < -minMaxElevationValues[0])
                 {
                     splatMaps[aX, aZ, 0] = 0f;
@@ -204,8 +205,8 @@ public class TerrainWorldView : MonoBehaviour {
     {
         terrainData.heightmapResolution = 64 + 1;
         terrainData.baseMapResolution = 32 + 1;
-        terrainData.SetDetailResolution(2048, 128);
-        terrainData.alphamapResolution = ((X + Z) / 2) * SQUARE_MULTIPLIER;
+        terrainData.SetDetailResolution(512, 16);
+        terrainData.alphamapResolution = ((X + Z) / 2) * (SQUARE_MULTIPLIER / 4);
         // Set the size after the resoultion always
         minMaxElevationValues = currentWorld.elevationVertices.getMinMaxValues();
         maxVertDist = minMaxElevationValues[1] - minMaxElevationValues[0];
@@ -284,13 +285,13 @@ public class TerrainWorldView : MonoBehaviour {
         nextTree.prototypeIndex = i;
         if (i == 3)
         {
-            nextTree.heightScale = Random.Range(1f, 1.25f);
-            nextTree.widthScale = Random.Range(1f, 1.25f);
+            nextTree.heightScale = Random.Range(TREE_HEIGHT_SCALE * 1.25f, TREE_HEIGHT_SCALE * 1.5f);
+            nextTree.widthScale = Random.Range(TREE_HEIGHT_SCALE * 1.25f, TREE_HEIGHT_SCALE * 1.5f);
         }
         else
         {
-            nextTree.heightScale = Random.Range(.8f, 1f);
-            nextTree.widthScale = Random.Range(.8f, 1f);
+            nextTree.heightScale = Random.Range(TREE_HEIGHT_SCALE, TREE_HEIGHT_SCALE * 1.25f);
+            nextTree.widthScale = Random.Range(TREE_HEIGHT_SCALE, TREE_HEIGHT_SCALE * 1.25f);
         }
         nextTree.position = new Vector3((z + .1f * Lz) / Z, presentHeight / maxPossibleHeight, (x + .1f * Lx) / X);
         nextTree.lightmapColor = Color.white;
@@ -306,6 +307,8 @@ public class TerrainWorldView : MonoBehaviour {
         {
             grasses[g] = new DetailPrototype();
             grasses[g].prototypeTexture = grassTextures[g];
+            grasses[g].minHeight = (TREE_HEIGHT_SCALE / .8f) * 1f;
+            grasses[g].maxHeight = (TREE_HEIGHT_SCALE / .8f) * 1f;
         }
         terrainData.detailPrototypes = grasses;
     }
@@ -324,17 +327,13 @@ public class TerrainWorldView : MonoBehaviour {
             Debug.Log(terrainData.detailWidth + ", " + terrainData.detailHeight);
             for (int x = 0; x < terrainData.detailWidth; x++)
             {
-                for (int z = 0; z < terrainData.detailWidth; z++)
+                for (int z = 0; z < terrainData.detailHeight; z++)
                 {
                     int aX = (int) ((float) x / terrainData.detailWidth) * X;
-                    int aZ = (int)((float)z / terrainData.detailWidth) * Z;
+                    int aZ = (int)((float) z / terrainData.detailHeight) * Z;
                     float[] grassPer = CalculateGrassPercents(currentWorld.habitats.worldArray[aX, aZ].typePercents);
-                    float randy = Random.Range(0f, 1f);
-                    if (randy < grassPer[1])
-                    {
-                        // SEEMS TO BE THE NUMBER OF THINGS ADDED
-                        currentMap[x, z] = 2;
-                    }
+                    currentMap[x, z] = 4;
+                    
                 }
             }
             // Reapply the detail layer
@@ -359,7 +358,7 @@ public class TerrainWorldView : MonoBehaviour {
     private void CreateOcean(TerrainData terrainData)
     {
         ocean.transform.position = new Vector3((X * SQUARE_MULTIPLIER / 2.0f), (-minMaxElevationValues[0] / maxVertDist) * terrainData.size.y, Z * SQUARE_MULTIPLIER / 2.0f);
-        ocean.transform.localScale = new Vector3(X, 0f, Z);
+        ocean.transform.localScale = new Vector3(X * (SQUARE_MULTIPLIER / 100f), 0f, Z * (SQUARE_MULTIPLIER / 100f));
     }
 
 }
