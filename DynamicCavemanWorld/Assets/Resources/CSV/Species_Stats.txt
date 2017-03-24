@@ -1,0 +1,16 @@
+ID	Species	foodRequirement	meatValue	fatReserveNum	Attack	Defense	Speed	HabitatPreference	Domesticable	MemoryMax	ReproductionRate	DeathRate
+#ID	#name	# food/animal and type	# meat from an animal	# days of food stored as fat	#attack	#defense	#speed mph	#will only tolerate habitats with > x% of name	# can be domesticated	#most tiles can remember at once	# (1/8) * %ofagetoreproduce * offspring/year	#natural death rate
+0	Cow	4.94 grazing	503.9921	7	1	5	1.67	"50 grassland, 50 savannah"	TRUE	16	8.75%	5.00%
+1	Sheep	"0.6587 grazing, scrub"	79.02596	7	1	5	1.55	"40 grassland, 40 savannah"	TRUE	16	10.16%	6.25%
+2	Camel	"3.4992 grazing, foiliage, scrub"	164.6374	15	1	5	2.2	"50 desert, 50 hot_desert"	TRUE	25	3.85%	3.33%
+3	Horse	3.2933 grazing	235.1963	4	1	5	4	"50 grassland, 50 savannah"	TRUE	16	7.81%	2.78%
+4	Pig	"0.5763 grazing, foiliage, scrub, seeds"	56.9175	4	1	5	2	"40 forest, 40 mosoon_forest, 40 swamp, 40 rainforest"	TRUE	25	42.50%	8.00%
+5	Wolf	0.494 meat	35.2122	10	5	5	4	"40 tundra, 40 grassland, 40 boreal, 40 forest, 40 monsoon_forest"	TRUE	36	37.50%	7.69%
+6	Deer	"0.6175 grazing, scrub, foilage"	39.8153	4	1	5	2.5	"60 tundra, 40 grassland, 40 boreal, 40 forest, 40 monsoon_forest, 40 swamp, 60 rainforest, 60 artic_marsh"	FALSE	25	11.00%	8.00%
+7	Bison	5.7633 grazing	235.1963	7	1	5	1.75	"60 grassland, 60 savannah"	FALSE	16	8.44%	3.13%
+8	Elephant	"32.9333 grazing, foiliage, scrub"	1679.9737	10	1	5	1.5	"40 savannah, 60 monsoon_forest, 60 rainforest"	TRUE	36	2.17%	1.43%
+9	Mammoth	"54.34 grazing, foiliage, scrub"	2771.9567	10	1	5	1.5	"40 grassland, 40 tundra"	TRUE	25	1.95%	1.25%
+10	Antelope	0.4528 grazing	18.4797	4	1	5	2.5	60 savannah	FALSE	16	12.19%	10.00%
+11	Lion	2.0995 meat	83.9986	10	8	5	2.2	"40 savannah, 60 monsoon_forest"	FALSE	25	10.94%	5.56%
+12	Domestic Dog	0.2058 meat	17.6061	7	2	5	3.5	any	TRUE	36	26.25%	6.67%
+13	Domestic Cat	0.0463 meat	2.2234	7	2	5	3	any	TRUE	25	26.79%	9.52%

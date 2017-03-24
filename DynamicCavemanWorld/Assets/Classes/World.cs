@@ -39,6 +39,8 @@ public class World {
     // public MineralLayer miningStone;
     // public MineralLayer miningIron;
     // public MineralLayer miningMinerals;
+    public Herd[] herdArray;
+    // public Species[] speciesArray;
 
     // Constructor
     public World(int x, int z, bool random)

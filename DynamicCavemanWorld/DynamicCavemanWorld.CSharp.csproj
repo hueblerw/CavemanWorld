@@ -94,6 +94,7 @@
     <Compile Include="Assets\Classes\Herd.cs" />
     <Compile Include="Assets\Classes\HumidityLayer.cs" />
     <Compile Include="Assets\Classes\IntDayList.cs" />
+    <Compile Include="Assets\Classes\LocationMemory.cs" />
     <Compile Include="Assets\Classes\ObjectLayer.cs" />
     <Compile Include="Assets\Classes\River.cs" />
     <Compile Include="Assets\Classes\SingleValueLayer.cs" />
@@ -121,6 +122,7 @@
     <None Include="Assets\Resources\CSV\HumidityNiceMapA.txt" />
     <None Include="Assets\Resources\CSV\LowTempNiceMapA.txt" />
     <None Include="Assets\Resources\CSV\MidptNiceMapA.txt" />
+    <None Include="Assets\Resources\CSV\Species_Stats.txt" />
     <None Include="Assets\Resources\CSV\VarianceNiceMapA.txt" />
     <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
     <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
