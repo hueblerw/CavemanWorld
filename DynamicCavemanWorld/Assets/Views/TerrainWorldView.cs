@@ -52,6 +52,7 @@ public class TerrainWorldView : MonoBehaviour {
         // Apply the data in here
         ApplyModel(terrainData);
         terrain.terrainData = terrainData;
+
         // Create the ocean
         CreateOcean(terrainData);
         // Paint the soils
@@ -332,7 +333,7 @@ public class TerrainWorldView : MonoBehaviour {
                     int aX = (int) ((float) x / terrainData.detailWidth) * X;
                     int aZ = (int)((float) z / terrainData.detailHeight) * Z;
                     float[] grassPer = CalculateGrassPercents(currentWorld.habitats.worldArray[aX, aZ].typePercents);
-                    currentMap[x, z] = 4;
+                    currentMap[x, z] = 16;
                     
                 }
             }
