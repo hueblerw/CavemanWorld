@@ -98,6 +98,7 @@
     <Compile Include="Assets\Classes\ObjectLayer.cs" />
     <Compile Include="Assets\Classes\River.cs" />
     <Compile Include="Assets\Classes\SingleValueLayer.cs" />
+    <Compile Include="Assets\Classes\Species.cs" />
     <Compile Include="Assets\Classes\TempEquation.cs" />
     <Compile Include="Assets\Classes\Trees.cs" />
     <Compile Include="Assets\Classes\World.cs" />

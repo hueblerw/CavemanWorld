@@ -6,6 +6,7 @@ public class World {
 
     // Constants
     private const int CROP_PERSISTENCE = 5;
+    public const int NUM_OF_HABITAT_TYPES = 13;
 
     // Global Layers
     public int WorldX;
@@ -40,7 +41,7 @@ public class World {
     // public MineralLayer miningIron;
     // public MineralLayer miningMinerals;
     public Herd[] herdArray;
-    // public Species[] speciesArray;
+    public Species[] speciesArray;
 
     // Constructor
     public World(int x, int z, bool random)
@@ -59,6 +60,9 @@ public class World {
         this.tempEquations = new EquationLayer("TemperatureEquations", "Semi-static");
         this.temps = new IntDayList[WorldX, WorldZ];
         this.humidity = new HumidityLayer("HumidityLayer", 6, 1);
+        // Load Species info from file
+        speciesArray = Species.ReadSpeciesFromFile();
+        Debug.Log("Species Read in from file");
 
         if (!random)
         {

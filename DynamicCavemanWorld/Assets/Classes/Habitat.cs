@@ -33,7 +33,7 @@ public class Habitat {
     // Constructor
     public Habitat(int[] habitatCounters, float oceanPer)
     {
-        typePercents = new double[13];
+        typePercents = new double[World.NUM_OF_HABITAT_TYPES];
         percentOcean = oceanPer;
         if(percentOcean != 1f)
         {
