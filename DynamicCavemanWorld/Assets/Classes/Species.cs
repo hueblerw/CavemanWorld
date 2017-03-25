@@ -45,9 +45,9 @@ public class Species {
         string[] temps = traits[2].Split('-');
         foodRequired = (float)Convert.ToDouble(temps[0]);
         string[] tempsTwo = temps[1].Split(',');
-        // foodTypeIndicies = GetFoodTypeIndices(tempsTwo);
+        foodTypeIndicies = GetFoodTypeIndices(tempsTwo);
         // Set the habitat preferences
-        // habitatTolerance = SetHabitatTolerance(traits[8]);
+        habitatTolerance = SetHabitatTolerance(traits[8]);
         // Convert to domesticatible
         if (traits[9] == "TRUE")
         {
@@ -98,6 +98,28 @@ public class Species {
 
     // INSTANCE METHODS
     // Calculate and return the reproduction rate for the species instance
+    private int[] GetFoodTypeIndices(string[] tempsTwo)
+    {
+        int[] indexes;
+        // Food types
+        // 0 - grazing
+        // 1 - scrub
+        // 2 - foilage
+        // 3 - seeds
+        // 4 - gather
+        // 5 - meat
+        
 
-    
+        return indexes;
+    }
+
+
+    private Vector2[] SetHabitatTolerance(string habitatString)
+    {
+        Vector2[] habitatAvoidance = new Vector2[World.NUM_OF_HABITAT_TYPES];
+
+        // STUFF
+
+        return habitatAvoidance;
+    }
 }
