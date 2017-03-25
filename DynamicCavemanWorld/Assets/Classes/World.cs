@@ -97,7 +97,7 @@ public class World {
         // Temperature info
         tempEquations.createEquations(highTemp, lowTemp, tempMidpt, variance);
         // Calculate Years worth of temperature data
-        // CreateYearsTemps();
+        CreateYearsTemps();
         Debug.Log("Temperature Models Complete!");
         // Rainfall info
         rainfall = humidity.GenerateWorldsYearOfRain();

@@ -7,7 +7,7 @@ public class Herd {
     // variables
     public Vector2 location;
     public int numOfCreatures;
-    public string species;
+    // public Species species;
     public float herdFatReserve;
     public LocationMemory[] memories;
     // constants
@@ -20,7 +20,7 @@ public class Herd {
         // Create a random viable location and a random number of creatures from 5 to 30
         location = new Vector2(20, 12);
         numOfCreatures = Random.Range(MIN_HERD_SIZE, MAX_HERD_SIZE);
-        species = name;
+        // species = new Species(name);
         // Create a location memories array the length of the creatures maxMemory recall.
         memories = new LocationMemory[10];
     }
@@ -42,7 +42,7 @@ public class Herd {
     // To String Method
     public override string ToString()
     {
-        string info = "Herd of " + numOfCreatures + " " + species;
+        string info = "Herd of " + numOfCreatures + " "; // + species;
         // Testing string info
         info += "\n" + "location: " + location;
         info += " - " + "fat reserve: " + herdFatReserve;

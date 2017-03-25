@@ -1,3 +1,5 @@
+# http://animaldiversity.org/search/?q=domestic+cat&feature=INFORMATION
+
 ID	Species	foodRequirement	meatValue	fatReserveNum	Attack	Defense	Speed	HabitatPreference	Domesticable	MemoryMax	ReproductionRate	DeathRate
 #ID	#name	# food/animal and type	# meat from an animal	# days of food stored as fat	#attack	#defense	#speed mph	#will only tolerate habitats with > x% of name	# can be domesticated	#most tiles can remember at once	# (1/8) * %ofagetoreproduce * offspring/year	#natural death rate
 0	Cow	4.94 grazing	503.9921	7	1	5	1.67	"50 grassland, 50 savannah"	TRUE	16	8.75%	5.00%
