@@ -42,7 +42,7 @@ public class Herd {
     // To String Method
     public override string ToString()
     {
-        string info = "Herd of " + numOfCreatures + " " + species.name;
+        string info = "Herd of " + numOfCreatures + " " + species;
         // Testing string info
         info += "\n" + "location: " + location;
         info += " - " + "fat reserve: " + herdFatReserve;

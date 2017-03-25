@@ -144,6 +144,7 @@
     <None Include="Assets\Resources\CSV\HumidityNiceMapA.txt" />
     <None Include="Assets\Resources\CSV\LowTempNiceMapA.txt" />
     <None Include="Assets\Resources\CSV\MidptNiceMapA.txt" />
+    <None Include="Assets\Resources\CSV\Species_Stats-Reference.txt" />
     <None Include="Assets\Resources\CSV\Species_Stats.txt" />
     <None Include="Assets\Resources\CSV\VarianceNiceMapA.txt" />
     <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />

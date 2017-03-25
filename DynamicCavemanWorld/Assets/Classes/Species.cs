@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,7 +28,36 @@ public class Species {
     // Reads in the tab delimited string passed in from file.
     public Species (string tabDelineatedString)
     {
-
+        string[] traits = tabDelineatedString.Split('\t');
+        // set the straight forward variables
+        id = Convert.ToInt32(traits[0]);
+        name = traits[1];
+        meatValue = (float) Convert.ToDouble(traits[3]);
+        fatReserveNum = Convert.ToInt32(traits[4]);
+        attack = Convert.ToInt32(traits[5]);
+        defense = Convert.ToInt32(traits[6]);
+        speed = (float)Convert.ToDouble(traits[7]);
+        maxMemory = Convert.ToInt32(traits[10]);
+        reproductionRate = (float)Convert.ToDouble(traits[11].Replace("%", string.Empty));
+        deathRate = (float)Convert.ToDouble(traits[12].Replace("%", string.Empty));
+        // Set the food variables
+        traits[2] = traits[2].Replace("\"", string.Empty);
+        string[] temps = traits[2].Split('-');
+        foodRequired = (float)Convert.ToDouble(temps[0]);
+        string[] tempsTwo = temps[1].Split(',');
+        // foodTypeIndicies = GetFoodTypeIndices(tempsTwo);
+        // Set the habitat preferences
+        // habitatTolerance = SetHabitatTolerance(traits[8]);
+        // Convert to domesticatible
+        if (traits[9] == "TRUE")
+        {
+            domesticable = true;
+        }
+        else 
+        {
+            domesticable = false;
+        }
+        Debug.Log(traits[9]);
     }
 
 
@@ -37,8 +67,12 @@ public class Species {
     {
         string[] potentialSpecies = LoadTextStringsFromFile();
         numOfSpecies = potentialSpecies.Length;
-        Species listOfSpecies = new Species[numOfSpecies];
-
+        Species[] listOfSpecies = new Species[numOfSpecies];
+        for (int i = 0; i < numOfSpecies; i++)
+        {
+            listOfSpecies[i] = new Species(potentialSpecies[i]);
+        }
+        return listOfSpecies;
     }
 
 
@@ -52,7 +86,10 @@ public class Species {
         for (int i = 0; i < potentialSpecies.Length; i++)
         {
             // if first character is not a '#' add to the String List
-            
+            if (!potentialSpecies[i].StartsWith("#"))
+            {
+                stringList.Add(potentialSpecies[i]);
+            }
         }
         potentialSpecies = stringList.ToArray();
         return potentialSpecies;
