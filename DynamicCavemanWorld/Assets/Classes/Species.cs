@@ -18,7 +18,7 @@ public class Species {
     public int attack;
     public int defense;
     public float speed;
-    public Vector2[] habitatTolerance = new Vector2[World.NUM_OF_HABITAT_TYPES];
+    public float[] habitatTolerance;
     public bool domesticable;
     public int maxMemory;
     public float reproductionRate;
@@ -47,6 +47,8 @@ public class Species {
         string[] tempsTwo = temps[1].Split(',');
         foodTypeIndicies = GetFoodTypeIndices(tempsTwo);
         // Set the habitat preferences
+        // Debug.Log(traits[8]);
+        traits[8] = traits[8].Replace("\"", string.Empty);
         habitatTolerance = SetHabitatTolerance(traits[8]);
         // Convert to domesticatible
         if (traits[9] == "TRUE")
@@ -57,7 +59,6 @@ public class Species {
         {
             domesticable = false;
         }
-        Debug.Log(traits[9]);
     }
 
 
@@ -101,6 +102,7 @@ public class Species {
     private int[] GetFoodTypeIndices(string[] tempsTwo)
     {
         int[] indexes;
+        List<int> indexList = new List<int>();
         // Food types
         // 0 - grazing
         // 1 - scrub
@@ -108,17 +110,67 @@ public class Species {
         // 3 - seeds
         // 4 - gather
         // 5 - meat
-        
+        for (int i = 0; i < tempsTwo.Length; i++)
+        {
+            switch (tempsTwo[i])
+            {
+                case "grazing":
+                    indexList.Add(0);
+                    break;
+                case "scrub":
+                    indexList.Add(1);
+                    break;
+                case "foilage":
+                    indexList.Add(2);
+                    break;
+                case "seeds":
+                    indexList.Add(3);
+                    break;
+                case "gather":
+                    indexList.Add(4);
+                    break;
+                case "meat":
+                    indexList.Add(5);
+                    break;
+            }
+        }
 
+        indexes = indexList.ToArray();
         return indexes;
     }
 
 
-    private Vector2[] SetHabitatTolerance(string habitatString)
+    private float[] SetHabitatTolerance(string habitatString)
     {
-        Vector2[] habitatAvoidance = new Vector2[World.NUM_OF_HABITAT_TYPES];
-
-        // STUFF
+        float[] habitatAvoidance = new float[World.NUM_OF_HABITAT_TYPES];
+        // if you can live anywhere all values are zero and the work is done
+        if (!(habitatString == "any"))
+        {
+            string[] stringPairs = habitatString.Split(',');
+            string[] parts;
+            // index number is the habitat number
+            // value number is the avoidance number
+            // No penalty occurs is the habitat type is > the avoidance number
+            // Thus, a higher number indicates a need for more of that habitat in order to move there
+            // A 2 indicates the species will not enter that habitat
+            for (int i = 0; i < stringPairs.Length; i++)
+            {
+                stringPairs[i] = stringPairs[i].Trim();
+                parts = stringPairs[i].Split(' ');
+                // Debug.Log(parts[0] + ", " + parts[1]);
+                // First number is the avoidance
+                // the string determines the habitat
+                habitatAvoidance[Habitat.StringToIndex(parts[1])] = (float)Convert.ToDouble(parts[0]);
+            }
+            // If there is nothing listed set the value to 2.
+            for (int j = 0; j < habitatAvoidance.Length; j++)
+            {
+                if (habitatAvoidance[j] == 0f)
+                {
+                    habitatAvoidance[j] = 2f;
+                }
+            }
+        }
 
         return habitatAvoidance;
     }

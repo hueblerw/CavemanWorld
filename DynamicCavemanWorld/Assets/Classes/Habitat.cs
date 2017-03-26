@@ -30,7 +30,7 @@ public class Habitat {
     public Trees forest;
     public Game game;
 
-    // Constructor
+    // Constructors
     public Habitat(int[] habitatCounters, float oceanPer)
     {
         typePercents = new double[World.NUM_OF_HABITAT_TYPES];
@@ -299,6 +299,59 @@ public class Habitat {
         }
 
         return name;
+    }
+
+    // Convert String name to index number
+    public static int StringToIndex(string name)
+    {
+        int index = -1;
+        switch (name)
+        {
+            case "glacier":
+                index = 0;
+                break;
+            case "dry_tundra":
+                index = 1;
+                break;
+            case "tundra":
+                index = 2;
+                break;
+            case "boreal":
+                index = 3;
+                break;
+            case "artic_marsh":
+                index = 4;
+                break;
+            case "desert":
+                index = 5;
+                break;
+            case "plains":
+                index = 6;
+                break;
+            case "forest":
+                index = 7;
+                break;
+            case "swamp":
+                index = 8;
+                break;
+            case "hot_desert":
+                index = 9;
+                break;
+            case "savannah":
+                index = 10;
+                break;
+            case "monsoon_forest":
+                index = 11;
+                break;
+            case "rainforest":
+                index = 12;
+                break;
+            case "ocean":
+                index = 13;
+                break;
+        }
+
+        return index;
     }
 
     // determine the dominant type
