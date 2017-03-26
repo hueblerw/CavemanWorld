@@ -7,7 +7,7 @@ public class Herd {
     // variables
     public Vector2 location;
     public int numOfCreatures;
-    public string species;
+    public Species species;
     public float herdFatReserve;
     public LocationMemory[] memories;
     // constants
@@ -15,14 +15,17 @@ public class Herd {
     private const int MAX_HERD_SIZE = 30;
 
     // constructor
-    public Herd(string name)
+    public Herd(Species mySpecies)
     {
+        species = mySpecies;
         // Create a random viable location and a random number of creatures from 5 to 30
         location = new Vector2(20, 12);
         numOfCreatures = Random.Range(MIN_HERD_SIZE, MAX_HERD_SIZE);
-        species = name;
         // Create a location memories array the length of the creatures maxMemory recall.
-        memories = new LocationMemory[10];
+        memories = new LocationMemory[species.maxMemory];
+        // memories[0] = new LocationMemory(location, initFood, 0);
+        // Create a starting fat reserve
+        herdFatReserve = species.fatReserveNum * numOfCreatures;
     }
 
 

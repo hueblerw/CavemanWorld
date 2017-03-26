@@ -98,7 +98,7 @@ public class Species {
 
 
     // INSTANCE METHODS
-    // Calculate and return the reproduction rate for the species instance
+    // Read in the Food preferences from file
     private int[] GetFoodTypeIndices(string[] tempsTwo)
     {
         int[] indexes;
@@ -140,6 +140,7 @@ public class Species {
     }
 
 
+    // Read in the habitat tolerance from file
     private float[] SetHabitatTolerance(string habitatString)
     {
         float[] habitatAvoidance = new float[World.NUM_OF_HABITAT_TYPES];
