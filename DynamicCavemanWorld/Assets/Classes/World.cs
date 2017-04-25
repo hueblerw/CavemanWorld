@@ -40,6 +40,7 @@ public class World {
     // public MineralLayer miningStone;
     // public MineralLayer miningIron;
     // public MineralLayer miningMinerals;
+    // Animal Layers
     public Herd[] herdArray;
     public Species[] speciesArray;
 
@@ -120,6 +121,8 @@ public class World {
         // When done initializing the habitats calculate a new year
         TempAndRainNewYear();
         Debug.Log("Habitats Created!");
+        // Add Herds
+        //  ************************
     }
 
     // Converts the model's elevation number to a map of vertices which can be used by the view
@@ -190,6 +193,8 @@ public class World {
         TempAndRainNewYear();
         // Update the Habitats this year
         HabitatUpdate();
+        // Herd yearly action generation
+        //  ************************
         Debug.Log("Generated a new year!");
     }
 
@@ -229,6 +234,8 @@ public class World {
             info += " / " + foilage;
             info += "\n" + "Game Year Totals:";
             info += "\n" + habitats.worldArray[x, z].PrintGame(graze, seeds, foilage);
+            // Herds Info
+            //  ************************
         }
         return info;
     }
