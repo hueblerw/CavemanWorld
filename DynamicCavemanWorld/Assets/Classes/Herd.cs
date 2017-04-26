@@ -5,7 +5,7 @@ using UnityEngine;
 public class Herd {
 
     // variables
-    public Vector2[] yearsLocationArray = new Vector2[120];
+    public Vector2[] yearsLocationArray;
     public int numOfCreatures;
     public Species species;
     public float herdFatReserve;
@@ -19,7 +19,7 @@ public class Herd {
     {
         species = mySpecies;
         // Create a random viable location and a random number of creatures from 5 to 30
-        yearsLocationArray[0] = new Vector2(20, 12);
+        LastLocation(GenerateRandomLocation());
         numOfCreatures = Random.Range(MIN_HERD_SIZE, MAX_HERD_SIZE);
         // Create a location memories array the length of the creatures maxMemory recall.
         memories = new LocationMemory[species.maxMemory];
@@ -44,6 +44,18 @@ public class Herd {
     
     // Location Logic
     // Generate a random appopriate location
+    private Vector2 GenerateRandomLocation()
+    {
+        return new Vector2(20, 12);
+    }
+
+
+    // Pass in last years location
+    public void LastLocation(Vector2 last)
+    {
+        yearsLocationArray = new Vector2[120];
+        yearsLocationArray[0] = last;
+    }
 
 
     // Create locations for the year
