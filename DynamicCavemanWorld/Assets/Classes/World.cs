@@ -203,6 +203,7 @@ public class World {
     // Should probably be part of a view
     public string getTileInfo(int day, int x, int z)
     {
+        // General Terrain stats
         string info = "Elevation: " + elevation.worldArray[x, z];
         info += "\n" + "Ocean %: " + oceanPer.worldArray[x, z] * 100f + "%";
         info += "\n" + "Hill %: " + hillPer.worldArray[x, z] * 100f + "%";
@@ -210,10 +211,14 @@ public class World {
         info += "\n" + "Rain: " + rainfall.worldArray[day][x, z];
         info += "\n" + "Snow: " + snow.worldArray[day][x, z];
         // Herds Info
-        if (herdArray[0].yearsLocationArray[day].x == x && herdArray[0].yearsLocationArray[day].y == z)
+        for (int i = 0; i < herdArray.Length; i++)
         {
-            info += "\n" + herdArray[0];
+            if (herdArray[i].yearsLocationArray[day].x == x && herdArray[i].yearsLocationArray[day].y == z)
+            {
+                info += "\n" + herdArray[i];
+            }
         }
+        // Land info
         if (oceanPer.worldArray[x, z] != 1.0)
         {
             info += "\n" + "River Direction: " + riverStats.worldArray[x, z].downstream;
