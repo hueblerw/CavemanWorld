@@ -41,6 +41,13 @@ public class Herd {
     
     // Change predator threat
 
+    
+    // Location Logic
+    // Generate a random appopriate location
+
+
+    // Create locations for the year
+
 
     // To String Method
     public override string ToString()
