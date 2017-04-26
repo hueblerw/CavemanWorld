@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class World {
 
@@ -122,7 +123,7 @@ public class World {
         TempAndRainNewYear();
         Debug.Log("Habitats Created!");
         // Add Herds
-        //  ************************
+        herdArray = GenerateInitialHerds();
     }
 
     // Converts the model's elevation number to a map of vertices which can be used by the view
@@ -521,6 +522,20 @@ public class World {
         }
 
         return habitatTypeCounters;
+    }
+
+
+    // HERD METHODS
+    // Create initial herds
+    private Herd[] GenerateInitialHerds()
+    {
+        // Spawn each random herd and add them to a list.
+        List<Herd> herdList = new List<Herd>();
+        Debug.Log(speciesArray[3]);
+        Herd newestHerd = new Herd(speciesArray[3]);
+        herdList.Add(newestHerd);
+        // Once all spawned convert the list to an array
+        return herdList.ToArray();
     }
 
 }
