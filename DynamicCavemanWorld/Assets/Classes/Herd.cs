@@ -5,7 +5,7 @@ using UnityEngine;
 public class Herd {
 
     // variables
-    public Vector2 location;
+    public Vector2[] yearsLocationArray = new Vector2[120];
     public int numOfCreatures;
     public Species species;
     public float herdFatReserve;
@@ -19,7 +19,7 @@ public class Herd {
     {
         species = mySpecies;
         // Create a random viable location and a random number of creatures from 5 to 30
-        location = new Vector2(20, 12);
+        yearsLocationArray[0] = new Vector2(20, 12);
         numOfCreatures = Random.Range(MIN_HERD_SIZE, MAX_HERD_SIZE);
         // Create a location memories array the length of the creatures maxMemory recall.
         memories = new LocationMemory[species.maxMemory];
