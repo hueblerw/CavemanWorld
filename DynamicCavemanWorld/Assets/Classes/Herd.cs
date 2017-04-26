@@ -46,7 +46,7 @@ public class Herd {
     // Generate a random appopriate location
     private Vector2 GenerateRandomLocation()
     {
-        return new Vector2(20, 12);
+        return new Vector2(12, 23);
     }
 
 
@@ -64,9 +64,9 @@ public class Herd {
     // To String Method
     public override string ToString()
     {
-        string info = "Herd of " + numOfCreatures + " " + species;
+        string info = "Herd of " + numOfCreatures + " " + species.name;
         // Testing string info
-        info += "\n" + "location: " + location;
+        info += "\n" + "location: " + yearsLocationArray[0];
         info += " - " + "fat reserve: " + herdFatReserve;
         return info;
     }
