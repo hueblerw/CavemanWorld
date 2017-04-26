@@ -209,6 +209,11 @@ public class World {
         info += "\n" + "Temp: " + temps[x, z].getDaysTemp(day);
         info += "\n" + "Rain: " + rainfall.worldArray[day][x, z];
         info += "\n" + "Snow: " + snow.worldArray[day][x, z];
+        // Herds Info
+        if (herdArray[0].yearsLocationArray[day].x == x && herdArray[0].yearsLocationArray[day].y == z)
+        {
+            info += "\n" + herdArray[0].species.name + " - " + herdArray[0].numOfCreatures;
+        }
         if (oceanPer.worldArray[x, z] != 1.0)
         {
             info += "\n" + "River Direction: " + riverStats.worldArray[x, z].downstream;
@@ -235,8 +240,6 @@ public class World {
             info += " / " + foilage;
             info += "\n" + "Game Year Totals:";
             info += "\n" + habitats.worldArray[x, z].PrintGame(graze, seeds, foilage);
-            // Herds Info
-            //  ************************
         }
         return info;
     }
@@ -531,11 +534,14 @@ public class World {
     {
         // Spawn each random herd and add them to a list.
         List<Herd> herdList = new List<Herd>();
-        Debug.Log(speciesArray[3]);
+        Debug.Log("Herd Species" + speciesArray[3].name);
         Herd newestHerd = new Herd(speciesArray[3]);
         herdList.Add(newestHerd);
         // Once all spawned convert the list to an array
         return herdList.ToArray();
     }
+
+
+    // Create the herd display object
 
 }
