@@ -367,7 +367,7 @@ public class TerrainWorldView : MonoBehaviour {
     // Create the herd displays
     private void CreateHerdInstance()
     {
-        
+        GameObject herdInstance = herdModels[0].gameObject;
     }
 
 }

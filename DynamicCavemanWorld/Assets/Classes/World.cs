@@ -539,8 +539,7 @@ public class World {
     {
         // Spawn each random herd and add them to a list.
         List<Herd> herdList = new List<Herd>();
-        // Debug.Log("Herd Species" + speciesArray[3].name);
-        Herd newestHerd = new Herd(speciesArray[2]);
+        Herd newestHerd = new Herd(speciesArray[1]);
         herdList.Add(newestHerd);
         // Once all spawned convert the list to an array
         return herdList.ToArray();
