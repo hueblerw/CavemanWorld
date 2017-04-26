@@ -1540,6 +1540,21 @@ MonoBehaviour:
   grassTextures:
   - {fileID: 2800000, guid: 2c528fec5d95e4ac28cf46399b887662, type: 3}
   - {fileID: 2800000, guid: d6cdc79ec19714fcd980ca3f6ac01a0a, type: 3}
+  herdModels:
+  - {fileID: 100000, guid: 53a1be773c98b7a4f81d8701e01ccf20, type: 3}
+  - {fileID: 100000, guid: 10cb0f3e0c22bfc4da45f3a3bfa14728, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 100000, guid: a994a28ba7b2ecb42af973f29aedac28, type: 3}
+  - {fileID: 100000, guid: 2c2bd3d067467cd4280c1f645dda39e2, type: 3}
+  - {fileID: 100000, guid: 2d1e512c2db6b4a4c9e91e4add75758e, type: 3}
+  - {fileID: 0}
+  - {fileID: 100000, guid: f65da43d3c6250b4982bd18af62369b7, type: 3}
+  - {fileID: 100000, guid: f65da43d3c6250b4982bd18af62369b7, type: 3}
+  - {fileID: 0}
+  - {fileID: 100002, guid: 4a7dbd693c0179b4484771e68ecce3a2, type: 3}
+  - {fileID: 100000, guid: 2c2bd3d067467cd4280c1f645dda39e2, type: 3}
+  - {fileID: 0}
 --- !u!1 &1117697581
 GameObject:
   m_ObjectHideFlags: 0

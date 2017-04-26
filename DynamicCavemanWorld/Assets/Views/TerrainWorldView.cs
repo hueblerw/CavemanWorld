@@ -18,6 +18,7 @@ public class TerrainWorldView : MonoBehaviour {
     public Texture2D[] splatTextures = new Texture2D[7];
     public GameObject ocean;
     public Texture2D[] grassTextures = new Texture2D[2];
+    public GameObject[] herdModels;
 
     // Constants
     public const int SQUARE_MULTIPLIER = 20 * 5; // Tiles on square side - 5 meters??? (20 feet???) for each square
@@ -360,6 +361,13 @@ public class TerrainWorldView : MonoBehaviour {
     {
         ocean.transform.position = new Vector3((X * SQUARE_MULTIPLIER / 2.0f), (-minMaxElevationValues[0] / maxVertDist) * terrainData.size.y, Z * SQUARE_MULTIPLIER / 2.0f);
         ocean.transform.localScale = new Vector3(X * (SQUARE_MULTIPLIER / 100f), 0f, Z * (SQUARE_MULTIPLIER / 100f));
+    }
+
+
+    // Create the herd displays
+    private void CreateHerdInstance()
+    {
+        
     }
 
 }
