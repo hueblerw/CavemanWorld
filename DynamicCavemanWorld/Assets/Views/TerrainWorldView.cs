@@ -32,12 +32,12 @@ public class TerrainWorldView : MonoBehaviour {
         Z = theWorld.WorldZ;
         currentWorld = theWorld;
         ocean = GameObject.Find("OceanPreFab");
-        CreateTerrainObjects();
+        CreateTerrainObjects(currentWorld);
     }
-
+   
 
     // Based on video by quil18 at https://www.youtube.com/watch?v=U9-1Gr5CLgk
-    private void CreateTerrainObjects()
+    private void CreateTerrainObjects(World currentWorld)
     {
         // Create the empty obects that are needed.
         Debug.Log("Running Create TerrainObjects");
@@ -67,6 +67,8 @@ public class TerrainWorldView : MonoBehaviour {
         AddTrees(terrain, terrainData);
         // Add the Grass
         // AddDetails(terrainData);
+        // Add the herds
+        CreateHerdInstance(currentWorld.herdArray[0].yearsLocationArray[0], terrainData);
     }
 
 
@@ -365,9 +367,11 @@ public class TerrainWorldView : MonoBehaviour {
 
 
     // Create the herd displays
-    private void CreateHerdInstance()
+    private void CreateHerdInstance(Vector2 location, TerrainData terrainData)
     {
-        GameObject herdInstance = herdModels[0].gameObject;
+        GameObject herdInstance = GameObject.Find("SHEEP_OBJECT");
+        herdInstance.transform.localPosition = new Vector3(location.y * SQUARE_MULTIPLIER + 50f, terrainData.GetHeight((int) (location.y * SQUARE_MULTIPLIER + 50f), (int) (location.x * SQUARE_MULTIPLIER + 50f)), location.x * SQUARE_MULTIPLIER + 50f);
+        Debug.Log(herdInstance.transform.localPosition.x);
     }
 
 }
